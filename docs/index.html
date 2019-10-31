@@ -5,6 +5,7 @@
 <link href="https://cankayauniversity.github.io/ceng-407-408-2019-2020-AI-Customer-Support/css/bootstrap.min.css" rel="stylesheet" />
 <link href="https://cankayauniversity.github.io/ceng-407-408-2019-2020-AI-Customer-Support/css/site.css" rel="stylesheet">
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="https://cankayauniversity.github.io/ceng-407-408-2019-2020-AI-Customer-Support/js/bootstrap.min.js"></script>
 </head>
 <body>
 <!--NAV-BAR -->
@@ -57,12 +58,12 @@
         <p class="text-white m-0">We are aiming to create a web system that can be installed on any website. In our system, we will be creating a customer support system which is machine learning based program that can train itself according to the questions asked and also answers given by the non-machine (human) supporters. For every website, our program will have its’ own dataset on the computer it is installed. For every solved issue which means question and its’ true answers at the end (does not matter how many questions asked and true or false answers given between these two), machine learning program will create a model and after a while it will start answering questions instead of non-machine supporters.</p>
       </div>
     </div>
-    <!-- Content Row -->
+  <!-- Content Row -->
     <div class="row">
         <div class="col-md-4 mb-5">
             <div class="card h-100">
               <div class="card-body">
-                <h3 class="card-title">Advisor</h3>
+                <h3 class="card-title ">Advisor</h3>
                 <p class="card-text"> Roya CHOUPANI </br> roya@cankaya.edu.tr</p>
               </div>
               <div class="card-footer">
@@ -75,7 +76,64 @@
         <div class="card h-100">
           <div class="card-body">
             <h3 class="card-title">Team Members</h3>
-            <p class="card-text">Alperen Sarınay c1511048@student.cankaya.edu.tr </br> Atakan Demircioğlu c1511018@student.cankaya.edu.tr </br> Arınç Alp Eren c1611020@student.cankaya.edu.tr</br> Cavid Aydın c1511004@student.cankaya.edu.tr</p>
+            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+              <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingOne">
+                  <h4 class="panel-title">
+                    <a role="button" class="card-text" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                      Alperen Sarınay
+                    </a>
+                  </h4>
+                </div>
+                <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                  <div class="panel-body">
+            c1511048@student.cankaya.edu.tr
+                  </div>
+                </div>
+              </div>
+              <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingTwo">
+                  <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                      Cavid Aydın
+                    </a>
+                  </h4>
+                </div>
+                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                  <div class="panel-body">
+                    c1511004@student.cankaya.edu.tr
+                  </div>
+                </div>
+              </div>
+              <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingThree">
+                  <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                      Arınç Alp Eren
+                    </a>
+                  </h4>
+                </div>
+                <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                  <div class="panel-body">
+            c1611020@student.cankaya.edu.tr
+                  </div>
+                </div>
+              </div>
+              <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingFour">
+                  <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                      Atakan Demircioğlu
+                    </a>
+                  </h4>
+                </div>
+                <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+                  <div class="panel-body">
+                   c1511018@student.cankaya.edu.tr
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="card-footer">
             <a href="#" class="btn btn-primary btn-sm">More Info</a>
