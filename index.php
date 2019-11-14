@@ -10,6 +10,7 @@
     <link rel="shortcut icon" href="images/favicon.png" />
 
     <!-- Fonts-->
+    <script defer src="https://use.fontawesome.com/releases/v5.2.0/js/all.js" integrity="sha384-4oV5EgaV02iISL2ban6c/RmotsABqE4yZxZLcYMAdG7FAPsyHYAPpywE9PJo+Khy" crossorigin="anonymous"></script>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
@@ -28,8 +29,15 @@
             <p class="search-tag-line">If you have any question you can ask below or enter what you are looking for!</p>
 
             <form id="search-form" class="search-form clearfix" method="get" action="#" autocomplete="off">
-                <input class="search-term required" type="text" id="s" name="s" placeholder="Type your search terms here" title="* Please enter a search term!" />
-                <input class="search-btn" type="submit" value="Search" />
+            <div class="input-group">
+    <input type="text" class="form-control" placeholder="Search this blog">
+    <div class="input-group-append">
+      <button class="btn btn-secondary" type="button">
+        <i class="fa fa-search"></i>
+      </button>
+    </div>
+  </div>
+  
                 <div id="search-error-container"></div>
             </form>
         </div>
@@ -91,7 +99,7 @@
                         </section>
                     </div>
                 </div>
-                <aside class="span4 page-sidebar">
+                <aside class="span3 page-sidebar">
 
                 <button type="button" class="btn btn-info btn-lg btn-block">Ask a Question</button>
                 </p>
