@@ -1,6 +1,6 @@
 /* General ------------------------------------------------------------------------------------------------------------*/
 body {
-    background-color: #fff;
+    background-color: #dee2e642;
   }
   
   a:hover {
@@ -116,7 +116,6 @@ body {
   }
   .page-container > .container {
     padding: 40px 35px;
-    background-color: #fff;
   }
   
   .breadcrumb {

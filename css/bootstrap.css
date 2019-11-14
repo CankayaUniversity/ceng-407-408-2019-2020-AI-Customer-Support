@@ -10117,7 +10117,7 @@
   .navbar-custom {
     padding-top: 1rem;
     padding-bottom: 1rem;
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0);
   }
   
   .navbar-custom .navbar-brand {
