@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Knowledge Base Template</title>
+    <title>AI Customer Support</title>
 
     <link rel="shortcut icon" href="images/favicon.png" />
 
@@ -48,54 +48,33 @@
                 <div class="span8 page-content">
                     <div class="row separator">
                         <section class="span8 articles-list">
-                            <h3>Featured Articles</h3>
-                            <ul class="articles">
-                                <li class="article-entry standard">
-                                    <h4><a href="single.html">Integrating WordPress with Your Website</a></h4>
-                                    <span class="article-meta">25 Feb, 2013 in <a href="#" title="View all posts in Server &amp; Database">Server &amp; Database</a></span>
-                                    <span class="like-count">66</span>
-                                </li>
-                                <li class="article-entry standard">
-                                    <h4><a href="single.html">WordPress Site Maintenance</a></h4>
-                                    <span class="article-meta">24 Feb, 2013 in <a href="#" title="View all posts in Website Dev">Website Dev</a></span>
-                                    <span class="like-count">15</span>
-                                </li>
-                                <li class="article-entry video">
-                                    <h4><a href="single.html">Meta Tags in WordPress</a></h4>
-                                    <span class="article-meta">23 Feb, 2013 in <a href="#" title="View all posts in Website Dev">Website Dev</a></span>
-                                    <span class="like-count">8</span>
-                                </li>
-                                <li class="article-entry image">
-                                    <h4><a href="single.html">WordPress in Your Language</a></h4>
-                                    <span class="article-meta">22 Feb, 2013 in <a href="#" title="View all posts in Advanced Techniques">Advanced Techniques</a></span>
-                                    <span class="like-count">6</span>
-                                </li>
-                                <li class="article-entry standard">
-                                    <h4><a href="single.html">Know Your Sources</a></h4>
-                                    <span class="article-meta">22 Feb, 2013 in <a href="#" title="View all posts in Website Dev">Website Dev</a></span>
-                                    <span class="like-count">2</span>
-                                </li>
-                                <li class="article-entry standard">
-                                    <h4><a href="single.html">Validating a Website</a></h4>
-                                    <span class="article-meta">21 Feb, 2013 in <a href="#" title="View all posts in Website Dev">Website Dev</a></span>
-                                    <span class="like-count">3</span>
-                                </li>
-                                <li class="article-entry standard">
-                                    <h4><a href="single.html">Validating a Website</a></h4>
-                                    <span class="article-meta">21 Feb, 2013 in <a href="#" title="View all posts in Website Dev">Website Dev</a></span>
-                                    <span class="like-count">3</span>
-                                </li>
-                                <li class="article-entry standard">
-                                    <h4><a href="single.html">Validating a Website</a></h4>
-                                    <span class="article-meta">21 Feb, 2013 in <a href="#" title="View all posts in Website Dev">Website Dev</a></span>
-                                    <span class="like-count">3</span>
-                                </li>
-                                <li class="article-entry standard">
-                                    <h4><a href="single.html">Validating a Website</a></h4>
-                                    <span class="article-meta">21 Feb, 2013 in <a href="#" title="View all posts in Website Dev">Website Dev</a></span>
-                                    <span class="like-count">3</span>
-                                </li>
-                            </ul>
+        <div class="my-3 p-3 bg-white rounded box-shadow">
+        <h3 class="border-bottom border-gray pb-2 mb-0">Recent updates</h3>
+        <div class="media text-muted pt-3">
+          <img data-src="holder.js/32x32?theme=thumb&bg=007bff&fg=007bff&size=1" alt="" class="mr-2 rounded">
+          <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+            <strong class="d-block text-gray-dark">@username</strong>
+            Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
+          </p>
+        </div>
+        <div class="media text-muted pt-3">
+          <img data-src="holder.js/32x32?theme=thumb&bg=e83e8c&fg=e83e8c&size=1" alt="" class="mr-2 rounded">
+          <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+            <strong class="d-block text-gray-dark">@username</strong>
+            Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
+          </p>
+        </div>
+        <div class="media text-muted pt-3">
+          <img data-src="holder.js/32x32?theme=thumb&bg=6f42c1&fg=6f42c1&size=1" alt="" class="mr-2 rounded">
+          <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+            <strong class="d-block text-gray-dark">@username</strong>
+            Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
+          </p>
+        </div>
+        <small class="d-block text-right mt-3">
+          <a href="#">All updates</a>
+        </small>
+      </div>
                         </section>
                     </div>
                 </div>
