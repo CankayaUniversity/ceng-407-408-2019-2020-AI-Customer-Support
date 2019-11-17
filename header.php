@@ -1,5 +1,5 @@
 <?php 
-include 'helperMeta.php';
+include '/helpers/helperMeta.php';
 ?>
 
 <!doctype html>
