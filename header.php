@@ -12,8 +12,6 @@ include '/helpers/helperMeta.php';
     <meta name="robots" content="<? echo getDescriptions('robots') ?>" />
     <meta name="description" content="<? echo getDescriptions('description') ?>" />
 
-  
-
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -30,17 +28,13 @@ include '/helpers/helperMeta.php';
     <link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
 
     <!-- Style Sheet-->
-    <link rel='stylesheet' id='bootstrap-css-css' href='css/bootstrap.css' type='text/css' media='all' />
+    <script src="js/jquery.min.js"></script>
     <link rel='stylesheet' id='responsive-css-css' href='css/res.css' type='text/css' media='all' />
     <link rel='stylesheet' id='main-css-css' href='css/site.css' type='text/css' media='all' />
-
-      <!-- Signup and Login Pop-Ups -->
-      <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
-</head>
+    <link href="css/bootstrap.css" rel="stylesheet" id="bootstrap-css">
+    <script src="js/bootstrap.js"></script>
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    </head>
 
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
