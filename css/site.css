@@ -1468,3 +1468,8 @@ body {
        padding: 7px 0 0 13px;
        margin: 0;
    }
+
+   nav.scroll {
+    background: rgba(0, 0, 0, 0.3);
+    color: #eef;
+  }
