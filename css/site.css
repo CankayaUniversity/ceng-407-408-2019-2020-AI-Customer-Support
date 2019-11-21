@@ -1473,3 +1473,7 @@ body {
     background: rgba(0, 0, 0, 0.3);
     color: #eef;
   }
+  
+  .navbar-custom {
+    background-color: #000000;
+  }
