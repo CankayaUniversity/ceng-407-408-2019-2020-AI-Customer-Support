@@ -1285,7 +1285,7 @@ body {
   .navbar-custom {
     padding-top: 1rem;
     padding-bottom: 1rem;
-    background-color: rgba(0, 0, 0, 0);
+    background-color: #49afcd
   }
   
   .navbar-custom .navbar-brand {
@@ -1474,6 +1474,3 @@ body {
     color: #eef;
   }
   
-  .navbar-custom {
-    background-color: #000000;
-  }
