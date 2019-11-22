@@ -1,5 +1,6 @@
 <?php 
 include '/helpers/helperMeta.php';
+include '/helpers/helperDev.php';
 include '/inc/config.php';
 ?>
 
