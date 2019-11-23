@@ -53,6 +53,7 @@ if (isset($_POST['register'])) {
             surname varchar(50) NOT NULL,
             email varchar(50) NOT NULL,
             username varchar(50) NOT NULL,
+            password_ varchar(50) NOT NULL,
             create_date datetime NOT NULL,
             last_login datetime,
             is_verified int NOT NULL,

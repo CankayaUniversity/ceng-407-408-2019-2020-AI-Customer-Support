@@ -17,8 +17,6 @@ include '/inc/config.php';
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <script type="text/javascript" src="js/site.js"></script>
-
     <title>AI Customer Support</title>
 
     <link rel="shortcut icon" href="images/favicon.png" />
@@ -36,6 +34,8 @@ include '/inc/config.php';
     <link href="css/bootstrap.css" rel="stylesheet" id="bootstrap-css">
     <script src="js/bootstrap.js"></script>
     <link rel="stylesheet" href="css/font-awesome.min.css">
+
+    <script type="text/javascript" src="js/site.js"></script>
     </head>
 
 <!-- Navbar -->
@@ -92,7 +92,7 @@ include '/inc/config.php';
                         <a href="/reset_pass" class="text-secondary">Forgot Your Password?</a>
                     </div>
                     <div class="create-new-fau text-center pt-3">
-                            <a href="#" class="text-primary-fau"><span data-toggle="modal" data-target="#sem-reg" data-dismiss="modal">Create A New Account</span></a>
+                            <a href="#" class="text-primary-fau"><span data-toggle="modal" data-target="#registerModal" data-dismiss="modal">Create A New Account</span></a>
                     </div>
                 </form>
             </div>
@@ -109,14 +109,36 @@ include '/inc/config.php';
         <button type="button" class="close" data-dismiss="modal">
             <span><i class="fa fa-times-circle" aria-hidden="true"></i></span>
         </button>
-        <form class="seminor-login-form">
+        <form class="seminor-login-form" method="post" name="SignUp">
+        <div class="form-group">
+            <input type="text" name="Firstname" class="form-control" required autocomplete="off">
+            <label class="form-control-placeholder" for="name">First Name</label>
+          </div>
           <div class="form-group">
-            <input type="name" class="form-control" required autocomplete="off">
+            <input type="text" name="Lastname" class="form-control" required autocomplete="off">
+            <label class="form-control-placeholder" for="name">Last Name</label>
+          </div>
+          <div class="form-group">
+            <input type="text" name="Username" class="form-control" required autocomplete="off">
             <label class="form-control-placeholder" for="name">User Name</label>
           </div>
           <div class="form-group">
-            <input type="email" class="form-control" required autocomplete="off">
+            <input type="email" name="Email" class="form-control" required autocomplete="off">
             <label class="form-control-placeholder" for="name">Email address</label>
+          </div>
+          <div class="form-group">
+            <input type="password" name="Password" id ="Password" class="form-control" required autocomplete="off" onkeyup='check();'>
+            <label class="form-control-placeholder" for="password">Password</label>
+          </div>
+          <div class="form-group">
+            <input type="password" name="ConfirmPassword" id="ConfirmPassword" class="form-control" required autocomplete="off" onkeyup='check();'>
+            <label class="form-control-placeholder" for="password">Confirm Password</label>
+            <span id='message'></span>
+          </div>
+          <!--
+          <div class="form-group">
+            <input type="text" class="form-control" required autocomplete="off">
+            <label class="form-control-placeholder" for="name">City</label>
           </div>
           <div class="form-group">
             <label class="select-form-control-placeholder" for="sel1">profession</label>
@@ -128,30 +150,7 @@ include '/inc/config.php';
               <option>Others</option>
             </select>
           </div>
-          <div class="form-group">
-            <input type="tel" class="form-control" required autocomplete="off">
-            <label class="form-control-placeholder" for="name">Phone Number</label>
-          </div>
-          <div class="form-group">
-            <input type="text" class="form-control" required autocomplete="off">
-            <label class="form-control-placeholder" for="name">Organization</label>
-          </div>
-          <div class="form-group">
-            <input type="text" class="form-control" required autocomplete="off">
-            <label class="form-control-placeholder" for="name">Designation</label>
-          </div>
-          <div class="form-group">
-            <input type="text" class="form-control" required autocomplete="off">
-            <label class="form-control-placeholder" for="name">City</label>
-          </div>
-          <div class="form-group">
-            <input type="password" class="form-control" required autocomplete="off">
-            <label class="form-control-placeholder" for="password">Password</label>
-          </div>
-          <div class="form-group">
-            <input type="password" class="form-control" required autocomplete="off">
-            <label class="form-control-placeholder" for="password">Confirm Password</label>
-          </div>
+          -->
           <div class="form-group forgot-pass-fau text-center ">
             <a href="/terms-conditions/" class="text-secondary">
               By Clicking "SIGN UP" you accept our<br>
@@ -159,13 +158,47 @@ include '/inc/config.php';
             </a>
           </div>
           <div class="btn-check-log">
-            <button type="submit" class="btn-check-login">SIGN UP</button>
+            <button type="submit" name="SignUp" class="btn-check-login">SIGN UP</button>
           </div>
           <div class="create-new-fau text-center pt-3">
-            <a href="#" class="text-primary-fau"><span data-toggle="modal" data-target="#sem-login" data-dismiss="modal">Already Have An Account</span></a>
+            <a href="#" class="text-primary-fau"><span data-toggle="modal" data-target="#loginModal" data-dismiss="modal">Already Have An Account</span></a>
           </div>
         </form>
       </div>
     </div>
   </div>
 </div>
+
+<?php
+if (isset($_POST['SignUp'])) {
+
+  date_default_timezone_set('Europe/Istanbul');
+  $CreateDate = date('Y-m-d H:i:s');
+  $LastLogin = date('Y-m-d H:i:s');
+  $Username = $_POST['Username'];
+  $Email = $_POST['Email'];
+  $Password = $_POST['Password'];
+  $Firstname = $_POST['Firstname'];
+  $Lastname = $_POST['Lastname']; 
+  $ConfirmPassword = $_POST['ConfirmPassword'];
+
+  if($ConfirmPassword == $Password){
+
+    $sqlAddUser = "INSERT INTO users(firstname,surname,email,username,password_,create_date,last_login,is_verified,is_admin)
+    VALUES ('$Firstname','$Lastname','$Email','$Username','$Password','$CreateDate','$LastLogin',0,0);";
+    $conn->exec($sqlAddUser);
+
+    echo '<script language="javascript">';
+    echo "window.location.replace('http://localhost:8080/Project/index.php');";
+    echo '</script>';
+
+  }
+  else{
+    echo '<script language="javascript">';
+    echo "alert('Please check your password again');";
+    echo '</script>';
+  }
+}
+
+
+?>
