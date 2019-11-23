@@ -21,11 +21,21 @@
 </html>
 
 <?php
+if ($_SERVER['HTTP_HOST'] == 'localhost') {
+    $environment = 'dev';
+} else {
+    $environment = 'live';
+    echo "Şuan live için açık değil.";
+    exit(0);
+}
 if (isset($_POST['register'])) {
     $servername = $_POST['servername'];
     $username = $_POST['username'];
     $password = $_POST['password'];
     $db_name = $_POST['db_name'];
+    if($environment = 'dev'){
+        $db_name = 'customer_support';
+    }
     try {
         $conn = new PDO("mysql:host=$servername", $username, $password);
 
