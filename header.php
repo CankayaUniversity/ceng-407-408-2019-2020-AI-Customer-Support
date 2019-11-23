@@ -71,11 +71,11 @@ include '/inc/config.php';
                 </button>
                 <form class="seminor-login-form">
                     <div class="form-group">
-                        <input type="email" class="form-control" required autocomplete="off">
-                        <label class="form-control-placeholder" for="name">Email address</label>
+                        <input type="email" class="form-control" id="email_label" required autocomplete="off">
+                        <label class="form-control-placeholder" for="email">Email address</label>
                     </div>
                     <div class="form-group">
-                        <input type="password" class="form-control" required autocomplete="off">
+                        <input type="password" class="form-control" id="password_label" required autocomplete="off">
                         <label class="form-control-placeholder" for="password">Password</label>
                     </div>
                     <div class="form-group">
@@ -86,7 +86,7 @@ include '/inc/config.php';
                         </label>
                     </div>
                     <div class="btn-check-log">
-                        <button type="submit" class="btn-check-login">LOGIN</button>
+                        <button type="submit" id="login_button" class="btn-check-login">LOGIN</button>
                     </div>
                     <div class="forgot-pass-fau text-center pt-3">
                         <a href="/reset_pass" class="text-secondary">Forgot Your Password?</a>
@@ -168,7 +168,52 @@ include '/inc/config.php';
     </div>
   </div>
 </div>
-
+<!-- Giriş sayfası
+<script>
+$(document).ready(function(){  
+      $('#login_button').click(function(){  
+           var email = $('#email_label').val();  
+           var password = $('#password_label').val();  
+           if(email != '' && password != '')  
+           {
+                $.ajax({  
+                     url:"action.php",  
+                     method:"POST",  
+                     data: {email:email, password:password},  
+                     success:function(response){  
+                          //alert(data);  
+                          if(response == 'No')  
+                          {  
+                               alert("Wrong Data");  
+                          }  
+                          else  
+                          {  
+                               $('#loginModal').hide();  
+                               location.reload();  
+                          }  
+                     }  
+                });  
+           }  
+           else  
+           {  
+                alert("Both Fields are required");  
+           }  
+      });  
+      $('#logout').click(function(){  
+           var action = "logout";  
+           $.ajax({  
+                url:"action.php",  
+                method:"POST",  
+                data:{action:action},  
+                success:function()  
+                {  
+                     location.reload();  
+                }  
+           });  
+      });  
+ });  
+ </script>
+Giriş sayfası -->
 <?php
 if (isset($_POST['SignUp'])) {
 
