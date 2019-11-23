@@ -189,7 +189,7 @@ if (isset($_POST['SignUp'])) {
     $conn->exec($sqlAddUser);
 
     echo '<script language="javascript">';
-    echo "window.location.replace('http://localhost:8080/Project/index.php');";
+    echo "window.location.replace('$mainpagelink');";
     echo '</script>';
 
   }
