@@ -187,16 +187,18 @@ if (isset($_POST['SignUp'])) {
     $sqlAddUser = "INSERT INTO users(firstname,surname,email,username,password_,create_date,last_login,is_verified,is_admin)
     VALUES ('$Firstname','$Lastname','$Email','$Username','$Password','$CreateDate','$LastLogin',0,0);";
     $conn->exec($sqlAddUser);
-
-    echo '<script language="javascript">';
-    echo "window.location.replace('$mainpagelink');";
-    echo '</script>';
-
+  ?>
+    <script>
+    window.location.replace('index.php')
+    </script>
+  <?
   }
   else{
-    echo '<script language="javascript">';
-    echo "alert('Please check your password again');";
-    echo '</script>';
+  ?>
+    <script>
+    alert('Please check your password again')
+    </script>
+  <?
   }
 }
 
