@@ -168,52 +168,55 @@ include '/inc/config.php';
     </div>
   </div>
 </div>
-<!-- Giriş sayfası
+
 <script>
+
 $(document).ready(function(){  
-      $('#login_button').click(function(){  
-           var email = $('#email_label').val();  
-           var password = $('#password_label').val();  
-           if(email != '' && password != '')  
-           {
-                $.ajax({  
-                     url:"action.php",  
-                     method:"POST",  
-                     data: {email:email, password:password},  
-                     success:function(response){  
-                          //alert(data);  
-                          if(response == 'No')  
-                          {  
-                               alert("Wrong Data");  
-                          }  
-                          else  
-                          {  
-                               $('#loginModal').hide();  
-                               location.reload();  
-                          }  
-                     }  
-                });  
-           }  
-           else  
-           {  
-                alert("Both Fields are required");  
-           }  
+  $('#login_button').click(function(){  
+    var email = $('#email_label').val();  
+    var password = $('#password_label').val();  
+    if(email != '' && password != '')  
+    {
+      $.ajax({  
+        url:"action.php",  
+        method:"POST",  
+        data: {email:email, password:password},  
+        success:function(response){   
+          if(response == 'No')  
+          {  
+            alert("Wrong Data");  
+          }  
+          else  
+          {
+            debugger;
+            console.log(response);
+            $('#loginModal').hide();  
+            location.reload();  
+          }  
+        }  
       });  
-      $('#logout').click(function(){  
-           var action = "logout";  
-           $.ajax({  
-                url:"action.php",  
-                method:"POST",  
-                data:{action:action},  
-                success:function()  
-                {  
-                     location.reload();  
-                }  
-           });  
-      });  
- });  
- </script>
-Giriş sayfası -->
+    }  
+    else  
+    {  
+      alert("Both Fields are required");  
+    }  
+  });  
+  $('#logout').click(function(){  
+    var action = "logout";  
+    $.ajax({  
+      url:"action.php",  
+      method:"POST",  
+      data:{action:action},  
+      success:function()  
+      {  
+        location.reload();  
+      }  
+    });  
+  });  
+});  
+
+</script>
+
 <?php
 if (isset($_POST['SignUp'])) {
 
