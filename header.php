@@ -49,12 +49,19 @@ include '/inc/config.php';
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
+                <? if ($_SESSION["user_Username"] == null) : ?>
                 <li class="nav-item">
                     <a class="nav-link" data-toggle="modal" href="#registerModal" role="button" aria-expanded="false" aria-controls="collapseExample">Sign Up</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" data-toggle="modal" href="#loginModal" role="button" aria-expanded="false" aria-controls="collapseExample">Login</a>
                 </li>
+                <? endif; ?>
+                <? if ($_SESSION["user_Username"] != null) : ?>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><? echo $_SESSION["user_Username"] ?> </a>
+                </li>
+                <? endif; ?>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Profile</a>
                 </li>
@@ -184,18 +191,21 @@ $(document).ready(function(){
         method:"POST",  
         data: {email:email, password:password},  
         success:function(response){   
-          if(response == 'No')  
-          {  
-            alert("Wrong Data");  
-          }  
-          else  
+          if(response == '1')  
           {
-            debugger;
-            console.log(response);
-            alert("<?php echo "Welcome ".$_SESSION['user_Username']; ?>")
-            $('#loginModal').hide();  
-            //location.reload();  
+            $('#loginModal').hide();
+            location.reload();    
           }  
+          else if (response == '0') 
+          {
+            alert("Email and password does not match");  
+            //location.reload();  
+          }
+          else if (response == '-1') 
+          {
+            alert("System-based error");  
+            //location.reload();  
+          }    
         }  
       });  
     }  
