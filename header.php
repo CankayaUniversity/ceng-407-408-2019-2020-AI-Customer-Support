@@ -61,6 +61,9 @@ include '/inc/config.php';
                 <li class="nav-item">
                     <a class="nav-link" href="#"><? echo $_SESSION["user_Username"] ?> </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="logout.php">Logout</a>
+                </li>
                 <? endif; ?>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Profile</a>
