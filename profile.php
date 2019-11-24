@@ -1,5 +1,6 @@
 <?php 
 include 'header.php';
+session_start();
 ?>
     <hr>
     <div class="container bootstrap snippet">
@@ -21,11 +22,12 @@ include 'header.php';
 
                 <ul class="list-group">
                     <li class="list-group-item text-muted">Status</li>
-                    <li class="list-group-item text-right"><span style="float: left"><strong>Activities</strong></span>
-                        </li>
-                    <li class="list-group-item text-right"><span style="float: left"><strong>Likes</strong></span></li>
+                    <li class="list-group-item text-right"><span style="float: left"><strong>Threads</strong></span>
+                        11</li>
+                    <li class="list-group-item text-right"><span style="float: left"><strong>Likes</strong></span>
+                        12</li>
                     <li class="list-group-item text-right"><span style="float: left"><strong>Dislikes</strong></span>
-                        </li>
+                        13</li>
                 </ul>
 
                 <div class="panel panel-default">
@@ -45,7 +47,7 @@ include 'header.php';
                                 <label for="first_name">
                                     <h4>First name</h4>
                                 </label>
-                                <input type="text" class="form-control" name="first_name" id="first_name" placeholder="first name" title="enter your first name if any.">
+                                <input type="text" class="form-control" name="first_name" id="first_name" placeholder="<? echo $_SESSION["user_Firstname"]; ?>" title="enter your first name if any.">
                             </div>
                         </div>
                         <div class="form-group">
@@ -54,7 +56,7 @@ include 'header.php';
                                 <label for="last_name">
                                     <h4>Last name</h4>
                                 </label>
-                                <input type="text" class="form-control" name="last_name" id="last_name" placeholder="last name" title="enter your last name if any.">
+                                <input type="text" class="form-control" name="last_name" id="last_name" placeholder="<? echo $_SESSION["user_Surname"]; ?>" title="enter your last name if any.">
                             </div>
                         </div>
                         <div class="form-group">
@@ -63,16 +65,16 @@ include 'header.php';
                                 <label for="email">
                                     <h4>Email</h4>
                                 </label>
-                                <input type="email" class="form-control" name="email" id="email" placeholder="you@email.com" title="enter your email.">
+                                <input type="email" class="form-control" name="email" id="email" placeholder="<? echo $_SESSION["user_Email"]; ?>" title="enter your email.">
                             </div>
                         </div>
                         <div class="form-group">
 
                             <div class="col-xs-6">
                                 <label for="last_name">
-                                    <h4>Department</h4>
+                                    <h4>Username</h4>
                                 </label>
-                                <input type="text" class="form-control" name="email" id="email" placeholder="you@email.com" title="enter your email.">
+                                <input type="text" class="form-control" name="email" id="email" placeholder="<? echo $_SESSION["user_Username"]; ?>" title="enter your username.">
                             </div>
                         </div>
                         <div class="form-group">
@@ -81,7 +83,7 @@ include 'header.php';
                                 <label for="password">
                                     <h4>Password</h4>
                                 </label>
-                                <input type="email" class="form-control" id="location" placeholder="somewhere" title="enter a location">
+                                <input type="password" class="form-control" id="location" placeholder="********" title="enter a password">
                             </div>
                         </div>
                         <div class="form-group">
