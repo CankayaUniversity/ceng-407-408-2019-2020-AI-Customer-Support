@@ -13,7 +13,7 @@ if (file_exists($file_pointer)) {
 
 /* *** Check environment *** */
 
-if ($_SERVER['HTTP_HOST'] == 'localhost') {
+if ($_SERVER['HTTP_HOST'] == 'localhost' || $_SERVER['HTTP_HOST'] == 'localhost:8080' || $_SERVER['HTTP_HOST'] == 'localhost:80') {
     $environment = 'dev';
 } else {
     $environment = 'live';

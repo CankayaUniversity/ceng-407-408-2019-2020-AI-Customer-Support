@@ -21,7 +21,7 @@
 </html>
 
 <?php
-if ($_SERVER['HTTP_HOST'] == 'localhost') {
+if ($_SERVER['HTTP_HOST'] == 'localhost' || $_SERVER['HTTP_HOST'] == 'localhost:8080' || $_SERVER['HTTP_HOST'] == 'localhost:80') {
     $environment = 'dev';
 } else {
     $environment = 'live';
@@ -33,9 +33,7 @@ if (isset($_POST['register'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
     $db_name = $_POST['db_name'];
-    if($environment = 'dev'){
-        $db_name = 'customer_support';
-    }
+
     try {
         $conn = new PDO("mysql:host=$servername", $username, $password);
 
@@ -59,6 +57,16 @@ if (isset($_POST['register'])) {
             is_verified int NOT NULL,
             is_admin int NOT NULL
             );";
+        $conn->exec($sql);
+
+        date_default_timezone_set('Europe/Istanbul');
+        $CreateDate = date('Y-m-d H:i:s');
+        $LastLogin = date('Y-m-d H:i:s');
+
+        $sql= "INSERT INTO users(firstname,surname,email,username,password_,create_date,last_login,is_verified,is_admin) 
+        VALUES ('a','a','a@a.com','a','a','$CreateDate','$LastLogin',0,0),
+        ('b','b','b@b.com','b','b','$CreateDate','$LastLogin',1,0),
+        ('c','c','c@c.com','c','c','$CreateDate','$LastLogin',0,1);";
         $conn->exec($sql);
 
         echo "DB created successfully";
