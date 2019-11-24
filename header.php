@@ -1,7 +1,9 @@
 <?php 
+session_start();
 include '/helpers/helperMeta.php';
 include '/helpers/helperDev.php';
 include '/inc/config.php';
+//var_dump($_SESSION);
 ?>
 
 <!doctype html>
@@ -190,8 +192,9 @@ $(document).ready(function(){
           {
             debugger;
             console.log(response);
+            alert("<?php echo "Welcome ".$_SESSION['user_Username']; ?>")
             $('#loginModal').hide();  
-            location.reload();  
+            //location.reload();  
           }  
         }  
       });  
