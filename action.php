@@ -20,6 +20,7 @@ if ($count = $query -> rowCount()){
             $_SESSION["user_isAdmin"]=$r['is_admin'];
             $_SESSION["user_isVerified"]=$r['is_verified'];
         }
+        $_SESSION["user_Email"]=$email;
 		echo 1;
 	}else{
         // System-based error
