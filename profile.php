@@ -1,6 +1,11 @@
 <?php 
 include 'header.php';
 session_start();
+if($_SESSION["user_Surname"] == null){
+    echo"<script>
+    window.location.replace('index.php')
+    </script>";
+}
 ?>
     <hr>
     <div class="container bootstrap snippet">
