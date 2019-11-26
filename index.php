@@ -38,6 +38,7 @@
                                     <img data-src="holder.js/32x32?theme=thumb&bg=007bff&fg=007bff&size=1" alt="" class="mr-2 rounded">
                                     <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
                                         <strong class="d-block text-gray-dark"><? echo $getQuestion['q_author'] ?></strong> <? echo $getQuestion['q_title'] ?>
+                                        <strong class="d-block text-gray-dark"><? echo $getQuestion['q_date'] ?></strong> <? echo $getQuestion['q_description'] ?>
                                     </p>
                                 </div>
                                 <?php } ?>
