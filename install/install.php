@@ -42,6 +42,8 @@ if (isset($_POST['register'])) {
         $sql = "CREATE DATABASE IF NOT EXISTS $db_name";
         $conn->exec($sql);
 
+        echo "DB created successfully";
+
         $sql = "use $db_name";
         $conn->exec($sql);
 
@@ -57,6 +59,24 @@ if (isset($_POST['register'])) {
             is_verified int NOT NULL,
             is_admin int NOT NULL
             );";
+        
+        $conn->exec($sql);
+
+        echo "users table created successfully";
+
+        $sql = "CREATE TABLE IF NOT EXISTS questions (
+            q_id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+            q_title varchar(100) NOT NULL,
+            q_description varchar(1000) NOT NULL,
+            q_author int NOT NULL,
+            q_like int NOT NULL,
+            q_dislike int NOT NULL,
+            q_date datetime NOT NULL,
+            FOREIGN KEY (q_author) REFERENCES Users(user_id)
+            );";
+
+        echo "questions table created successfully";
+
         $conn->exec($sql);
 
         date_default_timezone_set('Europe/Istanbul');
@@ -69,7 +89,7 @@ if (isset($_POST['register'])) {
         ('c','c','c@c.com','c','c','$CreateDate','$LastLogin',0,1);";
         $conn->exec($sql);
 
-        echo "DB created successfully";
+        echo "Everything is okey :)";
 
     } catch (PDOException $e) {
         echo $sql . "<br>" . $e->getMessage();
