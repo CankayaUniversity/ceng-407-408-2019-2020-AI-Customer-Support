@@ -1,6 +1,6 @@
 <aside class="span3 page-sidebar">
 
-<button type="button" class="btn btn-info btn-lg btn-block">Ask a Question</button>
+<a href="addquestion.php" class="btn btn-info btn-lg btn-block" role="button" aria-pressed="true">Ask a Question</a>
 </p>
 
 <section class="widget">
