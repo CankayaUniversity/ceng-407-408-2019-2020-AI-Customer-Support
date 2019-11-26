@@ -59,15 +59,10 @@ include '/inc/config.php';
                 <? endif; ?>
                 <? if ($_SESSION["user_Username"] != null) : ?>
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><? echo $_SESSION["user_Username"] ?> </a>
+                    <a class="nav-link" href="profile.php">Profile</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="logout.php">Logout</a>
-                </li>
-                <? endif; ?>
-                <? if ($_SESSION["user_Username"] != null) : ?>
-                <li class="nav-item">
-                    <a class="nav-link" href="profile.php">Profile</a>
                 </li>
                 <? endif; ?>
             </ul>
@@ -123,7 +118,7 @@ include '/inc/config.php';
         <button type="button" class="close" data-dismiss="modal">
             <span><i class="fa fa-times-circle" aria-hidden="true"></i></span>
         </button>
-        <form class="seminor-login-form" method="post" name="SignUp">
+        <form class="seminor-login-form" method="post" action="action.php" name="SignUp">
         <div class="form-group">
             <input type="text" name="Firstname" class="form-control" required autocomplete="off">
             <label class="form-control-placeholder" for="name">First Name</label>

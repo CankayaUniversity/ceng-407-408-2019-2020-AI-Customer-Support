@@ -31,4 +31,38 @@ else{
     // Email and password does not match
     echo 0;
 }
+
+if (isset($_POST['SignUp'])) {
+
+  date_default_timezone_set('Europe/Istanbul');
+  $CreateDate = date('Y-m-d H:i:s');
+  $LastLogin = date('Y-m-d H:i:s');
+  $Username = $_POST['Username'];
+  $Email = $_POST['Email'];
+  $Password = $_POST['Password'];
+  $Firstname = $_POST['Firstname'];
+  $Lastname = $_POST['Lastname']; 
+  $ConfirmPassword = $_POST['ConfirmPassword'];
+
+  if($ConfirmPassword == $Password){
+
+    $sqlAddUser = "INSERT INTO users(firstname,surname,email,username,password_,create_date,last_login,is_verified,is_admin)
+    VALUES ('$Firstname','$Lastname','$Email','$Username','$Password','$CreateDate','$LastLogin',0,0);";
+    $conn->exec($sqlAddUser);
+  ?>
+    <script>
+    window.location.replace('index.php')
+    </script>
+  <?
+  }
+  else{
+  ?>
+    <script>
+    alert('Please check your password again')
+    </script>
+  <?
+  }
+}
+
+
 ?>
