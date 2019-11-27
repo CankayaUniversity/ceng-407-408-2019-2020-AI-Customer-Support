@@ -77,9 +77,9 @@ include 'inc/config.php';
 </div>
 <?php include "footer.php";?>
 <script> 
-    $("#QuestionSubmit").click(function() {
-       $('#QuestionDesc').val= $('#editor').html();
-    } 
+$("#QuestionSubmit").click(function() {
+  $("#QuestionDesc").val($("#editor").html());
+});
 </script>
 
 <?php
