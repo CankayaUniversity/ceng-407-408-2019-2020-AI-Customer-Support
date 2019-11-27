@@ -64,7 +64,7 @@ include 'inc/config.php';
                                     </div>
                                     <div id="editor" contenteditable></div>
                                     <textarea name="QuestionDesc" id="QuestionDesc" required="required" style="display:none;"></textarea><br>
-                                    <button type="submit" class="btn btn-primary" onclick="eject()" name="QuestionSubmit" id="QuestionSubmit">Submit</button>
+                                    <button type="submit" class="btn btn-primary" name="QuestionSubmit" id="QuestionSubmit">Submit</button>
                                 </div>
                             </div>
                         </section>
@@ -76,8 +76,11 @@ include 'inc/config.php';
     </div>
 </div>
 <?php include "footer.php";?>
-
-<script> function eject(){document.getElementById('QuestionDesc').innerHTML = document.getElementById('editor').innertext;} </script>
+<script> 
+    $("#QuestionSubmit").click(function() {
+       $('#QuestionDesc').val= $('#editor').html();
+    } 
+</script>
 
 <?php
 $qTitle = $_POST['QuestionTitle'];
