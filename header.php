@@ -120,19 +120,19 @@ include '/inc/config.php';
         </button>
         <form class="seminor-login-form" method="post" action="action.php" name="SignUp">
         <div class="form-group">
-            <input type="text" name="Firstname" class="form-control" required autocomplete="off">
+            <input type="text" name="Firstname" id="Firstname" class="form-control" required autocomplete="off">
             <label class="form-control-placeholder" for="name">First Name</label>
           </div>
           <div class="form-group">
-            <input type="text" name="Lastname" class="form-control" required autocomplete="off">
+            <input type="text" name="Lastname" id="Lastname" class="form-control" required autocomplete="off">
             <label class="form-control-placeholder" for="name">Last Name</label>
           </div>
           <div class="form-group">
-            <input type="text" name="Username" class="form-control" required autocomplete="off">
+            <input type="text" name="Username" id="Username" class="form-control" required autocomplete="off">
             <label class="form-control-placeholder" for="name">User Name</label>
           </div>
           <div class="form-group">
-            <input type="email" name="Email" class="form-control" required autocomplete="off">
+            <input type="email" name="Email" id="Email" class="form-control" required autocomplete="off">
             <label class="form-control-placeholder" for="name">Email address</label>
           </div>
           <div class="form-group">
@@ -144,22 +144,6 @@ include '/inc/config.php';
             <label class="form-control-placeholder" for="password">Confirm Password</label>
             <span id='message'></span>
           </div>
-          <!--
-          <div class="form-group">
-            <input type="text" class="form-control" required autocomplete="off">
-            <label class="form-control-placeholder" for="name">City</label>
-          </div>
-          <div class="form-group">
-            <label class="select-form-control-placeholder" for="sel1">profession</label>
-            <select class="form-control" id="sel1" name="sellist1">
-              <option>Select profession</option>
-              <option>Students</option>
-              <option>Research Scholar</option>
-              <option>Professor</option>
-              <option>Others</option>
-            </select>
-          </div>
-          -->
           <div class="form-group forgot-pass-fau text-center ">
             <a href="/terms-conditions/" class="text-secondary">
               By Clicking "SIGN UP" you accept our<br>
@@ -167,7 +151,7 @@ include '/inc/config.php';
             </a>
           </div>
           <div class="btn-check-log">
-            <button type="submit" name="SignUp" class="btn-check-login">SIGN UP</button>
+            <button type="submit" name="SignUp" id="SignUp" class="btn-check-login">SIGN UP</button>
           </div>
           <div class="create-new-fau text-center pt-3">
             <a href="#" class="text-primary-fau"><span data-toggle="modal" data-target="#loginModal" data-dismiss="modal">Already Have An Account</span></a>
@@ -183,13 +167,14 @@ include '/inc/config.php';
 $(document).ready(function(){  
   $('#login_button').click(function(){  
     var email = $('#email_label').val();  
-    var password = $('#password_label').val();  
+    var password = $('#password_label').val();
+    var action = 1;
     if(email != '' && password != '')  
     {
       $.ajax({  
         url:"action.php",  
         method:"POST",  
-        data: {email:email, password:password},  
+        data: {email:email, password:password, action:action},  
         success:function(response){   
           if(response == '1')  
           {
@@ -213,9 +198,10 @@ $(document).ready(function(){
     {  
       alert("Both Fields are required");  
     }  
-  });  
+  });
+
   $('#logout').click(function(){  
-    var action = "logout";  
+    var action = -1;  
     $.ajax({  
       url:"action.php",  
       method:"POST",  
@@ -225,43 +211,32 @@ $(document).ready(function(){
         location.reload();  
       }  
     });  
+  });
+
+  $('#SignUp').click(function(){
+    var Email = $('#Email').val();
+    var Password = $('#Password').val();
+    var Username = $('#Username').val();
+    var Firstname = $('#Firstname').val();
+    var Lastname = $('#Lastname').val();
+    var ConfirmPassword = $('#ConfirmPassword').val();
+    var action = 0;
+    if(Email != '' && Password !=''){
+      $.ajax({  
+        url:"action.php",  
+        method:"POST",  
+        data:{action:action, email:Email, password:Password, username:Username, firstname:Firstname, lastname:Lastname, confirmpass:ConfirmPassword},  
+        success:function(response)  
+        {
+          if(response){
+            $('#registerModal').hide();
+            window.location.replace("index.php");
+            location.reload();
+          }
+        }  
+      });  
+    }
   });  
 });  
 
 </script>
-
-<?php
-if (isset($_POST['SignUp'])) {
-
-  date_default_timezone_set('Europe/Istanbul');
-  $CreateDate = date('Y-m-d H:i:s');
-  $LastLogin = date('Y-m-d H:i:s');
-  $Username = $_POST['Username'];
-  $Email = $_POST['Email'];
-  $Password = $_POST['Password'];
-  $Firstname = $_POST['Firstname'];
-  $Lastname = $_POST['Lastname']; 
-  $ConfirmPassword = $_POST['ConfirmPassword'];
-
-  if($ConfirmPassword == $Password){
-
-    $sqlAddUser = "INSERT INTO users(firstname,surname,email,username,password_,create_date,last_login,is_verified,is_admin)
-    VALUES ('$Firstname','$Lastname','$Email','$Username','$Password','$CreateDate','$LastLogin',0,0);";
-    $conn->exec($sqlAddUser);
-  ?>
-    <script>
-    window.location.replace('index.php')
-    </script>
-  <?
-  }
-  else{
-  ?>
-    <script>
-    alert('Please check your password again')
-    </script>
-  <?
-  }
-}
-
-
-?>
