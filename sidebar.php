@@ -1,6 +1,11 @@
 <aside class="span3 page-sidebar">
 
-<a href="addquestion.php" class="btn btn-info btn-lg btn-block" role="button" aria-pressed="true">Ask a Question</a>
+<? if ($_SESSION["user_Username"] == null) : ?>
+    <a href="#loginModal" data-toggle="modal" class="btn btn-info btn-lg btn-block" role="button" aria-pressed="true">Ask a Question</a>
+<? endif; ?>
+<? if ($_SESSION["user_Username"] != null) : ?>
+    <a href="addquestion.php" class="btn btn-info btn-lg btn-block" role="button" aria-pressed="true">Ask a Question</a>
+<? endif; ?>
 </p>
 
 <section class="widget">
@@ -35,3 +40,42 @@
 </section>
 
 </aside>
+
+<script>
+$(document).ready(function(){  
+  $('#login_button').click(function(){  
+    var email = $('#email_label').val();  
+    var password = $('#password_label').val();
+    var action = 1;
+    if(email != '' && password != '')  
+    {
+      $.ajax({  
+        url:"action.php",  
+        method:"POST",  
+        data: {email:email, password:password, action:action},  
+        success:function(response){   
+          if(response == '1')  
+          {
+            $('#loginModal').hide();
+            window.location.replace("addquestion.php");    
+          }  
+          else if (response == '0') 
+          {
+            alert("Email and password does not match");  
+            //location.reload();  
+          }
+          else if (response == '-1') 
+          {
+            alert("System-based error");  
+            //location.reload();  
+          }    
+        }  
+      });  
+    }  
+    else  
+    {  
+      alert("Both Fields are required");  
+    }  
+  });
+});
+</script>

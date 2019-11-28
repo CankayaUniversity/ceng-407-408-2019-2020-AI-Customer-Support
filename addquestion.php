@@ -1,6 +1,13 @@
 <?php 
 include 'header.php';
 include 'inc/config.php';
+session_start();
+if($_SESSION["user_Surname"] == null){
+    echo"<script>
+    window.location.replace('index.php')
+    </script>";
+}
+
 ?>
 
 <body>
