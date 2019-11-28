@@ -94,11 +94,12 @@ $qTitle = $_POST['QuestionTitle'];
 $qDescription = $_POST['QuestionDesc'];
 $qAuthor = $_SESSION["user_UserID"];
 
-if (isset($_POST['QuestionSubmit'])){ 
+if (isset($_POST['QuestionSubmit']) && $qTitle != '' && $qDescription != ''){ 
     $qTitle = $_POST['QuestionTitle'];
     $qDescription = $_POST['QuestionDesc'];
     $qAuthor = $_SESSION["user_UserID"];
     $conn->exec("INSERT INTO questions(q_title,q_description,q_author) VALUES ('$qTitle','$qDescription','$qAuthor');");
+    ?><script>window.location.replace("index.php");</script><?
 }
 
 ?>
