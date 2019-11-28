@@ -33,11 +33,14 @@
                                 $query = $conn->query("SELECT * FROM questions",PDO::FETCH_ASSOC);
                                 $getQuestions = $query->fetchAll(PDO::FETCH_ASSOC);
                                 ?>
-                                <?php foreach($getQuestions as $getQuestion) { ?>
+                                <?php foreach($getQuestions as $getQuestion) { 
+                                    $q_author = $getQuestion['q_author'];
+                                    $user = $conn->query("SELECT user_id, firstname, surname, q_author FROM users,questions WHERE user_id='$q_author'",PDO::FETCH_ASSOC)->fetch();
+                                ?>
                                 <div class="media text-muted pt-3">
                                     <img data-src="holder.js/32x32?theme=thumb&bg=007bff&fg=007bff&size=1" alt="" class="mr-2 rounded">
                                     <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-                                        <strong class="d-block text-gray-dark"><? echo $getQuestion['q_author'] ?></strong> <? echo $getQuestion['q_title'] ?>
+                                        <strong class="d-block text-gray-dark"><? echo $user['firstname'].' '.$user['surname'] ?></strong> <? echo $getQuestion['q_title'] ?>
                                         <strong class="d-block text-gray-dark"><? echo $getQuestion['q_date'] ?></strong> <? echo $getQuestion['q_description'] ?>
                                     </p>
                                 </div>
