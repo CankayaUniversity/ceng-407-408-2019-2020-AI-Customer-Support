@@ -6,6 +6,7 @@ include '/inc/config.php';
 //var_dump($_SESSION);
 ?>
 
+
 <!doctype html>
 <html lang="en-US">
 
@@ -74,7 +75,7 @@ include '/inc/config.php';
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-body seminor-login-modal-body">
-                <h5 class="modal-title text-center">LOGIN TO MY ACCOUNT</h5>
+                <h5 class="modal-title text-center">LOGIN MY ACCOUNT</h5>
                 <button type="button" class="close" data-dismiss="modal">
                     <span><i class="fa fa-times-circle" aria-hidden="true"></i></span>
                 </button>
