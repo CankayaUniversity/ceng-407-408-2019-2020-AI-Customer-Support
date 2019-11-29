@@ -21,7 +21,7 @@
 </html>
 
 <?php
-if ($_SERVER['HTTP_HOST'] == 'localhost' || $_SERVER['HTTP_HOST'] == 'localhost:8080' || $_SERVER['HTTP_HOST'] == 'localhost:80') {
+if ($_SERVER['HTTP_HOST'] == 'localhost' || $_SERVER['HTTP_HOST'] == 'localhost:8080' || $_SERVER['HTTP_HOST'] == 'localhost:80' || $_SERVER['HTTP_HOST'] == 'localhost:8085') {
     $environment = 'dev';
 } else {
     $environment = 'live';
