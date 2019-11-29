@@ -41,54 +41,47 @@ if($_SESSION["user_Surname"] == null){
             </div>
             <!--/col-3-->
             <div class="col-sm-9">
-
-
                 <div class="tab-content">
                     <div class="tab-pane active" id="home">
                         <hr>
                         <div class="form-group">
-
                             <div class="col-xs-6">
                                 <label for="first_name">
-                                    <h4>First name</h4>
+                                    <h4>First name</h4><div id="slideName"><a href="#">Edit Name</a></div>
                                 </label>
                                 <input type="text" class="form-control" name="first_name" id="first_name" placeholder="<? echo $_SESSION["user_Firstname"]; ?>" title="enter your first name if any.">
                             </div>
                         </div>
                         <div class="form-group">
-
                             <div class="col-xs-6">
                                 <label for="last_name">
-                                    <h4>Last name</h4>
+                                    <h4>Last name</h4><div id="slideSurname"><a href="#">Edit Surname</a></div>
                                 </label>
                                 <input type="text" class="form-control" name="last_name" id="last_name" placeholder="<? echo $_SESSION["user_Surname"]; ?>" title="enter your last name if any.">
                             </div>
                         </div>
                         <div class="form-group">
-
                             <div class="col-xs-6">
                                 <label for="email">
-                                    <h4>Email</h4>
+                                    <h4>Email</h4><div id="slideEmail"><a href="#">Edit Email</a></div>
                                 </label>
                                 <input type="email" class="form-control" name="email" id="email" placeholder="<? echo $_SESSION["user_Email"]; ?>" title="enter your email.">
                             </div>
                         </div>
                         <div class="form-group">
-
                             <div class="col-xs-6">
-                                <label for="last_name">
-                                    <h4>Username</h4>
+                                <label>
+                                    <h4>Username</h4><div id="slideUsername"><a href="#">Edit Username</a></div>
                                 </label>
-                                <input type="text" class="form-control" name="email" id="email" placeholder="<? echo $_SESSION["user_Username"]; ?>" title="enter your username.">
+                                <input type="text" class="form-control" name="Username" id="Username" placeholder="<? echo $_SESSION["user_Username"]; ?>" title="enter your username.">
                             </div>
                         </div>
                         <div class="form-group">
-
                             <div class="col-xs-6">
                                 <label for="password">
-                                    <h4>Password</h4>
+                                    <h4>Password</h4><div id="slidePassword"><a href="#">Edit Password</a></div>
                                 </label>
-                                <input type="password" class="form-control" id="location" placeholder="********" title="enter a password">
+                                <input type="password" class="form-control" name="Password" id="Password" title="enter a password">
                             </div>
                         </div>
                         <div class="form-group">
@@ -102,4 +95,29 @@ if($_SESSION["user_Surname"] == null){
             </div>
         </div>
 </div> <hr>
+<script>
+$(document).ready(function(){
+
+  $("#slideName").click(function(){
+    $("#first_name").slideToggle("fast");
+  });
+
+  $("#slideSurname").click(function(){
+    $("#last_name").slideToggle("fast");
+  });
+
+  $("#slideUsername").click(function(){
+    $("#Username").slideToggle("fast");
+  });
+  
+  $("#slideEmail").click(function(){
+    $("#email").slideToggle("fast");
+  });
+
+  $("#slidePassword").click(function(){
+    $("#Password").slideToggle("fast");
+  });
+  
+});
+</script>
 <?php include 'footer.php';?>

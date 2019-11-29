@@ -86,13 +86,13 @@ if (isset($_POST['register'])) {
         date_default_timezone_set('Europe/Istanbul');
         $CreateDate = date('Y-m-d H:i:s');
         $LastLogin = date('Y-m-d H:i:s');
-        /*
+        
         $sql= "INSERT INTO users(firstname,surname,email,username,password_,create_date,last_login,is_verified,is_admin) 
         VALUES ('a','a','a@a.com','a','a','$CreateDate','$LastLogin',0,0),
         ('b','b','b@b.com','b','b','$CreateDate','$LastLogin',1,0),
         ('c','c','c@c.com','c','c','$CreateDate','$LastLogin',0,1);";
         $conn->exec($sql);
-        */
+        
         echo "Everything is okey :)";
 
     } catch (PDOException $e) {
