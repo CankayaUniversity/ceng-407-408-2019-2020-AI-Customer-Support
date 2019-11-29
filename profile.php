@@ -47,46 +47,47 @@ if($_SESSION["user_Surname"] == null){
                         <div class="form-group">
                             <div class="col-xs-6">
                                 <label for="first_name">
-                                    <h4>First name</h4><div id="slideName"><a href="#">Edit Name</a></div>
+                                    <h4>First name : <? echo $_SESSION["user_Firstname"]; ?> </h4>
                                 </label>
-                                <input type="text" class="form-control" name="first_name" id="first_name" placeholder="<? echo $_SESSION["user_Firstname"]; ?>" title="enter your first name if any.">
+                                <input type="text" class="form-control" name="first_name" id="first_name" title="enter your first name if any.">
                             </div>
+                            <hr>
                         </div>
                         <div class="form-group">
                             <div class="col-xs-6">
                                 <label for="last_name">
-                                    <h4>Last name</h4><div id="slideSurname"><a href="#">Edit Surname</a></div>
+                                    <h4>Last name : <? echo $_SESSION["user_Surname"]; ?></h4>
                                 </label>
-                                <input type="text" class="form-control" name="last_name" id="last_name" placeholder="<? echo $_SESSION["user_Surname"]; ?>" title="enter your last name if any.">
+                                <input type="text" class="form-control" name="last_name" id="last_name"  title="enter your last name if any.">
                             </div>
+                            <hr>
                         </div>
                         <div class="form-group">
                             <div class="col-xs-6">
                                 <label for="email">
-                                    <h4>Email</h4><div id="slideEmail"><a href="#">Edit Email</a></div>
+                                    <h4>Email : <? echo $_SESSION["user_Email"]; ?></h4>
                                 </label>
-                                <input type="email" class="form-control" name="email" id="email" placeholder="<? echo $_SESSION["user_Email"]; ?>" title="enter your email.">
+                                <input type="email" class="form-control" name="email" id="email"  title="enter your email.">
                             </div>
+                            <hr>
                         </div>
                         <div class="form-group">
                             <div class="col-xs-6">
-                                <label>
-                                    <h4>Username</h4><div id="slideUsername"><a href="#">Edit Username</a></div>
+                                <label for="Username">
+                                    <h4>Username : <? echo $_SESSION["user_Username"]; ?></h4>
                                 </label>
-                                <input type="text" class="form-control" name="Username" id="Username" placeholder="<? echo $_SESSION["user_Username"]; ?>" title="enter your username.">
+                                <input type="text" class="form-control" name="Username_" id="Username_" title="enter your username.">
                             </div>
+                            <hr>
                         </div>
+                        
                         <div class="form-group">
-                            <div class="col-xs-6">
-                                <label for="password">
-                                    <h4>Password</h4><div id="slidePassword"><a href="#">Edit Password</a></div>
-                                </label>
-                                <input type="password" class="form-control" name="Password" id="Password" title="enter a password">
-                            </div>
-                        </div>
-                        <div class="form-group">
+                            
                             <div class="col-xs-12">
-                            <button class="btn btn-lg btn-success pull-right" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
+                            
+                            <button class="btn btn-lg btn-success pull-right" id="slideEdit" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Edit</button>
+                            
+                            <button class="btn btn-lg btn-success pull-right" id="slideSave" name ="slideSave" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
                             </div>
                         </div>
                     </div>
@@ -97,25 +98,22 @@ if($_SESSION["user_Surname"] == null){
 </div> <hr>
 <script>
 $(document).ready(function(){
+    $("#first_name").slideUp();
+    $("#last_name").slideUp();
+    $("#Username_").slideUp();
+    $("#email").slideUp();
+    $("#Password_").slideUp();
+    $("#slideSave").slideUp();
 
-  $("#slideName").click(function(){
+  $("#slideEdit").click(function(){
     $("#first_name").slideToggle("fast");
-  });
-
-  $("#slideSurname").click(function(){
     $("#last_name").slideToggle("fast");
-  });
-
-  $("#slideUsername").click(function(){
-    $("#Username").slideToggle("fast");
-  });
-  
-  $("#slideEmail").click(function(){
+    $("#Username_").slideToggle("fast");
     $("#email").slideToggle("fast");
-  });
-
-  $("#slidePassword").click(function(){
-    $("#Password").slideToggle("fast");
+    $("#Password_").slideToggle("fast");
+    $("#slideSave").slideToggle("fast");
+    $("#slideEdit").slideToggle("fast");
+    
   });
   
 });
