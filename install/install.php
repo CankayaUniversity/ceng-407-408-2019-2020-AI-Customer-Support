@@ -25,8 +25,8 @@ if ($_SERVER['HTTP_HOST'] == 'localhost' || $_SERVER['HTTP_HOST'] == 'localhost:
     $environment = 'dev';
 } else {
     $environment = 'live';
-    echo "Şuan live için açık değil.";
-    exit(0);
+    //echo "Şuan live için açık değil.";
+    //exit(0);
 }
 if (isset($_POST['register'])) {
     $servername = $_POST['servername'];
