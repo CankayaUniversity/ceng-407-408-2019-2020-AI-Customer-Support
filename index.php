@@ -33,13 +33,13 @@
             <h4 class="font-weight-bold mt-0 mb-4">Recent updates</h4>
             <div class="bg-white card mb-4 order-list shadow-sm">
             <?php
-                                $query = $conn->query("SELECT * FROM questions",PDO::FETCH_ASSOC);
-                                $getQuestions = $query->fetchAll(PDO::FETCH_ASSOC);
-                                ?>
-                                <?php foreach($getQuestions as $getQuestion) { 
-                                    $q_author = $getQuestion['q_author'];
-                                    $user = $conn->query("SELECT user_id, firstname, surname, q_author FROM users,questions WHERE user_id='$q_author'",PDO::FETCH_ASSOC)->fetch();
-                                ?>
+                $query = $conn->query("SELECT * FROM questions",PDO::FETCH_ASSOC);
+                $getQuestions = $query->fetchAll(PDO::FETCH_ASSOC);
+            ?>
+            <?php foreach($getQuestions as $getQuestion) { 
+                $q_author = $getQuestion['q_author'];
+                $user = $conn->query("SELECT user_id, firstname, surname, q_author FROM users,questions WHERE user_id='$q_author'",PDO::FETCH_ASSOC)->fetch();
+            ?>
                 <div class="gold-members p-4">
                     <a href="#"> </a>
                     <div class="media">
@@ -54,7 +54,7 @@
                         </div>
                     </div>
                 </div>
-                <?php } ?>
+            <?php } ?>
             </div>
         </div>
     </div>
