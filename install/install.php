@@ -46,7 +46,7 @@ if (isset($_POST['register'])) {
         $sql = "CREATE DATABASE IF NOT EXISTS $db_name";
         $conn->exec($sql);
 
-        echo "DB created successfully";
+        echo "DB created successfully. ";
 
         $sql = "use $db_name";
         $conn->exec($sql);
@@ -58,41 +58,49 @@ if (isset($_POST['register'])) {
             email varchar(50) NOT NULL,
             username varchar(50) NOT NULL,
             password_ varchar(50) NOT NULL,
-            create_date datetime NOT NULL,
-            last_login datetime,
+            create_date datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+            last_login datetime DEFAULT CURRENT_TIMESTAMP,
             is_verified int NOT NULL,
             is_admin int NOT NULL
             );";
         
         $conn->exec($sql);
 
-        echo "users table created successfully";
+        echo "Users table created successfully. ";
 
         $sql = "CREATE TABLE IF NOT EXISTS questions (
             q_id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
             q_title varchar(100) NOT NULL,
             q_description varchar(1000) NOT NULL,
             q_author int NOT NULL,
-            q_like int NOT NULL,
-            q_dislike int NOT NULL,
-            q_date datetime NOT NULL,
+            q_like int NOT NULL DEFAULT '0',
+            q_dislike int NOT NULL  DEFAULT '0',
+            q_date datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
             FOREIGN KEY (q_author) REFERENCES Users(user_id)
             );";
 
-        echo "questions table created successfully";
+        echo "Questions table created successfully. ";
 
         $conn->exec($sql);
-
-        date_default_timezone_set('Europe/Istanbul');
-        $CreateDate = date('Y-m-d H:i:s');
-        $LastLogin = date('Y-m-d H:i:s');
         
-        $sql= "INSERT INTO users(firstname,surname,email,username,password_,create_date,last_login,is_verified,is_admin) 
-        VALUES ('a','a','a@a.com','a','a','$CreateDate','$LastLogin',0,0),
-        ('b','b','b@b.com','b','b','$CreateDate','$LastLogin',1,0),
-        ('c','c','c@c.com','c','c','$CreateDate','$LastLogin',0,1);";
+        $sql= "INSERT INTO users(firstname,surname,email,username,password_,is_verified,is_admin) 
+        VALUES ('Arınç Alp','Eren','arinc@arinc.com','arinc','arinc',0,0),
+        ('Atakan','Demircioğlu','atakan@atakan.com','atakan','atakan',0,0),
+        ('Alperen','Sarınay','alperen@alperen.com','alperen','alperen',0,0),
+        ('Cavid','Aydın','cavid@cavid.com','cavid','cavid',0,0),
+        ('a','a','a@a.com','a','a',0,0),
+        ('b','b','b@b.com','b','b',1,0),
+        ('c','c','c@c.com','c','c',0,1);";
+        $conn->exec($sql);
+
+        $sql= "INSERT INTO questions(q_title, q_description, q_author) VALUES
+        ('Sample Question Title 1 ', 'Sample Question Description 1 ', 1),
+        ('Sample Question Title 2 ', 'Sample Question Description 2 ', 2),
+        ('Sample Question Title 3 ', 'Sample Question Description 3 ', 3);";
         $conn->exec($sql);
         
+        echo "Insertions done successfully. ";
+
         echo "Everything is okey :)";
 
     } catch (PDOException $e) {
