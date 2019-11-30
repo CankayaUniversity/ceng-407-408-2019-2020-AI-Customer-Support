@@ -3,7 +3,7 @@ session_start();
 include '/helpers/helperMeta.php';
 include '/helpers/helperDev.php';
 include '/inc/config.php';
-//var_dump($_SESSION);
+var_dump($_SESSION);
 ?>
 
 
