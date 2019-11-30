@@ -12,7 +12,7 @@ if($_SESSION["user_Surname"] == null){
 $id=  $_SESSION["user_UserID"];
 
 
-if( !isset($_POST['Username_']) )
+if( isset($_POST['Username_']) )
 {
     $username= $_POST['Username_'];
   
@@ -21,7 +21,7 @@ if( !isset($_POST['Username_']) )
                            
 }
 
-if( !isset($_POST['last_name']) )
+if( isset($_POST['last_name']) )
 {
    
     $lastname = $_POST['last_name'];
@@ -32,7 +32,7 @@ if( !isset($_POST['last_name']) )
 }
 
 
-if( !isset($_POST['first_name']) )
+if( isset($_POST['first_name']) )
 {
    
     $firstname= $_POST['first_name'];
@@ -42,7 +42,7 @@ if( !isset($_POST['first_name']) )
                            
 }
 
-if( !isset($_POST['email']) )
+if( isset($_POST['email']) )
 {
    
     $email= $_POST['email'];
