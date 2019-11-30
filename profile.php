@@ -5,8 +5,57 @@ if($_SESSION["user_Surname"] == null){
     echo"<script>
     window.location.replace('index.php')
     </script>";
+
+ 
+
 }
+$id=  $_SESSION["user_UserID"];
+
+
+if( isset($_POST['Username_']) )
+{
+    $username= $_POST['Username_'];
+  
+    $query = $conn->query("UPDATE users SET username='$username' WHERE user_id=$id",PDO::FETCH_ASSOC);
+    $query->setFetchMode(PDO::FETCH_ASSOC);
+                           
+}
+
+if( isset($_POST['last_name']) )
+{
+   
+    $lastname = $_POST['last_name'];
+  
+    $query = $conn->query("UPDATE users SET surname='$lastname' WHERE user_id=$id",PDO::FETCH_ASSOC);
+    $query->setFetchMode(PDO::FETCH_ASSOC);
+                           
+}
+
+
+if( isset($_POST['first_name']) )
+{
+   
+    $firstname= $_POST['first_name'];
+  
+    $query = $conn->query("UPDATE users SET firstname='$firstname' WHERE user_id=$id",PDO::FETCH_ASSOC);
+    $query->setFetchMode(PDO::FETCH_ASSOC);
+                           
+}
+
+if( isset($_POST['email']) )
+{
+   
+    $email= $_POST['email'];
+
+    $query = $conn->query("UPDATE users SET email='$email' WHERE user_id=$id",PDO::FETCH_ASSOC);
+    $query->setFetchMode(PDO::FETCH_ASSOC);
+                           
+}
+
+
+
 ?>
+
     <hr>
     <div class="container bootstrap snippet">
         <div class="row">
@@ -43,6 +92,7 @@ if($_SESSION["user_Surname"] == null){
             <div class="col-sm-9">
                 <div class="tab-content">
                     <div class="tab-pane active" id="home">
+                    <form id="form1" name="form1" action="profile.php" method="post">
                         <hr>
                         <div class="form-group">
                             <div class="col-xs-6">
@@ -78,9 +128,10 @@ if($_SESSION["user_Surname"] == null){
                                 </label>
                                 <input type="text" class="form-control" name="Username_" id="Username_" title="enter your username.">
                             </div>
+                           
                             <hr>
                         </div>
-                        
+
                         <div class="form-group">
                             
                             <div class="col-xs-12">
@@ -90,13 +141,19 @@ if($_SESSION["user_Surname"] == null){
                             <button class="btn btn-lg btn-success pull-right" id="slideSave" name ="slideSave" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
                             </div>
                         </div>
+                      
+                        </from>
                     </div>
+
+                  
                     <!--/tab-pane-->
                 </div>
+              
             </div>
         </div>
 </div> <hr>
-<script>
+
+<!-- <script>
 $(document).ready(function(){
     $("#first_name").slideUp();
     $("#last_name").slideUp();
@@ -117,5 +174,5 @@ $(document).ready(function(){
   });
   
 });
-</script>
+</script> -->
 <?php include 'footer.php';?>
