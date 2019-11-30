@@ -1,97 +1,85 @@
 <?php 
-include 'header.php';
 session_start();
-if($_SESSION["user_Surname"] == null){
+include 'header.php';
+
+$id=  $_SESSION["user_UserID"];
+
+if($_SESSION["user_Username"] == null){
     echo"<script>
     window.location.replace('index.php')
     </script>";
-
- 
-
 }
-$id=  $_SESSION["user_UserID"];
 
-
-if( isset($_POST['Username_']) )
-{
+if(isset($_POST['Username_']) && $_POST['Username_'] != ''){
     $username= $_POST['Username_'];
-  
     $query = $conn->query("UPDATE users SET username='$username' WHERE user_id=$id",PDO::FETCH_ASSOC);
-    $query->setFetchMode(PDO::FETCH_ASSOC);
-                           
+    $query->setFetchMode(PDO::FETCH_ASSOC);                  
 }
 
-if( isset($_POST['last_name']) )
-{
-   
+if(isset($_POST['last_name']) && $_POST['last_name'] != ''){
     $lastname = $_POST['last_name'];
-  
     $query = $conn->query("UPDATE users SET surname='$lastname' WHERE user_id=$id",PDO::FETCH_ASSOC);
-    $query->setFetchMode(PDO::FETCH_ASSOC);
-                           
+    $query->setFetchMode(PDO::FETCH_ASSOC);                   
 }
 
-
-if( isset($_POST['first_name']) )
-{
-   
+if(isset($_POST['first_name']) && $_POST['first_name'] != ''){
     $firstname= $_POST['first_name'];
-  
     $query = $conn->query("UPDATE users SET firstname='$firstname' WHERE user_id=$id",PDO::FETCH_ASSOC);
-    $query->setFetchMode(PDO::FETCH_ASSOC);
-                           
+    $query->setFetchMode(PDO::FETCH_ASSOC);                  
 }
 
-if( isset($_POST['email']) )
-{
-   
+if(isset($_POST['email']) && $_POST['email'] != ''){
     $email= $_POST['email'];
-
     $query = $conn->query("UPDATE users SET email='$email' WHERE user_id=$id",PDO::FETCH_ASSOC);
-    $query->setFetchMode(PDO::FETCH_ASSOC);
-                           
+    $query->setFetchMode(PDO::FETCH_ASSOC);   
 }
 
-
+$query = $conn->query("SELECT * FROM users WHERE user_id='$id'",PDO::FETCH_ASSOC);
+if ($count = $query -> rowCount()){
+    if($count > 0){
+        // Email and password match
+        $sql = "SELECT user_id,firstname,surname,username,is_verified,is_admin,email
+                FROM users WHERE user_id='$id'";
+        $q = $conn->query($sql);
+        $q->setFetchMode(PDO::FETCH_ASSOC);
+        while($r=$q->fetch()){
+            $_SESSION["user_UserID"]=$r['user_id'];
+            $_SESSION["user_Username"]=$r['username'];
+            $_SESSION["user_Firstname"]=$r['firstname'];
+            $_SESSION["user_Surname"]=$r['surname'];
+            $_SESSION["user_isAdmin"]=$r['is_admin'];
+            $_SESSION["user_isVerified"]=$r['is_verified'];
+            $_SESSION["user_Email"]=$r['email'];
+        }
+    }
+}
 
 ?>
 
-    <hr>
-    <div class="container bootstrap snippet">
-        <div class="row">
-        </div>
-        <div class="row">
-            <div class="col-sm-3">
-                <!--left col-->
-
-
-                <div class="text-center">
-                    <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar">
-                    <h6>
-                        
-                        </h6>
-                    
-                </div>
-                <br>
-
-                <ul class="list-group">
-                    <li class="list-group-item text-muted">Status</li>
-                    <li class="list-group-item text-right"><span style="float: left"><strong>Threads</strong></span>
-                        11</li>
-                    <li class="list-group-item text-right"><span style="float: left"><strong>Likes</strong></span>
-                        12</li>
-                    <li class="list-group-item text-right"><span style="float: left"><strong>Dislikes</strong></span>
-                        13</li>
-                </ul>
-
-                <div class="panel panel-default">
-                </div>
-
+<hr>
+<div class="container bootstrap snippet">
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="text-center">
+                <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar"> 
             </div>
-            <!--/col-3-->
-            <div class="col-sm-9">
-                <div class="tab-content">
-                    <div class="tab-pane active" id="home">
+            <br>
+            <ul class="list-group">
+                <li class="list-group-item text-muted">Status</li>
+                <li class="list-group-item text-right"><span style="float: left"><strong>Threads</strong></span> 
+                    11
+                </li>
+                <li class="list-group-item text-right"><span style="float: left"><strong>Likes</strong></span>
+                    12
+                </li>
+                <li class="list-group-item text-right"><span style="float: left"><strong>Dislikes</strong></span>
+                    13
+                </li>
+            </ul>
+        </div>
+        <div class="col-sm-9">
+            <div class="tab-content">
+                <div class="tab-pane active" id="home">
                     <form id="form1" name="form1" action="profile.php" method="post">
                         <hr>
                         <div class="form-group">
@@ -128,33 +116,26 @@ if( isset($_POST['email']) )
                                 </label>
                                 <input type="text" class="form-control" name="Username_" id="Username_" title="enter your username.">
                             </div>
-                           
                             <hr>
                         </div>
-
                         <div class="form-group">
-                            
                             <div class="col-xs-12">
-                            
-                            <button class="btn btn-lg btn-success pull-right" id="slideEdit" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Edit</button>
-                            
-                            <button class="btn btn-lg btn-success pull-right" id="slideSave" name ="slideSave" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
+                                <button class="btn btn-lg btn-success pull-right" id="slideEdit" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Edit</button>
+                                <button class="btn btn-lg btn-success pull-right" id="slideSave" name ="slideSave" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
                             </div>
                         </div>
-                      
-                        </from>
-                    </div>
-
-                  
-                    <!--/tab-pane-->
+                    </from>
                 </div>
-              
             </div>
         </div>
-</div> <hr>
+    </div>
+</div>
+<hr>
 
-<!-- <script>
+<script>
 $(document).ready(function(){
+    
+    /*
     $("#first_name").slideUp();
     $("#last_name").slideUp();
     $("#Username_").slideUp();
@@ -162,17 +143,18 @@ $(document).ready(function(){
     $("#Password_").slideUp();
     $("#slideSave").slideUp();
 
-  $("#slideEdit").click(function(){
-    $("#first_name").slideToggle("fast");
-    $("#last_name").slideToggle("fast");
-    $("#Username_").slideToggle("fast");
-    $("#email").slideToggle("fast");
-    $("#Password_").slideToggle("fast");
-    $("#slideSave").slideToggle("fast");
-    $("#slideEdit").slideToggle("fast");
     
-  });
-  
+    $("#slideEdit").click(function(){
+        $("#first_name").slideToggle("fast");
+        $("#last_name").slideToggle("fast");
+        $("#Username_").slideToggle("fast");
+        $("#email").slideToggle("fast");
+        $("#Password_").slideToggle("fast");
+        $("#slideSave").slideToggle("fast");
+        $("#slideEdit").slideToggle("fast");
+    });
+    */
 });
-</script> -->
+</script>
+
 <?php include 'footer.php';?>
