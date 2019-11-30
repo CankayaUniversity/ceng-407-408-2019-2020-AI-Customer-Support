@@ -13,9 +13,9 @@ var_dump($_SESSION);
 <head>
     <!-- META TAGS -->
 
-    <meta name="keywords" content="<? echo getDescriptions('keywords') ?>" />
-    <meta name="robots" content="<? echo getDescriptions('robots') ?>" />
-    <meta name="description" content="<? echo getDescriptions('description') ?>" />
+    <meta name="keywords" content="<?php echo getDescriptions('keywords') ?>" />
+    <meta name="robots" content="<?php echo getDescriptions('robots') ?>" />
+    <meta name="description" content="<?php echo getDescriptions('description') ?>" />
 
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -50,22 +50,22 @@ var_dump($_SESSION);
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
-                <? if ($_SESSION["user_Username"] == null) : ?>
+                <?php if ($_SESSION["user_Username"] == null) : ?>
                 <li class="nav-item">
                     <a class="nav-link" data-toggle="modal" href="#registerModal" role="button" aria-expanded="false" aria-controls="collapseExample">Sign Up</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" data-toggle="modal" href="#loginModal" role="button" aria-expanded="false" aria-controls="collapseExample">Login</a>
                 </li>
-                <? endif; ?>
-                <? if ($_SESSION["user_Username"] != null) : ?>
+                <?php endif; ?>
+                <?php if ($_SESSION["user_Username"] != null) : ?>
                 <li class="nav-item">
                     <a class="nav-link" href="profile.php">Profile</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="logout.php">Logout</a>
                 </li>
-                <? endif; ?>
+                <?php endif; ?>
             </ul>
         </div>
     </div>
