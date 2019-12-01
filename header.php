@@ -21,9 +21,9 @@ if( isset($_SESSION['user_Username']) ){
 <head>
     <!-- META TAGS -->
 
-    <meta name="keywords" content="<? echo getDescriptions('keywords') ?>" />
-    <meta name="robots" content="<? echo getDescriptions('robots') ?>" />
-    <meta name="description" content="<? echo getDescriptions('description') ?>" />
+    <meta name="keywords" content="<?php echo getDescriptions('keywords') ?>" />
+    <meta name="robots" content="<?php echo getDescriptions('robots') ?>" />
+    <meta name="description" content="<?php echo getDescriptions('description') ?>" />
 
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
