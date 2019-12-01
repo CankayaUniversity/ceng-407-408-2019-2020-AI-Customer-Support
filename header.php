@@ -58,22 +58,22 @@ if( isset($_SESSION['user_Username']) ){
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
-                <? if ($sUsername !== null) : ?>
+                <?php if ($sUsername !== null) : ?>
                 <li class="nav-item">
                     <a class="nav-link" data-toggle="modal" href="#registerModal" role="button" aria-expanded="false" aria-controls="collapseExample">Sign Up</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" data-toggle="modal" href="#loginModal" role="button" aria-expanded="false" aria-controls="collapseExample">Login</a>
                 </li>
-                <? endif; ?>
-                <? if ($sUsername == null) : ?>
+                <?php endif; ?>
+                <?php if ($sUsername == null) : ?>
                 <li class="nav-item">
                     <a class="nav-link" href="profile.php">Profile</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="logout.php">Logout</a>
                 </li>
-                <? endif; ?>
+                <?php endif; ?>
             </ul>
         </div>
     </div>
