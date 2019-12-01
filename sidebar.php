@@ -1,9 +1,9 @@
 <aside class="span3 page-sidebar">
 
-<? if ($_SESSION["user_Username"] == null) : ?>
+<? if ($sUsername == null) : ?>
     <a href="#loginModal" data-toggle="modal" class="btn btn-info btn-lg btn-block" role="button" aria-pressed="true">Ask a Question</a>
 <? endif; ?>
-<? if ($_SESSION["user_Username"] != null) : ?>
+<? if ($sUsername !== null) : ?>
     <a href="addquestion.php" class="btn btn-info btn-lg btn-block" role="button" aria-pressed="true">Ask a Question</a>
 <? endif; ?>
 </p>
