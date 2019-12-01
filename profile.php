@@ -58,7 +58,7 @@ if ($count = $query -> rowCount()){
 <hr>
 <div class="container bootstrap snippet">
     <div class="row">
-        <div class="col-sm-3">
+        <div class="col-md-3">
             <div class="text-center">
                 <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar"> 
             </div>
@@ -76,52 +76,170 @@ if ($count = $query -> rowCount()){
                 </li>
             </ul>
         </div>
-        <div class="col-sm-9">
+        <div class="col-md-9">
             <div class="tab-content">
                 <div class="tab-pane active" id="home">
                     <form id="form1" name="form1" action="profile.php" method="post">
-                        <hr>
-                        <div class="form-group">
-                            <div class="col-xs-6">
+                    <hr>
+                    <div class="form-group">
+                        <div class="row">
+                                <div class="col-md-5">
+                                    <label for="first_name">
+                                        <h4><p><strong>First name </strong></p></h4>
+                                    </label>
+                                </div>
+                                <div class="col-md-6">
+                                    <p><? echo $_SESSION["user_Firstname"]; ?></p>
+                                </div>
+                                <div class="col-md-1">
+                                    <button class="btn btn-outline-warning" id="slideEditFirstName" type="button"> Edit</button>
+                                </div>
+  
+                                <div class="col-md-3">
                                 <label for="first_name">
-                                    <h4>First name : <? echo $_SESSION["user_Firstname"]; ?> </h4>
-                                </label>
-                                <input type="text" class="form-control" name="first_name" id="first_name" title="enter your first name if any.">
-                            </div>
-                            <hr>
-                        </div>
+                                        <p id="NewFirstName"><strong> New First Name </strong></p>
+                                    </label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control" name="first_name" id="first_name"  title="enter your first name if any.">
+                                </div>
+                                <div class="col-md-1">
+                                    <button class="btn btn-xs btn-warning pull-right" id="slideSaveFirstName" name ="slideSaveFirstName" type="submit">Save</button>
+                                </div>                        
+                        </div> 
+                        <hr>   
+                    </div>                         
+                                               
                         <div class="form-group">
-                            <div class="col-xs-6">
-                                <label for="last_name">
-                                    <h4>Last name : <? echo $_SESSION["user_Surname"]; ?></h4>
-                                </label>
+                            <div class="row">
+                                <div class="col-md-5">  
+                                    <label for="last_name">
+                                        <h4><p><strong>Last name </strong></p></h4>
+                                    </label>
+                                </div>
+                                <div class="col-md-6">
+                                    <? echo $_SESSION["user_Surname"]; ?>
+                                </div>
+                                <div class="col-md-1">
+                                    <button class="btn btn-outline-warning" id="slideEditLastName" type="button"> Edit</button>
+                                </div>
+                                <div class="col-md-3">
+                                <label for="first_name">
+                                        <p id="NewLastName"><strong> New Last Name </strong></p>
+                                    </label>
+                                </div>
+                                <div class="col-md-8">
                                 <input type="text" class="form-control" name="last_name" id="last_name"  title="enter your last name if any.">
+                                </div>
+                                <div class="col-md-1">
+                                <button class="btn btn-xs btn-warning pull-right" id="slideSaveLastName" name ="slideSaveLastName" type="submit">Save</button>
+                            </div>
                             </div>
                             <hr>
+                        
                         </div>
                         <div class="form-group">
-                            <div class="col-xs-6">
+                            <div class="row">
+                                <div class="col-md-5"> 
+                                    <label for="email">
+                                        <h4><p><strong>Email </strong></p></h4>
+                                    </label>
+                                </div>
+                                <div class="col-md-6">
+                                    <? echo $_SESSION["user_Email"]; ?>
+                                </div>
+                                <div class="col-md-1">
+                                    <button class="btn btn-outline-warning" id="slideEditEmail" type="button">Edit</button>
+                                </div>  
+                                <div class="col-md-3">
                                 <label for="email">
-                                    <h4>Email : <? echo $_SESSION["user_Email"]; ?></h4>
-                                </label>
-                                <input type="email" class="form-control" name="email" id="email"  title="enter your email.">
+                                        <p id="NewEmail"><strong> New Email </strong></p>
+                                    </label>
+                                </div>  
+                                <div class="col-md-8">
+                                    <input type="email" class="form-control" name="email" id="email"  title="enter your email.">  
+                                </div> 
+                                <div class="col-md-1">
+                                <button class="btn btn-xs btn-warning pull-right" id="slideSaveEmail" name ="slideSaveEmail" type="submit">Save</button>
+                            </div>
                             </div>
                             <hr>
                         </div>
+
                         <div class="form-group">
-                            <div class="col-xs-6">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label for="Username">
+                                    <h4><p><strong>Username </strong></p></h4>
+                                    </label>
+                                </div>
+                                <div class="col-md-6">
+                                    <? echo $_SESSION["user_Username"]; ?>
+                                </div>
+                                <div class="col-md-1">
+                                    <button class="btn btn-outline-warning" id="slideEditUsername" type="button">Edit</button>
+                                </div> 
+                                <div class="col-md-3">
                                 <label for="Username">
-                                    <h4>Username : <? echo $_SESSION["user_Username"]; ?></h4>
-                                </label>
+                                        <p id ="NewUserName"><strong> New Username </strong></p>
+                                    </label>
+                                </div> 
+                                <div class="col-md-8">
                                 <input type="text" class="form-control" name="Username_" id="Username_" title="enter your username.">
+                                </div>
+                                <div class="col-md-1">
+                                <button class="btn btn-xs btn-warning pull-right" id="slideSaveUsername" name ="slideSaveUsername" type="submit">Save</button>
+                            </div>
                             </div>
                             <hr>
                         </div>
+
                         <div class="form-group">
-                            <div class="col-xs-12">
-                                <button class="btn btn-lg btn-success pull-right" id="slideEdit" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Edit</button>
-                                <button class="btn btn-lg btn-success pull-right" id="slideSave" name ="slideSave" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label>
+                                    <h4><p><strong>Password</strong></p></h4>
+                                    </label>
+                                </div>
+                                <div class="col-md-6">
+                                    *****
+                                </div>
+                                <div class="col-md-1">
+                                    <button class="btn btn-outline-warning" id="slideEditPassword" type="button"> Edit</button>
+                                </div> 
+                                <div class="col-md-3">
+                                <label for="Password">
+                                        <p id="CurrentPass"><strong> Current Password</strong></p>
+                                    </label>
+                                </div> 
+                                    <div class = "col-md-8">
+                                        <input type="text" class="form-control" name="Password_" id="Password_" title="enter your password.">
+                                    </div>
+                                    <div class="col-md-3">
+                                <label for="Password">
+                                        <p id="Newpass"><strong> New Password </strong></p>
+                                    </label>
+                                </div> 
+                                    <div class = "col-md-8">
+                                        <input type="text" class="form-control" name="Password_1" id="Password_1" title="enter your password.">
+                                    </div>
+                                    <div class="col-md-3">
+                                <label for="Password">
+                                        <p id="Verifypass"><strong> Verify Password </strong></p>
+                                    </label>
+                                </div> 
+                                    <div class = "col-md-8">
+                                        <input type="text" class="form-control" name="Password_2" id="Password_2" title="enter your password.">
+                                    </div>
+                                    <div class="col-md-1">
+                                <button class="btn btn-xs btn-warning pull-right" id="slideSavePassword" name ="slideSavePassword" type="submit">Save</button>
                             </div>
+                            </div>
+                            <hr>
+                        </div>
+
+                        <div class="form-group">
+                            
                         </div>
                     </from>
                 </div>
@@ -131,29 +249,75 @@ if ($count = $query -> rowCount()){
 </div>
 <hr>
 
+
 <script>
 $(document).ready(function(){
+   
     
-    /*
     $("#first_name").slideUp();
+    $("#NewFirstName").slideUp();
+    $("#slideSaveFirstName").slideUp();
+
+    $("#NewLastName").slideUp();
     $("#last_name").slideUp();
-    $("#Username_").slideUp();
+    $("#slideSaveLastName").slideUp();
+
+    $("#NewEmail").slideUp();
     $("#email").slideUp();
+    $("#slideSaveEmail").slideUp();
+
+    $("#NewUserName").slideUp();
+    $("#Username_").slideUp();
+    $("#slideSaveUsername").slideUp();
+
+    $("#CurrentPass").slideUp();
     $("#Password_").slideUp();
-    $("#slideSave").slideUp();
+    $("#Newpass").slideUp();
+    $("#Password_1").slideUp();
+    $("#Verifypass").slideUp();
+    $("#Password_2").slideUp();
+    $("#slideSavePassword").slideUp();
+
+
+   
 
     
-    $("#slideEdit").click(function(){
+    $("#slideEditFirstName").click(function(){
         $("#first_name").slideToggle("fast");
-        $("#last_name").slideToggle("fast");
-        $("#Username_").slideToggle("fast");
-        $("#email").slideToggle("fast");
-        $("#Password_").slideToggle("fast");
-        $("#slideSave").slideToggle("fast");
-        $("#slideEdit").slideToggle("fast");
+        $("#NewFirstName").slideToggle("fast");
+        $("#slideSaveFirstName").slideToggle("fast");
+        
     });
-    */
+    $("#slideEditLastName").click(function(){
+        $("#NewLastName").slideToggle("fast");
+        $("#last_name").slideToggle("fast");
+        $("#slideSaveLastName").slideToggle("fast");
+        
+    });
+    $("#slideEditEmail").click(function(){
+        $("#NewEmail").slideToggle("fast");
+        $("#email").slideToggle("fast");
+        $("#slideSaveEmail").slideToggle("fast");
+        
+    });
+    $("#slideEditUsername").click(function(){
+        $("#NewUserName").slideToggle("fast");
+        $("#Username_").slideToggle("fast");
+        $("#slideSaveUsername").slideToggle("fast");
+        
+    });
+    $("#slideEditPassword").click(function(){
+        $("#CurrentPass").slideToggle("fast");
+        $("#Password_").slideToggle("fast");
+        $("#Newpass").slideToggle("fast");
+        $("#Password_1").slideToggle("fast");
+        $("#Verifypass").slideToggle("fast");
+        $("#Password_2").slideToggle("fast");
+        $("#slideSavePassword").slideToggle("fast");
+        
+    });
+    
 });
-</script>
+</script> 
 
 <?php include 'footer.php';?>
