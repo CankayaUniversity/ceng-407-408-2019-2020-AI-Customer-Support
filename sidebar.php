@@ -1,11 +1,11 @@
 <aside class="span3 page-sidebar">
 
-<? if ($sUsername == null) : ?>
+<?php if ($sUsername == null) : ?>
     <a href="#loginModal" data-toggle="modal" class="btn btn-info btn-lg btn-block" role="button" aria-pressed="true">Ask a Question</a>
-<? endif; ?>
-<? if ($sUsername !== null) : ?>
+<?php endif; ?>
+<?php if ($sUsername !== null) : ?>
     <a href="addquestion.php" class="btn btn-info btn-lg btn-block" role="button" aria-pressed="true">Ask a Question</a>
-<? endif; ?>
+<?php endif; ?>
 </p>
 
 <section class="widget">

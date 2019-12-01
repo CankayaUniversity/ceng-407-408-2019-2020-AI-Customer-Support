@@ -45,12 +45,12 @@
                     <div class="media">
                         <a href="#"> <img class="mr-4" src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="Generic placeholder image"> </a>
                         <div class="media-body">
-                            <a href="#"> <span class="float-right text-info">Delivered on <? echo $getQuestion['q_date'] ?> <i class="icofont-check-circled text-success"></i></span> </a>
-                            <h6 class="mb-2"> <a href="#"></a> <a href="#" class="text-black"><? echo $getQuestion['q_title'] ?></a></h6>
-                            <p class="text-gray mb-1"><i class="icofont-location-arrow"></i> <? echo $getQuestion['q_description'] ?></p>
+                            <a href="#"> <span class="float-right text-info">Delivered on <?php echo $getQuestion['q_date'] ?> <i class="icofont-check-circled text-success"></i></span> </a>
+                            <h6 class="mb-2"> <a href="#"></a> <a href="#" class="text-black"><?php echo $getQuestion['q_title'] ?></a></h6>
+                            <p class="text-gray mb-1"><i class="icofont-location-arrow"></i> <?php echo $getQuestion['q_description'] ?></p>
                             <hr>
                             <div class="float-right"> <a class="btn btn-sm btn-outline-primary" href="#"><i class="icofont-headphone-alt"></i> HELP</a> <a class="btn btn-sm btn-primary" href="#"><i class="icofont-refresh"></i> REORDER</a></div>
-                            <p class="mb-0 text-black text-primary pt-2"><span class="text-black font-weight-bold"> By </span> <? echo $user['firstname'].' '.$user['surname'] ?></p>
+                            <p class="mb-0 text-black text-primary pt-2"><span class="text-black font-weight-bold"> By </span> <?php echo $user['firstname'].' '.$user['surname'] ?></p>
                         </div>
                     </div>
                 </div>
