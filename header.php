@@ -5,9 +5,6 @@ error_reporting(-1);
 include 'helpers/helperMeta.php';
 include 'helpers/helperDev.php';
 include 'inc/config.php';
-
-$sUsername = isset($_SESSION['user_Username']) ? $_SESSION['user_Username'] : NULL;
-
 ?>
 
 
@@ -54,7 +51,7 @@ $sUsername = isset($_SESSION['user_Username']) ? $_SESSION['user_Username'] : NU
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
-                <? if ($sUsername == null) : ?>
+                <? if (!isset($_SESSION["user_Username"])) : ?>
                 <li class="nav-item">
                     <a class="nav-link" data-toggle="modal" href="#registerModal" role="button" aria-expanded="false" aria-controls="collapseExample">Sign Up</a>
                 </li>
@@ -62,7 +59,7 @@ $sUsername = isset($_SESSION['user_Username']) ? $_SESSION['user_Username'] : NU
                     <a class="nav-link" data-toggle="modal" href="#loginModal" role="button" aria-expanded="false" aria-controls="collapseExample">Login</a>
                 </li>
                 <? endif; ?>
-                <? if ($sUsername !== null) : ?>
+                <? if (isset($_SESSION["user_Username"])) : ?>
                 <li class="nav-item">
                     <a class="nav-link" href="profile.php">Profile</a>
                 </li>
