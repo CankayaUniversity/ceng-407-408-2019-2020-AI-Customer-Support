@@ -20,11 +20,9 @@
     </body>
 </html>
 
-<?php
-if ($_SERVER['HTTP_HOST'] == 'localhost' || $_SERVER['HTTP_HOST'] == 'localhost:8080' || $_SERVER['HTTP_HOST'] == 'localhost:80' || $_SERVER['HTTP_HOST'] == 'localhost:8085') {
-    $environment = 'dev';
-} else {
-    $environment = 'live';
+<?php 
+include '../helpers/helperDev.php';
+if (ENV == 'live') {
     echo "Şuan live için açık değil.";
     exit(0);
 }
@@ -34,7 +32,7 @@ if (isset($_POST['register'])) {
     $password = $_POST['password'];
     $db_name = $_POST['db_name'];
 
-    if($environment == "dev") {
+    if(ENV == "dev") {
         $db_name = 'customer_support';    
     }
 
