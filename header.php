@@ -2,9 +2,9 @@
 session_start();
 ini_set('display_errors',1);
 error_reporting(-1);
-include '/helpers/helperMeta.php';
-include '/helpers/helperDev.php';
-include '/inc/config.php';
+include 'helpers/helperMeta.php';
+include 'helpers/helperDev.php';
+include 'inc/config.php';
 ?>
 
 
