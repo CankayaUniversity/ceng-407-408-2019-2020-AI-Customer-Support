@@ -1,24 +1,90 @@
-<!DOCTYPE html>
-<html>
+
     <head>
         <meta charset="UTF-8">
         <title>Install Customer Support DB</title>
+        
+    <link rel="shortcut icon" href="images/favicon.png" />
+
+<!-- Fonts-->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+
+<!-- Style Sheet-->
+<script src="js/jquery.min.js"></script>
+<link rel='stylesheet' id='responsive-css-css' href='css/res.css' type='text/css' media='all' />
+<link rel='stylesheet' id='main-css-css' href='css/site.css' type='text/css' media='all' />
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="css/font-awesome.min.css">
+
+<script type="text/javascript" src="js/site.js"></script>
     </head>
     <body>
-        <h1>Install Customer Support DB</h1>
-        <form action="install.php" method="post">
-            <label for="servername">servername</label>
-            <input type="text" id="servername" name="servername" placeholder="localhost"><br>
-            <label for="username">username</label>
-            <input type="text" id="username" name="username" placeholder="root"><br>
-            <label for="password">password</label>
-            <input type="text" id="password" name="password" placeholder="password"><br>
-            <label for="db_name">db_name</label>
-            <input type="text" id="db_name" name="db_name" placeholder="set db name"><br>
-            <input type="submit" name="register" value="Register"></button>
-        </form>
+        <center>
+            <h1>Install Customer Support DB</h1>
+            <img src="mascot.png" alt="mascot" class="center" width="20%" height="40%"></a>
+        </center>
+
+                 <form action="install.php" method="post">
+                    <div class="container">
+                        <div class="row">
+                        
+                            <div class="col-md-3">
+                                
+                            </div>  
+                            <div class ="col-md-9">
+                                <div class="row">
+                                    <div class="col-md-2"> 
+                                    <h4><strong><label for="servername">Servername</label></strong></h4>
+                                    </div>  
+                                    <div class="col-md-5">   
+                                        <input type="text" id="servername" name="servername" placeholder="localhost" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-xs">
+                                    </div>
+                                </div> 
+
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <h4><strong><label for="username">Username</label></strong></h4>
+                                    </div>  
+                                    <div class="col-md-5"> 
+                                            <input type="text" id="username" name="username" placeholder="root" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+                                    </div>
+                                          
+                                    </div>
+ 
+
+                                <div class="row">
+                                    <div class="col-md-2"> 
+                                        <h4><strong><label for="password">password</label></strong></h4>
+                                    </div>  
+                                    <div class="col-md-5"> 
+                                            <input type="text" id="password" name="password" placeholder="password" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+                                    </div> 
+                                </div> 
+
+                                <div class="row">
+                                        <div class="col-md-2"> 
+                                            <h4><strong><label for="db_name">db_name</label></strong></h4>
+                                        </div>  
+                                        <div class="col-md-5"> 
+                                            <input type="text" id="db_name" name="db_name" placeholder="set db name" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+                                        </div>
+                                </div> 
+                                
+                                <div class="row">
+                                        <div class="col-md-3"></div> 
+                                <div class ="col-md-4">
+                                    <button type="submit" name="register" value="Register"class="btn btn-primary">Register</button>
+                                </div>
+                                
+                        </div>    
+                    </div>
+                </div> 
+
+            </form>
     </body>
-</html>
 
 <?php 
 include '../helpers/helperDev.php';

@@ -1,6 +1,5 @@
 <?php include "header.php";?>
 
-<body>
     <div class="search-area-wrapper">
         <div class="search-area container">
             <h3 class="search-header">Have a Question?</h3>
