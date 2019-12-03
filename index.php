@@ -25,12 +25,7 @@
                 <div class="span8 page-content">
                     <div class="row separator">
                         <section class="span8 articles-list">
-                        <div class="osahan-account-page-right shadow-sm bg-white p-4 h-100">
-    <div class="tab-content" id="myTabContent">
-        <div class="tab-pane  fade  active show" id="orders" role="tabpanel" aria-labelledby="orders-tab">
-            <h4 class="font-weight-bold mt-0 mb-4">Recent updates</h4>
-            <div class="bg-white card mb-4 order-list shadow-sm">
-            <?php
+                        <?php
                 $limit = 5;
                 $query = "SELECT * FROM questions";
                 $s = $conn->prepare($query);
@@ -53,31 +48,22 @@
             $q_id = $res['q_id'];
             $origin_q_date = $res['q_date'];
             $newDate = date("d-m-Y", strtotime($origin_q_date));
-            $user = $conn->query("SELECT user_id, firstname, surname, q_author FROM users,questions WHERE user_id='$q_author'",PDO::FETCH_ASSOC)->fetch();?>
-                <div class="gold-members p-4">
-                    <a href="#"> </a>
-                    <div class="media">
-                        <a href="#"> <img class="mr-4" src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="Generic placeholder image"> </a>
-                        <div class="media-body">
-                            <a href="#"> <span class="float-right text-info"><?php echo $newDate ?> <i class="icofont-check-circled text-success"></i></span> </a>
-                            <h6 class="mb-2"> <a href='<?php echo "single.php?post=$q_id"; ?>' class="text-black"><?php echo $q_title; ?></a></h6>
-                            <p class="text-gray mb-1"><i class="icofont-location-arrow"></i> <?php echo $res['q_description'] ?></p>
-                            <hr>
-                              <p class="mb-0 text-black text-primary pt-2"><span class="text-black font-weight-bold"> By </span> <?php echo $user['firstname'].' '.$user['surname'] ?></p>
-                        </div>
-                    </div>
-                </div> 
-
-            <?php endwhile; ?>
-            </div>
-        </div>
-      <?php  for ($page=1; $page <= $total_pages ; $page++):?>
-
-<a href='<?php echo "?page=$page"; ?>' class="links"><?php echo $page; ?></a>
-
-<?php endfor; ?>
+            $user = $conn->query("SELECT user_id, username, q_author FROM users,questions WHERE user_id='$q_author'",PDO::FETCH_ASSOC)->fetch();?>
+                        <div class="media text-muted pt-3">
+      <svg class="bd-placeholder-img mr-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 32x32"><title>Placeholder</title><rect width="100%" height="100%" fill="#007bff"></rect><text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text></svg>
+      <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+      <a href='<?php echo "single.php?post=$q_id"; ?>' class="d-block text-gray-dark"><?php echo $q_title; ?></a>
+        <strong class="d-block text-gray-dark">@<?php echo $user['username'] ?></strong>
+        <?php echo $res['q_description'] ?>
+      </p>
     </div>
-</div>
+    <?php endwhile; ?>
+
+    <?php  for ($page=1; $page <= $total_pages ; $page++):?>
+
+    <a href='<?php echo "?page=$page"; ?>' class="links"><?php echo $page; ?></a>
+
+    <?php endfor; ?>
                         </section>
                     </div>
                 </div>
