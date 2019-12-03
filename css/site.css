@@ -37,8 +37,9 @@ blockquote p {
 /* Header - Search ---------------------------------------------------------------------------------------------------*/
 
 .search-area-wrapper {
-    background: #49afcd url("../images/main-bg.jpg") center top no-repeat;
-    background-size: 100%;
+    background: #49afcd url(../images/mascot.png) center top no-repeat;
+    background-size: 12%;
+    background-position: 90% 5%;
     min-height: 279px;
     height: auto !important;
     height: 279px;
