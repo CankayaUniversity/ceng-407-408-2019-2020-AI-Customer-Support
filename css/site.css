@@ -136,6 +136,7 @@ form.search-form input.search-btn:hover {
 
 .breadcrumb {
     margin-bottom: 10px;
+    margin-right: 2rem;
     background-color: #fcfcfc;
     font-size: 12px;
 }
