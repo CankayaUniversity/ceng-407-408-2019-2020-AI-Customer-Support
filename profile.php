@@ -65,14 +65,17 @@ if ($count = $query -> rowCount()){
             <br>
             <ul class="list-group">
                 <li class="list-group-item text-muted">Status</li>
-                <li class="list-group-item text-right"><span style="float: left"><strong>Threads</strong></span> 
-                    11
-                </li>
-                <li class="list-group-item text-right"><span style="float: left"><strong>Likes</strong></span>
-                    12
-                </li>
-                <li class="list-group-item text-right"><span style="float: left"><strong>Dislikes</strong></span>
-                    13
+                <li class="list-group-item text-right"><span style="float: left"><strong>Questions asked</strong></span> 
+                    <?php
+                        $sql="SELECT * FROM questions WHERE q_author='$id'";
+                        $q = $conn->query($sql);
+                        $q->setFetchMode(PDO::FETCH_ASSOC);
+                        $count=0;
+                        while($r=$q->fetch()){
+                            $count++;
+                        }
+                        echo $count;
+                    ?>
                 </li>
             </ul>
         </div>
