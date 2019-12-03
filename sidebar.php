@@ -10,14 +10,14 @@
 
 <section class="widget">
     <div class="support-widget">
-        <h3 class="title">Support</h3>
+        <h3>Support</h3>
         <p class="intro">Need more support? If you did not found an answer, contact us for further help.</p>
     </div>
 </section>
 
 <section class="widget">
     <div class="quick-links-widget">
-        <h3 class="title">Quick Links</h3>
+        <h3>Quick Links</h3>
         <ul id="menu-quick-links" class="menu clearfix">
             <li><a href="index.html">Home</a></li>
             <li><a href="articles-list.html">Articles List</a></li>

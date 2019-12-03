@@ -33,7 +33,7 @@ if( isset($_SESSION['user_Username']) ){
     <link rel="shortcut icon" href="images/favicon.png" />
 
     <!-- Fonts-->
-    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
@@ -67,6 +67,17 @@ if( isset($_SESSION['user_Username']) ){
                 </li>
                 <?php endif; ?>
                 <?php if ($sUsername !== null) : ?>
+                <li id="noti_Container">
+                    <div id="noti_Counter">5</div>   <!--SHOW NOTIFICATIONS COUNT.-->
+                    <!--A CIRCLE LIKE BUTTON TO DISPLAY NOTIFICATION DROPDOWN.-->
+                    <div id="noti_Button"><i class="fas fa-bell"></i></div>    
+                    <!--THE NOTIFICAIONS DROPDOWN BOX.-->
+                    <div id="notifications">
+                        <h3>Notifications</h3>
+                        <div style="height:200px;"></div>
+                        <div class="seeAll"><a href="#">See All</a></div>
+                    </div>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="profile.php">Profile</a>
                 </li>
@@ -246,7 +257,49 @@ $(document).ready(function(){
         }  
       });  
     }
-  });  
+  }); 
 });  
+
+$(document).ready(function () {
+
+// ANIMATEDLY DISPLAY THE NOTIFICATION COUNTER.
+$('#noti_Counter')
+    .css({ opacity: 0 })
+    .text('7')  // ADD DYNAMIC VALUE (YOU CAN EXTRACT DATA FROM DATABASE OR XML).
+    .css({ top: '-10px' })
+    .animate({ top: '-2px', opacity: 1 }, 500);
+
+$('#noti_Button').click(function () {
+
+    // TOGGLE (SHOW OR HIDE) NOTIFICATION WINDOW.
+    $('#notifications').fadeToggle('fast', 'linear', function () {
+        if ($('#notifications').is(':hidden')) {
+            $('#noti_Button').css('background-color', '#2E467C');
+        }
+        // CHANGE BACKGROUND COLOR OF THE BUTTON.
+        else $('#noti_Button').css('background-color', '#FFF');
+    });
+
+    $('#noti_Counter').fadeOut('slow');     // HIDE THE COUNTER.
+
+    return false;
+});
+
+// HIDE NOTIFICATIONS WHEN CLICKED ANYWHERE ON THE PAGE.
+$(document).click(function () {
+    $('#notifications').hide();
+
+    // CHECK IF NOTIFICATION COUNTER IS HIDDEN.
+    if ($('#noti_Counter').is(':hidden')) {
+        // CHANGE BACKGROUND COLOR OF THE BUTTON.
+        $('#noti_Button').css('background-color', '#2E467C');
+    }
+});
+
+$('#notifications').click(function () {
+    return false;       // DO NOTHING WHEN CONTAINER IS CLICKED.
+});
+});
+
 
 </script>
