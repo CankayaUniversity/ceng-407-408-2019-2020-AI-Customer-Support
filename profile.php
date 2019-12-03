@@ -92,7 +92,7 @@ if ($count = $query -> rowCount()){
                                     </label>
                                 </div>
                                 <div class="col-md-6">
-                                    <p><? echo $_SESSION["user_Firstname"]; ?></p>
+                                    <p><?php echo $_SESSION["user_Firstname"]; ?></p>
                                 </div>
                                 <div class="col-md-1">
                                     <button class="btn btn-outline-warning" id="slideEditFirstName" type="button"> Edit</button>
@@ -121,7 +121,7 @@ if ($count = $query -> rowCount()){
                                     </label>
                                 </div>
                                 <div class="col-md-6">
-                                    <? echo $_SESSION["user_Surname"]; ?>
+                                    <?php echo $_SESSION["user_Surname"]; ?>
                                 </div>
                                 <div class="col-md-1">
                                     <button class="btn btn-outline-warning" id="slideEditLastName" type="button"> Edit</button>
@@ -149,7 +149,7 @@ if ($count = $query -> rowCount()){
                                     </label>
                                 </div>
                                 <div class="col-md-6">
-                                    <? echo $_SESSION["user_Email"]; ?>
+                                    <?php echo $_SESSION["user_Email"]; ?>
                                 </div>
                                 <div class="col-md-1">
                                     <button class="btn btn-outline-warning" id="slideEditEmail" type="button">Edit</button>
@@ -177,7 +177,7 @@ if ($count = $query -> rowCount()){
                                     </label>
                                 </div>
                                 <div class="col-md-6">
-                                    <? echo $_SESSION["user_Username"]; ?>
+                                    <?php echo $_SESSION["user_Username"]; ?>
                                 </div>
                                 <div class="col-md-1">
                                     <button class="btn btn-outline-warning" id="slideEditUsername" type="button">Edit</button>
