@@ -70,7 +70,7 @@ if( isset($_SESSION['user_Username']) ){
                 <li id="noti_Container">
                     <div id="noti_Counter">5</div>   <!--SHOW NOTIFICATIONS COUNT.-->
                     <!--A CIRCLE LIKE BUTTON TO DISPLAY NOTIFICATION DROPDOWN.-->
-                    <div id="noti_Button"><i class="fas fa-bell"></i></div>    
+                    <div id="noti_Button"><img src="images/bell.png" style="height:30px"></div>    
                     <!--THE NOTIFICAIONS DROPDOWN BOX.-->
                     <div id="notifications">
                         <h3>Notifications</h3>
