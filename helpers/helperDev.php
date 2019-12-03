@@ -20,3 +20,8 @@ if ($_SERVER['HTTP_HOST'] == 'localhost' || $_SERVER['HTTP_HOST'] == 'localhost:
     define('ENV', 'live');
     //$environment = 'live';
 }
+
+/* *** Set Default Timezone *** */
+
+date_default_timezone_set('America/New_York');
+
