@@ -61,6 +61,54 @@
 
                                         </div>
                                 </div>
+            <?php
+            $limit = 100; // Şuan açık değil.
+            $query = "SELECT * FROM comments";
+            $s = $conn->prepare($query);
+            $s->execute();
+            $total_results = $s->rowCount();
+            $total_pages = ceil($total_results/$limit);
+            if (!isset($_GET['page'])) {
+                $page = 1;
+            } else{
+                $page = $_GET['page'];
+            }
+            $starting_limit = ($page-1)*$limit;
+            $show = "SELECT * FROM comments ORDER BY c_id DESC LIMIT $starting_limit, $limit";
+            $r = $conn->prepare($show);
+            $r->execute();
+            ?>
+            <?php while($res = $r->fetch(PDO::FETCH_ASSOC)) :
+            $c_author = $res['c_author'];
+            $c_title = $res['c_title'];
+            $c_description = $res['c_description'];
+            $c_id = $res['c_id'];
+            $origin_q_date = $res['c_date'];
+            $newDate = date("d-m-Y", strtotime($origin_q_date));
+            $user = $conn->query("SELECT user_id, username, q_author FROM users,questions WHERE user_id='$c_author'",PDO::FETCH_ASSOC)->fetch();?>
+                                <div class="card card-white post">
+                                    <div class="post-heading">
+                                        <div class="float-left image">
+                                            <img src="images/mascot.png" height="60" weight="60" class="img-circle avatar" alt="user profile image">
+                                        </div>
+                                        <div class="float-left meta">
+                                            <div class="title h5">
+                                                <a href="#"><b><?php echo $user['username'] ?></b></a> made a post.
+                                            </div>
+                                            <h6 class="text-muted time">1 minute ago</h6>
+                                        </div>
+                                    </div>
+                                    <div class="post-description">
+                                        <p><?php echo $c_description; ?></p>
+
+                                    </div>
+                                </div>
+                                <?php endwhile; ?>
+                                <?php  for ($page=1; $page <= $total_pages ; $page++):?>
+
+                                <a href='<?php echo "?page=$page"; ?>' class="links"><?php echo $page; ?></a>
+
+                                <?php endfor; ?>
                             </section>
                         </div>
                     </div>
