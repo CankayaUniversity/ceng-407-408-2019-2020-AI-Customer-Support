@@ -110,7 +110,7 @@ if (isset($_POST['register'])) {
         $sql = "CREATE DATABASE IF NOT EXISTS $db_name";
         $conn->exec($sql);
 
-        echo "DB created successfully. ";
+        echo "DB created successfully.</br> ";
 
         $sql = "use $db_name";
         $conn->exec($sql);
@@ -130,12 +130,13 @@ if (isset($_POST['register'])) {
         
         $conn->exec($sql);
 
-        echo "Users table created successfully. ";
+        echo "Users table created successfully.</br> ";
 
         $sql = "CREATE TABLE IF NOT EXISTS questions (
             q_id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
             q_title varchar(100) NOT NULL,
             q_description varchar(1000) NOT NULL,
+            q_tags varchar(1000) NOT NULL,
             q_author int NOT NULL,
             q_like int NOT NULL DEFAULT '0',
             q_dislike int NOT NULL  DEFAULT '0',
@@ -143,9 +144,26 @@ if (isset($_POST['register'])) {
             FOREIGN KEY (q_author) REFERENCES Users(user_id)
             );";
 
-        echo "Questions table created successfully. ";
+        $conn->exec($sql);
+
+        echo "Questions table created successfully.</br> ";
+
+        $sql = "CREATE TABLE IF NOT EXISTS comments (
+            c_id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+            c_title varchar(100) NOT NULL,
+            c_description varchar(1000) NOT NULL,
+            c_author int NOT NULL,
+            c_post_id int NOT NULL,
+            c_like int NOT NULL DEFAULT '0',
+            c_dislike int NOT NULL  DEFAULT '0',
+            c_date datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+            FOREIGN KEY (c_author) REFERENCES users(user_id),
+            FOREIGN KEY (c_post_id) REFERENCES questions(q_id)
+            );";
 
         $conn->exec($sql);
+
+        echo "Comments table created successfully.</br> ";
         
         $sql= "INSERT INTO users(firstname,surname,email,username,password_,is_verified,is_admin) 
         VALUES ('Arınç Alp','Eren','arinc@arinc.com','arinc','arinc',0,0),
@@ -163,7 +181,7 @@ if (isset($_POST['register'])) {
         ('Sample Question Title 3 ', 'Sample Question Description 3 ', 3);";
         $conn->exec($sql);
         
-        echo "Insertions done successfully. ";
+        echo "Insertions done successfully.</br>";
 
         echo "Everything is okey :)";
 
