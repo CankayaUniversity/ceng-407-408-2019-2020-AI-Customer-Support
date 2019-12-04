@@ -117,11 +117,11 @@ if (isset($_POST['register'])) {
 
         $sql = "CREATE TABLE IF NOT EXISTS users (
             user_id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-            firstname varchar(50) NOT NULL,
-            surname varchar(50) NOT NULL,
-            email varchar(50) NOT NULL,
-            username varchar(50) NOT NULL,
-            password_ varchar(50) NOT NULL,
+            firstname varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ,
+            surname varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+            email varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+            username varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+            password_ varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
             create_date datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
             last_login datetime DEFAULT CURRENT_TIMESTAMP,
             is_verified int NOT NULL,
@@ -150,7 +150,6 @@ if (isset($_POST['register'])) {
 
         $sql = "CREATE TABLE IF NOT EXISTS comments (
             c_id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-            c_title varchar(100) NOT NULL,
             c_description varchar(1000) NOT NULL,
             c_author int NOT NULL,
             c_post_id int NOT NULL,
@@ -181,6 +180,13 @@ if (isset($_POST['register'])) {
         ('Sample Question Title 3 ', 'Sample Question Description 3 ', 'help', 3);";
         $conn->exec($sql);
         
+        $sql="INSERT INTO comments (c_description,c_author,c_post_id) VALUES
+        ('Sample Comment Description 1 ', 1, 1),
+        ('Sample Comment Description 2 ', 2, 1),
+        ('Sample Comment Description 3 ', 3, 2),
+        ('Sample Comment Description 4 ', 4, 2);";
+        $conn->exec($sql);
+
         echo "Insertions done successfully.</br>";
 
         echo "Everything is okey :)";
