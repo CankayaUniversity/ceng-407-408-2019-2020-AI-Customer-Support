@@ -72,7 +72,7 @@
                                 </div>
                                 <?php
                                     $limit = 100; // Şuan açık değil.
-                                    $query = "SELECT * FROM comments";
+                                    $query = "SELECT * FROM comments WHERE c_post_id='$q_id'";
                                     $s = $conn->prepare($query);
                                     $s->execute();
                                     $total_results = $s->rowCount();
@@ -83,7 +83,7 @@
                                         $page = $_GET['page'];
                                     }
                                     $starting_limit = ($page-1)*$limit;
-                                    $show = "SELECT * FROM comments ORDER BY c_id DESC LIMIT $starting_limit, $limit";
+                                    $show = "SELECT * FROM comments WHERE c_post_id='$q_id' ORDER BY c_id DESC LIMIT $starting_limit, $limit";
                                     $r = $conn->prepare($show);
                                     $r->execute();
                                 ?>
