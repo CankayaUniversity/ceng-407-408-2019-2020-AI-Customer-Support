@@ -141,7 +141,7 @@ if (isset($_POST['register'])) {
             q_like int NOT NULL DEFAULT '0',
             q_dislike int NOT NULL  DEFAULT '0',
             q_date datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-            FOREIGN KEY (q_author) REFERENCES Users(user_id)
+            FOREIGN KEY (q_author) REFERENCES users(user_id)
             );";
 
         $conn->exec($sql);
@@ -175,10 +175,10 @@ if (isset($_POST['register'])) {
         ('c','c','c@c.com','c','c',0,1);";
         $conn->exec($sql);
 
-        $sql= "INSERT INTO questions(q_title, q_description, q_author) VALUES
-        ('Sample Question Title 1 ', 'Sample Question Description 1 ', 1),
-        ('Sample Question Title 2 ', 'Sample Question Description 2 ', 2),
-        ('Sample Question Title 3 ', 'Sample Question Description 3 ', 3);";
+        $sql= "INSERT INTO questions(q_title, q_description, q_tags, q_author) VALUES
+        ('Sample Question Title 1 ', 'Sample Question Description 1 ', 'help', 1),
+        ('Sample Question Title 2 ', 'Sample Question Description 2 ', 'help', 2),
+        ('Sample Question Title 3 ', 'Sample Question Description 3 ', 'help', 3);";
         $conn->exec($sql);
         
         echo "Insertions done successfully.</br>";
