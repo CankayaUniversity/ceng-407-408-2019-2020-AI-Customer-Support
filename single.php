@@ -83,8 +83,7 @@
             $c_title = $res['c_title'];
             $c_description = $res['c_description'];
             $c_id = $res['c_id'];
-            $origin_q_date = $res['c_date'];
-            $newDate = date("d-m-Y", strtotime($origin_q_date));
+            $time_ago = timeAgo($res['c_date']);
             $user = $conn->query("SELECT user_id, username, q_author FROM users,questions WHERE user_id='$c_author'",PDO::FETCH_ASSOC)->fetch();?>
                                 <div class="card card-white post">
                                     <div class="post-heading">
@@ -95,7 +94,7 @@
                                             <div class="title h5">
                                                 <a href="#"><b><?php echo $user['username'] ?></b></a> made a post.
                                             </div>
-                                            <h6 class="text-muted time">1 minute ago</h6>
+                                            <h6 class="text-muted time"><?php echo $time_ago ?> minute ago</h6>
                                         </div>
                                     </div>
                                     <div class="post-description">
