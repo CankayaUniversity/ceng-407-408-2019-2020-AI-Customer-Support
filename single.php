@@ -34,7 +34,7 @@
 
                                         <article class=" type-post format-standard hentry clearfix">
 
-                                            <h1 class="post-title"><a href="#"><?php echo $q_title; ?></a></h1>
+                                            <h2 class="post-title"><a href="#"><?php echo $q_title; ?></a></h1>
                                             <?php echo $sql["username"]; ?>
 
                                                 <div class="post-meta clearfix">
