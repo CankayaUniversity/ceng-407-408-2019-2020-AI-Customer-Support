@@ -71,6 +71,10 @@ if($sUsername == null){
                                     </div>
                                     <div id="editor" contenteditable></div>
                                     <textarea name="QuestionDesc" id="QuestionDesc" required="required" style="display:none;"></textarea><br>
+                                    <div class="form-group">
+                                        <label for="QuestionTags">Question Tags</label>
+                                        <input type="text" class="form-control" id="QuestionTags" name="QuestionTags" placeholder="Please enter tags">
+                                    </div>
                                     <button type="submit" class="btn btn-primary" name="QuestionSubmit" id="QuestionSubmit">Submit</button>
                                 </div>
                             </div>
