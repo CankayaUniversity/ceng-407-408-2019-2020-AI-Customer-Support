@@ -98,12 +98,15 @@ $qTitle = $_POST['QuestionTitle'];
 $qDescription = $_POST['QuestionDesc'];
 $qAuthor = $_SESSION["user_UserID"];
 
+
 if (isset($_POST['QuestionSubmit']) && $qTitle != '' && $qDescription != ''){ 
     $qTitle = $_POST['QuestionTitle'];
     $qDescription = $_POST['QuestionDesc'];
     $qAuthor = $_SESSION["user_UserID"];
-    $conn->exec("INSERT INTO questions(q_title,q_description,q_author) VALUES ('$qTitle','$qDescription','$qAuthor');");
-    ?><script>window.location.replace("index.php");</script><?php
+    $qTags = $_POST['QuestionTags'];
+    $qTags = str_replace('-', ',', strtolower($qTags));
+    $conn->exec("INSERT INTO questions(q_title,q_description,q_tags,q_author) VALUES ('$qTitle','$qDescription','$qTags','$qAuthor');");
+    ?><script>window.location.replace("index.php");</script><?php   
 }
 
 ?>

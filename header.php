@@ -47,7 +47,7 @@ if( isset($_SESSION['user_Username']) ){
     <link rel="stylesheet" href="css/font-awesome.min.css">
 
     <script type="text/javascript" src="js/site.js"></script>
-    </head>
+</head>
 
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark navbar-inverse navbar-custom" id="navbar">
