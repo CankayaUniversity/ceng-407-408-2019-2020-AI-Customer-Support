@@ -134,9 +134,9 @@ if (isset($_POST['register'])) {
 
         $sql = "CREATE TABLE IF NOT EXISTS questions (
             q_id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-            q_title varchar(100) NOT NULL,
-            q_description varchar(1000) NOT NULL,
-            q_tags varchar(1000) NOT NULL,
+            q_title varchar(100) utf8 CHARACTER SET COLLATE utf8_general_ci NOT NULL,
+            q_description varchar(1000) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+            q_tags varchar(1000) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
             q_author int NOT NULL,
             q_like int NOT NULL DEFAULT '0',
             q_dislike int NOT NULL  DEFAULT '0',
@@ -150,7 +150,7 @@ if (isset($_POST['register'])) {
 
         $sql = "CREATE TABLE IF NOT EXISTS comments (
             c_id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-            c_description varchar(1000) NOT NULL,
+            c_description varchar(1000) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
             c_author int NOT NULL,
             c_post_id int NOT NULL,
             c_like int NOT NULL DEFAULT '0',
