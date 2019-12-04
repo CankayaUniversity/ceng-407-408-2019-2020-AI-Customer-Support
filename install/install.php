@@ -88,10 +88,10 @@
 
 <?php 
 include '../helpers/helperDev.php';
-if (ENV == 'live') {
+/*if (ENV == 'live') {
     echo "Şuan live için açık değil.";
     exit(0);
-}
+}*/
 if (isset($_POST['register'])) {
     $servername = $_POST['servername'];
     $username = $_POST['username'];
