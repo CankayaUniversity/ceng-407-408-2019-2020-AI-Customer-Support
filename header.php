@@ -74,7 +74,23 @@ if( isset($_SESSION['user_Username']) ){
                     <!--THE NOTIFICAIONS DROPDOWN BOX.-->
                     <div id="notifications">
                         <h3>Notifications</h3>
-                        <div style="height:200px;"></div>
+                        <div style="height:200px;">
+                          <div class="toast__container">
+                            <div class="toast__cell">
+                                <div class="toast toast--green">
+                                    <div class="toast__icon">
+                                    </div>
+                                    <div class="toast__content">
+                                        <p class="toast__type">Success</p>
+                                        <p class="toast__message">Anyone with access can view your invited visitors.</p>
+                                    </div>
+                                    <div class="toast__close">
+                                    <p>x</p>
+                                    </div>
+                                </div> 
+                            </div>
+                          </div>
+                        </div>
                         <div class="seeAll"><a href="#">See All</a></div>
                     </div>
                 </li>
@@ -298,6 +314,14 @@ $(document).ready(function () {
 
   $('#notifications').click(function () {
       return false;       // DO NOTHING WHEN CONTAINER IS CLICKED.
+  });
+});
+
+jQuery(document).ready(function(){
+  jQuery('.toast__close').click(function(e){
+    e.preventDefault();
+    var parent = $(this).parent('.toast');
+    parent.fadeOut("slow", function() { $(this).remove(); } );
   });
 });
 
