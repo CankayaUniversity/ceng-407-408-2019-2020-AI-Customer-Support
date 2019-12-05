@@ -21,11 +21,12 @@ if($sUsername == null){
                 <input type="text" class="form-control" placeholder="Search this blog">
                 <div class="input-group-append">
                     <button class="btn btn-secondary" type="button">
-                    <i class="fa fa-search"></i>
+                        <i class="fa fa-search"></i>
                     </button>
                 </div>
             </div>
-            <div id="search-error-container"></div>
+            <div id="search-error-container">
+            </div>
         </form>
     </div>
 </div>
@@ -69,7 +70,8 @@ if($sUsername == null){
                                             <a class="btn btn-xs btn-default" data-role="p" href="#" title="Paragraph"><i class="fa fa-paragraph"></i></a>
                                         </div>
                                     </div>
-                                    <div id="editor" contenteditable></div>
+                                    <div id="editor" contenteditable>
+                                    </div>
                                     <textarea name="QuestionDesc" id="QuestionDesc" required="required" style="display:none;"></textarea><br>
                                     <div class="form-group">
                                         <label for="QuestionTags">Question Tags</label>
@@ -87,6 +89,7 @@ if($sUsername == null){
     </div>
 </div>
 <?php include "footer.php";?>
+
 <script> 
 $("#QuestionSubmit").click(function() {
   $("#QuestionDesc").val($("#editor").html());
@@ -94,10 +97,10 @@ $("#QuestionSubmit").click(function() {
 </script>
 
 <?php
+
 $qTitle = $_POST['QuestionTitle'];
 $qDescription = $_POST['QuestionDesc'];
 $qAuthor = $_SESSION["user_UserID"];
-
 
 if (isset($_POST['QuestionSubmit']) && $qTitle != '' && $qDescription != ''){ 
     $qTitle = $_POST['QuestionTitle'];
@@ -108,5 +111,4 @@ if (isset($_POST['QuestionSubmit']) && $qTitle != '' && $qDescription != ''){
     $conn->exec("INSERT INTO questions(q_title,q_description,q_tags,q_author) VALUES ('$qTitle','$qDescription','$qTags','$qAuthor');");
     ?><script>window.location.replace("index.php");</script><?php   
 }
-
 ?>

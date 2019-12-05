@@ -7,7 +7,6 @@ $Email = $_POST['email'];
 $Password = $_POST['password'];
 
 if($action==1){
-
   $query = $conn->query("SELECT * FROM users WHERE email='$Email' && password_='$Password'",PDO::FETCH_ASSOC);
   if ($count = $query -> rowCount()){
       if($count > 0){
@@ -38,7 +37,6 @@ if($action==1){
 }
 
 if ($action == 0){
-
   if($Email == NULL || $Email == ''){
     exit(0);
   }
@@ -49,7 +47,6 @@ if ($action == 0){
   $ConfirmPassword = $_POST['confirmpass'];
 
   if($ConfirmPassword == $Password){
-
     $sqlAddUser = "INSERT INTO users(firstname,surname,email,username,password_,is_verified,is_admin)
     VALUES ('$Firstname','$Lastname','$Email','$Username','$Password',0,0);";
     $conn->exec($sqlAddUser);

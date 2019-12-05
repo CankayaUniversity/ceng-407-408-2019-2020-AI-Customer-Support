@@ -82,10 +82,9 @@ if ($count = $query -> rowCount()){
         <div class="col-md-9">
             <div class="tab-content">
                 <div class="tab-pane active" id="home">
-                    <form id="form1" name="form1" action="profile.php" method="post">
-                    <hr>
-                    <div class="form-group">
-                        <div class="row">
+                    <form id="form1" name="form1" action="profile.php" method="post"><hr>
+                        <div class="form-group">
+                            <div class="row">
                                 <div class="col-md-5">
                                     <label for="first_name">
                                         <h4><p><strong>First name </strong></p></h4>
@@ -97,9 +96,8 @@ if ($count = $query -> rowCount()){
                                 <div class="col-md-1">
                                     <button class="btn btn-outline-warning" id="slideEditFirstName" type="button"> Edit</button>
                                 </div>
-  
                                 <div class="col-md-3">
-                                <label for="first_name">
+                                    <label for="first_name">
                                         <p id="NewFirstName"><strong> New First Name </strong></p>
                                     </label>
                                 </div>
@@ -109,10 +107,8 @@ if ($count = $query -> rowCount()){
                                 <div class="col-md-1">
                                     <button class="btn btn-xs btn-warning pull-right" id="slideSaveFirstName" name ="slideSaveFirstName" type="submit">Save</button>
                                 </div>                        
-                        </div> 
-                        <hr>   
-                    </div>                         
-                                               
+                            </div><hr> 
+                        </div>                       
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-md-5">  
@@ -127,19 +123,17 @@ if ($count = $query -> rowCount()){
                                     <button class="btn btn-outline-warning" id="slideEditLastName" type="button"> Edit</button>
                                 </div>
                                 <div class="col-md-3">
-                                <label for="first_name">
+                                    <label for="first_name">
                                         <p id="NewLastName"><strong> New Last Name </strong></p>
                                     </label>
                                 </div>
                                 <div class="col-md-8">
-                                <input type="text" class="form-control" name="last_name" id="last_name"  title="enter your last name if any.">
+                                    <input type="text" class="form-control" name="last_name" id="last_name"  title="enter your last name if any.">
                                 </div>
                                 <div class="col-md-1">
-                                <button class="btn btn-xs btn-warning pull-right" id="slideSaveLastName" name ="slideSaveLastName" type="submit">Save</button>
-                            </div>
-                            </div>
-                            <hr>
-                        
+                                    <button class="btn btn-xs btn-warning pull-right" id="slideSaveLastName" name ="slideSaveLastName" type="submit">Save</button>
+                                </div>
+                            </div><hr>
                         </div>
                         <div class="form-group">
                             <div class="row">
@@ -155,7 +149,7 @@ if ($count = $query -> rowCount()){
                                     <button class="btn btn-outline-warning" id="slideEditEmail" type="button">Edit</button>
                                 </div>  
                                 <div class="col-md-3">
-                                <label for="email">
+                                    <label for="email">
                                         <p id="NewEmail"><strong> New Email </strong></p>
                                     </label>
                                 </div>  
@@ -163,17 +157,15 @@ if ($count = $query -> rowCount()){
                                     <input type="email" class="form-control" name="email" id="email"  title="enter your email.">  
                                 </div> 
                                 <div class="col-md-1">
-                                <button class="btn btn-xs btn-warning pull-right" id="slideSaveEmail" name ="slideSaveEmail" type="submit">Save</button>
-                            </div>
-                            </div>
-                            <hr>
+                                    <button class="btn btn-xs btn-warning pull-right" id="slideSaveEmail" name ="slideSaveEmail" type="submit">Save</button>
+                                </div>
+                            </div><hr>
                         </div>
-
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-md-5">
                                     <label for="Username">
-                                    <h4><p><strong>Username </strong></p></h4>
+                                        <h4><p><strong>Username </strong></p></h4>
                                     </label>
                                 </div>
                                 <div class="col-md-6">
@@ -183,25 +175,23 @@ if ($count = $query -> rowCount()){
                                     <button class="btn btn-outline-warning" id="slideEditUsername" type="button">Edit</button>
                                 </div> 
                                 <div class="col-md-3">
-                                <label for="Username">
+                                    <label for="Username">
                                         <p id ="NewUserName"><strong> New Username </strong></p>
                                     </label>
                                 </div> 
                                 <div class="col-md-8">
-                                <input type="text" class="form-control" name="Username_" id="Username_" title="enter your username.">
+                                    <input type="text" class="form-control" name="Username_" id="Username_" title="enter your username.">
                                 </div>
                                 <div class="col-md-1">
-                                <button class="btn btn-xs btn-warning pull-right" id="slideSaveUsername" name ="slideSaveUsername" type="submit">Save</button>
-                            </div>
-                            </div>
-                            <hr>
+                                    <button class="btn btn-xs btn-warning pull-right" id="slideSaveUsername" name ="slideSaveUsername" type="submit">Save</button>
+                                </div>
+                            </div><hr>
                         </div>
-
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-md-5">
                                     <label>
-                                    <h4><p><strong>Password</strong></p></h4>
+                                        <h4><p><strong>Password</strong></p></h4>
                                     </label>
                                 </div>
                                 <div class="col-md-6">
@@ -211,51 +201,43 @@ if ($count = $query -> rowCount()){
                                     <button class="btn btn-outline-warning" id="slideEditPassword" type="button"> Edit</button>
                                 </div> 
                                 <div class="col-md-3">
-                                <label for="Password">
+                                    <label for="Password">
                                         <p id="CurrentPass"><strong> Current Password</strong></p>
                                     </label>
                                 </div> 
-                                    <div class = "col-md-8">
-                                        <input type="text" class="form-control" name="Password_" id="Password_" title="enter your password.">
-                                    </div>
-                                    <div class="col-md-3">
-                                <label for="Password">
+                                <div class = "col-md-8">
+                                    <input type="text" class="form-control" name="Password_" id="Password_" title="enter your password.">
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="Password">
                                         <p id="Newpass"><strong> New Password </strong></p>
                                     </label>
                                 </div> 
-                                    <div class = "col-md-8">
-                                        <input type="text" class="form-control" name="Password_1" id="Password_1" title="enter your password.">
-                                    </div>
-                                    <div class="col-md-3">
-                                <label for="Password">
+                                <div class = "col-md-8">
+                                    <input type="text" class="form-control" name="Password_1" id="Password_1" title="enter your password.">
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="Password">
                                         <p id="Verifypass"><strong> Verify Password </strong></p>
                                     </label>
                                 </div> 
-                                    <div class = "col-md-8">
-                                        <input type="text" class="form-control" name="Password_2" id="Password_2" title="enter your password.">
-                                    </div>
-                                    <div class="col-md-1">
-                                <button class="btn btn-xs btn-warning pull-right" id="slideSavePassword" name ="slideSavePassword" type="submit">Save</button>
-                            </div>
-                            </div>
-                            <hr>
-                        </div>
-
-                        <div class="form-group">
-                            
+                                <div class = "col-md-8">
+                                    <input type="text" class="form-control" name="Password_2" id="Password_2" title="enter your password.">
+                                </div>
+                                <div class="col-md-1">
+                                    <button class="btn btn-xs btn-warning pull-right" id="slideSavePassword" name ="slideSavePassword" type="submit">Save</button>
+                                </div>
+                            </div><hr>
                         </div>
                     </from>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<hr>
-
+</div><hr>
 
 <script>
 $(document).ready(function(){
-   
     
     $("#first_name").slideUp();
     $("#NewFirstName").slideUp();
@@ -280,35 +262,31 @@ $(document).ready(function(){
     $("#Verifypass").slideUp();
     $("#Password_2").slideUp();
     $("#slideSavePassword").slideUp();
-
-
-   
-
     
     $("#slideEditFirstName").click(function(){
         $("#first_name").slideToggle("fast");
         $("#NewFirstName").slideToggle("fast");
         $("#slideSaveFirstName").slideToggle("fast");
-        
     });
+
     $("#slideEditLastName").click(function(){
         $("#NewLastName").slideToggle("fast");
         $("#last_name").slideToggle("fast");
         $("#slideSaveLastName").slideToggle("fast");
-        
     });
+
     $("#slideEditEmail").click(function(){
         $("#NewEmail").slideToggle("fast");
         $("#email").slideToggle("fast");
         $("#slideSaveEmail").slideToggle("fast");
-        
     });
+
     $("#slideEditUsername").click(function(){
         $("#NewUserName").slideToggle("fast");
         $("#Username_").slideToggle("fast");
         $("#slideSaveUsername").slideToggle("fast");
-        
     });
+
     $("#slideEditPassword").click(function(){
         $("#CurrentPass").slideToggle("fast");
         $("#Password_").slideToggle("fast");
@@ -317,9 +295,8 @@ $(document).ready(function(){
         $("#Verifypass").slideToggle("fast");
         $("#Password_2").slideToggle("fast");
         $("#slideSavePassword").slideToggle("fast");
-        
     });
-    
+
 });
 </script> 
 

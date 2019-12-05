@@ -1,44 +1,40 @@
 <aside class="span3 page-sidebar">
-
-<?php if ($sUsername == null) : ?>
-    <a href="#loginModal" data-toggle="modal" class="btn btn-info btn-lg btn-block" role="button" aria-pressed="true">Ask a Question</a>
-<?php endif; ?>
-<?php if ($sUsername !== null) : ?>
-    <a href="addquestion.php" class="btn btn-info btn-lg btn-block" role="button" aria-pressed="true">Ask a Question</a>
-<?php endif; ?>
-</p>
-
-<section class="widget">
+  <?php if ($sUsername == null) : ?>
+  <a href="#loginModal" data-toggle="modal" class="btn btn-info btn-lg btn-block" role="button" aria-pressed="true">Ask a Question</a>
+  <?php endif; ?>
+  <?php if ($sUsername !== null) : ?>
+  <a href="addquestion.php" class="btn btn-info btn-lg btn-block" role="button" aria-pressed="true">Ask a Question</a>
+  <?php endif; ?>
+  </p>
+  <section class="widget">
     <div class="support-widget">
-        <h3>Support</h3>
-        <p class="intro">Need more support? If you did not found an answer, contact us for further help.</p>
+      <h3>Support</h3>
+      <p class="intro">Need more support? If you did not found an answer, contact us for further help.</p>
     </div>
-</section>
-
-<section class="widget">
+  </section>
+  <section class="widget">
     <div class="quick-links-widget">
-        <h3>Quick Links</h3>
-        <ul id="menu-quick-links" class="menu clearfix">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="articles-list.html">Articles List</a></li>
-            <li><a href="faq.html">FAQs</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
+      <h3>Quick Links</h3>
+      <ul id="menu-quick-links" class="menu clearfix">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="articles-list.html">Articles List</a></li>
+        <li><a href="faq.html">FAQs</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
     </div>
-</section>
-</p>
-<section class="widget">
+  </section>
+  </p>
+  <section class="widget">
     <div class="tags-widget">
-        <h3 class="title">Tags</h3>
-        <div class="tagcloud">
-            <a href="#" class="badge badge-pill badge-warning">basic</a>
-            <a href="#" class="badge badge-pill badge-warning">beginner</a>
-            <a href="#" class="badge badge-pill badge-warning">blogging</a>
-            <a href="#" class="badge badge-pill badge-warning">colour</a>
-        </div>
+      <h3 class="title">Tags</h3>
+      <div class="tagcloud">
+        <a href="#" class="badge badge-pill badge-warning">basic</a>
+        <a href="#" class="badge badge-pill badge-warning">beginner</a>
+        <a href="#" class="badge badge-pill badge-warning">blogging</a>
+        <a href="#" class="badge badge-pill badge-warning">colour</a>
+      </div>
     </div>
-</section>
-
+  </section>
 </aside>
 
 <script>
