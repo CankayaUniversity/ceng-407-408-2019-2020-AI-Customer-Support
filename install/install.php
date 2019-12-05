@@ -1,90 +1,80 @@
 
-    <head>
-        <meta charset="UTF-8">
-        <title>Install Customer Support DB</title>
-        
+<head>
+    <meta charset="UTF-8">
+    <title>Install Customer Support DB</title>
     <link rel="shortcut icon" href="images/favicon.png" />
 
-<!-- Fonts-->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
-<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
-<link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <!-- Fonts-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
 
-<!-- Style Sheet-->
-<script src="js/jquery.min.js"></script>
-<link rel='stylesheet' id='responsive-css-css' href='css/res.css' type='text/css' media='all' />
-<link rel='stylesheet' id='main-css-css' href='css/site.css' type='text/css' media='all' />
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="css/font-awesome.min.css">
+    <!-- Style Sheet-->
+    <script src="js/jquery.min.js"></script>
+    <link rel='stylesheet' id='responsive-css-css' href='css/res.css' type='text/css' media='all' />
+    <link rel='stylesheet' id='main-css-css' href='css/site.css' type='text/css' media='all' />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/font-awesome.min.css">
 
-<script type="text/javascript" src="js/site.js"></script>
-    </head>
-    <body>
-        <center>
-            <h1>Install Customer Support DB</h1>
-            <img src="mascot.png" alt="mascot" class="center" width="20%" height="40%"></a>
-        </center>
+    <script type="text/javascript" src="js/site.js"></script>
 
-                 <form action="install.php" method="post">
-                    <div class="container">
-                        <div class="row">
-                        
-                            <div class="col-md-3">
-                                
-                            </div>  
-                            <div class ="col-md-9">
-                                <div class="row">
-                                    <div class="col-md-2"> 
-                                    <h4><strong><label for="servername">Servername</label></strong></h4>
-                                    </div>  
-                                    <div class="col-md-5">   
-                                        <input type="text" id="servername" name="servername" placeholder="localhost" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-xs">
-                                    </div>
-                                </div> 
-
-                                <div class="row">
-                                    <div class="col-md-2">
-                                        <h4><strong><label for="username">Username</label></strong></h4>
-                                    </div>  
-                                    <div class="col-md-5"> 
-                                            <input type="text" id="username" name="username" placeholder="root" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
-                                    </div>
-                                          
-                                    </div>
- 
-
-                                <div class="row">
-                                    <div class="col-md-2"> 
-                                        <h4><strong><label for="password">password</label></strong></h4>
-                                    </div>  
-                                    <div class="col-md-5"> 
-                                            <input type="text" id="password" name="password" placeholder="password" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
-                                    </div> 
-                                </div> 
-
-                                <div class="row">
-                                        <div class="col-md-2"> 
-                                            <h4><strong><label for="db_name">db_name</label></strong></h4>
-                                        </div>  
-                                        <div class="col-md-5"> 
-                                            <input type="text" id="db_name" name="db_name" placeholder="set db name" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
-                                        </div>
-                                </div> 
-                                
-                                <div class="row">
-                                        <div class="col-md-3"></div> 
-                                <div class ="col-md-4">
-                                    <button type="submit" name="register" value="Register"class="btn btn-primary">Register</button>
-                                </div>
-                                
-                        </div>    
+</head>
+<body>
+    <center>
+        <h1>Install Customer Support DB</h1>
+        <img src="mascot.png" alt="mascot" class="center" width="20%" height="40%"></a>
+    </center>
+    <form action="install.php" method="post">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3"> 
+                </div>  
+                <div class ="col-md-9">
+                    <div class="row">
+                        <div class="col-md-2"> 
+                            <h4><strong><label for="servername">Servername</label></strong></h4>
+                        </div>  
+                        <div class="col-md-5">   
+                            <input type="text" id="servername" name="servername" placeholder="localhost" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-xs">
+                        </div>
+                    </div> 
+                    <div class="row">
+                        <div class="col-md-2">
+                            <h4><strong><label for="username">Username</label></strong></h4>
+                        </div>  
+                        <div class="col-md-5"> 
+                            <input type="text" id="username" name="username" placeholder="root" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+                        </div>   
                     </div>
-                </div> 
-
-            </form>
-    </body>
+                    <div class="row">
+                        <div class="col-md-2"> 
+                            <h4><strong><label for="password">Password</label></strong></h4>
+                        </div>  
+                        <div class="col-md-5"> 
+                            <input type="text" id="password" name="password" placeholder="password" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+                        </div> 
+                    </div> 
+                    <div class="row">
+                        <div class="col-md-2"> 
+                            <h4><strong><label for="db_name">DB Name</label></strong></h4>
+                        </div>  
+                        <div class="col-md-5"> 
+                            <input type="text" id="db_name" name="db_name" placeholder="set db name" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+                        </div>
+                    </div> 
+                    <div class="row">
+                            <div class="col-md-3"></div> 
+                    <div class ="col-md-4">
+                        <button type="submit" name="register" value="Register"class="btn btn-primary">Register</button>
+                        <label><input type="checkbox" name="ResetDB"/> Reset Database</label>
+                    </div>
+                </div>    
+            </div>
+        </div> 
+    </form>
+</body>
 
 <?php 
 include '../helpers/helperDev.php';
@@ -106,6 +96,11 @@ if (isset($_POST['register'])) {
         $conn = new PDO("mysql:host=$servername", $username, $password);
 
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        if(isset($_POST['ResetDB'])) {
+            $sql = "DROP DATABASE IF EXISTS $db_name";
+            $conn->exec($sql);
+        }
 
         $sql = "CREATE DATABASE IF NOT EXISTS $db_name";
         $conn->exec($sql);
@@ -164,6 +159,21 @@ if (isset($_POST['register'])) {
 
         echo "Comments table created successfully.</br> ";
         
+        $sql = "CREATE TABLE IF NOT EXISTS notifications (
+            n_id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+            n_description varchar(1000) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+            n_author int NOT NULL,
+            n_post_id int NOT NULL,
+            n_isChecked int NOT NULL DEFAULT '0',
+            n_date datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+            FOREIGN KEY (n_author) REFERENCES users(user_id),
+            FOREIGN KEY (n_post_id) REFERENCES questions(q_id)
+            );";
+
+        $conn->exec($sql);
+
+        echo "Notifications table created successfully.</br> ";
+
         $sql= "INSERT INTO users(firstname,surname,email,username,password_,is_verified,is_admin) 
         VALUES ('Arınç Alp','Eren','arinc@arinc.com','arinc','arinc',0,0),
         ('Atakan','Demircioğlu','atakan@atakan.com','atakan','atakan',0,0),
@@ -187,9 +197,32 @@ if (isset($_POST['register'])) {
         ('Sample Comment Description 4 ', 4, 2);";
         $conn->exec($sql);
 
+        $sql="INSERT INTO notifications (n_description,n_author,n_post_id) VALUES
+        ('Sample Notification Description 1 ', 1, 1),
+        ('Sample Notification Description 2 ', 2, 1),
+        ('Sample Notification Description 3 ', 3, 2),
+        ('Sample Notification Description 4 ', 4, 2);";
+        $conn->exec($sql);
+
         echo "Insertions done successfully.</br>";
 
-        echo "Everything is okey :)";
+        echo "Everything is okey :)<br>";
+
+        //echo "<meta http-equiv='refresh' content='3;url=../index.php'/>";
+
+        echo"<div id='counter'>You will be redirected to mainpage in 3</div>
+            <script>
+                var count = 3;
+                setInterval(function() {
+                    var div = document.querySelector('#counter');
+                    count--;
+                    div.textContent = 'You will be redirected to mainpage in '+count;
+                    if (count <= 0) {
+                        window.location.replace('../index.php');
+                    }
+                }, 1000);
+            </script>
+            ";
 
     } catch (PDOException $e) {
         echo $sql . "<br>" . $e->getMessage();
