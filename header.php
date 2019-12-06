@@ -69,33 +69,40 @@ if( isset($_SESSION['user_Username']) ){
         </li>
         <?php endif; ?>
         <?php if ($sUsername !== null) : ?>
-        <li id="noti_Container">
-          <div id="noti_Counter">5</div>   <!--SHOW NOTIFICATIONS COUNT.-->
-          <!--A CIRCLE LIKE BUTTON TO DISPLAY NOTIFICATION DROPDOWN.-->
-          <div id="noti_Button"><img src="images/bell.png" style="height:30px"></div>    
-          <!--THE NOTIFICAIONS DROPDOWN BOX.-->
-          <div id="notifications">
-            <h3>Notifications</h3>
-            <div style="height:200px;">
-              <div class="toast__container">
-                <div class="toast__cell">
-                  <div class="toast toast--green">
-                    <div class="toast__icon">
-                    </div>
-                    <div class="toast__content">
-                      <p class="toast__type">Success</p>
-                      <p class="toast__message">Anyone with access can view your invited visitors.</p>
-                    </div>
-                    <div class="toast__close">
-                    <p>x</p>
-                    </div>
-                  </div> 
-                </div>
-              </div>
-            </div>
-            <div class="seeAll"><a href="#">See All</a></div>
-          </div>
-        </li>
+          <li class="nav-item">
+          <div class="dropdown nav-button notifications-button hidden-sm-down">
+
+<a class="btn btn-secondary dropdown-toggle" href="#" id="notifications-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  <i id="notificationsIcon" class="fa fa-bell-o" aria-hidden="true"></i>
+  <span id="notificationsBadge" class="badge badge-danger"><i class="fa fa-spinner fa-pulse fa-fw" aria-hidden="true"></i></span>
+</a>
+
+<!-- NOTIFICATIONS -->
+<div class="dropdown-menu notification-dropdown-menu" aria-labelledby="notifications-dropdown">
+  <h6 class="dropdown-header">Notifications</h6>
+
+  <!-- CHARGEMENT -->
+  <a id="notificationsLoader" class="dropdown-item dropdown-notification" href="#">
+    <p class="notification-solo text-center"><i id="notificationsIcon" class="fa fa-spinner fa-pulse fa-fw" aria-hidden="true"></i> Chargement des dernières notifications...</p>
+  </a>
+
+  <div id="notificationsContainer" class="notifications-container"></div>
+
+  <!-- AUCUNE NOTIFICATION -->
+  <a id="notificationAucune" class="dropdown-item dropdown-notification" href="#">
+    <p class="notification-solo text-center">Aucune nouvelle notification</p>
+  </a>
+
+  <!-- TOUTES -->
+  <a class="dropdown-item dropdown-notification-all" href="#">
+    Voir toutes les notifications
+  </a>
+
+</div>
+
+</div>
+
+          </li>
         <li class="nav-item">
           <a class="nav-link" href="profile.php">Profile</a>
         </li>
@@ -328,3 +335,19 @@ jQuery(document).ready(function(){
 });
 
 </script>
+
+<script id="notificationTemplate" type="text/html">
+    <!-- NOTIFICATION -->
+    <a class="dropdown-item dropdown-notification" href="{{href}}">
+      <div class="notification-read">
+        <i class="fa fa-times" aria-hidden="true"></i>
+      </div>
+      <img class="notification-img" src="https://placehold.it/48x48" alt="Icone Notification" />
+      <div class="notifications-body">
+        <p class="notification-texte">{{texte}}</p>
+        <p class="notification-date text-muted">
+          <i class="fa fa-clock-o" aria-hidden="true"></i> {{date}}
+        </p>
+      </div>
+    </a>
+  </script>
