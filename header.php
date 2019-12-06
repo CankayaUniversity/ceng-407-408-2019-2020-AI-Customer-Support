@@ -71,38 +71,30 @@ if( isset($_SESSION['user_Username']) ){
         <?php if ($sUsername !== null) : ?>
           <li class="nav-item">
           <div class="dropdown nav-button notifications-button hidden-sm-down">
-
-<a class="btn btn-secondary dropdown-toggle" href="#" id="notifications-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-  <i id="notificationsIcon" class="fa fa-bell-o" aria-hidden="true"></i>
-  <span id="notificationsBadge" class="badge badge-danger"><i class="fa fa-spinner fa-pulse fa-fw" aria-hidden="true"></i></span>
-</a>
-
-<!-- NOTIFICATIONS -->
-<div class="dropdown-menu notification-dropdown-menu" aria-labelledby="notifications-dropdown">
-  <h6 class="dropdown-header">Notifications</h6>
-
-  <!-- CHARGEMENT -->
-  <a id="notificationsLoader" class="dropdown-item dropdown-notification" href="#">
-    <p class="notification-solo text-center"><i id="notificationsIcon" class="fa fa-spinner fa-pulse fa-fw" aria-hidden="true"></i> Chargement des dernières notifications...</p>
-  </a>
-
-  <div id="notificationsContainer" class="notifications-container"></div>
-
-  <!-- AUCUNE NOTIFICATION -->
-  <a id="notificationAucune" class="dropdown-item dropdown-notification" href="#">
-    <p class="notification-solo text-center">Aucune nouvelle notification</p>
-  </a>
-
-  <!-- TOUTES -->
-  <a class="dropdown-item dropdown-notification-all" href="#">
-    Voir toutes les notifications
-  </a>
-
-</div>
-
-</div>
-
-          </li>
+            <a class="btn btn-secondary dropdown-toggle" href="#" id="notifications-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i id="notificationsIcon" class="fa fa-bell-o" aria-hidden="true"></i>
+              <span id="notificationsBadge" class="badge badge-danger"><i class="fa fa-spinner fa-pulse fa-fw" aria-hidden="true"></i></span>
+            </a>
+            <!-- NOTIFICATIONS -->
+            <div class="dropdown-menu notification-dropdown-menu" aria-labelledby="notifications-dropdown">
+              <h6 class="dropdown-header">Notifications</h6>
+              <!-- LOADING -->
+              <a id="notificationsLoader" class="dropdown-item dropdown-notification" href="#">
+                <p class="notification-solo text-center"><i id="notificationsIcon" class="fa fa-spinner fa-pulse fa-fw" aria-hidden="true"></i> Notifications are loading... </p>
+              </a>
+              <div id="notificationsContainer" class="notifications-container">
+              </div>
+              <!-- NO NOTIFICATION -->
+              <a id="notificationAucune" class="dropdown-item dropdown-notification" href="#">
+                <p class="notification-solo text-center">No New Notification</p>
+              </a>
+              <!-- ALL -->
+              <a class="dropdown-item dropdown-notification-all" href="#">
+                See all notifications
+              </a>
+            </div>
+          </div>
+        </li>
         <li class="nav-item">
           <a class="nav-link" href="profile.php">Profile</a>
         </li>
@@ -284,55 +276,6 @@ $(document).ready(function(){
     }
   }); 
 });  
-
-$(document).ready(function () {
-
-  // ANIMATEDLY DISPLAY THE NOTIFICATION COUNTER.
-  $('#noti_Counter')
-      .css({ opacity: 0 })
-      .text('7')  // ADD DYNAMIC VALUE (YOU CAN EXTRACT DATA FROM DATABASE OR XML).
-      .css({ top: '-10px' })
-      .animate({ top: '-2px', opacity: 1 }, 500);
-
-  $('#noti_Button').click(function () {
-
-      // TOGGLE (SHOW OR HIDE) NOTIFICATION WINDOW.
-      $('#notifications').fadeToggle('fast', 'linear', function () {
-          if ($('#notifications').is(':hidden')) {
-              $('#noti_Button').css('background-color', '#49afcd');
-          }
-          // CHANGE BACKGROUND COLOR OF THE BUTTON.
-          else $('#noti_Button').css('background-color', '#49afcd');
-      });
-
-      $('#noti_Counter').fadeOut('slow');     // HIDE THE COUNTER.
-
-      return false;
-  });
-
-  // HIDE NOTIFICATIONS WHEN CLICKED ANYWHERE ON THE PAGE.
-  $(document).click(function () {
-      $('#notifications').hide();
-
-      // CHECK IF NOTIFICATION COUNTER IS HIDDEN.
-      if ($('#noti_Counter').is(':hidden')) {
-          // CHANGE BACKGROUND COLOR OF THE BUTTON.
-          $('#noti_Button').css('background-color', '#49afcd');
-      }
-  });
-
-  $('#notifications').click(function () {
-      return false;       // DO NOTHING WHEN CONTAINER IS CLICKED.
-  });
-});
-
-jQuery(document).ready(function(){
-  jQuery('.toast__close').click(function(e){
-    e.preventDefault();
-    var parent = $(this).parent('.toast');
-    parent.fadeOut("slow", function() { $(this).remove(); } );
-  });
-});
 
 </script>
 

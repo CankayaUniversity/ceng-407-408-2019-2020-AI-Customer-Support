@@ -49,7 +49,7 @@ $(function () {
 	var count = 6;
 	var lastCount = 0;
   
-	// Pour la maquette
+	// For Modal
 	var notifications = new Array();
 	notifications.push({
 	  href: "#",
@@ -94,45 +94,45 @@ $(function () {
   
 	appNotifications = {
   
-	  // Initialisation
+	  // Initialization
 	  init: function () {
-		// On masque les éléments
+		// We mask the elements.
 		$("#notificationsBadge").hide();
 		$("#notificationAucune").hide();
   
-		// On bind le clic sur les notifications
+		// We bind the click on the notifications
 		$("#notifications-dropdown").on('click', function () {
   
 		  var open = $("#notifications-dropdown").attr("aria-expanded");
   
-		  // Vérification si le menu est ouvert au moment du clic
+		  // Check if the menu is open when you click
 		  if (open === "false") {
 			appNotifications.loadAll();
 		  }
   
 		});
   
-		// On charge les notifications
+		// We load the notifications
 		appNotifications.loadAll();
   
 		// Polling
-		// Toutes les 3 minutes on vérifie si il n'y a pas de nouvelles notifications
+		// Every 3 minutes we check if there are no new notifications
 		setInterval(function () {
 		  appNotifications.loadNumber();
 		}, 180000);
   
-		// Binding de marquage comme lue desktop
+		// Binding marking as read desktop
 		$('.notification-read-desktop').on('click', function (event) {
 		  appNotifications.markAsReadDesktop(event, $(this));
 		});
   
 	  },
   
-	  // Déclenche le chargement du nombre et des notifs
+	  // Triggers the loading of the number and the notificationss
 	  loadAll: function () {
   
-		// On ne charge les notifs que si il y a une différence
-		// Ou si il n'y a aucune notifs
+		// Notifiers are only loaded if there is a difference
+		// Or if there are no notifications
 		if (count !== lastCount || count === 0) {
 		  appNotifications.load();
 		}
@@ -140,7 +140,7 @@ $(function () {
   
 	  },
   
-	  // Masque de chargement pour l'icône et le badge
+	  // Loading mask for the icon and the badge
 	  badgeLoadingMask: function (show) {
 		if (show === true) {
 		  $("#notificationsBadge").html(appNotifications.badgeSpinner);
@@ -171,7 +171,7 @@ $(function () {
 		}
 	  },
   
-	  // Indique si chargement des notifications
+	  // Indicates whether to load notifications
 	  loadingMask: function (show) {
   
 		if (show === true) {
@@ -189,33 +189,33 @@ $(function () {
   
 	  },
   
-	  // Chargement du nombre de notifications
+	  // Loading the number of notifications
 	  loadNumber: function () {
 		appNotifications.badgeLoadingMask(true);
   
-		// TODO : API Call pour récupérer le nombre
+		// TODO : Call API to retrieve the number
   
-		// TEMP : pour le template
+		// TEMP : for the template
 		setTimeout(function () {
 		  $("#notificationsBadge").html(count);
 		  appNotifications.badgeLoadingMask(false);
 		}, 1000);
 	  },
   
-	  // Chargement de notifications
+	  // Loading notifications
 	  load: function () {
 		appNotifications.loadingMask(true);
   
-		// On vide les notifs
+		// We empty the notifs
 		$('#notificationsContainer').html("");
   
-		// Sauvegarde du nombre de notifs
+		// Saving the number of notifiers
 		lastCount = count;
   
-		// TEMP : pour le template
+		// TEMP : for the template
 		setTimeout(function () {
   
-		  // TEMP : pour le template
+		  // TEMP : for the template
 		  for (i = 0; i < count; i++) {
   
 			var template = $('#notificationTemplate').html();
@@ -227,54 +227,54 @@ $(function () {
 			$('#notificationsContainer').append(template);
 		  }
   
-		  // On bind le marquage comme lue
+		  // We bind the marking as read
 		  $('.notification-read').on('click', function (event) {
 			appNotifications.markAsRead(event, $(this));
 		  });
   
-		  // On arrête le chargement
+		  // We stop loading
 		  appNotifications.loadingMask(false);
   
-		  // On réactive le bouton
+		  // The button is reactivated
 		  $("#notifications-dropdown").prop("disabled", false);
 		}, 1000);
 	  },
   
-	  // Marquer une notification comme lue
+	  // Mark a notification as read
 	  markAsRead: function (event, elem) {
-		// Permet de garde la liste ouverte
+		// Keeps the list open
 		event.preventDefault();
 		event.stopPropagation();
   
-		// Suppression de la notification
+		// Deleting the notification
 		elem.parent('.dropdown-notification').remove();
   
-		// TEMP : pour le template
+		// TEMP : for the template
 		count--;
   
-		// Mise à jour du nombre
+		// Update the number
 		appNotifications.loadAll();
 	  },
   
-	  // Marquer une notification comme lue version bureau
+	  // Mark a notification as the desktop version
 	  markAsReadDesktop: function (event, elem) {
-		// Permet de ne pas change de page
+		// Do not change pages
 		event.preventDefault();
 		event.stopPropagation();
   
-		// Suppression de la notification
+		// Deleting the notification
 		elem.parent('.dropdown-notification').removeClass("notification-unread");
 		elem.remove();
   
-		// On supprime le focus
+		// We remove the focus
 		if (document.activeElement) {
 		  document.activeElement.blur();
 		}
   
-		// TEMP : pour le template
+		// TEMP : for the template
 		count--;
   
-		// Mise à jour du nombre
+		// Update the number
 		appNotifications.loadAll();
 	  },
   
@@ -283,7 +283,7 @@ $(function () {
 		count++;
 	  },
   
-	  // Template du badge
+	  // Badge template
 	  badgeSpinner: '<i class="fa fa-spinner fa-pulse fa-fw" aria-hidden="true"></i>'
 	};
   
