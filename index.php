@@ -22,54 +22,69 @@
                 <div class="span8 page-content">
                     <div class="row separator">
                         <div class="span8 page-content">
-
                             <!-- Basic Home Page Template -->
                             <div class="row separator">
                                 <section class="span4 articles-list">
                                     <h3>Featured Articles</h3>
-                    <?php
-                        $limit = 5;
-                        $query = "SELECT * FROM questions";
-                        $s = $conn->prepare($query);
-                        $s->execute();
-                        $total_results = $s->rowCount();
-                        $total_pages = ceil($total_results/$limit);
-                        if (!isset($_GET['page'])) {
-                            $page = 1;
-                        } else{
-                            $page = $_GET['page'];
-                        }
-                        $starting_limit = ($page-1)*$limit;
-                        $show = "SELECT * FROM questions ORDER BY q_id DESC LIMIT $starting_limit, $limit";
-                        $r = $conn->prepare($show);
-                        $r->execute();
+                                    <?php
+                                        $limit = 5;
+                                        $query = "SELECT * FROM questions";
+                                        $s = $conn->prepare($query);
+                                        $s->execute();
+                                        $total_results = $s->rowCount();
+                                        $total_pages = ceil($total_results/$limit);
+                                        if (!isset($_GET['page'])) {
+                                            $page = 1;
+                                        } else{
+                                            $page = $_GET['page'];
+                                        }
+                                        $starting_limit = ($page-1)*$limit;
+                                        $show = "SELECT * FROM questions ORDER BY q_id DESC LIMIT $starting_limit, $limit";
+                                        $r = $conn->prepare($show);
+                                        $r->execute();
 
-                        while($res = $r->fetch(PDO::FETCH_ASSOC)) :
-                            $q_author = $res['q_author'];
-                            $q_title = $res['q_title'];
-                            $q_id = $res['q_id'];
-                            $origin_q_date = $res['q_date'];
-                            $newDate = date("d m Y", strtotime($origin_q_date));
-                            $user = $conn->query("SELECT user_id, username, q_author FROM users,questions WHERE user_id='$q_author'",PDO::FETCH_ASSOC)->fetch();
-                    ?>
-                                    <ul class="articles">
-                                            <li class="article-entry standard">
-                                                <h4> <a href='<?php echo "single.php?post=$q_id"; ?>' class="d-block text-gray-dark"><?php echo $q_title; ?></a></h4>
-                                                <span class="article-meta"><?php echo $newDate; ?> <a href="#" title="View all posts in Server &amp; Database"><?php echo $user['username']; ?></a></span>
-                                                <span class="like-count">66</span>
-                                            </li>
-                                    </ul>
-                        <?php endwhile; ?>
-                                </section>
-
-                                <section class="span4 articles-list">
-                                    <h3>Popular Articles</h3>
+                                        while($res = $r->fetch(PDO::FETCH_ASSOC)) :
+                                            $q_author = $res['q_author'];
+                                            $q_title = $res['q_title'];
+                                            $q_id = $res['q_id'];
+                                            $origin_q_date = $res['q_date'];
+                                            $q_like = $res['q_like'];
+                                            $newDate = date("d m Y", strtotime($origin_q_date));
+                                            $user = $conn->query("SELECT user_id, username, q_author FROM users,questions WHERE user_id='$q_author'",PDO::FETCH_ASSOC)->fetch();
+                                    ?>
                                     <ul class="articles">
                                         <li class="article-entry standard">
-                                            <h4><a href="single.html">Integrating WordPress with Your Website</a></h4>
-                                            <span class="article-meta">25 Feb, 2013 in <a href="#" title="View all posts in Server &amp; Database">Server &amp; Database</a></span>
-                                            <span class="like-count">66</span>
+                                            <h4> <a href='<?php echo "single.php?post=$q_id"; ?>' class="d-block text-gray-dark"><?php echo $q_title; ?></a></h4>
+                                            <span class="article-meta"><?php echo $newDate; ?> <a href="#" title="View all posts in Server &amp; Database"><?php echo $user['username']; ?></a></span>
+                                            <span class="like-count"><?php echo $q_like; ?></span>
+                                        </li>
                                     </ul>
+                                <?php endwhile; ?>
+                                </section>
+                                <section class="span4 articles-list">
+                                    <h3>Popular Articles</h3>
+                                    <?php
+                                    $popular = "SELECT * FROM questions ORDER BY q_like DESC";
+                                    $r = $conn->prepare($popular);
+                                    $r->execute();
+
+                                    while($res = $r->fetch(PDO::FETCH_ASSOC)) :
+                                        $q_author = $res['q_author'];
+                                        $q_title = $res['q_title'];
+                                        $q_id = $res['q_id'];
+                                        $origin_q_date = $res['q_date'];
+                                        $q_like = $res['q_like'];
+                                        $newDate = date("d m Y", strtotime($origin_q_date));
+                                        $user = $conn->query("SELECT user_id, username, q_author FROM users,questions WHERE user_id='$q_author'",PDO::FETCH_ASSOC)->fetch();
+                                    ?>
+                                    <ul class="articles">
+                                        <li class="article-entry standard">
+                                            <h4> <a href='<?php echo "single.php?post=$q_id"; ?>' class="d-block text-gray-dark"><?php echo $q_title; ?></a></h4>
+                                            <span class="article-meta"><?php echo $newDate; ?> <a href="#" title="View all posts in Server &amp; Database"><?php echo $user['username']; ?></a></span>
+                                            <span class="like-count"><?php echo $q_like; ?></span>
+                                        </li>
+                                    </ul>
+                                    <?php endwhile; ?>
                                 </section>
                             </div>
                             <?php  for ($page=1; $page <= $total_pages ; $page++):?>
