@@ -1555,7 +1555,7 @@ a:hover {
     list-style: none;
     margin: 0;
   }
-  ul:before {
+  ul.articles::before {
     content: '\f006';
     font-family: 'FontAwesome';
     float: left;
