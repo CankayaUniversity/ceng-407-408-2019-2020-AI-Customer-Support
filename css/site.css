@@ -1530,3 +1530,94 @@ a:hover {
     text-decoration: none;
     background-color: #f7f7f9;
   }
+
+  /* Articles List Widget ----------------------------------------------------------------------------------------------*/
+.articles-list {
+    margin-bottom: 20px;
+  }
+  .articles-list > h3 {
+    font-weight: 600;
+    margin-bottom: 20px;
+    font-size: 20px;
+  }
+  .articles-list > h3 span {
+    color: #6f7579;
+    font-size: 16px;
+  }
+  .articles-list > h3 a {
+    color: #dc3545;
+  }
+  .articles-list > h3 a:hover {
+    color: #395996;
+  }
+  
+  ul.articles {
+    list-style: none;
+    margin: 0;
+  }
+  ul.articles .article-entry {
+    position: relative;
+    border-bottom: 1px solid #f2f2f2;
+    padding: 0 0 0 24px;
+    background: url("../images/standard.png") no-repeat 0 3px;
+  }
+  ul.articles .article-entry.standard {
+    background: url("../images/standard.png") no-repeat 0 3px;
+  }
+  ul.articles .article-entry.video {
+    background: url("../images/video.png") no-repeat 0 3px;
+  }
+  ul.articles .article-entry.image {
+    background: url("../images/image.png") no-repeat 0 3px;
+  }
+  ul.articles .article-entry.gallery {
+    background: url("../images/image.png") no-repeat 0 3px;
+  }
+  ul.articles li.article-entry:last-child {
+    border-bottom: 1px solid #f2f2f2;
+  }
+  
+  .article-entry > h4 {
+    font-size: 13px;
+    margin-bottom: 5px;
+    font-weight: 600;
+  }
+  .article-entry > h4 a {
+    color: #d8691a;
+  }
+  .article-entry > h4 a:hover {
+    color: #395996;
+  }
+  .article-entry .article-meta {
+    display: block;
+    margin-bottom: 10px;
+    color: #29212c;
+    font-family: serif;
+    font-style: italic;
+    font-size: medium;
+  }
+  .article-entry .like-count {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    line-height: 18px;
+    font-weight: 600;
+    padding: 3px 5px 3px 20px;
+    border: 1px solid #f2f2f2;
+    border-bottom: none;
+    background: url("../images/like.png") no-repeat 6px 8px;
+  }
+  .article-entry:hover .like-count {
+    background: url("../images/like.png") no-repeat 6px -22px;
+    color: #395996;
+  }
+  
+  #footer .article-entry .like-count {
+    border-color: #535b61;
+  }
+  #footer .article-entry:hover .like-count {
+    color: #fff;
+  }
+  #footer ul.articles li.article-entry:last-child {
+    border-bottom: 1px solid #535b61;
+  }
