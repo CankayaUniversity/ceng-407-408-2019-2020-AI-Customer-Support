@@ -69,40 +69,14 @@
                                             <h4><a href="single.html">Integrating WordPress with Your Website</a></h4>
                                             <span class="article-meta">25 Feb, 2013 in <a href="#" title="View all posts in Server &amp; Database">Server &amp; Database</a></span>
                                             <span class="like-count">66</span>
-                                        </li>
-                                        <li class="article-entry standard">
-                                            <h4><a href="single.html">Using Javascript</a></h4>
-                                            <span class="article-meta">25 Feb, 2013 in <a href="#" title="View all posts in Advanced Techniques">Advanced Techniques</a></span>
-                                            <span class="like-count">18</span>
-                                        </li>
-                                        <li class="article-entry image">
-                                            <h4><a href="single.html">Using Images</a></h4>
-                                            <span class="article-meta">25 Feb, 2013 in <a href="#" title="View all posts in Designing in WordPress">Designing in WordPress</a></span>
-                                            <span class="like-count">7</span>
-                                        </li>
-                                        <li class="article-entry video">
-                                            <h4><a href="single.html">Using Video</a></h4>
-                                            <span class="article-meta">24 Feb, 2013 in <a href="#" title="View all posts in WordPress Plugins">WordPress Plugins</a></span>
-                                            <span class="like-count">7</span>
-                                        </li>
-                                        <li class="article-entry standard">
-                                            <h4><a href="single.html">WordPress Site Maintenance</a></h4>
-                                            <span class="article-meta">24 Feb, 2013 in <a href="#" title="View all posts in Website Dev">Website Dev</a></span>
-                                            <span class="like-count">15</span>
-                                        </li>
-                                        <li class="article-entry standard">
-                                            <h4><a href="single.html">WordPress CSS Information and Techniques</a></h4>
-                                            <span class="article-meta">24 Feb, 2013 in <a href="#" title="View all posts in Theme Development">Theme Development</a></span>
-                                            <span class="like-count">1</span>
-                                        </li>
                                     </ul>
-                                    <?php  for ($page=1; $page <= $total_pages ; $page++):?>
+                                </section>
+                            </div>
+                            <?php  for ($page=1; $page <= $total_pages ; $page++):?>
                             <a href='<?php echo "?page=$page"; ?>' class="links">
                                 <?php echo $page; ?>
                             </a>
                             <?php endfor; ?>
-                                </section>
-                            </div>
                         </div>
                     </div>
                 </div>
