@@ -27,12 +27,27 @@
   <?php if (isset($post_id)) : ?>
   <section class="widget">
     <div class="tags-widget">
-      <h3 class="title">Tags</h3>
+      <h3 >Tags</h3><br>
       <div class="tagcloud">
-        <a href="#" class="badge badge-pill badge-warning">basic</a>
-        <a href="#" class="badge badge-pill badge-warning">beginner</a>
-        <a href="#" class="badge badge-pill badge-warning">blogging</a>
-        <a href="#" class="badge badge-pill badge-warning">colour</a>
+      <?php 
+        $tagCount = substr_count($q_tag,",")+1;
+        $i = 0;
+        while($q_tag[$i] != null){
+          if($q_tag[$i] == ','){
+            echo "<a href='#' rel='tag' class='btn btn-info'>".substr($q_tag,0,$i)."</a> ";
+            $delete = substr($q_tag,0,$i+1);
+            $q_tag = str_replace($delete,"",$q_tag);
+            $i = -1;
+          }
+          else if($i == strlen($q_tag)-1){
+            echo "<a href='#' rel='tag' class='btn btn-info'>".substr($q_tag,0,$i+1)."</a>";
+            $delete = substr($q_tag,0,$i+1);
+            $q_tag = str_replace($delete,"",$q_tag);
+            $i = -1;
+          }
+          $i++;
+        }
+      ?>                    
       </div>
     </div>
   </section>

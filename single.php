@@ -46,28 +46,6 @@
                                         <input type="hidden" name="post_id" value="99">
                                         <input type="hidden" name="action" value="like_it">
                                     </form>
-                                    <span class="tags">
-                                        <strong>Tags:&nbsp;&nbsp;</strong>
-                                        <?php 
-                                            $tagCount = substr_count($q_tag,",")+1;
-                                            $i = 0;
-                                            while($q_tag[$i] != null){
-                                                if($q_tag[$i] == ','){
-                                                    echo "<a href='#' rel='tag' class='btn btn-info'>".substr($q_tag,0,$i)."</a> ";
-                                                    $delete = substr($q_tag,0,$i+1);
-                                                    $q_tag = str_replace($delete,"",$q_tag);
-                                                    $i = -1;
-                                                }
-                                                else if($i == strlen($q_tag)-1){
-                                                    echo "<a href='#' rel='tag' class='btn btn-info'>".substr($q_tag,0,$i+1)."</a>";
-                                                    $delete = substr($q_tag,0,$i+1);
-                                                    $q_tag = str_replace($delete,"",$q_tag);
-                                                    $i = -1;
-                                                }
-                                                $i++;
-                                            }
-                                        ?>                                            
-                                    </span>
                                 </div>
                             </div>
                             <?php
