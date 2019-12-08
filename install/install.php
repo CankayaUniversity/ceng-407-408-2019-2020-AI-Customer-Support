@@ -198,7 +198,7 @@ if (isset($_POST['register'])) {
         ('Sample Comment Description 4 ', 4, 2);";
         $conn->exec($sql);
 
-        $sql="INSERT INTO notifications (n_description,n_author,n_post_id) VALUES
+        $sql="INSERT INTO notifications (n_description,n_author,n_post_id, n_notified_id) VALUES
         ('Sample Notification Description 1 ', 1, 1, 2),
         ('Sample Notification Description 2 ', 2, 1, 2),
         ('Sample Notification Description 3 ', 3, 2, 1),
