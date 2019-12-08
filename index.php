@@ -21,8 +21,13 @@
             <div class="row">
                 <div class="span8 page-content">
                     <div class="row separator">
-                        <section class="span8 articles-list">
-                        <?php
+                        <div class="span8 page-content">
+
+                            <!-- Basic Home Page Template -->
+                            <div class="row separator">
+                                <section class="span4 articles-list">
+                                    <h3>Featured Articles</h3>
+                    <?php
                         $limit = 5;
                         $query = "SELECT * FROM questions";
                         $s = $conn->prepare($query);
@@ -38,32 +43,71 @@
                         $show = "SELECT * FROM questions ORDER BY q_id DESC LIMIT $starting_limit, $limit";
                         $r = $conn->prepare($show);
                         $r->execute();
-                        
+
                         while($res = $r->fetch(PDO::FETCH_ASSOC)) :
                             $q_author = $res['q_author'];
                             $q_title = $res['q_title'];
                             $q_id = $res['q_id'];
                             $origin_q_date = $res['q_date'];
-                            $newDate = date("d-m-Y", strtotime($origin_q_date));
+                            $newDate = date("d m Y", strtotime($origin_q_date));
                             $user = $conn->query("SELECT user_id, username, q_author FROM users,questions WHERE user_id='$q_author'",PDO::FETCH_ASSOC)->fetch();
-                        ?>
-                            <div class="media text-muted pt-3">
-                                <svg class="bd-placeholder-img mr-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 32x32"><title>Placeholder</title><rect width="100%" height="100%" fill="#49afcd"></rect><text x="20%" y="50%" fill="white" dy=".3em">2</text></svg>
-                                <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-                                    <a href='<?php echo "single.php?post=$q_id"; ?>' class="d-block text-gray-dark"><?php echo $q_title; ?></a>
-                                    <strong class="d-block text-gray-dark">@<?php echo $user['username'] ?></strong>
-                                    <?php echo $res['q_description'] ?>
-                                </p>
-                            </div>
-                            <?php endwhile; ?>
-                            <?php  for ($page=1; $page <= $total_pages ; $page++):?>
-                            <a href='<?php echo "?page=$page"; ?>' class="links"><?php echo $page; ?></a>
+                    ?>
+                                    <ul class="articles">
+                                            <li class="article-entry standard">
+                                                <h4> <a href='<?php echo "single.php?post=$q_id"; ?>' class="d-block text-gray-dark"><?php echo $q_title; ?></a></h4>
+                                                <span class="article-meta"><?php echo $newDate; ?> <a href="#" title="View all posts in Server &amp; Database"><?php echo $user['username']; ?></a></span>
+                                                <span class="like-count">66</span>
+                                            </li>
+                                    </ul>
+                        <?php endwhile; ?>
+                                </section>
+
+                                <section class="span4 articles-list">
+                                    <h3>Popular Articles</h3>
+                                    <ul class="articles">
+                                        <li class="article-entry standard">
+                                            <h4><a href="single.html">Integrating WordPress with Your Website</a></h4>
+                                            <span class="article-meta">25 Feb, 2013 in <a href="#" title="View all posts in Server &amp; Database">Server &amp; Database</a></span>
+                                            <span class="like-count">66</span>
+                                        </li>
+                                        <li class="article-entry standard">
+                                            <h4><a href="single.html">Using Javascript</a></h4>
+                                            <span class="article-meta">25 Feb, 2013 in <a href="#" title="View all posts in Advanced Techniques">Advanced Techniques</a></span>
+                                            <span class="like-count">18</span>
+                                        </li>
+                                        <li class="article-entry image">
+                                            <h4><a href="single.html">Using Images</a></h4>
+                                            <span class="article-meta">25 Feb, 2013 in <a href="#" title="View all posts in Designing in WordPress">Designing in WordPress</a></span>
+                                            <span class="like-count">7</span>
+                                        </li>
+                                        <li class="article-entry video">
+                                            <h4><a href="single.html">Using Video</a></h4>
+                                            <span class="article-meta">24 Feb, 2013 in <a href="#" title="View all posts in WordPress Plugins">WordPress Plugins</a></span>
+                                            <span class="like-count">7</span>
+                                        </li>
+                                        <li class="article-entry standard">
+                                            <h4><a href="single.html">WordPress Site Maintenance</a></h4>
+                                            <span class="article-meta">24 Feb, 2013 in <a href="#" title="View all posts in Website Dev">Website Dev</a></span>
+                                            <span class="like-count">15</span>
+                                        </li>
+                                        <li class="article-entry standard">
+                                            <h4><a href="single.html">WordPress CSS Information and Techniques</a></h4>
+                                            <span class="article-meta">24 Feb, 2013 in <a href="#" title="View all posts in Theme Development">Theme Development</a></span>
+                                            <span class="like-count">1</span>
+                                        </li>
+                                    </ul>
+                                    <?php  for ($page=1; $page <= $total_pages ; $page++):?>
+                            <a href='<?php echo "?page=$page"; ?>' class="links">
+                                <?php echo $page; ?>
+                            </a>
                             <?php endfor; ?>
-                        </section>
+                                </section>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            <?php include "sidebar.php";?>
+                <?php include "sidebar.php";?>
             </div>
         </div>
     </div>
-<?php include "footer.php";?>
+    <?php include "footer.php";?>
