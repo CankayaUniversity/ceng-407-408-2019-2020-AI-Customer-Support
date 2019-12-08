@@ -164,6 +164,7 @@ if (isset($_POST['register'])) {
             n_description varchar(1000) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
             n_author int NOT NULL,
             n_post_id int NOT NULL,
+            n_notified_id int NOT NULL,
             n_isChecked int NOT NULL DEFAULT '0',
             n_date datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
             FOREIGN KEY (n_author) REFERENCES users(user_id),
@@ -198,10 +199,10 @@ if (isset($_POST['register'])) {
         $conn->exec($sql);
 
         $sql="INSERT INTO notifications (n_description,n_author,n_post_id) VALUES
-        ('Sample Notification Description 1 ', 1, 1),
-        ('Sample Notification Description 2 ', 2, 1),
-        ('Sample Notification Description 3 ', 3, 2),
-        ('Sample Notification Description 4 ', 4, 2);";
+        ('Sample Notification Description 1 ', 1, 1, 2),
+        ('Sample Notification Description 2 ', 2, 1, 2),
+        ('Sample Notification Description 3 ', 3, 2, 1),
+        ('Sample Notification Description 4 ', 4, 2, 1);";
         $conn->exec($sql);
 
         echo "Insertions done successfully.</br>";
