@@ -1555,6 +1555,13 @@ a:hover {
     list-style: none;
     margin: 0;
   }
+  ul:before {
+    content: '\f006';
+    font-family: 'FontAwesome';
+    float: left;
+    margin-left: -1.5em;
+    color: #0074D9;
+  }
   ul.articles .article-entry {
     position: relative;
     border-bottom: 1px solid #f2f2f2;
