@@ -24,6 +24,7 @@
     </div>
   </section>
   </p>
+  <?php if (isset($post_id)) : ?>
   <section class="widget">
     <div class="tags-widget">
       <h3 class="title">Tags</h3>
@@ -35,6 +36,7 @@
       </div>
     </div>
   </section>
+  <?php endif; ?>
 </aside>
 
 <script>

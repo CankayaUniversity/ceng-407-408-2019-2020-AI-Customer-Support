@@ -9,9 +9,9 @@
                             <div class="span8 page-content">
                                 <?php
                                     if (isset($_GET['post'])) {
-                                        $q_id = $_GET['post'];
+                                        $post_id = $_GET['post'];
                                     }
-                                    $query = $conn->query("SELECT * FROM questions WHERE q_id='$q_id'",PDO::FETCH_ASSOC);
+                                    $query = $conn->query("SELECT * FROM questions WHERE q_id='$post_id'",PDO::FETCH_ASSOC);
                                     $query->setFetchMode(PDO::FETCH_ASSOC);
                                     while($r=$query->fetch()){
                                         $q_id = $r["q_id"];
