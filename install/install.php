@@ -24,7 +24,7 @@
 <body>
     <center>
         <h1>Install Customer Support DB</h1>
-        <img src="mascot.png" alt="mascot" class="center" width="20%" height="40%"></a>
+        <img src="../images/mascot.png" alt="mascot" class="center" width="20%" height="40%"></a>
     </center>
     <form action="install.php" method="post">
         <div class="container">
