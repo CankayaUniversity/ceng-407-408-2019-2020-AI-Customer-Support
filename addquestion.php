@@ -1,6 +1,5 @@
 <?php 
 include 'header.php';
-include 'inc/config.php';
 session_start();
 if($sUsername == null){
     echo"<script>

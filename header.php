@@ -7,19 +7,16 @@ session_start();
 error_reporting(-1); */
 
 include 'helpers/helperMeta.php';
+include 'helpers/homeController.php';
 include 'helpers/helperDev.php';
-include 'inc/config.php';
+
+$conne = new Mysql();
+$conn = $conne->dbConnect();
 
 if( isset($_SESSION['user_Username']) ){
   $sUsername = $_SESSION['user_Username'];
   $userid = $_SESSION['user_UserID'];
-  $n_sql = "SELECT * FROM notifications WHERE n_notified_id = '$userid'";
-  $n_count = $conn->prepare($n_sql);
-  $n_count->execute();
-  $count = $n_count->rowCount();
-
-  echo "<script>var n_count = ".json_encode($count).";</script>";
-
+  HomeController::getNCount($userid);
 } else {
   $sUsername = NULL;
 }
