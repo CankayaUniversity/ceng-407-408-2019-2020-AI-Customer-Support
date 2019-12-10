@@ -115,8 +115,13 @@ if (isset($_POST['QuestionSubmit']) && $qTitle != '' && $qDescription != ''){
     $qTags = str_replace('-', ',', strtolower($qTags));
     $conn->exec("INSERT INTO questions(q_title,q_description,q_tags,q_author) VALUES ('$qTitle','$qDescription','$qTags','$qAuthor');");
 
+    $sql = $conn->query("SELECT q_id FROM questions WHERE q_author = '$qAuthor' ORDER BY q_date DESC LIMIT 1",PDO::FETCH_ASSOC)->fetch();
+    $Qid = $sql['q_id'];
+    $sql = $conn->query("SELECT user_id FROM users WHERE is_admin = 1 LIMIT 1",PDO::FETCH_ASSOC)->fetch();
+    $adminID = $sql['user_id'];
+    
     $sql="INSERT INTO notifications (n_description,n_author,n_post_id, n_notified_id) VALUES
-    ('$qTitle', '$qAuthor', 2, 1);";
+    ('$qTitle', '$qAuthor',$Qid, $adminID);";
     $conn->exec($sql);
     ?>
     <script>window.location.replace("index.php");</script>
