@@ -14,5 +14,4 @@ class HomeController
 
 } 
 
-$obj = new HomeController; 
 ?>

@@ -1,6 +1,10 @@
 <?php 
 include 'header.php';
 session_start();
+
+$conne = new Mysql();
+$conn = $conne->dbConnect();
+
 if($sUsername == null){
     echo"<script>
     window.location.replace('index.php')
