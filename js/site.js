@@ -46,9 +46,9 @@ jQuery(document).ready(function($) {
 
 $(function () {
 
-	var count = 6;
+	var count = n_count;
 	var lastCount = 0;
-  
+
 	// For Modal
 	var notifications = new Array();
 	notifications.push({
