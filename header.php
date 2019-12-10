@@ -13,7 +13,7 @@ include 'inc/config.php';
 
 echo get_client_ip();
 
-exit(0);
+die();
 
 if( isset($_SESSION['user_Username']) ){
   $sUsername = $_SESSION['user_Username'];
