@@ -1,5 +1,6 @@
 <?php
 include_once("inc/config.php");
+include_once("inc/Conn.php");
 include_once("helpers/helperDev.php");
 session_start();
 
