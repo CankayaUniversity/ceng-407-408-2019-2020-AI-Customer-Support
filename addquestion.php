@@ -111,6 +111,12 @@ if (isset($_POST['QuestionSubmit']) && $qTitle != '' && $qDescription != ''){
     $qTags = $_POST['QuestionTags'];
     $qTags = str_replace('-', ',', strtolower($qTags));
     $conn->exec("INSERT INTO questions(q_title,q_description,q_tags,q_author) VALUES ('$qTitle','$qDescription','$qTags','$qAuthor');");
-    ?><script>window.location.replace("index.php");</script><?php   
+
+    $sql="INSERT INTO notifications (n_description,n_author,n_post_id, n_notified_id) VALUES
+    ('$qTitle', '$qAuthor', 2, 1);";
+    $conn->exec($sql);
+    ?>
+    <script>window.location.replace("index.php");</script>
+    <?php   
 }
 ?>
