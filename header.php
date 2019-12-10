@@ -10,8 +10,8 @@ include 'helpers/helperMeta.php';
 include 'helpers/homeController.php';
 include 'helpers/helperDev.php';
 
-/* $conne = new Mysql();
-$conn = $conne->dbConnect(); */
+$conne = new Mysql();
+$conn = $conne->dbConnect();
 
 if( isset($_SESSION['user_Username']) ){
   $sUsername = $_SESSION['user_Username'];
