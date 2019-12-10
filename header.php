@@ -10,11 +10,6 @@ include 'helpers/helperMeta.php';
 include 'helpers/helperDev.php';
 include 'inc/config.php';
 
-
-echo get_client_ip();
-
-die();
-
 if( isset($_SESSION['user_Username']) ){
   $sUsername = $_SESSION['user_Username'];
 } else {
