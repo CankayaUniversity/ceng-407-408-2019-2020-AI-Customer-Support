@@ -12,9 +12,19 @@ include 'inc/config.php';
 
 if( isset($_SESSION['user_Username']) ){
   $sUsername = $_SESSION['user_Username'];
+  $userid = $_SESSION['user_UserID'];
+  $n_sql = "SELECT * FROM notifications WHERE n_notified_id = '$userid'";
+  $n_count = $conn->prepare($n_sql);
+  $n_count->execute();
+  $count = $n_count->rowCount();
+
+  echo "<script>var n_count = ".json_encode($count).";</script>";
+
 } else {
   $sUsername = NULL;
 }
+
+//json_encode($selamlarselamlar)
 
 ?>
 
