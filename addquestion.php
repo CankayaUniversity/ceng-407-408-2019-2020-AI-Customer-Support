@@ -7,7 +7,9 @@ if($sUsername == null){
     window.location.replace('index.php')
     </script>";
 }
-
+/* ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL); */
 ?>
 
 <body>
@@ -103,8 +105,8 @@ $qDescription = $_POST['QuestionDesc'];
 $qAuthor = $_SESSION["user_UserID"];
 
 if (isset($_POST['QuestionSubmit']) && $qTitle != '' && $qDescription != ''){ 
-    $qTitle = $_POST['QuestionTitle'];
-    $qDescription = $_POST['QuestionDesc'];
+    $qTitle = addslashes($_POST['QuestionTitle']);
+    $qDescription = addslashes($_POST['QuestionDesc']);
     $qAuthor = $_SESSION["user_UserID"];
     $qTags = $_POST['QuestionTags'];
     $qTags = str_replace('-', ',', strtolower($qTags));
