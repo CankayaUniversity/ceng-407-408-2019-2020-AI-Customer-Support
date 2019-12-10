@@ -39,6 +39,7 @@ if($action==1){
 
 if ($action == 0){
   if($Email == NULL || $Email == ''){
+    header('Location: index.php');
     exit(0);
   }
 
