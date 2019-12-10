@@ -4,22 +4,10 @@
     <title>Install Customer Support DB</title>
     <link rel="shortcut icon" href="images/favicon.png" />
 
-    <!-- Fonts-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-
     <!-- Style Sheet-->
     <script src="js/jquery.min.js"></script>
-    <link rel='stylesheet' id='responsive-css-css' href='css/res.css' type='text/css' media='all' />
-    <link rel='stylesheet' id='main-css-css' href='css/site.css' type='text/css' media='all' />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="css/font-awesome.min.css">
-
-    <script type="text/javascript" src="js/site.js"></script>
-
 </head>
 <body>
     <center>
