@@ -1,5 +1,6 @@
 <?php
 include_once("inc/config.php");
+include_once("helpers/helperDev.php");
 session_start();
 
 $action = $_POST["action"];
@@ -45,10 +46,11 @@ if ($action == 0){
   $Firstname = $_POST['firstname'];
   $Lastname = $_POST['lastname']; 
   $ConfirmPassword = $_POST['confirmpass'];
+  $UserIp = get_client_ip();
 
   if($ConfirmPassword == $Password){
-    $sqlAddUser = "INSERT INTO users(firstname,surname,email,username,password_,is_verified,is_admin)
-    VALUES ('$Firstname','$Lastname','$Email','$Username','$Password',0,0);";
+    $sqlAddUser = "INSERT INTO users(firstname,surname,email,username,password_,ip_address,is_verified,is_admin)
+    VALUES ('$Firstname','$Lastname','$Email','$Username','$Password','$UserIp',0,0);";
     $conn->exec($sqlAddUser);
 
     $query = $conn->query("SELECT * FROM users WHERE email='$Email' && password_='$Password'",PDO::FETCH_ASSOC);

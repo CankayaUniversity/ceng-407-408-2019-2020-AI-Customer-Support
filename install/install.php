@@ -119,6 +119,7 @@ if (isset($_POST['register'])) {
             password_ varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
             create_date datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
             last_login datetime DEFAULT CURRENT_TIMESTAMP,
+            ip_address nvarchar(50) DEFAULT 'UNKNOWN',
             is_verified int NOT NULL,
             is_admin int NOT NULL
             );";

@@ -50,7 +50,7 @@ function timeAgo($date) {
     return $print;
 }
 
-// Function to get the client IP address
+/* ***  Function to get the client IP address *** */
 function get_client_ip() {
     $ipaddress = '';
     if (getenv('HTTP_CLIENT_IP'))
