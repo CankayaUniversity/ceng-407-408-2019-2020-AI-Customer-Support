@@ -1538,7 +1538,10 @@ a:hover {
   .articles-list > h3 {
     font-weight: 600;
     margin-bottom: 20px;
+    font-family: monospace;
     font-size: 20px;
+    color:#49afcd
+    
   }
   .articles-list > h3 span {
     color: #6f7579;
@@ -1556,11 +1559,11 @@ a:hover {
     margin: 0;
   }
   ul.articles::before {
-    content: '\f006';
+    content: '\f138';
     font-family: 'FontAwesome';
     float: left;
-    margin-left: -1.5em;
-    color: #0074D9;
+    margin-left: -0.5em;
+    color: #bb1515;
   }
   ul.articles .article-entry {
     position: relative;
@@ -1590,7 +1593,7 @@ a:hover {
     font-weight: 600;
   }
   .article-entry > h4 a {
-    color: #d8691a;
+    color: #bb1515;
   }
   .article-entry > h4 a:hover {
     color: #395996;
@@ -1599,9 +1602,9 @@ a:hover {
     display: block;
     margin-bottom: 10px;
     color: #29212c;
-    font-family: serif;
+    font-family: monospace;
     font-style: italic;
-    font-size: medium;
+    font-size: small;
   }
   .article-entry .like-count {
     position: absolute;
