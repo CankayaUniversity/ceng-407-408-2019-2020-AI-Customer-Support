@@ -47,7 +47,7 @@ if ($action == 0){
   $Firstname = $_POST['firstname'];
   $Lastname = $_POST['lastname']; 
   $ConfirmPassword = $_POST['confirmpass'];
-  $UserIp = get_client_ip();
+  $UserIp = helperDev::get_client_ip();
 
   if($ConfirmPassword == $Password){
     $sqlAddUser = "INSERT INTO users(firstname,surname,email,username,password_,ip_address,is_verified,is_admin)

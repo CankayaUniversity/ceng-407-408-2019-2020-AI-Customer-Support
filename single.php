@@ -71,7 +71,7 @@
                                 $c_title = $res['c_title'];
                                 $c_description = $res['c_description'];
                                 $c_id = $res['c_id'];
-                                $time_ago = timeAgo($res['c_date']);
+                                $time_ago = helperDev::timeAgo($res['c_date']);
                                 $user = $conn->query("SELECT user_id, username, q_author FROM users,questions WHERE user_id='$c_author'",PDO::FETCH_ASSOC)->fetch();
                             ?>
                             <div class="card card-white post">

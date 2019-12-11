@@ -24,6 +24,23 @@ function Mysql()    {
     $this->userName = $dbPara->userName;
     $this->passCode = $dbPara->passCode;
     $dbPara = NULL;
+    $this->checkEnv();
+    
+}
+
+function checkEnv() {
+    if ($_SERVER['HTTP_HOST'] == 'localhost' || $_SERVER['HTTP_HOST'] == 'localhost:8080' || $_SERVER['HTTP_HOST'] == 'localhost:80') {
+        define('ENV', 'dev');
+        //$environment = 'dev';
+    } else {
+        define('ENV', 'live');
+        //$environment = 'live';
+    }
+    /* *** Set default timezone *** */
+
+    date_default_timezone_set('America/New_York');
+
+    /* *** Find time ago for comments *** */
 }
 
 function dbConnect()    {
