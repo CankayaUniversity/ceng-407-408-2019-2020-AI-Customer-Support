@@ -20,11 +20,11 @@ if ($_SERVER['HTTP_HOST'] == 'localhost' || $_SERVER['HTTP_HOST'] == 'localhost:
     //$environment = 'live';
 }
 
-/* *** Set default timezone *** */
+/* *** Set default timezone *** */ 
 
 date_default_timezone_set('America/New_York');
 
-/* *** Find time ago for comments *** */
+/* **** Find time ago for comments **** */
 
 /* $file_pointer = 'inc/config.php';
 
