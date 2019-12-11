@@ -8,6 +8,9 @@ error_reporting(-1); */
 include 'helpers/helperMeta.php';
 include 'helpers/homeController.php';
 include 'helpers/helperDev.php';
+
+helperDev::getEnv();
+
 if(ENV == "live"){
 include 'inc/config.php';
 } else {

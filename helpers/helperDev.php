@@ -49,4 +49,14 @@ class helperDev
 
         return $ipaddress;
     }
+
+    public function getEnv() {
+        if ($_SERVER['HTTP_HOST'] == 'localhost' || $_SERVER['HTTP_HOST'] == 'localhost:8080' || $_SERVER['HTTP_HOST'] == 'localhost:80') {
+            define('ENV', 'dev');
+            //$environment = 'dev';
+        } else {
+            define('ENV', 'live');
+            //$environment = 'live';
+        }
+    }
 }
