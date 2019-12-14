@@ -290,7 +290,6 @@ $(document).ready(function(){
 });  
 
 </script>
-
 <script id="notificationTemplate" type="text/html">
     <!-- NOTIFICATION -->
     <a class="dropdown-item dropdown-notification" href="{{href}}">
@@ -306,3 +305,5 @@ $(document).ready(function(){
       </div>
     </a>
   </script>
+  <?php HomeController::getNotifications($userid); ?>
+

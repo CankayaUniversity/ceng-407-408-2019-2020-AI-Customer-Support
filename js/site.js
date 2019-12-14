@@ -49,45 +49,6 @@ $(function () {
 	var count = n_count;
 	var lastCount = 0;
 
-	// For Modal
-	var notifications = new Array();
-	notifications.push({
-	  href: "#",
-	  image: "Modification",
-	  texte: "Votre incident " + makeBadge("17-0253") + " a été modifié",
-	  date: "Mercredi 10 Mai, à 9h53"
-	});
-	notifications.push({
-	  href: "#",
-	  image: "Horloge",
-	  texte: "Vous avez " + makeBadge("13") + " incidents en retards",
-	  date: "Mercredi 10 Mai, à 8h00"
-	});
-	notifications.push({
-	  href: "#",
-	  image: "Visible",
-	  texte: "Un nouvel incident dans votre groupe " + makeBadge("réseau"),
-	  date: "Mardi 9 Mai, à 18h12"
-	});
-	notifications.push({
-	  href: "#",
-	  image: "Ajout",
-	  texte: "Ouverture du problème " + makeBadge("17-0008"),
-	  date: "Mardi 9 Mai, à 15h23"
-	});
-	notifications.push({
-	  href: "#",
-	  image: "Annulation",
-	  texte: "Clotûre du problème " + makeBadge("17-0007"),
-	  date: "Mardi 9 Mai, à 12h16"
-	});
-	notifications.push({
-	  href: "#",
-	  image: "Recherche",
-	  texte: "Ouverture de l'incident " + makeBadge("17-1234") + " depuis le portail web",
-	  date: "Mardi 9 Mai, à 10h14"
-	});
-  
 	function makeBadge(texte) {
 	  return "<span class=\"badge badge-default\">" + texte + "</span>";
 	}
@@ -219,8 +180,8 @@ $(function () {
 		  for (i = 0; i < count; i++) {
   
 			var template = $('#notificationTemplate').html();
-			template = template.replace("{{href}}", notifications[i].href);
 			template = template.replace("{{image}}", notifications[i].image);
+			template = template.replace("{{href}}", notifications[i].href);
 			template = template.replace("{{texte}}", notifications[i].texte);
 			template = template.replace("{{date}}", notifications[i].date);
   
