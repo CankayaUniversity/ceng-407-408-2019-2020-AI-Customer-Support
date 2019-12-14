@@ -25,6 +25,7 @@ class HomeController
         for($i=0;$i<$count;$i++){
             $r=$q->fetch();
             $desc = $r['n_description'];
+            $desc = wordwrap($desc, 40, "<br>", true);
             $n_date = $r['n_date'];
             echo 
             "
