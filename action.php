@@ -3,6 +3,9 @@ include_once("inc/Conn.php");
 include_once("helpers/helperDev.php");
 session_start();
 
+$conne = new Mysql();
+$conn = $conne->dbConnect();
+
 $action = $_POST["action"];
 $Email = $_POST['email'];
 $Password = $_POST['password'];
