@@ -1,6 +1,5 @@
 <?php 
 include 'header.php';
-session_start();
 
 $conne = new Mysql();
 $conn = $conne->dbConnect();
@@ -103,8 +102,8 @@ $("#QuestionSubmit").click(function() {
 
 <?php
 
-$qTitle = $_POST['QuestionTitle'];
-$qDescription = $_POST['QuestionDesc'];
+$qTitle = isset($_POST['QuestionTitle']);
+$qDescription = isset($_POST['QuestionDesc']);
 $qAuthor = $_SESSION["user_UserID"];
 
 if (isset($_POST['QuestionSubmit']) && $qTitle != '' && $qDescription != ''){ 
