@@ -28,15 +28,15 @@ if($action==1){
               $_SESSION["user_isVerified"]=$r['is_verified'];
           }
           $_SESSION["user_Email"]=$Email;
-      echo 1;
+      return 1;
     }else{
-          // System-based error
-      echo -1;
+        // System-based error
+        return -1;
     }
   }
   else{
       // Email and password does not match
-      echo 0;
+      return 0;
   }
 }
 
@@ -74,7 +74,7 @@ if ($action == 0){
           $_SESSION["user_isVerified"]=$r['is_verified'];
         }
         $_SESSION["user_Email"]=$email;
-        echo 1;
+        return 1;
       }
     }
   }

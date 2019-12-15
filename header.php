@@ -221,7 +221,6 @@ $(document).ready(function(){
           if(response == '1')
           {
             $('#loginModal').hide();
-            window.location.replace("index.php");
             location.reload();
           }
           else if (response == '0')
