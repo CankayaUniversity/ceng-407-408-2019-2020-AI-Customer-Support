@@ -2,7 +2,7 @@
 include 'inc/Conn.php';
 class HomeController 
 {
-    public function getNCount($userid) {
+    public static function getNCount($userid) {
         $conne = new Mysql();
         $conn = $conne->dbConnect();
         $n_sql = "SELECT * FROM notifications WHERE n_notified_id = '$userid'";
