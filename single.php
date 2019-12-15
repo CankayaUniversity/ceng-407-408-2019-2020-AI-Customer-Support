@@ -68,7 +68,7 @@
                             <?php 
                             while($res = $r->fetch(PDO::FETCH_ASSOC)) :
                                 $c_author = $res['c_author'];
-                                $c_title = $res['c_title'];
+                                $c_title = isset($res['c_title']);
                                 $c_description = $res['c_description'];
                                 $c_id = $res['c_id'];
                                 $time_ago = helperDev::timeAgo($res['c_date']);
