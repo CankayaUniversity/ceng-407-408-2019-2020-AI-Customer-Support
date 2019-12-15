@@ -1,5 +1,5 @@
 <?php 
-include '/inc/Conn.php';
+include 'inc/Conn.php';
 class HomeController 
 {
     public function getNCount($userid) {
