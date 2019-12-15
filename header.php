@@ -9,14 +9,8 @@ include 'helpers/helperMeta.php';
 include 'helpers/homeController.php';
 include 'helpers/helperDev.php';
 
-helperDev::getEnv();
-
-if(ENV == "live"){
-include 'inc/config.php';
-} else {
   $conne = new Mysql();
   $conn = $conne->dbConnect();
-}
 
 
 if( isset($_SESSION['user_Username']) ){
