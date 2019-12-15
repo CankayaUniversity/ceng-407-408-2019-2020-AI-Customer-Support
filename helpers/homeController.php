@@ -12,7 +12,7 @@ class HomeController
         echo "<script>var n_count = ".json_encode($count).";</script>";
     }
 
-    public function getNotifications($userid){
+    public static function getNotifications($userid){
         $conne = new Mysql();
         $conn = $conne->dbConnect();
         $n_sql = "SELECT * FROM notifications WHERE n_notified_id = '$userid'";
