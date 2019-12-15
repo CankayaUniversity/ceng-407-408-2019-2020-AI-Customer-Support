@@ -1,24 +1,23 @@
-<?php 
+<?php
 
 session_start();
 
-ini_set('display_errors',1);
-error_reporting(-1); 
+ini_set('display_errors', 1);
+error_reporting(-1);
 
 include 'helpers/helperMeta.php';
 include 'helpers/homeController.php';
 include 'helpers/helperDev.php';
 
-  $conne = new Mysql();
-  $conn = $conne->dbConnect();
+$conne = new Mysql();
+$conn = $conne->dbConnect();
 
-
-if( isset($_SESSION['user_Username']) ){
-  $sUsername = $_SESSION['user_Username'];
-  $userid = $_SESSION['user_UserID'];
-  HomeController::getNCount($userid);
-    } else {
-  $sUsername = NULL;
+if (isset($_SESSION['user_Username'])) {
+    $sUsername = $_SESSION['user_Username'];
+    $userid = $_SESSION['user_UserID'];
+    HomeController::getNCount($userid);
+} else {
+    $sUsername = null;
 }
 
 ?>
@@ -66,15 +65,15 @@ if( isset($_SESSION['user_Username']) ){
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ml-auto">
-        <?php if ($sUsername == null) : ?>
+        <?php if ($sUsername == null): ?>
         <li class="nav-item">
           <a class="nav-link" data-toggle="modal" href="#registerModal" role="button" aria-expanded="false" aria-controls="collapseExample">Sign Up</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" data-toggle="modal" href="#loginModal" role="button" aria-expanded="false" aria-controls="collapseExample">Login</a>
         </li>
-        <?php endif; ?>
-        <?php if ($sUsername !== null) : ?>
+        <?php endif;?>
+        <?php if ($sUsername !== null): ?>
           <li class="nav-item">
           <div class="dropdown nav-button notifications-button hidden-sm-down">
             <a class="btn btn-secondary dropdown-toggle" href="#" id="notifications-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -107,7 +106,7 @@ if( isset($_SESSION['user_Username']) ){
         <li class="nav-item">
           <a class="nav-link" href="logout.php">Logout</a>
         </li>
-        <?php endif; ?>
+        <?php endif;?>
       </ul>
     </div>
   </div>
@@ -207,54 +206,54 @@ if( isset($_SESSION['user_Username']) ){
 
 <script>
 
-$(document).ready(function(){  
-  $('#login_button').click(function(){  
-    var email = $('#email_label').val();  
+$(document).ready(function(){
+  $('#login_button').click(function(){
+    var email = $('#email_label').val();
     var password = $('#password_label').val();
     var action = 1;
-    if(email != '' && password != '')  
+    if(email != '' && password != '')
     {
-      $.ajax({  
-        url:"action.php",  
-        method:"POST",  
-        data: {email:email, password:password, action:action},  
-        success:function(response){   
-          if(response == '1')  
+      $.ajax({
+        url:"action.php",
+        method:"POST",
+        data: {email:email, password:password, action:action},
+        success:function(response){
+          if(response == '1')
           {
             $('#loginModal').hide();
             window.location.replace("index.php");
-            location.reload();    
-          }  
-          else if (response == '0') 
-          {
-            alert("Email and password does not match");  
-            //location.reload();  
+            location.reload();
           }
-          else if (response == '-1') 
+          else if (response == '0')
           {
-            alert("System-based error");  
-            //location.reload();  
-          }    
-        }  
-      });  
-    }  
-    else  
-    {  
-      alert("Both Fields are required");  
-    }  
+            alert("Email and password does not match");
+            //location.reload();
+          }
+          else if (response == '-1')
+          {
+            alert("System-based error");
+            //location.reload();
+          }
+        }
+      });
+    }
+    else
+    {
+      alert("Both Fields are required");
+    }
   });
 
-  $('#logout').click(function(){  
-    var action = -1;  
-    $.ajax({  
-      url:"action.php",  
-      method:"POST",  
-      data:{action:action},  
-      success:function()  
-      {  
-        location.reload();  
-      }  
-    });  
+  $('#logout').click(function(){
+    var action = -1;
+    $.ajax({
+      url:"action.php",
+      method:"POST",
+      data:{action:action},
+      success:function()
+      {
+        location.reload();
+      }
+    });
   });
 
   $('#SignUp').click(function(){
@@ -266,22 +265,22 @@ $(document).ready(function(){
     var ConfirmPassword = $('#ConfirmPassword').val();
     var action = 0;
     if(Email != '' && Password !=''){
-      $.ajax({  
-        url:"action.php",  
-        method:"POST",  
-        data:{action:action, email:Email, password:Password, username:Username, firstname:Firstname, lastname:Lastname, confirmpass:ConfirmPassword},  
-        success:function(response)  
+      $.ajax({
+        url:"action.php",
+        method:"POST",
+        data:{action:action, email:Email, password:Password, username:Username, firstname:Firstname, lastname:Lastname, confirmpass:ConfirmPassword},
+        success:function(response)
         {
           if(response){
             $('#registerModal').hide();
             window.location.replace("index.php");
             location.reload();
           }
-        }  
-      });  
+        }
+      });
     }
-  }); 
-});  
+  });
+});
 
 </script>
 <script id="notificationTemplate" type="text/html">
@@ -299,5 +298,9 @@ $(document).ready(function(){
       </div>
     </a>
   </script>
-  <?php HomeController::getNotifications($userid); ?>
+  <?php
+if (isset($userid)) {
+    HomeController::getNotifications($userid);
+}
+?>
 
