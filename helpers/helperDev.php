@@ -3,7 +3,7 @@ class helperDev
 {
 
 /* *** Find time ago for comments *** */
-    public function timeAgo($date)
+    public static function timeAgo($date)
     {
         $chunks = array(
             array(60 * 60 * 24 * 365, 'year'),
@@ -28,7 +28,7 @@ class helperDev
     }
 
     /* ***  Function to get the client IP address *** */
-    public function get_client_ip()
+    public static function get_client_ip()
     {
         $ipaddress = '';
         if (getenv('HTTP_CLIENT_IP')) {
