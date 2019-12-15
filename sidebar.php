@@ -32,7 +32,7 @@
       <?php 
         $tagCount = substr_count($q_tag,",")+1;
         $i = 0;
-        while($q_tag[$i] != null){
+        while(isset($q_tag[$i]) && $q_tag[$i] != null){
           if($q_tag[$i] == ','){
             echo "<a href='#' rel='tag' class='btn btn-info'>".substr($q_tag,0,$i)."</a> ";
             $delete = substr($q_tag,0,$i+1);
