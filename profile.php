@@ -239,29 +239,29 @@ if ($count = $query -> rowCount()){
 <script>
 $(document).ready(function(){
     
-    $("#first_name").slideUp();
-    $("#NewFirstName").slideUp();
-    $("#slideSaveFirstName").slideUp();
+    $("#first_name").toggle();
+    $("#NewFirstName").toggle();
+    $("#slideSaveFirstName").toggle();
 
-    $("#NewLastName").slideUp();
-    $("#last_name").slideUp();
-    $("#slideSaveLastName").slideUp();
+    $("#NewLastName").toggle();
+    $("#last_name").toggle();
+    $("#slideSaveLastName").toggle();
 
-    $("#NewEmail").slideUp();
-    $("#email").slideUp();
-    $("#slideSaveEmail").slideUp();
+    $("#NewEmail").toggle();
+    $("#email").toggle();
+    $("#slideSaveEmail").toggle();
 
-    $("#NewUserName").slideUp();
-    $("#Username_").slideUp();
-    $("#slideSaveUsername").slideUp();
+    $("#NewUserName").toggle();
+    $("#Username_").toggle();
+    $("#slideSaveUsername").toggle();
 
-    $("#CurrentPass").slideUp();
-    $("#Password_").slideUp();
-    $("#Newpass").slideUp();
-    $("#Password_1").slideUp();
-    $("#Verifypass").slideUp();
-    $("#Password_2").slideUp();
-    $("#slideSavePassword").slideUp();
+    $("#CurrentPass").toggle();
+    $("#Password_").toggle();
+    $("#Newpass").toggle();
+    $("#Password_1").toggle();
+    $("#Verifypass").toggle();
+    $("#Password_2").toggle();
+    $("#slideSavePassword").toggle();
     
     $("#slideEditFirstName").click(function(){
         $("#first_name").slideToggle("fast");
