@@ -4,13 +4,13 @@ include 'header.php';
 if (isset($_GET['post'])) {
     $id = $_GET['post'];
 }
-
+/* 
 if($_SESSION["user_Username"] == null){
     echo"<script>
     window.location.replace('index.php')
     </script>";
 }
-
+ */
 $query = $conn->query("SELECT * FROM users WHERE user_id='$id'",PDO::FETCH_ASSOC);
 if ($count = $query -> rowCount()){
     if($count > 0){
@@ -20,13 +20,13 @@ if ($count = $query -> rowCount()){
         $q = $conn->query($sql);
         $q->setFetchMode(PDO::FETCH_ASSOC);
         while($r=$q->fetch()){
-            $_SESSION["user_UserID"]=$r['user_id'];
-            $_SESSION["user_Username"]=$r['username'];
-            $_SESSION["user_Firstname"]=$r['firstname'];
-            $_SESSION["user_Surname"]=$r['surname'];
-            $_SESSION["user_isAdmin"]=$r['is_admin'];
-            $_SESSION["user_isVerified"]=$r['is_verified'];
-            $_SESSION["user_Email"]=$r['email'];
+            $user_id=$r['user_id'];
+            $username=$r['username'];
+            $firstname=$r['firstname'];
+            $surname=$r['surname'];
+            $is_admin=$r['is_admin'];
+            $is_verified=$r['is_verified'];
+            $email=$r['email'];
         }
     }
 }
@@ -69,7 +69,7 @@ if ($count = $query -> rowCount()){
                                     </label>
                                 </div>
                                 <div class="col-md-6">
-                                    <p><?php echo $_SESSION["user_Firstname"]; ?></p>
+                                    <p><?php echo $firstname; ?></p>
                                 </div>                     
                             </div><hr> 
                         </div>                       
@@ -81,7 +81,7 @@ if ($count = $query -> rowCount()){
                                     </label>
                                 </div>
                                 <div class="col-md-6">
-                                    <?php echo $_SESSION["user_Surname"]; ?>
+                                    <?php echo $surname; ?>
                                 </div>                            
                             </div><hr>
                         </div>
@@ -93,7 +93,7 @@ if ($count = $query -> rowCount()){
                                     </label>
                                 </div>
                                 <div class="col-md-6">
-                                    <?php echo $_SESSION["user_Email"]; ?>
+                                    <?php echo $email; ?>
                                 </div>                              
                             </div><hr>
                         </div>
@@ -105,7 +105,7 @@ if ($count = $query -> rowCount()){
                                     </label>
                                 </div>
                                 <div class="col-md-6">
-                                    <?php echo $_SESSION["user_Username"]; ?>
+                                    <?php echo $username; ?>
                                 </div>
                             </div><hr>
                         </div>
