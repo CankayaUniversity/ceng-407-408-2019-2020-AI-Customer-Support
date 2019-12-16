@@ -114,5 +114,6 @@ if ($count = $query -> rowCount()){
             </div>
         </div>
     </div>
-</div><hr>
+</div>
+<div style="height:156px"></div><hr>
 <?php include 'footer.php';?>
