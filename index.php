@@ -42,7 +42,7 @@
                                         $show = "SELECT * FROM questions ORDER BY q_id DESC LIMIT $starting_limit, $limit";
                                         $r = $conn->prepare($show);
                                         $r->execute();
-
+                                        /*<?php echo "single.php?post=$q_id"; ?>*/
                                         while($res = $r->fetch(PDO::FETCH_ASSOC)) :
                                             $q_author = $res['q_author'];
                                             $q_title = $res['q_title'];
@@ -51,11 +51,12 @@
                                             $q_like = $res['q_like'];
                                             $newDate = date("d m Y", strtotime($origin_q_date));
                                             $user = $conn->query("SELECT user_id, username, q_author FROM users,questions WHERE user_id='$q_author'",PDO::FETCH_ASSOC)->fetch();
+                                            $user_id = $user['user_id'];
                                     ?>
                                     <ul class="articles">
                                         <li class="article-entry standard">
                                             <h4> <a href='<?php echo "single.php?post=$q_id"; ?>' class="d-block text-gray-dark"><?php echo $q_title; ?></a></h4>
-                                            <span class="article-meta"><?php echo $newDate; ?> <a href="#" title="View all posts in Server &amp; Database"><?php echo $user['username']; ?></a></span>
+                                            <span class="article-meta"><?php echo $newDate; ?> <a href='<?php echo "userpage.php?post=$user_id"; ?>'><?php echo $user['username']; ?></a></span>
                                             <span class="like-count"><?php echo $q_like; ?></span>
                                         </li>
                                     </ul>
@@ -76,11 +77,12 @@
                                         $q_like = $res['q_like'];
                                         $newDate = date("d m Y", strtotime($origin_q_date));
                                         $user = $conn->query("SELECT user_id, username, q_author FROM users,questions WHERE user_id='$q_author'",PDO::FETCH_ASSOC)->fetch();
+                                        $user_id = $user['user_id'];
                                     ?>
                                     <ul class="articles">
                                         <li class="article-entry standard">
                                             <h4> <a href='<?php echo "single.php?post=$q_id"; ?>' class="d-block text-gray-dark"><?php echo $q_title; ?></a></h4>
-                                            <span class="article-meta"><?php echo $newDate; ?> <a href="#" title="View all posts in Server &amp; Database"><?php echo $user['username']; ?></a></span>
+                                            <span class="article-meta"><?php echo $newDate; ?> <a href="<?php echo "userpage.php?post=$user_id"; ?>"><?php echo $user['username']; ?></a></span>
                                             <span class="like-count"><?php echo $q_like; ?></span>
                                         </li>
                                     </ul>
