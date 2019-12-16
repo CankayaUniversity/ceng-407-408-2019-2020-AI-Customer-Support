@@ -27,11 +27,12 @@ class HomeController
             $desc = $r['n_description'];
             $desc = wordwrap($desc, 40, "<br>", true);
             $n_date = $r['n_date'];
+            $n_post_id = $r['n_post_id'];
             echo 
             "
             <script>
                 notifications.push({
-                    href: 'index.php',
+                    href: 'single.php?post=$n_post_id',
                     image: 'Modification',
                     texte: '$desc',
                     date: '$n_date'
