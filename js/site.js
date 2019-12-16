@@ -45,8 +45,10 @@ jQuery(document).ready(function($) {
 // Notification
 
 $(function () {
-
-	var count = n_count;
+	var count = 0;
+	if (typeof n_count !== 'undefined') {
+		var count = n_count;
+	}
 	var lastCount = 0;
 
 	function makeBadge(texte) {
