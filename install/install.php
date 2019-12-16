@@ -1,18 +1,16 @@
-
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Install Customer Support DB</title>
     <link rel="shortcut icon" href="images/favicon.png" />
-
     <!-- Style Sheet-->
     <script src="js/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">  
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </head>
 <body>
+<div style=" margin: 120px 50px 100px;">
     <center>
-        <h1>Install Customer Support DB</h1>
-        <img src="../images/mascot.png" alt="mascot" class="img-fluid" width="20%" height="40%"></a>
+        <img src="../images/mascot.png" alt="mascot" class="img-fluid" width="300px" height="300px">
     </center>
     <form action="install.php" method="post">
         <div class="container">
@@ -52,6 +50,7 @@
                             <input type="text" id="db_name" name="db_name" placeholder="set db name" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
                         </div>
                     </div> 
+                    <br>
                     <div class="row">
                             <div class="col-md-3"></div> 
                     <div class ="col-md-4">
@@ -60,7 +59,8 @@
                     </div>
                 </div>    
             </div>
-        </div> 
+        </div>
+        </div>  
     </form>
 </body>
 
