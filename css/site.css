@@ -204,7 +204,6 @@ form.search-form input.search-btn:hover {
 .widget ul li {
     list-style: none;
     padding: 8px 8px 8px 23px;
-    background: url("../images/li-arrow.png") no-repeat 8px 15px;
     border-bottom: 1px solid #f2f2f2;
 }
 
@@ -1569,10 +1568,6 @@ a:hover {
     position: relative;
     border-bottom: 1px solid #f2f2f2;
     padding: 0 0 0 24px;
-    background: url("../images/standard.png") no-repeat 0 3px;
-  }
-  ul.articles .article-entry.standard {
-    background: url("../images/standard.png") no-repeat 0 3px;
   }
   ul.articles .article-entry.video {
     background: url("../images/video.png") no-repeat 0 3px;
