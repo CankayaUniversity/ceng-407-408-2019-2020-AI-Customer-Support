@@ -1,14 +1,10 @@
 <?php include "header.php";?>
 
 <body class="bg-gradient-primary">
-
   <div class="container">
-
     <!-- Outer Row -->
     <div class="row justify-content-center">
-
       <div class="col-xl-10 col-lg-12 col-md-9">
-
         <div class="card o-hidden border-0 shadow-lg my-5">
           <div class="card-body p-0">
             <!-- Nested Row within Card Body -->
@@ -21,10 +17,10 @@
                   </div>
                   <form class="user">
                     <div class="form-group">
-                      <input type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address...">
+                      <input type="email" class="form-control form-control-user" id="email_label" name="email_label" aria-describedby="emailHelp" placeholder="Enter Email Address...">
                     </div>
                     <div class="form-group">
-                      <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
+                      <input type="password" class="form-control form-control-user" id="password_label" name="password_label" placeholder="Password">
                     </div>
                     <div class="form-group">
                       <div class="custom-control custom-checkbox small">
@@ -32,9 +28,7 @@
                         <label class="custom-control-label" for="customCheck">Remember Me</label>
                       </div>
                     </div>
-                    <a href="index.html" class="btn btn-primary btn-user btn-block">
-                      Login
-                    </a>
+                    <button type="submit" id="login_button" class="btn btn-primary btn-user btn-block">LOGIN</button>
                     <hr>
                     <a href="index.html" class="btn btn-google btn-user btn-block">
                       <i class="fab fa-google fa-fw"></i> Login with Google
@@ -55,11 +49,8 @@
             </div>
           </div>
         </div>
-
       </div>
-
     </div>
-
   </div>
 
   <!-- Bootstrap core JavaScript-->
@@ -74,4 +65,39 @@
 
 </body>
 
+<script>
+$(document).ready(function(){
+  $('#login_button').click(function(){
+    var email = $('#email_label').val();
+    var password = $('#password_label').val();
+    var action = 1;
+    if(email != '' && password != '')
+    {
+      $.ajax({
+        url:"action.php",
+        method:"POST",
+        data: {email:email, password:password, action:action},
+        success:function(response){
+          if(response == '1')
+          {
+            location.reload();
+          }
+          else if (response == '0')
+          {
+            alert("Email and password does not match");
+          }
+          else if (response == '-1')
+          {
+            alert("System-based error");
+          }
+        }
+      });
+    }
+    else
+    {
+      alert("Both Fields are required");
+    }
+  });
+});
+</script>
 </html>
