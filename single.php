@@ -96,7 +96,7 @@
                                         <div class="title h5">
                                             <a href="#"><b><?php echo $user['username'] ?></b></a> made a post.
                                         </div>
-                                        <h6 class="text-muted time"><?php echo $time_ago ?> minute ago</h6>
+                                        <h6 class="text-muted time"><?php echo $time_ago ?></h6>
                                     </div>
                                 </div>
                                 <div class="post-description">
