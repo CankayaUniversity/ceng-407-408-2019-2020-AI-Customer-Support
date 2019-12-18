@@ -12,7 +12,8 @@ $conn = $conne->dbConnect();
 
 /* if (isset($_SESSION['user_Username'])) {
     header('Location: index.php');
-} else {
+} else 
+{
     $sUsername = null;
 } */
 
