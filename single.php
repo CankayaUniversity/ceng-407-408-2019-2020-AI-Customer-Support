@@ -30,16 +30,29 @@
                                         <?php echo $q_title; ?>
                                     </li>
                                 </ul>
+                                
                                 <article class=" type-post format-standard hentry clearfix">
                                     <h2 class="post-title"><a href="#"><?php echo $q_title; ?></a></h1>
-                                    <?php echo $sql["username"]; ?>
-                                    <div class="post-meta clearfix">
-                                        <span class="date"><?php echo $q_date; ?></span>
-                                    </div>
-                                    <!-- end of post meta -->
+                                    <div class="card bg-light post">
+                                        <div class="post-heading">
+                                            <div class="float-left image">
+                                                <img src="images/mascot.png" height="60" weight="60" class="img-circle avatar" alt="user profile image">
+                                            </div>
+                                            <div class="float-left meta">
+                                                <div class="title h5">
+                                                <b><?php echo $sql["username"]; ?></b>
+                                                </div>
+                                                <h6 class="text-muted time">Asked on, <?php echo $q_date; ?></h6>
+                                                    
+                                            </div>     
+                                        </div>
+                                        <hr>  
+                                        <div class="post-heading">     
                                     <p>
                                         <?php echo $q_description; ?>
                                     </p>
+                                    </div>
+                                </div>
                                 </article>
                                 <div class="like-btn">
                                     <form id="like-it-form" action="#" method="post">
@@ -74,10 +87,10 @@
                                 $time_ago = helperDev::timeAgo($res['c_date']);
                                 $user = $conn->query("SELECT user_id, username, q_author FROM users,questions WHERE user_id='$c_author'",PDO::FETCH_ASSOC)->fetch();
                             ?>
-                            <div class="card card-white post">
+                            <div class="card bg-light post">
                                 <div class="post-heading">
                                     <div class="float-left image">
-                                        <img src="images/mascot.png" height="60" weight="60" class="img-circle avatar" alt="user profile image">
+                                    <img src="images/mascot.png" height="60" weight="60" class="img-circle avatar" alt="user profile image">
                                     </div>
                                     <div class="float-left meta">
                                         <div class="title h5">
@@ -90,13 +103,57 @@
                                     <p><?php echo $c_description; ?></p>
                                 </div>
                             </div>
+
+                            
                             <?php endwhile; ?>
                             <?php for ($page=1; $page <= $total_pages ; $page++):?>
                             <a href='<?php echo "?page=$page"; ?>' class="links"><?php echo $page; ?></a>
                             <?php endfor; ?>
+
+                            <div class="card">
+                            <div class="card-header">
+                                         Your Answer
+                             </div>
+                                <div class="card-body">
+                                <div id="editparent">
+                                    <div id="editControls">
+                                        <div class="btn-group">
+                                            <a class="btn btn-xs btn-default" data-role="undo" href="#" title="Undo"><i class="fa fa-undo"></i></a>
+                                            <a class="btn btn-xs btn-default" data-role="redo" href="#" title="Redo"><i class="fa fa-repeat"></i></a>
+                                        </div>
+                                        <div class="btn-group">
+                                            <a class="btn btn-xs btn-default" data-role="bold" href="#" title="Bold"><i class="fa fa-bold"></i></a>
+                                            <a class="btn btn-xs btn-default" data-role="italic" href="#" title="Italic"><i class="fa fa-italic"></i></a>
+                                            <a class="btn btn-xs btn-default" data-role="underline" href="#" title="Underline"><i class="fa fa-underline"></i></a>
+                                            <a class="btn btn-xs btn-default" data-role="strikeThrough" href="#" title="Strikethrough"><i class="fa fa-strikethrough"></i></a>
+                                        </div>
+                                        <div class="btn-group">
+                                            <a class="btn btn-xs btn-default" data-role="indent" href="#" title="Blockquote"><i class="fa fa-indent"></i></a>
+                                            <a class="btn btn-xs btn-default" data-role="insertUnorderedList" href="#" title="Unordered List"><i class="fa fa-list-ul"></i></a>
+                                            <a class="btn btn-xs btn-default" data-role="insertOrderedList" href="#" title="Ordered List"><i class="fa fa-list-ol"></i></a>
+                                        </div>
+                                        <div class="btn-group">
+                                            <a class="btn btn-xs btn-default" data-role="h1" href="#" title="Heading 1"><i class="fa fa-header"></i><sup>1</sup></a>
+                                            <a class="btn btn-xs btn-default" data-role="h2" href="#" title="Heading 2"><i class="fa fa-header"></i><sup>2</sup></a>
+                                            <a class="btn btn-xs btn-default" data-role="h3" href="#" title="Heading 3"><i class="fa fa-header"></i><sup>3</sup></a>
+                                            <a class="btn btn-xs btn-default" data-role="p" href="#" title="Paragraph"><i class="fa fa-paragraph"></i></a>
+                                        </div>
+                                    </div>
+                                    <div id="editor" contenteditable>
+                                    </div>
+                                    <form>
+                                    <textarea name="AnswerDesc" id="AnswerDesc" required="required" style="display:none;"></textarea><br>
+                                    
+                                    <button type="submit" class="btn btn-warning" name="AnswerSubmit" id="AnswerSubmit">Post Answer</button>
+                                   
+                                    </form>
+                                </div>
+                            </div>
+                            
                         </section>
                     </div>
                 </div>
+                
                 <?php include "sidebar.php";?>
             </div>
         </div>
