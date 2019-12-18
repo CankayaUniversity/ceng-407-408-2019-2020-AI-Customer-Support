@@ -84,7 +84,7 @@
                                 $c_title = isset($res['c_title']);
                                 $c_description = $res['c_description'];
                                 $c_id = $res['c_id'];
-                                $time_ago = helperDev::timeAgo($res['c_date']);
+                                $time_ago = helperDev::timeAgo($c_id);
                                 $user = $conn->query("SELECT user_id, username, q_author FROM users,questions WHERE user_id='$c_author'",PDO::FETCH_ASSOC)->fetch();
                             ?>
                             <div class="card bg-light post">
@@ -96,7 +96,7 @@
                                         <div class="title h5">
                                             <a href="#"><b><?php echo $user['username'] ?></b></a> made a post.
                                         </div>
-                                        <h6 class="text-muted time"><?php echo $time_ago ?> minute ago</h6>
+                                        <h6 class="text-muted time"><?php echo $time_ago ?> ago</h6>
                                     </div>
                                 </div>
                                 <div class="post-description">
