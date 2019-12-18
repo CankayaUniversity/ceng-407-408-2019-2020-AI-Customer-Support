@@ -16,7 +16,7 @@
                     <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
                   </div>
                   <form class="user">
-                    <div class="form-group">
+                    <div class="form-group" action="action.php">
                       <input type="email" class="form-control form-control-user" id="email_label" name="email_label" aria-describedby="emailHelp" placeholder="Enter Email Address...">
                     </div>
                     <div class="form-group">
@@ -28,7 +28,7 @@
                         <label class="custom-control-label" for="customCheck">Remember Me</label>
                       </div>
                     </div>
-                    <button type="submit" id="login_button" class="btn btn-primary btn-user btn-block">LOGIN</button>
+                    <button type="submit" id="login_button" name="login_button" class="btn btn-primary btn-user btn-block">LOGIN</button>
                     <hr>
                     <a href="index.html" class="btn btn-google btn-user btn-block">
                       <i class="fab fa-google fa-fw"></i> Login with Google
@@ -52,17 +52,6 @@
       </div>
     </div>
   </div>
-
-  <!-- Bootstrap core JavaScript-->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-  <!-- Core plugin JavaScript-->
-  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-  <!-- Custom scripts for all pages-->
-  <script src="js/site.min.js"></script>
-
 </body>
 
 <script>
@@ -80,7 +69,7 @@ $(document).ready(function(){
         success:function(response){
           if(response == '1')
           {
-            location.reload();
+            window.location.href = "index.php";
           }
           else if (response == '0')
           {
