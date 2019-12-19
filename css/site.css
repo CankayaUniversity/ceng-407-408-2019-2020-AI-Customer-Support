@@ -37,7 +37,7 @@ blockquote p {
 /* Header - Search ---------------------------------------------------------------------------------------------------*/
 
 .search-area-wrapper {
-    background: #49afcd url(../images/mascot.png) center top no-repeat;
+    background: #6c757d url(../images/mascot.png) center top no-repeat;
     background-size: 10%;
     background-position: 80% 2%;
     min-height: 279px;
@@ -217,9 +217,9 @@ form.search-form input.search-btn:hover {
 }
 
 .support-widget {
-    border: 1px solid #e9e6c4;
+    border: 1px solid #6c757d;
     padding: 10px 100px 10px 20px;
-    background: #eefedc url("../images/mascot.png") no-repeat 95% 20px;
+    background: var(--white) url(../images/mascot.png) no-repeat 95% 20px;
     background-size: 80px;
     margin-bottom: 20px;
 }
@@ -250,9 +250,9 @@ form.search-form input.search-btn:hover {
 }
 
 .quick-links-widget {
-    border: 1px solid #e9e6c4;
+    border: 1px solid #6c757d;
     padding: 10px 15px 15px;
-    background: #eefedc url("../images/links.png") no-repeat 95% 20px;
+    background: #ffffff url(../images/links.png) no-repeat 95% 20px;
 }
 
 .quick-links-widget h3 {
@@ -614,7 +614,7 @@ a#scroll-top:hover {
 
 footer .main-footer {
     padding: 20px 0;
-    background: #252525;
+    background: #343a40;
 }
 
 footer ul {
@@ -626,7 +626,7 @@ footer ul {
 /* Copy Right Footer */
 
 .footer-copyright {
-    background: #222;
+    background: #343a40;
     padding: 5px 0;
 }
 
@@ -646,7 +646,7 @@ footer ul {
 }
 
 .footer-copyright nav ul li {
-    border-left: 1px solid #505050;
+    border-left: 1px solid #343a40;
     display: inline-block;
     line-height: 12px;
     margin: 0;
@@ -741,7 +741,7 @@ footer.light .footer-copyright {
 }
 
 .widget2 li a {
-    color: #ff8d1e;
+    color: #f8f9fa;
 }
 
 .widget2 li a:hover {
@@ -852,7 +852,7 @@ ul.social-footer2 li a {
 .navbar-custom {
     padding-top: 1rem;
     padding-bottom: 1rem;
-    background-color: #49afcd
+    background-color: #6C757C
 }
 
 .navbar-custom .navbar-brand {
@@ -1539,7 +1539,7 @@ a:hover {
     margin-bottom: 20px;
     font-family: monospace;
     font-size: 20px;
-    color:#49afcd
+    color:#6c757d
     
   }
   .articles-list > h3 span {
@@ -1547,7 +1547,7 @@ a:hover {
     font-size: 16px;
   }
   .articles-list > h3 a {
-    color: #dc3545;
+    color: #6c757d;
   }
   .articles-list > h3 a:hover {
     color: #395996;
@@ -1588,7 +1588,7 @@ a:hover {
     font-weight: 600;
   }
   .article-entry > h4 a {
-    color: #bb1515;
+    color: #6c757d;
   }
   .article-entry > h4 a:hover {
     color: #395996;
