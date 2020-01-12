@@ -139,8 +139,11 @@ form.search-form input.search-btn:hover {
     margin-right: 2rem;
     background-color: #fcfcfc;
     font-size: 12px;
+    border: 1px solid rgba(0,0,0,.125);
 }
-
+.breadcrumb a {
+    color: #343a40;
+}
 .hentry .wp-post-image {
     margin: 0 0 20px;
 }
@@ -253,6 +256,9 @@ form.search-form input.search-btn:hover {
     border: 1px solid #6c757d;
     padding: 10px 15px 15px;
     background: #ffffff url(../images/links.png) no-repeat 95% 20px;
+}
+.quick-links-widget a {
+    color: black;
 }
 
 .quick-links-widget h3 {
@@ -1625,4 +1631,7 @@ a:hover {
   }
   #footer ul.articles li.article-entry:last-child {
     border-bottom: 1px solid #535b61;
+  }
+  .post-title a{
+      color: black;
   }
