@@ -219,7 +219,7 @@ $(document).ready(function(){
           {
             $('#loginModal').hide();
             $(location).attr('href', 'index.php')
-            location.reload();
+            location.reload(true);
           }
           else if (response == '0')
           {
