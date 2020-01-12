@@ -1607,6 +1607,9 @@ a:hover {
     font-style: italic;
     font-size: small;
   }
+  .article-entry .article-meta a {
+      color: #bb1515;
+  }
   .article-entry .like-count {
     position: absolute;
     bottom: 0px;
