@@ -3,7 +3,7 @@
   <a href="#loginModal" data-toggle="modal" class="btn btn-dark btn-lg btn-block" role="button" aria-pressed="true">Ask a Question</a>
   <?php endif; ?>
   <?php if ($sUsername !== null) : ?>
-  <a href="addquestion.php" class="btn btn-info btn-lg btn-block" role="button" aria-pressed="true">Ask a Question</a>
+  <a href="addquestion.php" class="btn btn-dark btn-lg btn-block" role="button" aria-pressed="true">Ask a Question</a>
   <?php endif; ?>
   </p>
   <section class="widget">
@@ -34,13 +34,13 @@
         $i = 0;
         while(isset($q_tag[$i]) && $q_tag[$i] != null){
           if($q_tag[$i] == ','){
-            echo "<a href='#' rel='tag' class='btn btn-info'>".substr($q_tag,0,$i)."</a> ";
+            echo "<a href='#' rel='tag' class='btn btn-dark'>".substr($q_tag,0,$i)."</a> ";
             $delete = substr($q_tag,0,$i+1);
             $q_tag = str_replace($delete,"",$q_tag);
             $i = -1;
           }
           else if($i == strlen($q_tag)-1){
-            echo "<a href='#' rel='tag' class='btn btn-info'>".substr($q_tag,0,$i+1)."</a>";
+            echo "<a href='#' rel='tag' class='btn btn-dark'>".substr($q_tag,0,$i+1)."</a>";
             $delete = substr($q_tag,0,$i+1);
             $q_tag = str_replace($delete,"",$q_tag);
             $i = -1;

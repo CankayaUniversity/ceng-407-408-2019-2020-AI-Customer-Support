@@ -225,9 +225,9 @@ form.search-form input.search-btn:hover {
 }
 
 .tags-widget {
-    border: 1px solid #e9e6c4;
+    border: 1px solid #343a40;
     padding: 10px 100px 10px 20px;
-    background: #eefedc url("../images/tags.png") no-repeat 95% 20px;
+    background: #ffffff  url("../images/tags.png") no-repeat 95% 20px;
     margin-bottom: 20px;
 }
 
