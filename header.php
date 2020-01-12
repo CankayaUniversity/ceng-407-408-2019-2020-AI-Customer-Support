@@ -247,7 +247,7 @@ $(document).ready(function(){
       data:{action:action},
       success:function()
       {
-        location.reload();
+        document.location.reload(true);
       }
     });
   });
