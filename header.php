@@ -157,7 +157,7 @@ if (isset($_SESSION['user_Username'])) {
         <button type="button" class="close" data-dismiss="modal">
           <span><i class="fa fa-times-circle" aria-hidden="true"></i></span>
         </button>
-        <form class="seminor-login-form" method="post" action="action.php" name="SignUp">
+        <form class="seminor-login-form" method="post" name="SignUp">
           <div class="form-group">
             <input type="text" name="Firstname" id="Firstname" class="form-control" required autocomplete="off">
             <label class="form-control-placeholder" for="name">First Name</label>
@@ -218,6 +218,7 @@ $(document).ready(function(){
           if(response == '1')
           {
             $('#loginModal').hide();
+            $(location).attr('href', 'index.php')
             location.reload();
           }
           else if (response == '0')
