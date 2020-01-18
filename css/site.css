@@ -1638,3 +1638,8 @@ a:hover {
   .post-title a{
       color: black;
   }
+  /* Profile Page Div */
+  .profile-page {
+    margin-bottom: 120px;
+    margin-top: 50px;
+  }

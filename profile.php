@@ -54,188 +54,187 @@ if ($count = $query -> rowCount()){
 }
 
 ?>
-
-<hr>
-<div class="container bootstrap snippet">
-    <div class="row">
-        <div class="col-md-3">
-            <div class="text-center">
-                <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar"> 
+<div class="profile-page">
+    <div class="container bootstrap snippet">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="text-center">
+                    <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar"> 
+                </div>
+                <br>
+                <ul class="list-group">
+                    <li class="list-group-item text-muted">Status</li>
+                    <li class="list-group-item text-right"><span style="float: left"><strong>Questions asked</strong></span> 
+                        <?php
+                            $sql="SELECT * FROM questions WHERE q_author='$id'";
+                            $q = $conn->query($sql);
+                            $q->setFetchMode(PDO::FETCH_ASSOC);
+                            $count=0;
+                            while($r=$q->fetch()){
+                                $count++;
+                            }
+                            echo $count;
+                        ?>
+                    </li>
+                </ul>
             </div>
-            <br>
-            <ul class="list-group">
-                <li class="list-group-item text-muted">Status</li>
-                <li class="list-group-item text-right"><span style="float: left"><strong>Questions asked</strong></span> 
-                    <?php
-                        $sql="SELECT * FROM questions WHERE q_author='$id'";
-                        $q = $conn->query($sql);
-                        $q->setFetchMode(PDO::FETCH_ASSOC);
-                        $count=0;
-                        while($r=$q->fetch()){
-                            $count++;
-                        }
-                        echo $count;
-                    ?>
-                </li>
-            </ul>
-        </div>
-        <div class="col-md-9">
-            <div class="tab-content">
-                <div class="tab-pane active" id="home">
-                    <form id="form1" name="form1" action="profile.php" method="post"><hr>
-                        <div class="form-group">
-                            <div class="row">
-                                <div class="col-md-5">
-                                    <label for="first_name">
-                                        <h4><p><strong>First name </strong></p></h4>
-                                    </label>
-                                </div>
-                                <div class="col-md-6">
-                                    <p><?php echo $_SESSION["user_Firstname"]; ?></p>
-                                </div>
-                                <div class="col-md-1">
-                                    <button class="btn btn-outline-warning" id="slideEditFirstName" type="button"> Edit</button>
-                                </div>
-                                <div class="col-md-3">
-                                    <label for="first_name">
-                                        <p id="NewFirstName"><strong> New First Name </strong></p>
-                                    </label>
-                                </div>
-                                <div class="col-md-8">
-                                    <input type="text" class="form-control" name="first_name" id="first_name"  title="enter your first name if any.">
-                                </div>
-                                <div class="col-md-1">
-                                    <button class="btn btn-xs btn-warning pull-right" id="slideSaveFirstName" name ="slideSaveFirstName" type="submit">Save</button>
-                                </div>                        
-                            </div><hr> 
-                        </div>                       
-                        <div class="form-group">
-                            <div class="row">
-                                <div class="col-md-5">  
-                                    <label for="last_name">
-                                        <h4><p><strong>Last name </strong></p></h4>
-                                    </label>
-                                </div>
-                                <div class="col-md-6">
-                                    <?php echo $_SESSION["user_Surname"]; ?>
-                                </div>
-                                <div class="col-md-1">
-                                    <button class="btn btn-outline-warning" id="slideEditLastName" type="button"> Edit</button>
-                                </div>
-                                <div class="col-md-3">
-                                    <label for="first_name">
-                                        <p id="NewLastName"><strong> New Last Name </strong></p>
-                                    </label>
-                                </div>
-                                <div class="col-md-8">
-                                    <input type="text" class="form-control" name="last_name" id="last_name"  title="enter your last name if any.">
-                                </div>
-                                <div class="col-md-1">
-                                    <button class="btn btn-xs btn-warning pull-right" id="slideSaveLastName" name ="slideSaveLastName" type="submit">Save</button>
-                                </div>
-                            </div><hr>
-                        </div>
-                        <div class="form-group">
-                            <div class="row">
-                                <div class="col-md-5"> 
-                                    <label for="email">
-                                        <h4><p><strong>Email </strong></p></h4>
-                                    </label>
-                                </div>
-                                <div class="col-md-6">
-                                    <?php echo $_SESSION["user_Email"]; ?>
-                                </div>
-                                <div class="col-md-1">
-                                    <button class="btn btn-outline-warning" id="slideEditEmail" type="button">Edit</button>
-                                </div>  
-                                <div class="col-md-3">
-                                    <label for="email">
-                                        <p id="NewEmail"><strong> New Email </strong></p>
-                                    </label>
-                                </div>  
-                                <div class="col-md-8">
-                                    <input type="email" class="form-control" name="email" id="email"  title="enter your email.">  
-                                </div> 
-                                <div class="col-md-1">
-                                    <button class="btn btn-xs btn-warning pull-right" id="slideSaveEmail" name ="slideSaveEmail" type="submit">Save</button>
-                                </div>
-                            </div><hr>
-                        </div>
-                        <div class="form-group">
-                            <div class="row">
-                                <div class="col-md-5">
-                                    <label for="Username">
-                                        <h4><p><strong>Username </strong></p></h4>
-                                    </label>
-                                </div>
-                                <div class="col-md-6">
-                                    <?php echo $_SESSION["user_Username"]; ?>
-                                </div>
-                                <div class="col-md-1">
-                                    <button class="btn btn-outline-warning" id="slideEditUsername" type="button">Edit</button>
-                                </div> 
-                                <div class="col-md-3">
-                                    <label for="Username">
-                                        <p id ="NewUserName"><strong> New Username </strong></p>
-                                    </label>
-                                </div> 
-                                <div class="col-md-8">
-                                    <input type="text" class="form-control" name="Username_" id="Username_" title="enter your username.">
-                                </div>
-                                <div class="col-md-1">
-                                    <button class="btn btn-xs btn-warning pull-right" id="slideSaveUsername" name ="slideSaveUsername" type="submit">Save</button>
-                                </div>
-                            </div><hr>
-                        </div>
-                        <div class="form-group">
-                            <div class="row">
-                                <div class="col-md-5">
-                                    <label>
-                                        <h4><p><strong>Password</strong></p></h4>
-                                    </label>
-                                </div>
-                                <div class="col-md-6">
-                                    *****
-                                </div>
-                                <div class="col-md-1">
-                                    <button class="btn btn-outline-warning" id="slideEditPassword" type="button"> Edit</button>
-                                </div> 
-                                <div class="col-md-3">
-                                    <label for="Password">
-                                        <p id="CurrentPass"><strong> Current Password</strong></p>
-                                    </label>
-                                </div> 
-                                <div class = "col-md-8">
-                                    <input type="text" class="form-control" name="Password_" id="Password_" title="enter your password.">
-                                </div>
-                                <div class="col-md-3">
-                                    <label for="Password">
-                                        <p id="Newpass"><strong> New Password </strong></p>
-                                    </label>
-                                </div> 
-                                <div class = "col-md-8">
-                                    <input type="text" class="form-control" name="Password_1" id="Password_1" title="enter your password.">
-                                </div>
-                                <div class="col-md-3">
-                                    <label for="Password">
-                                        <p id="Verifypass"><strong> Verify Password </strong></p>
-                                    </label>
-                                </div> 
-                                <div class = "col-md-8">
-                                    <input type="text" class="form-control" name="Password_2" id="Password_2" title="enter your password.">
-                                </div>
-                                <div class="col-md-1">
-                                    <button class="btn btn-xs btn-warning pull-right" id="slideSavePassword" name ="slideSavePassword" type="submit">Save</button>
-                                </div>
-                            </div><hr>
-                        </div>
-                    </from>
+            <div class="col-md-9">
+                <div class="tab-content">
+                    <div class="tab-pane active" id="home">
+                        <form id="form1" name="form1" action="profile.php" method="post"><hr>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <label for="first_name">
+                                            <h4><p><strong>First name </strong></p></h4>
+                                        </label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p><?php echo $_SESSION["user_Firstname"]; ?></p>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <button class="btn btn-outline-warning" id="slideEditFirstName" type="button"> Edit</button>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="first_name">
+                                            <p id="NewFirstName"><strong> New First Name </strong></p>
+                                        </label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <input type="text" class="form-control" name="first_name" id="first_name"  title="enter your first name if any.">
+                                    </div>
+                                    <div class="col-md-1">
+                                        <button class="btn btn-xs btn-warning pull-right" id="slideSaveFirstName" name ="slideSaveFirstName" type="submit">Save</button>
+                                    </div>                        
+                                </div><hr> 
+                            </div>                       
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-5">  
+                                        <label for="last_name">
+                                            <h4><p><strong>Last name </strong></p></h4>
+                                        </label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <?php echo $_SESSION["user_Surname"]; ?>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <button class="btn btn-outline-warning" id="slideEditLastName" type="button"> Edit</button>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="first_name">
+                                            <p id="NewLastName"><strong> New Last Name </strong></p>
+                                        </label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <input type="text" class="form-control" name="last_name" id="last_name"  title="enter your last name if any.">
+                                    </div>
+                                    <div class="col-md-1">
+                                        <button class="btn btn-xs btn-warning pull-right" id="slideSaveLastName" name ="slideSaveLastName" type="submit">Save</button>
+                                    </div>
+                                </div><hr>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-5"> 
+                                        <label for="email">
+                                            <h4><p><strong>Email </strong></p></h4>
+                                        </label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <?php echo $_SESSION["user_Email"]; ?>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <button class="btn btn-outline-warning" id="slideEditEmail" type="button">Edit</button>
+                                    </div>  
+                                    <div class="col-md-3">
+                                        <label for="email">
+                                            <p id="NewEmail"><strong> New Email </strong></p>
+                                        </label>
+                                    </div>  
+                                    <div class="col-md-8">
+                                        <input type="email" class="form-control" name="email" id="email"  title="enter your email.">  
+                                    </div> 
+                                    <div class="col-md-1">
+                                        <button class="btn btn-xs btn-warning pull-right" id="slideSaveEmail" name ="slideSaveEmail" type="submit">Save</button>
+                                    </div>
+                                </div><hr>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <label for="Username">
+                                            <h4><p><strong>Username </strong></p></h4>
+                                        </label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <?php echo $_SESSION["user_Username"]; ?>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <button class="btn btn-outline-warning" id="slideEditUsername" type="button">Edit</button>
+                                    </div> 
+                                    <div class="col-md-3">
+                                        <label for="Username">
+                                            <p id ="NewUserName"><strong> New Username </strong></p>
+                                        </label>
+                                    </div> 
+                                    <div class="col-md-8">
+                                        <input type="text" class="form-control" name="Username_" id="Username_" title="enter your username.">
+                                    </div>
+                                    <div class="col-md-1">
+                                        <button class="btn btn-xs btn-warning pull-right" id="slideSaveUsername" name ="slideSaveUsername" type="submit">Save</button>
+                                    </div>
+                                </div><hr>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <label>
+                                            <h4><p><strong>Password</strong></p></h4>
+                                        </label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        *****
+                                    </div>
+                                    <div class="col-md-1">
+                                        <button class="btn btn-outline-warning" id="slideEditPassword" type="button"> Edit</button>
+                                    </div> 
+                                    <div class="col-md-3">
+                                        <label for="Password">
+                                            <p id="CurrentPass"><strong> Current Password</strong></p>
+                                        </label>
+                                    </div> 
+                                    <div class = "col-md-8">
+                                        <input type="text" class="form-control" name="Password_" id="Password_" title="enter your password.">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="Password">
+                                            <p id="Newpass"><strong> New Password </strong></p>
+                                        </label>
+                                    </div> 
+                                    <div class = "col-md-8">
+                                        <input type="text" class="form-control" name="Password_1" id="Password_1" title="enter your password.">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="Password">
+                                            <p id="Verifypass"><strong> Verify Password </strong></p>
+                                        </label>
+                                    </div> 
+                                    <div class = "col-md-8">
+                                        <input type="text" class="form-control" name="Password_2" id="Password_2" title="enter your password.">
+                                    </div>
+                                    <div class="col-md-1">
+                                        <button class="btn btn-xs btn-warning pull-right" id="slideSavePassword" name ="slideSavePassword" type="submit">Save</button>
+                                    </div>
+                                </div><hr>
+                            </div>
+                        </from>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div><hr>
-
+</div>
 <script>
 $(document).ready(function(){
     
