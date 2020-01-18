@@ -34,6 +34,8 @@ if (isset($_SESSION['user_Username'])) {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+
     <title>AI Customer Support</title>
 
     <!-- Fonts-->
