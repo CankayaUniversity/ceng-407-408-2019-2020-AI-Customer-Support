@@ -59,7 +59,7 @@ if ($count = $query -> rowCount()){
         <div class="row">
             <div class="col-md-3">
                 <div class="text-center">
-                    <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar"> 
+                    <img src="images/avatar.png" class="avatar img-circle img-thumbnail" alt="avatar"> 
                 </div>
                 <br>
                 <ul class="list-group">
