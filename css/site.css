@@ -160,7 +160,7 @@ form.search-form input.search-btn:hover {
 /* Page - Sidebar ----------------------------------------------------------------------------------------------------*/
 
 .page-content {
-    margin-bottom: 100px;
+    margin-bottom: 15px;
 }
 
 .page-sidebar #twitter_update_list>ul {
@@ -1643,3 +1643,7 @@ a:hover {
     margin-bottom: 120px;
     margin-top: 50px;
   }
+  /* Single Page Post Comment */
+    .single-reserve {
+        margin-bottom: 5px;
+      }

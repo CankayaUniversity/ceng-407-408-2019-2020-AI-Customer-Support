@@ -87,7 +87,7 @@
                                 $time_ago = helperDev::timeAgo($res['c_date']);
                                 $user = $conn->query("SELECT user_id, username, q_author FROM users,questions WHERE user_id='$c_author'",PDO::FETCH_ASSOC)->fetch();
                             ?>
-                            <div class="card bg-light post">
+                            <div class="card bg-light post single-reserve">
                                 <div class="post-heading">
                                     <div class="float-left image">
                                     <img src="images/mascot.png" height="60" weight="60" class="img-circle avatar" alt="user profile image">
