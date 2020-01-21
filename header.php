@@ -75,7 +75,8 @@ if (isset($_SESSION['user_Username'])) {
           </button>
           <div class="dropdown-menu">
             <?php while($res = $r->fetch(PDO::FETCH_ASSOC)) : ?>
-            <a class="dropdown-item" href="#"><?php echo $res['cat_name']; ?></a>
+            <?php $cat_slug = "category.php?category=".$res["cat_id"]; ?>
+            <a class="dropdown-item" href="<?php echo $cat_slug ?>"><?php echo $res['cat_name']; ?></a>
             <?php endwhile; ?>
           </div>
         </div>
