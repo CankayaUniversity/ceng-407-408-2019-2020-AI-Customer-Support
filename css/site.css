@@ -1648,6 +1648,14 @@ a:hover {
     margin-top: 50px;
   }
   /* Single Page Post Comment */
-    .single-reserve {
-        margin-bottom: 5px;
-      }
+  .single-reserve {
+    margin-bottom: 5px;
+  }
+  /* Header Category Button */
+  .header-category {
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.1rem;
+    color: rgb(218, 220, 222);
+  }

@@ -70,8 +70,8 @@ if (isset($_SESSION['user_Username'])) {
         $r->execute(); 
         ?>
         <div class="btn-group">
-          <button type="button" class="btn btn-secondary dropdown-toggle nav-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Categories
+          <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <span class="header-category">Categories</span>
           </button>
           <div class="dropdown-menu">
             <?php while($res = $r->fetch(PDO::FETCH_ASSOC)) : ?>
