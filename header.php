@@ -64,6 +64,21 @@ if (isset($_SESSION['user_Username'])) {
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ml-auto">
+        <?php 
+        $popular = "SELECT * FROM categories ";
+        $r = $conn->prepare($popular);
+        $r->execute(); 
+        ?>
+        <div class="btn-group">
+          <button type="button" class="btn btn-secondary dropdown-toggle nav-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Categories
+          </button>
+          <div class="dropdown-menu">
+            <?php while($res = $r->fetch(PDO::FETCH_ASSOC)) : ?>
+            <a class="dropdown-item" href="#"><?php echo $res['cat_name']; ?></a>
+            <?php endwhile; ?>
+          </div>
+        </div>
         <?php if ($sUsername == null): ?>
         <li class="nav-item">
           <a class="nav-link" data-toggle="modal" href="#registerModal" role="button" aria-expanded="false" aria-controls="collapseExample">Sign Up</a>
