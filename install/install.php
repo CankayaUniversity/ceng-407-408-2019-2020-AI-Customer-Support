@@ -125,7 +125,7 @@ if (isset($_POST['register'])) {
             description_meta varchar(1000) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
             keywords_meta varchar(1000) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
             slug varchar(1000) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-            category int NOT NULL DEFAULT '0',
+            category int NOT NULL DEFAULT '1',
             q_author int NOT NULL,
             q_like int NOT NULL DEFAULT '0',
             q_dislike int NOT NULL  DEFAULT '0',
