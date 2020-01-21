@@ -81,6 +81,17 @@ error_reporting(E_ALL); */
                                         <label for="QuestionTags">Question Tags</label>
                                         <input type="text" class="form-control" id="QuestionTags" name="QuestionTags" placeholder="Please enter tags">
                                     </div>
+                                    <div class="form-group">
+                                    <?php
+                                    $popular = "SELECT cat_id, cat_name FROM categories ";
+                                    $r = $conn->prepare($popular);
+                                    $r->execute(); ?>
+                                    <select name="QuestionCategory" id="QuestionCategory">
+                                    <?php while($res = $r->fetch(PDO::FETCH_ASSOC)) : ?>
+                                    <option value="<?php echo $res['cat_id']; ?>"><?php echo $res['cat_name']; ?></option>
+                                    <?php endwhile; ?>
+                                    </select>
+                                    </div>
                                     <button type="submit" class="btn btn-primary" name="QuestionSubmit" id="QuestionSubmit">Submit</button>
                                 </div>
                             </div>
@@ -112,7 +123,8 @@ if (isset($_POST['QuestionSubmit']) && $qTitle != '' && $qDescription != ''){
     $qAuthor = $_SESSION["user_UserID"];
     $qTags = $_POST['QuestionTags'];
     $qTags = str_replace('-', ',', strtolower($qTags));
-    $conn->exec("INSERT INTO questions(q_title,q_description,q_tags,q_author) VALUES ('$qTitle','$qDescription','$qTags','$qAuthor');");
+    $qCategory = addslashes($_POST['QuestionCategory']);
+    $conn->exec("INSERT INTO questions(q_title,q_description,q_tags,title_meta,description_meta, keywords_meta, slug, q_author,category) VALUES ('$qTitle','$qDescription','$qTags','test','test','test','test','$qAuthor', '$qCategory');");
 
     $sql = $conn->query("SELECT q_id FROM questions WHERE q_author = '$qAuthor' ORDER BY q_date DESC LIMIT 1",PDO::FETCH_ASSOC)->fetch();
     $Qid = $sql['q_id'];
