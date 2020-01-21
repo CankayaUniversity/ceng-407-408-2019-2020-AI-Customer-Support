@@ -124,7 +124,12 @@ if (isset($_POST['QuestionSubmit']) && $qTitle != '' && $qDescription != ''){
     $qTags = $_POST['QuestionTags'];
     $qTags = str_replace('-', ',', strtolower($qTags));
     $qCategory = addslashes($_POST['QuestionCategory']);
-    $conn->exec("INSERT INTO questions(q_title,q_description,q_tags,title_meta,description_meta, keywords_meta, slug, q_author,category) VALUES ('$qTitle','$qDescription','$qTags','test','test','test','test','$qAuthor', '$qCategory');");
+    $qMetaTitle = $qTitle;
+    $qMetaTitle .= " | Atakde.Site";
+    $qMetaDesc = $qDescription;
+    $slug = urlencode($qTitle);
+    $qMetaKey = $qTags;
+    $conn->exec("INSERT INTO questions(q_title,q_description,q_tags,title_meta,description_meta, keywords_meta, slug, q_author,category) VALUES ('$qTitle','$qDescription','$qTags','$qMetaTitle','$qMetaDesc','$qMetaKey','$slug','$qAuthor', '$qCategory');");
 
     $sql = $conn->query("SELECT q_id FROM questions WHERE q_author = '$qAuthor' ORDER BY q_date DESC LIMIT 1",PDO::FETCH_ASSOC)->fetch();
     $Qid = $sql['q_id'];
