@@ -121,6 +121,11 @@ if (isset($_POST['register'])) {
             q_title varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
             q_description varchar(1000) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
             q_tags varchar(1000) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+            title_meta varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+            description_meta varchar(1000) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+            keywords_meta varchar(1000) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+            slug varchar(1000) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+            category int NOT NULL DEFAULT '0',
             q_author int NOT NULL,
             q_like int NOT NULL DEFAULT '0',
             q_dislike int NOT NULL  DEFAULT '0',
@@ -164,6 +169,18 @@ if (isset($_POST['register'])) {
 
         echo "Notifications table created successfully.</br> ";
 
+        $sql = "CREATE TABLE IF NOT EXISTS categories (
+            cat_id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+            cat_name varchar(1000) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+            cat_description varchar(1000) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+            cat_keywords varchar(1000) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+            cat_totalquestion int NOT NULL DEFAULT '0'
+            );";
+
+        $conn->exec($sql);
+
+        echo "Categories table created successfully.</br> ";
+
         $sql= "INSERT INTO users(firstname,surname,email,username,password_,is_verified,is_admin) 
         VALUES ('Arınç Alp','Eren','arinc@arinc.com','arinc','arinc',0,0),
         ('Atakan','Demircioğlu','atakan@atakan.com','atakan','atakan',0,0),
@@ -174,10 +191,10 @@ if (isset($_POST['register'])) {
         ('c','c','c@c.com','c','c',0,1);";
         $conn->exec($sql);
 
-        $sql= "INSERT INTO questions(q_title, q_description, q_tags, q_author) VALUES
-        ('Sample Question Title 1 ', 'Sample Question Description 1 ', 'help', 1),
-        ('Sample Question Title 2 ', 'Sample Question Description 2 ', 'help', 2),
-        ('Sample Question Title 3 ', 'Sample Question Description 3 ', 'help', 3);";
+        $sql= "INSERT INTO questions(q_title, q_description, q_tags, q_author, title_meta, description_meta, keywords_meta, slug) VALUES
+        ('Sample Question Title 1 ', 'Sample Question Description 1 ', 'help', 1, 'Sample Question Title 1', 'Sample Question Description 1', 'sample,question,description,1', 'sample-question-1',),
+        ('Sample Question Title 2 ', 'Sample Question Description 2 ', 'help', 2, 'Sample Question Title 2', 'Sample Question Description 2', 'sample,question,description,2', 'sample-question-2',),
+        ('Sample Question Title 3 ', 'Sample Question Description 3 ', 'help', 3, 'Sample Question Title 3', 'Sample Question Description 3', 'sample,question,description,3', 'sample-question-3',);";
         $conn->exec($sql);
         
         $sql="INSERT INTO comments (c_description,c_author,c_post_id) VALUES
@@ -187,11 +204,18 @@ if (isset($_POST['register'])) {
         ('Sample Comment Description 4 ', 4, 2);";
         $conn->exec($sql);
 
-        $sql="INSERT INTO notifications (n_description,n_author,n_post_id, n_notified_id) VALUES
+        $sql="INSERT INTO notifications (n_description,n_author,n_post_id,n_notified_id) VALUES
         ('Sample Notification Description 1 ', 1, 1, 2),
         ('Sample Notification Description 2 ', 2, 1, 2),
         ('Sample Notification Description 3 ', 3, 2, 1),
         ('Sample Notification Description 4 ', 4, 2, 1);";
+        $conn->exec($sql);
+
+        $sql="INSERT INTO categories (cat_name,cat_description,cat_keywords) VALUES
+        ('Commerce', 'Support for your products', 'Commerce'),
+        ('Profile', 'Profile Support', 'Profile'),
+        ('Technical Issues', 'Technical Support', 'Technical,Issues'),
+        ('Account', 'Private Informations', 'Account');";
         $conn->exec($sql);
 
         echo "Insertions done successfully.</br>";
