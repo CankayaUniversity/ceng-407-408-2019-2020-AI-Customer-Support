@@ -6,7 +6,7 @@
                 <div class="span8 page-content">
                     <div class="row separator">
                      <section class="span8 articles-list">
-                            <h3>Featured Articles</h3>
+                            <h3>All Questions</h3>
                             <?php
                                 if (isset($_GET['category'])) {
                                     $category_id = $_GET['category'];
