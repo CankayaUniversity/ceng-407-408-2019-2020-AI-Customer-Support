@@ -27,16 +27,64 @@ if (isset($_SESSION['user_Username'])) {
 <head>
     <!-- META TAGS -->
 
+    <?php if (preg_match('/single|category|userpage|profile/', $_SERVER['REQUEST_URI'])) {
+    if(preg_match('/single/', $_SERVER['REQUEST_URI'])){
+        
+        if (isset($_GET['post'])) {
+            $post_id = $_GET['post'];
+        }
+        $query = $conn->query("SELECT * FROM questions WHERE q_id='$post_id'",PDO::FETCH_ASSOC);
+        $query->setFetchMode(PDO::FETCH_ASSOC);
+        while($r=$query->fetch()){
+            $title_meta = $r["title_meta"];
+            $description_meta = $r["description_meta"];
+            $keywords_meta = $r["keywords_meta"];
+        }
+    }
+    else if(preg_match('/category/', $_SERVER['REQUEST_URI'])) {
+        
+        if (isset($_GET['category'])) {
+            $category_id = $_GET['category'];
+        }
+        $query = $conn->query("SELECT * FROM categories WHERE cat_id='$category_id'",PDO::FETCH_ASSOC);
+        $query->setFetchMode(PDO::FETCH_ASSOC);
+        while($r=$query->fetch()){
+            $title_meta = $r["cat_name"];
+            $description_meta = $r["cat_description"];
+            $keywords_meta = $r["cat_keywords"];
+        }
+    }
+    else if(preg_match('/userpage|profile/', $_SERVER['REQUEST_URI'])) {
+            $title_meta = "Eklenecek";
+            $description_meta = "Eklenecek";
+            $keywords_meta = "Eklenecek";
+        /*if (isset($_GET['post'])) {
+            $id = $_GET['post'];
+        }
+        $query = $conn->query("SELECT * FROM users WHERE user_id='$id'",PDO::FETCH_ASSOC);
+        $query->setFetchMode(PDO::FETCH_ASSOC);
+        while($r=$query->fetch()){
+            $title_meta = "Eklenecek";
+            $description_meta = "Eklenecek";
+            $keywords_meta = "Eklenecek";
+        }*/
+    }
+    ?>
+    <meta name="keywords" content="<?php echo $keywords_meta ?>" />
+    <meta name="robots" content="<?php echo helperMeta::getDescriptions('robots') ?>" />
+    <meta name="description" content="<?php echo $description_meta ?>" />
+    <title><?php echo $title_meta ?></title>
+    <?php } else { ?>
     <meta name="keywords" content="<?php echo helperMeta::getDescriptions('keywords') ?>" />
     <meta name="robots" content="<?php echo helperMeta::getDescriptions('robots') ?>" />
     <meta name="description" content="<?php echo helperMeta::getDescriptions('description') ?>" />
-
+    <title>AI Customer Support</title>
+    <?php } ?>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
 
-    <title>AI Customer Support</title>
 
     <!-- Fonts-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
