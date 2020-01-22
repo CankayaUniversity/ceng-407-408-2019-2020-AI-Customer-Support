@@ -1659,3 +1659,10 @@ a:hover {
     letter-spacing: 0.1rem;
     color: rgb(218, 220, 222);
   }
+  /* Live search  */
+  .liveresult li{
+      cursor: pointer;
+  }
+  .liveresult li:hover{
+      background: #f2f2f2;
+  }
