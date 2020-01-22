@@ -22,12 +22,14 @@ class HomeController
         echo "<script>var notifications = new Array();</script>";
         $q = $conn->query($n_sql);
         $q->setFetchMode(PDO::FETCH_ASSOC);
-        for($i=0;$i<$count;$i++){
-            $r=$q->fetch();
-            $desc = $r['n_description'];
+        $result = $q->fetchAll();
+        $counter = 0;
+        foreach ($result as $key => $value) {
+
+            $desc = $value['n_description'];
             $desc = wordwrap($desc, 40, "<br>", true);
-            $n_date = $r['n_date'];
-            $n_post_id = $r['n_post_id'];
+            $n_date = $value['n_date'];
+            $n_post_id = $value['n_post_id'];
             echo 
             "
             <script>
@@ -39,14 +41,15 @@ class HomeController
                 });
 
                 var template = $('#notificationTemplate').html();
-                template = template.replace('{{image}}', notifications[$i].image);
-                template = template.replace('{{href}}', notifications[$i].href);
-                template = template.replace('{{texte}}', notifications[$i].texte);
-                template = template.replace('{{date}}', notifications[$i].date);
+                template = template.replace('{{image}}', notifications[$counter].image);
+                template = template.replace('{{href}}', notifications[$counter].href);
+                template = template.replace('{{texte}}', notifications[$counter].texte);
+                template = template.replace('{{date}}', notifications[$counter].date);
     
                 $('#notificationsContainer').append(template);
 
             </script>";
+            $counter++;
         }
     }
 } 
