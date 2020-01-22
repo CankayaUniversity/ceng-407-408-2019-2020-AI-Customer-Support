@@ -1,11 +1,10 @@
 <?php
 include 'helpers/homeController.php';
-    if ($_REQUEST['term']) { // Bir terim gelip gelmediğini kontrol ediyoruz.
+    if ($_REQUEST['term']) { 
         $conne = new Mysql();
         $conn = $conne->dbConnect();
-        $term = $_REQUEST['term']; // Gelen terimi değişkene atıyoruz.
+        $term = $_REQUEST['term']; 
         $query = $conn->query("SELECT * FROM questions WHERE q_title LIKE '%".$term."%'",PDO::FETCH_ASSOC);
-        $query->setFetchMode(PDO::FETCH_ASSOC);
         $result=$query->fetchAll();
         if ($result) { 
             foreach ($result as $key => $value) {
