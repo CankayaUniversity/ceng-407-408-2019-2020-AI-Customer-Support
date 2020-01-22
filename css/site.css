@@ -1666,3 +1666,10 @@ a:hover {
   .liveresult li:hover{
       background: #f2f2f2;
   }
+  .list-group {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    width: 96.48%;
+}
