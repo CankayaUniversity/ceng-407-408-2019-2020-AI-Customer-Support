@@ -5,14 +5,14 @@
             <p class="search-tag-line">If you have any question you can ask below or enter what you are looking!</p>
             <form id="search-form" class="search-form clearfix" method="get" action="#" autocomplete="off">
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search this blog">
+                    <input type="text" class="form-control" autocomplete="off" placeholder="Search this blog">
                     <div class="input-group-append">
                         <button class="btn btn-secondary" type="button">
                             <i class="fa fa-search"></i>
                         </button>
                     </div>
                 </div>
-                <div id="search-error-container"></div>
+                <ul class="list-group liveresult"></ul>
             </form>
         </div>
     </div>
@@ -102,3 +102,24 @@
         </div>
     </div>
     <?php include "footer.php";?>
+
+    <script type="text/javascript">
+    $(document).ready(function(){
+        $('.input-group input[type="text"]').on("keyup input", function(){
+            var input = $(this).val();
+            var resultDropdown = $(".input-group").siblings(".liveresult");
+            if(input.length){
+                $.post('search.php', {term: input}).done(function(data){
+                    resultDropdown.html(data);
+                });
+            }else{
+                resultDropdown.empty();
+            }
+        });
+        /* Sonuç listesinden üzerinde tıklanıp bir öğe seçilirse input box'a yazdırıyoruz. */
+        $(document).on("click", ".liveresult li", function(){
+            $(this).parents(".search-box").find('input[type="text"]').val($(this).text());
+            $(this).parent(".liveresult").empty();
+        });
+    });
+    </script>
