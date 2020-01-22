@@ -12,7 +12,7 @@ include 'helpers/homeController.php';
                 echo '<li class="list-group-item">'.$value["q_title"].'</li>';
             }
         }else{
-            echo '<li class="list-group-item">Eşleşen kayıt bulunamadı.</li>';
+            echo '<li class="list-group-item">No matching records were found.</li>';
         }
     }
 ?>
