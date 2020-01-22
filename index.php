@@ -116,7 +116,6 @@
                 resultDropdown.empty();
             }
         });
-        /* Sonuç listesinden üzerinde tıklanıp bir öğe seçilirse input box'a yazdırıyoruz. */
         $(document).on("click", ".liveresult li", function(){
             $(this).parents(".search-box").find('input[type="text"]').val($(this).text());
             $(this).parent(".liveresult").empty();
