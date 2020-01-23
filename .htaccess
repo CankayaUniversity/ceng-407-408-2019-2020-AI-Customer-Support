@@ -1,3 +1,0 @@
-RewriteEngine On  
-RewriteRule ^sayfa/([a-zA-Z0-9-/]+)$ sayfa.php?post=$1  
-RewriteRule ^sayfa/([a-zA-Z-0-9-]+)/ sayfa.php?post=$1  
