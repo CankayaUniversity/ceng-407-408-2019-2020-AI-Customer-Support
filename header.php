@@ -273,7 +273,7 @@ $(document).ready(function(){
   $('#login_button').click(function(){
     var email = $('#email_label').val();
     var password = $('#password_label').val();
-    var action = 1;
+    var action = "login";
     if(email != '' && password != '')
     {
       $.ajax({
