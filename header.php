@@ -27,13 +27,13 @@ if (isset($_SESSION['user_Username'])) {
 <head>
     <!-- META TAGS -->
 
-    <?php if (preg_match('/single|category|userpage|profile/', $_SERVER['REQUEST_URI'])) {
-    if(preg_match('/single/', $_SERVER['REQUEST_URI'])){
+    <?php if (preg_match('/post|category|userpage|profile/', $_SERVER['REQUEST_URI'])) {
+    if(preg_match('/post/', $_SERVER['REQUEST_URI'])){
         
         if (isset($_GET['post'])) {
-            $post_id = $_GET['post'];
+            $post_slug = $_GET['post'];
         }
-        $query = $conn->query("SELECT * FROM questions WHERE q_id='$post_id'",PDO::FETCH_ASSOC);
+        $query = $conn->query("SELECT * FROM questions WHERE slug='$post_slug'",PDO::FETCH_ASSOC);
         $query->setFetchMode(PDO::FETCH_ASSOC);
         while($r=$query->fetch()){
             $title_meta = $r["title_meta"];
