@@ -28,7 +28,7 @@
                     <div class="widget2 no-box">
                         <h5 class="widget-title2">Get Started<span></span></h5>
                         <p>Install the database in your system and get started!</p>
-                        <a class="btn btn-secondary" href="install/install.php">Install Now</a>
+                        <a class="btn btn-secondary" href="/install/install.php">Install Now</a>
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-3">
