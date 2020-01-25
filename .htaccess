@@ -1,0 +1,3 @@
+RewriteEngine On  
+RewriteRule ^post/([a-zA-Z0-9-/]+)$ single.php?post=$1
+RewriteRule ^post/([a-zA-Z-0-9-]+)/ single.php?post=$1

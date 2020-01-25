@@ -36,7 +36,7 @@
                                     <div class="card bg-light post">
                                         <div class="post-heading">
                                             <div class="float-left image">
-                                                <img src="images/mascot.png" height="60" weight="60" class="img-circle avatar" alt="user profile image">
+                                                <img src="../images/mascot.png" height="60" weight="60" class="img-circle avatar" alt="user profile image">
                                             </div>
                                             <div class="float-left meta">
                                                 <div class="title h5">
@@ -90,7 +90,7 @@
                             <div class="card bg-light post single-reserve">
                                 <div class="post-heading">
                                     <div class="float-left image">
-                                    <img src="images/mascot.png" height="60" weight="60" class="img-circle avatar" alt="user profile image">
+                                    <img src="../images/mascot.png" height="60" weight="60" class="img-circle avatar" alt="user profile image">
                                     </div>
                                     <div class="float-left meta">
                                         <div class="title h5">
