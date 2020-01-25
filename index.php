@@ -47,6 +47,7 @@
                                             $q_author = $res['q_author'];
                                             $q_title = $res['q_title'];
                                             $q_id = $res['q_id'];
+                                            $q_slug = $res['slug'];
                                             $origin_q_date = $res['q_date'];
                                             $q_like = $res['q_like'];
                                             $newDate = date("d m Y", strtotime($origin_q_date));
@@ -55,7 +56,7 @@
                                     ?>
                                     <ul class="articles">
                                         <li class="article-entry">
-                                            <h4> <a href='<?php echo "post/$q_id"; ?>' class="d-block text-gray-dark"><?php echo $q_title; ?></a></h4>
+                                            <h4> <a href='<?php echo "post/$q_slug"; ?>' class="d-block text-gray-dark"><?php echo $q_title; ?></a></h4>
                                             <span class="article-meta"><?php echo $newDate; ?> <a href='<?php echo "userpage.php?post=$user_id"; ?>'><?php echo $user['username']; ?></a></span>
                                             <span class="like-count"><?php echo $q_like; ?></span>
                                         </li>
@@ -81,7 +82,7 @@
                                     ?>
                                     <ul class="articles">
                                         <li class="article-entry">
-                                            <h4> <a href='<?php echo "post/$q_id"; ?>' class="d-block text-gray-dark"><?php echo $q_title; ?></a></h4>
+                                            <h4> <a href='<?php echo "post/$q_slug"; ?>' class="d-block text-gray-dark"><?php echo $q_title; ?></a></h4>
                                             <span class="article-meta"><?php echo $newDate; ?> <a href="<?php echo "userpage.php?post=$user_id"; ?>"><?php echo $user['username']; ?></a></span>
                                             <span class="like-count"><?php echo $q_like; ?></span>
                                         </li>

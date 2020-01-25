@@ -127,7 +127,7 @@ if (isset($_POST['QuestionSubmit']) && $qTitle != '' && $qDescription != ''){
     $qMetaTitle = $qTitle;
     $qMetaTitle .= " | Atakde.Site";
     $qMetaDesc = $qDescription;
-    $slug = urlencode($qTitle);
+    $slug = helperDev::SEOFriendlyURL($qTitle);
     $qMetaKey = $qTags;
     $conn->exec("INSERT INTO questions(q_title,q_description,q_tags,title_meta,description_meta, keywords_meta, slug, q_author,category) VALUES ('$qTitle','$qDescription','$qTags','$qMetaTitle','$qMetaDesc','$qMetaKey','$slug','$qAuthor', '$qCategory');");
 
