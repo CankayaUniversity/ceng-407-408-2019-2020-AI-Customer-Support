@@ -19,8 +19,7 @@ if (isset($_SESSION['user_Username'])) {
 } else {
     $sUsername = null;
 }
-$cur_dir = explode('\\', getcwd());
-echo $cur_dir[count($cur_dir)-1];
+echo basename(dirname(__FILE__));
 ?>
 
 <!doctype html>
