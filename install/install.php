@@ -104,7 +104,7 @@ if (isset($_POST['register'])) {
             surname varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
             email varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
             username varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-            password_ varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+            password_ varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
             create_date datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
             last_login datetime DEFAULT CURRENT_TIMESTAMP,
             ip_address nvarchar(50) DEFAULT 'UNKNOWN',
@@ -183,13 +183,13 @@ if (isset($_POST['register'])) {
         echo "Categories table created successfully.</br> ";
 
         $sql= "INSERT INTO users(firstname,surname,email,username,password_,is_verified,is_admin) 
-        VALUES ('Arınç Alp','Eren','arinc@arinc.com','arinc','arinc',0,0),
-        ('Atakan','Demircioğlu','atakan@atakan.com','atakan','atakan',0,0),
-        ('Alperen','Sarınay','alperen@alperen.com','alperen','alperen',0,0),
+        VALUES ('Arınç Alp','Eren','arinc@arinc.com','arinc','$2y$04$39Qbmj9YV04JXKBzWloixu4FIU37OwD3w7EAwICxNr6EZLMK6Wdky',0,0),
+        ('Atakan','Demircioğlu','atakan@atakan.com','atakan','$2y$04$39Qbmj9YV04JXKBzWloixu4FIU37OwD3w7EAwICxNr6EZLMK6Wdky',0,0),
+        ('Alperen','Sarınay','alperen@alperen.com','alperen','$2y$04$39Qbmj9YV04JXKBzWloixu4FIU37OwD3w7EAwICxNr6EZLMK6Wdky',0,0),
         ('Cavid','Aydın','cavid@cavid.com','cavid','cavid',0,0),
-        ('a','a','a@a.com','a','a',0,0),
-        ('b','b','b@b.com','b','b',1,0),
-        ('c','c','c@c.com','c','c',0,1);";
+        ('a','a','a@a.com','a','$2y$04$39Qbmj9YV04JXKBzWloixu4FIU37OwD3w7EAwICxNr6EZLMK6Wdky',0,0),
+        ('b','b','b@b.com','b','$2y$04$39Qbmj9YV04JXKBzWloixu4FIU37OwD3w7EAwICxNr6EZLMK6Wdky',1,0),
+        ('c','c','c@c.com','c','$2y$04$39Qbmj9YV04JXKBzWloixu4FIU37OwD3w7EAwICxNr6EZLMK6Wdky',0,1);";
         $conn->exec($sql);
 
         $sql= "INSERT INTO questions(q_title, q_description, q_tags, q_author, title_meta, description_meta, keywords_meta, slug) VALUES
