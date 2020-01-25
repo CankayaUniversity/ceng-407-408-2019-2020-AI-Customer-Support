@@ -305,19 +305,6 @@ $(document).ready(function(){
     }
   });
 
-  $('#logout').click(function(){
-    var action = -1;
-    $.ajax({
-      url:"action.php",
-      method:"POST",
-      data:{action:action},
-      success:function()
-      {
-        location.reload();
-      }
-    });
-  });
-
   $('#SignUp').click(function(){
     var Email = $('#Email').val();
     var Password = $('#Password').val();
@@ -325,7 +312,7 @@ $(document).ready(function(){
     var Firstname = $('#Firstname').val();
     var Lastname = $('#Lastname').val();
     var ConfirmPassword = $('#ConfirmPassword').val();
-    var action = 0;
+    var action = "register";
     if(Email != '' && Password !=''){
       $.ajax({
         url:"action.php",

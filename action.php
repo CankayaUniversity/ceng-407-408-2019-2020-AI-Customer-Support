@@ -12,7 +12,7 @@ $Password = trim($_POST['password']);
 $options = array("cost"=>4);
 $hashPassword = password_hash($Password,PASSWORD_BCRYPT,$options);
 
-if($action=="login"){
+if($action == "login") {
   $query = $conn->query("SELECT * FROM users WHERE email='$Email'",PDO::FETCH_ASSOC)->fetch();
   if (isset($query)){
       if(password_verify($Password,$query['password_'])){
@@ -31,7 +31,7 @@ if($action=="login"){
   }
 }
 
-if ($action == 0){
+if ($action == "register") {
   if($Email == NULL || $Email == ''){
     header('Location: index.php');
   }
