@@ -31,17 +31,14 @@ class HomeController
             $n_date = $value['n_date'];
             $n_post_id = $value['n_post_id'];
             
-            $sql = $conn->query("SELECT q_title FROM questions WHERE q_id = $n_post_id ",PDO::FETCH_ASSOC)->fetch();
-            $question_title = $sql['q_title'];
-
-            $HelpDev = new HelperDev();
-            $question_title = $HelpDev->SEOFriendlyURL($question_title);
+            $sql = $conn->query("SELECT slug FROM questions WHERE q_id = $n_post_id ",PDO::FETCH_ASSOC)->fetch();
+            $slug = $sql['slug'];
 
             echo 
             "
             <script>
                 notifications.push({
-                    href: '../post/$question_title',
+                    href: '/post/$slug',
                     image: 'Modification',
                     texte: '$desc',
                     date: '$n_date'
