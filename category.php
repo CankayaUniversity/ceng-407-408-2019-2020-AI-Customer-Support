@@ -24,13 +24,14 @@
                                     $q_tag = $r['q_tags'];
                                     $q_like = $r['q_like'];
                                     $origin_q_date = $r['q_date'];
+                                    $q_slug = $r['slug'];
                                     $newDate = date("d m Y", strtotime($origin_q_date));
                                     $user = $conn->query("SELECT user_id, username, q_author FROM users,questions WHERE user_id='$q_author_id'",PDO::FETCH_ASSOC)->fetch();
                                     $user_id = $user['user_id'];
                                 ?>
                                 <ul class="articles">
                                     <li class="article-entry">
-                                        <h4> <a href='<?php echo "single.php?post=$q_id"; ?>' class="d-block text-gray-dark"><?php echo $q_title; ?></a></h4>
+                                        <h4> <a href='<?php echo "/post/$q_slug"; ?>' class="d-block text-gray-dark"><?php echo $q_title; ?></a></h4>
                                         <span class="article-meta"><?php echo $newDate; ?> <a href='<?php echo "userpage.php?post=$user_id"; ?>'><?php echo $user['username']; ?></a></span>
                                         <span class="like-count"><?php echo $q_like; ?></span>
                                     </li>
