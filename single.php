@@ -20,12 +20,13 @@
                                         $q_author_id = $r['q_author'];
                                         $q_date = $r['q_date'];
                                         $q_tag = $r['q_tags'];
+                                        $category_id = $r['category'];
                                     }
-                                    $sql = $conn->query("SELECT username FROM users WHERE user_id='$q_author_id'")->fetch(); 
+                                    $sql = $conn->query("SELECT username FROM users WHERE user_id='$q_author_id'")->fetch();
+                                    $categoryName = $conn->query("SELECT cat_name FROM categories WHERE cat_id='$category_id'")->fetch(); 
                                 ?>
                                 <ul class="breadcrumb">
-                                    <li><a href="#">Knowledge Base Theme</a><span class="divider">/</span></li>
-                                    <li><a href="#" title="View all posts in Server &amp; Database">Server &amp; Database</a> <span class="divider">/</span></li>
+                                    <li><a href="#"><?php echo $categoryName['cat_name'] ?></a><span class="divider">/</span></li>
                                     <li class="active">
                                         <?php echo $q_title; ?>
                                     </li>
