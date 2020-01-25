@@ -25,6 +25,7 @@ if (isset($_SESSION['user_Username'])) {
 <!doctype html>
 <html lang="en-US">
 <head>
+<base href="/" />
     <!-- META TAGS -->
 
     <?php if (preg_match('/single|category|userpage|profile/', $_SERVER['REQUEST_URI'])) {
