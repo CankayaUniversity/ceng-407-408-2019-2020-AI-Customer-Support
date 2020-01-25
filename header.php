@@ -93,7 +93,7 @@ if (isset($_SESSION['user_Username'])) {
     <link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
 
     <!-- Style Sheet-->
-    <script src="js/jquery.min.js"></script>
+    <script src="/js/jquery.min.js"></script>
     <link rel='stylesheet' id='responsive-css-css' href='/css/res.css' type='text/css' media='all' />
     <link rel='stylesheet' id='main-css-css' href='/css/site.css' type='text/css' media='all' />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
