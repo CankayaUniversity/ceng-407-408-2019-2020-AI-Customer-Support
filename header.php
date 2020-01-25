@@ -19,7 +19,7 @@ if (isset($_SESSION['user_Username'])) {
 } else {
     $sUsername = null;
 }
-echo basename(dirname(__FILE__));
+
 ?>
 
 <!doctype html>
