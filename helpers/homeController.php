@@ -34,6 +34,9 @@ class HomeController
             $sql = $conn->query("SELECT q_title FROM questions WHERE q_id = $n_post_id ",PDO::FETCH_ASSOC)->fetch();
             $question_title = $sql['q_title'];
 
+            $HelpDev = new HelperDev();
+            $question_title = $HelpDev->SEOFriendlyURL($question_title);
+
             echo 
             "
             <script>
