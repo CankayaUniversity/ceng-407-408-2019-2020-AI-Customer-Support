@@ -30,11 +30,15 @@ class HomeController
             $desc = wordwrap($desc, 40, "<br>", true);
             $n_date = $value['n_date'];
             $n_post_id = $value['n_post_id'];
+            
+            $sql = $conn->query("SELECT q_title FROM questions WHERE q_id = $n_post_id ",PDO::FETCH_ASSOC)->fetch();
+            $question_title = $sql['q_title'];
+
             echo 
             "
             <script>
                 notifications.push({
-                    href: 'single.php?post=$n_post_id',
+                    href: '../post/$question_title',
                     image: 'Modification',
                     texte: '$desc',
                     date: '$n_date'

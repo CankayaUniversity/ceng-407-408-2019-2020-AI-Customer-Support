@@ -74,6 +74,7 @@
                                         $q_author = $res['q_author'];
                                         $q_title = $res['q_title'];
                                         $q_id = $res['q_id'];
+                                        $q_slug = $res['slug'];
                                         $origin_q_date = $res['q_date'];
                                         $q_like = $res['q_like'];
                                         $newDate = date("d m Y", strtotime($origin_q_date));

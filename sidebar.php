@@ -24,7 +24,7 @@
     </div>
   </section>
   </p>
-  <?php if (isset($post_id)) : ?>
+  <?php if (isset($slug)) : ?>
   <section class="widget">
     <div class="tags-widget">
       <h3 >Tags</h3><br>

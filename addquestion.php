@@ -137,7 +137,7 @@ if (isset($_POST['QuestionSubmit']) && $qTitle != '' && $qDescription != ''){
     $adminID = $sql['user_id'];
     
     $sql="INSERT INTO notifications (n_description,n_author,n_post_id, n_notified_id) VALUES
-    ('$qTitle', '$qAuthor',$Qid, $adminID);";
+    ('A new question created: $qTitle', '$qAuthor',$Qid, $adminID);";
     $conn->exec($sql);
     ?>
     <script>window.location.replace("index.php");</script>
