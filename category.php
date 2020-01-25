@@ -9,7 +9,9 @@
                             <h3>All Questions</h3>
                             <?php
                                 if (isset($_GET['category'])) {
-                                    $category_id = $_GET['category'];
+                                    $category_slug = $_GET['category'];
+                                    $findCategoryId = $conn->query("SELECT cat_id FROM categories WHERE cat_slug = '$category_slug'", PDO::FETCH_ASSOC)->fetch();
+                                    $category_id = $findCategoryId['cat_id'];
                                 }
                                 $query = $conn->query("SELECT * FROM questions WHERE category='$category_id'",PDO::FETCH_ASSOC);
                                 $query->setFetchMode(PDO::FETCH_ASSOC);

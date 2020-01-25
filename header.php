@@ -44,9 +44,9 @@ if (isset($_SESSION['user_Username'])) {
     else if(preg_match('/category/', $_SERVER['REQUEST_URI'])) {
         
         if (isset($_GET['category'])) {
-            $category_id = $_GET['category'];
+            $category_slug = $_GET['category'];
         }
-        $query = $conn->query("SELECT * FROM categories WHERE cat_id='$category_id'",PDO::FETCH_ASSOC);
+        $query = $conn->query("SELECT * FROM categories WHERE cat_id='$category_slug'",PDO::FETCH_ASSOC);
         $query->setFetchMode(PDO::FETCH_ASSOC);
         while($r=$query->fetch()){
             $title_meta = $r["cat_name"];
@@ -123,7 +123,7 @@ if (isset($_SESSION['user_Username'])) {
           </button>
           <div class="dropdown-menu">
             <?php while($res = $r->fetch(PDO::FETCH_ASSOC)) : ?>
-            <?php $cat_slug = "category.php?category=".$res["cat_id"]; ?>
+            <?php $cat_slug = "/category/".$res["cat_slug"]; ?>
             <a class="dropdown-item" href="<?php echo $cat_slug ?>"><?php echo $res['cat_name']; ?></a>
             <?php endwhile; ?>
           </div>

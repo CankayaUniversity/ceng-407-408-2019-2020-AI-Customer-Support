@@ -174,6 +174,7 @@ if (isset($_POST['register'])) {
             cat_name varchar(1000) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
             cat_description varchar(1000) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
             cat_keywords varchar(1000) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+            cat_slug varchar(1000) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
             cat_totalquestion int NOT NULL DEFAULT '0'
             );";
 
@@ -211,11 +212,11 @@ if (isset($_POST['register'])) {
         ('Sample Notification Description 4 ', 4, 2, 1);";
         $conn->exec($sql);
 
-        $sql="INSERT INTO categories (cat_name,cat_description,cat_keywords) VALUES
-        ('Commerce', 'Support for your products', 'Commerce'),
-        ('Profile', 'Profile Support', 'Profile'),
-        ('Technical Issues', 'Technical Support', 'Technical,Issues'),
-        ('Account', 'Private Informations', 'Account');";
+        $sql="INSERT INTO categories (cat_name,cat_description,cat_keywords,cat_slug) VALUES
+        ('Commerce', 'Support for your products', 'Commerce','commerce'),
+        ('Profile', 'Profile Support', 'Profile','profile'),
+        ('Technical Issues', 'Technical Support', 'Technical,Issues','technical-issues'),
+        ('Account', 'Private Informations', 'Account','account');";
         $conn->exec($sql);
 
         echo "Insertions done successfully.</br>";
