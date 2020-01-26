@@ -76,7 +76,7 @@ if (isset($_SESSION['user_Username'])) {
         $fullname = $r["firstname"]." ";
         $fullname.=$r["surname"];
           $title_meta = $fullname."'s Profile Page";
-          $description_meta = "Eklenecek";
+          $description_meta = "Eklenecek"; //TODO
           $keywords_meta = $fullname;
       }
   }
