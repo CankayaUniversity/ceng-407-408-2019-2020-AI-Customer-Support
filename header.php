@@ -226,27 +226,27 @@ if (isset($_SESSION['user_Username'])) {
         <form class="seminor-login-form" method="post" action="action.php" name="SignUp">
           <div class="form-group">
             <input type="text" name="Firstname" id="Firstname" class="form-control" required autocomplete="off">
-            <label class="form-control-placeholder" for="name">First Name</label>
+            <label class="form-control-placeholder" for="Firstname">First Name</label>
           </div>
           <div class="form-group">
             <input type="text" name="Lastname" id="Lastname" class="form-control" required autocomplete="off">
-            <label class="form-control-placeholder" for="name">Last Name</label>
+            <label class="form-control-placeholder" for="Lastname">Last Name</label>
           </div>
           <div class="form-group">
             <input type="text" name="Username" id="Username" class="form-control" required autocomplete="off">
-            <label class="form-control-placeholder" for="name">User Name</label>
+            <label class="form-control-placeholder" for="Username">User Name</label>
           </div>
           <div class="form-group">
             <input type="email" name="Email" id="Email" class="form-control" required autocomplete="off">
-            <label class="form-control-placeholder" for="name">Email address</label>
+            <label class="form-control-placeholder" for="Email">Email address</label>
           </div>
           <div class="form-group">
             <input type="password" name="Password" id ="Password" class="form-control" required autocomplete="off" onkeyup='check();'>
-            <label class="form-control-placeholder" for="password">Password</label>
+            <label class="form-control-placeholder" for="Password">Password</label>
           </div>
           <div class="form-group">
             <input type="password" name="ConfirmPassword" id="ConfirmPassword" class="form-control" required autocomplete="off" onkeyup='check();'>
-            <label class="form-control-placeholder" for="password">Confirm Password</label>
+            <label class="form-control-placeholder" for="ConfirmPassword">Confirm Password</label>
             <span id='message'></span>
           </div>
           <div class="form-group forgot-pass-fau text-center ">

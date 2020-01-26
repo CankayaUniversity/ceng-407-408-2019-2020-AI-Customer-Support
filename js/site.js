@@ -254,8 +254,7 @@ $(function () {
   
   });
 
-function loginProcess(){
-  $('#login_button').click(function(){
+  function loginProcess(){
     var email = $('#email_label').val();
     var password = $('#password_label').val();
     var action = "login";
@@ -288,10 +287,8 @@ function loginProcess(){
     {
       alert("Both Fields are required");
     }
-  });
-}
-function registerProcess() {
-    $('#SignUp').click(function(){
+  }
+  function registerProcess() {
     var Email = $('#Email').val();
     var Password = $('#Password').val();
     var Username = $('#Username').val();
@@ -314,5 +311,4 @@ function registerProcess() {
         }
       });
     }
-  });
-}
+  }
