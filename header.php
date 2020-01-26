@@ -54,20 +54,19 @@ if (isset($_SESSION['user_Username'])) {
             $keywords_meta = $r["cat_keywords"];
         }
     }
-    else if(preg_match('/author|profile/', $_SERVER['REQUEST_URI'])) {
-            $title_meta = "Eklenecek";
-            $description_meta = "Eklenecek";
-            $keywords_meta = "Eklenecek";
-        /*if (isset($_GET['post'])) {
-            $id = $_GET['post'];
+    else if(preg_match('/author/', $_SERVER['REQUEST_URI'])) {
+        if (isset($_GET['author'])) {
+            $author = $_GET['author'];
         }
-        $query = $conn->query("SELECT * FROM users WHERE user_id='$id'",PDO::FETCH_ASSOC);
+        $query = $conn->query("SELECT * FROM users WHERE username='$author'",PDO::FETCH_ASSOC);
         $query->setFetchMode(PDO::FETCH_ASSOC);
         while($r=$query->fetch()){
-            $title_meta = "Eklenecek";
+          $fullname = $r["firstname"]." ";
+          $fullname.=$r["surname"];
+            $title_meta = $fullname."'s Profile Page";
             $description_meta = "Eklenecek";
-            $keywords_meta = "Eklenecek";
-        }*/
+            $keywords_meta = $fullname;
+        }
     }
     ?>
     <meta name="keywords" content="<?php echo $keywords_meta ?>" />
