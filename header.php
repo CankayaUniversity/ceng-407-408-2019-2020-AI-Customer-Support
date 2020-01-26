@@ -68,6 +68,18 @@ if (isset($_SESSION['user_Username'])) {
             $keywords_meta = $fullname;
         }
     }
+    else if(preg_match('/profile/', $_SERVER['REQUEST_URI'])) {
+      $metaUserID = $_SESSION["user_UserID"];
+      $query = $conn->query("SELECT * FROM users WHERE user_id='$metaUserID'",PDO::FETCH_ASSOC);
+      $query->setFetchMode(PDO::FETCH_ASSOC);
+      while($r=$query->fetch()){
+        $fullname = $r["firstname"]." ";
+        $fullname.=$r["surname"];
+          $title_meta = $fullname."'s Profile Page";
+          $description_meta = "Eklenecek";
+          $keywords_meta = $fullname;
+      }
+  }
     ?>
     <meta name="keywords" content="<?php echo $keywords_meta ?>" />
     <meta name="robots" content="<?php echo helperMeta::getDescriptions('robots') ?>" />
