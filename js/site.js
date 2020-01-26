@@ -295,7 +295,7 @@ $(function () {
     var Firstname = $('#Firstname').val();
     var Lastname = $('#Lastname').val();
     var ConfirmPassword = $('#ConfirmPassword').val();
-    var action = "register";
+	var action = "register";
     if(Email != '' && Password !=''){
       $.ajax({
         url:"action.php",
@@ -304,9 +304,9 @@ $(function () {
         success:function(response)
         {
           if(response){
-            $('#registerModal').hide();
+			$('#registerModal').hide();
             window.location.replace("index.php");
-            location.reload();
+            //location.reload();
           }
         }
       });

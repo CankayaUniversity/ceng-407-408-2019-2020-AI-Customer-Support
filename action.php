@@ -41,7 +41,6 @@ if ($action == "register") {
   $Lastname = $_POST['lastname']; 
   $ConfirmPassword = $_POST['confirmpass'];
   $UserIp = helperDev::get_client_ip();
-
   if($ConfirmPassword == $Password){
     $sqlAddUser = "INSERT IGNORE INTO users(firstname,surname,email,username,password_,ip_address,is_verified,is_admin)
     VALUES ('$Firstname','$Lastname','$Email','$Username','$hashPassword','$UserIp',0,0);";
@@ -56,9 +55,9 @@ if ($action == "register") {
           $_SESSION["user_isAdmin"]=$query['is_admin'];
           $_SESSION["user_isVerified"]=$query['is_verified'];
           $_SESSION["user_Email"]=$Email;
-          return 1;
+          echo 1;
       }else {
-        return -1;// Email and password does not match
+        echo -1;// Email and password does not match
       }
     }
   }
