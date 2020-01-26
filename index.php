@@ -53,11 +53,12 @@
                                             $newDate = date("d m Y", strtotime($origin_q_date));
                                             $user = $conn->query("SELECT user_id, username, q_author FROM users,questions WHERE user_id='$q_author'",PDO::FETCH_ASSOC)->fetch();
                                             $user_id = $user['user_id'];
+                                            $username = $user['username'];
                                     ?>
                                     <ul class="articles">
                                         <li class="article-entry">
                                             <h4> <a href='<?php echo "post/$q_slug"; ?>' class="d-block text-gray-dark"><?php echo $q_title; ?></a></h4>
-                                            <span class="article-meta"><?php echo $newDate; ?> <a href='<?php echo "userpage.php?post=$user_id"; ?>'><?php echo $user['username']; ?></a></span>
+                                            <span class="article-meta"><?php echo $newDate; ?> <a href='<?php echo "/author/$username"; ?>'><?php echo $user['username']; ?></a></span>
                                             <span class="like-count"><?php echo $q_like; ?></span>
                                         </li>
                                     </ul>
@@ -80,11 +81,12 @@
                                         $newDate = date("d m Y", strtotime($origin_q_date));
                                         $user = $conn->query("SELECT user_id, username, q_author FROM users,questions WHERE user_id='$q_author'",PDO::FETCH_ASSOC)->fetch();
                                         $user_id = $user['user_id'];
+                                        $username = $user['username'];
                                     ?>
                                     <ul class="articles">
                                         <li class="article-entry">
                                             <h4> <a href='<?php echo "post/$q_slug"; ?>' class="d-block text-gray-dark"><?php echo $q_title; ?></a></h4>
-                                            <span class="article-meta"><?php echo $newDate; ?> <a href="<?php echo "userpage.php?post=$user_id"; ?>"><?php echo $user['username']; ?></a></span>
+                                            <span class="article-meta"><?php echo $newDate; ?> <a href="<?php echo "/author/$username"; ?>"><?php echo $user['username']; ?></a></span>
                                             <span class="like-count"><?php echo $q_like; ?></span>
                                         </li>
                                     </ul>

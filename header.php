@@ -27,7 +27,7 @@ if (isset($_SESSION['user_Username'])) {
 <head>
     <!-- META TAGS -->
 
-    <?php if (preg_match('/post|category|userpage|profile/', $_SERVER['REQUEST_URI'])) {
+    <?php if (preg_match('/post|category|author|profile/', $_SERVER['REQUEST_URI'])) {
     if(preg_match('/post/', $_SERVER['REQUEST_URI'])){
         
         if (isset($_GET['post'])) {
@@ -54,7 +54,7 @@ if (isset($_SESSION['user_Username'])) {
             $keywords_meta = $r["cat_keywords"];
         }
     }
-    else if(preg_match('/userpage|profile/', $_SERVER['REQUEST_URI'])) {
+    else if(preg_match('/author|profile/', $_SERVER['REQUEST_URI'])) {
             $title_meta = "Eklenecek";
             $description_meta = "Eklenecek";
             $keywords_meta = "Eklenecek";

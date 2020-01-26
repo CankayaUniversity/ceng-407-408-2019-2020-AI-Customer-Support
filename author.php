@@ -1,22 +1,16 @@
 <?php 
 include 'header.php';
 
-if (isset($_GET['post'])) {
-    $id = $_GET['post'];
+if (isset($_GET['author'])) {
+    $username = $_GET['author'];
 }
-/* 
-if($_SESSION["user_Username"] == null){
-    echo"<script>
-    window.location.replace('index.php')
-    </script>";
-}
- */
-$query = $conn->query("SELECT * FROM users WHERE user_id='$id'",PDO::FETCH_ASSOC);
+
+$query = $conn->query("SELECT * FROM users WHERE username='$username'",PDO::FETCH_ASSOC);
 if ($count = $query -> rowCount()){
     if($count > 0){
         // Email and password match
         $sql = "SELECT user_id,firstname,surname,username,is_verified,is_admin,email
-                FROM users WHERE user_id='$id'";
+                FROM users WHERE username='$username'";
         $q = $conn->query($sql);
         $q->setFetchMode(PDO::FETCH_ASSOC);
         while($r=$q->fetch()){
@@ -38,7 +32,7 @@ if ($count = $query -> rowCount()){
         <div class="row">
             <div class="col-md-3">
                 <div class="text-center">
-                    <img src="images/avatar.png" class="avatar img-circle img-thumbnail" alt="avatar"> 
+                    <img src="/images/avatar.png" class="avatar img-circle img-thumbnail" alt="avatar"> 
                 </div>
                 <br>
                 <ul class="list-group">
