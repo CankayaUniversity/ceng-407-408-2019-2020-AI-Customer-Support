@@ -23,10 +23,10 @@ if($action == "login") {
           $_SESSION["user_isAdmin"]=$query['is_admin'];
           $_SESSION["user_isVerified"]=$query['is_verified'];
           $_SESSION["user_Email"]=$Email;
-          return 1;
+          echo 1;
     }else {
         // Email and password does not match
-        return -1;
+        echo -1;
     }
   }
 }
