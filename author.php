@@ -5,25 +5,14 @@ if (isset($_GET['author'])) {
     $username = $_GET['author'];
 }
 
-$query = $conn->query("SELECT * FROM users WHERE username='$username'",PDO::FETCH_ASSOC);
-if ($count = $query -> rowCount()){
-    if($count > 0){
-        // Email and password match
-        $sql = "SELECT user_id,firstname,surname,username,is_verified,is_admin,email
-                FROM users WHERE username='$username'";
-        $q = $conn->query($sql);
-        $q->setFetchMode(PDO::FETCH_ASSOC);
-        while($r=$q->fetch()){
-            $user_id=$r['user_id'];
-            $username=$r['username'];
-            $firstname=$r['firstname'];
-            $surname=$r['surname'];
-            $is_admin=$r['is_admin'];
-            $is_verified=$r['is_verified'];
-            $email=$r['email'];
-        }
-    }
-}
+    $r = $conn->query("SELECT * FROM users WHERE username='$username'",PDO::FETCH_ASSOC)->fetch();
+    $user_id=$r['user_id'];
+    $username=$r['username'];
+    $firstname=$r['firstname'];
+    $surname=$r['surname'];
+    $is_admin=$r['is_admin'];
+    $is_verified=$r['is_verified'];
+    $email=$r['email']; 
 
 ?>
 

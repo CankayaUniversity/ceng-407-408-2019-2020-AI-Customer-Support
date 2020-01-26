@@ -8,7 +8,7 @@ include 'helpers/homeController.php';
         $result=$query->fetchAll();
         if ($result) { 
             foreach ($result as $key => $value) {
-                echo '<a href="single.php?post='.$value["q_id"].'"><li class="list-group-item">'.$value["q_title"].'</li></a>';
+                echo '<a href="/post/'.$value["slug"].'"><li class="list-group-item">'.$value["q_title"].'</li></a>';
             }
         }else{
             echo '<li class="list-group-item">No matching records were found.</li>';
