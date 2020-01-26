@@ -200,7 +200,7 @@ if (isset($_SESSION['user_Username'])) {
             </label>
           </div>
           <div class="btn-check-log">
-            <button type="submit" id="login_button" class="btn-check-login">LOGIN</button>
+            <button type="submit" id="login_button" onclick="loginProcess()" class="btn-check-login">LOGIN</button>
           </div>
           <div class="forgot-pass-fau text-center pt-3">
             <a href="/reset_pass" class="text-secondary">Forgot Your Password?</a>
@@ -256,7 +256,7 @@ if (isset($_SESSION['user_Username'])) {
             </a>
           </div>
           <div class="btn-check-log">
-            <button type="submit" name="SignUp" id="SignUp" class="btn-check-login">SIGN UP</button>
+            <button type="submit" name="SignUp" id="SignUp" onclick="registerProcess()" class="btn-check-login">SIGN UP</button>
           </div>
           <div class="create-new-fau text-center pt-3">
             <a href="#" class="text-primary-fau"><span data-toggle="modal" data-target="#loginModal" data-dismiss="modal">Already Have An Account</span></a>
@@ -267,71 +267,7 @@ if (isset($_SESSION['user_Username'])) {
   </div>
 </div>
 
-<script>
-
-$(document).ready(function(){
-  $('#login_button').click(function(){
-    var email = $('#email_label').val();
-    var password = $('#password_label').val();
-    var action = "login";
-    if(email != '' && password != '')
-    {
-      $.ajax({
-        url:"action.php",
-        method:"POST",
-        data: {email:email, password:password, action:action},
-        success:function(response){
-          if(response == '1')
-          {
-            $('#loginModal').hide();
-            location.reload();
-          }
-          else if (response == '0')
-          {
-            alert("Email and password does not match");
-            //location.reload();
-          }
-          else if (response == '-1')
-          {
-            alert("System-based error");
-            //location.reload();
-          }
-        }
-      });
-    }
-    else
-    {
-      alert("Both Fields are required");
-    }
-  });
-
-  $('#SignUp').click(function(){
-    var Email = $('#Email').val();
-    var Password = $('#Password').val();
-    var Username = $('#Username').val();
-    var Firstname = $('#Firstname').val();
-    var Lastname = $('#Lastname').val();
-    var ConfirmPassword = $('#ConfirmPassword').val();
-    var action = "register";
-    if(Email != '' && Password !=''){
-      $.ajax({
-        url:"action.php",
-        method:"POST",
-        data:{action:action, email:Email, password:Password, username:Username, firstname:Firstname, lastname:Lastname, confirmpass:ConfirmPassword},
-        success:function(response)
-        {
-          if(response){
-            $('#registerModal').hide();
-            window.location.replace("index.php");
-            location.reload();
-          }
-        }
-      });
-    }
-  });
-});
-
-</script>
+<script type="text/javascript" src="/js/site.js"></script>
 <script id="notificationTemplate" type="text/html">
     <!-- NOTIFICATION -->
     <a class="dropdown-item dropdown-notification" href="{{href}}">
@@ -346,8 +282,8 @@ $(document).ready(function(){
         </p>
       </div>
     </a>
-  </script>
-  <?php
+</script>
+<?php
 if (isset($userid)) {
     HomeController::getNotifications($userid);
 }

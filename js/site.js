@@ -253,4 +253,66 @@ $(function () {
 	appNotifications.init();
   
   });
-  
+
+function loginProcess(){
+  $('#login_button').click(function(){
+    var email = $('#email_label').val();
+    var password = $('#password_label').val();
+    var action = "login";
+    if(email != '' && password != '')
+    {
+      $.ajax({
+        url:"action.php",
+        method:"POST",
+        data: {email:email, password:password, action:action},
+        success:function(response){
+          if(response == '1')
+          {
+            $('#loginModal').hide();
+            location.reload();
+          }
+          else if (response == '0')
+          {
+            alert("Email and password does not match");
+            //location.reload();
+          }
+          else if (response == '-1')
+          {
+            alert("System-based error");
+            //location.reload();
+          }
+        }
+      });
+    }
+    else
+    {
+      alert("Both Fields are required");
+    }
+  });
+}
+function registerProcess() {
+    $('#SignUp').click(function(){
+    var Email = $('#Email').val();
+    var Password = $('#Password').val();
+    var Username = $('#Username').val();
+    var Firstname = $('#Firstname').val();
+    var Lastname = $('#Lastname').val();
+    var ConfirmPassword = $('#ConfirmPassword').val();
+    var action = "register";
+    if(Email != '' && Password !=''){
+      $.ajax({
+        url:"action.php",
+        method:"POST",
+        data:{action:action, email:Email, password:Password, username:Username, firstname:Firstname, lastname:Lastname, confirmpass:ConfirmPassword},
+        success:function(response)
+        {
+          if(response){
+            $('#registerModal').hide();
+            window.location.replace("index.php");
+            location.reload();
+          }
+        }
+      });
+    }
+  });
+}
