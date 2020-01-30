@@ -76,7 +76,8 @@ $(function () {
 		});
   
 		// We load the notifications
-		appNotifications.loadAll();
+		//appNotifications.loadAll();
+		appNotifications.loadNumber();
   
 		// Polling
 		// Every 3 minutes we check if there are no new notifications
@@ -96,7 +97,8 @@ $(function () {
   
 		// Notifiers are only loaded if there is a difference
 		// Or if there are no notifications
-		if (count !== lastCount || count === 0) {
+		
+		if (count !== lastCount || count === 0  ) {
 		  appNotifications.load();
 		}
 		appNotifications.loadNumber();
@@ -174,13 +176,14 @@ $(function () {
   
 		// Saving the number of notifiers
 		lastCount = count;
-  
+
 		// TEMP : for the template
 		setTimeout(function () {
-  
+
 		  // TEMP : for the template
 		  for (i = 0; i < count; i++) {
   
+			console.log("count = " + count);
 			var template = $('#notificationTemplate').html();
 			template = template.replace("{{image}}", notifications[i].image);
 			template = template.replace("{{href}}", notifications[i].href);

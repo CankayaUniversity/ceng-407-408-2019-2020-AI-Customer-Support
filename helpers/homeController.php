@@ -43,15 +43,6 @@ class HomeController
                     texte: '$desc',
                     date: '$n_date'
                 });
-
-                var template = $('#notificationTemplate').html();
-                template = template.replace('{{image}}', notifications[$counter].image);
-                template = template.replace('{{href}}', notifications[$counter].href);
-                template = template.replace('{{texte}}', notifications[$counter].texte);
-                template = template.replace('{{date}}', notifications[$counter].date);
-    
-                $('#notificationsContainer').append(template);
-
             </script>";
             $counter++;
         }
