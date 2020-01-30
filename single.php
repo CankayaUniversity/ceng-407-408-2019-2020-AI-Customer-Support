@@ -31,21 +31,23 @@
                                         <?php echo $q_title; ?>
                                     </li>
                                 </ul>
-                                
                                 <article class=" type-post format-standard hentry clearfix">
                                     <h2 class="post-title"><a href="#"><?php echo $q_title; ?></a></h1>
                                     <div class="card bg-light post">
-                                        <div class="post-heading">
-                                            <div class="float-left image">
+                                        <div class="post-heading row">
+                                            <div class="float-left image col-sm-1">
                                                 <img src="../images/mascot.png" height="60" weight="60" class="img-circle avatar" alt="user profile image">
                                             </div>
-                                            <div class="float-left meta">
+                                            <div class="float-left meta col-sm-4">
                                                 <div class="title h5">
                                                 <b><?php echo $sql["username"]; ?></b>
                                                 </div>
                                                 <h6 class="text-muted time">Asked on, <?php echo $q_date; ?></h6>
-                                                    
-                                            </div>     
+                                            </div>
+                                            <div class="col-sm-7">
+                                                <button type="button" class="btn btn-success " id="btnLike" ><i class="fa fa-check"></i></button>
+                                                <button type="button" class="btn btn-danger " id="btnDislike" ><i class="fa fa-times"></i></button>
+                                            </div>
                                         </div>
                                         <hr>  
                                         <div class="post-heading">     
@@ -103,18 +105,15 @@
                                 <div class="post-description">
                                     <p><?php echo $c_description; ?></p>
                                 </div>
-                            </div>
-
-                            
+                            </div>                 
                             <?php endwhile; ?>
                             <?php for ($page=1; $page <= $total_pages ; $page++):?>
                             <a href='<?php echo "?page=$page"; ?>' class="links"><?php echo $page; ?></a>
                             <?php endfor; ?>
-
                             <div class="card">
-                            <div class="card-header">
-                                         Your Answer
-                             </div>
+                                <div class="card-header">
+                                    Your Answer
+                                </div>
                                 <div class="card-body">
                                 <div id="editparent">
                                     <div id="editControls">
@@ -140,23 +139,47 @@
                                             <a class="btn btn-xs btn-default" data-role="p" href="#" title="Paragraph"><i class="fa fa-paragraph"></i></a>
                                         </div>
                                     </div>
-                                    <div id="editor" contenteditable>
+                                        <div id="editor" contenteditable>
                                     </div>
                                     <form>
-                                    <textarea name="AnswerDesc" id="AnswerDesc" required="required" style="display:none;"></textarea><br>
-                                    
-                                    <button type="submit" class="btn btn-warning" name="AnswerSubmit" id="AnswerSubmit">Post Answer</button>
-                                   
+                                        <textarea name="AnswerDesc" id="AnswerDesc" required="required" style="display:none;"></textarea><br>
+                                        <button type="submit" class="btn btn-warning" name="AnswerSubmit" id="AnswerSubmit">Post Answer</button>
                                     </form>
                                 </div>
                             </div>
-                            
                         </section>
                     </div>
                 </div>
-                
                 <?php include "sidebar.php";?>
             </div>
+            <script>
+            $( "#btnLike" ).click(function() {
+                var q_id = <?php echo $q_id; ?> ;
+                var action = "like";
+                $.ajax({
+                    url:"/vote.php",
+                    method:"POST",
+                    data: {q_id:q_id, action:action},
+                    success:function(response){
+                        $("#btnLike").attr("disabled", true);
+                        $("#btnDislike").attr("disabled", true);
+                    }
+                });
+            });
+            $( "#btnDislike" ).click(function() {
+                var q_id = <?php echo $q_id; ?> ;
+                var action = "dislike";
+                $.ajax({
+                    url:"/vote.php",
+                    method:"POST",
+                    data: {q_id:q_id, action:action},
+                    success:function(response){
+                        $("#btnLike").attr("disabled", true);
+                        $("#btnDislike").attr("disabled", true);
+                    }
+                });
+            });
+            </script>
         </div>
     </div>
     <?php include "footer.php";?>
