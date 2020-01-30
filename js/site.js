@@ -261,7 +261,7 @@ $(function () {
     if(email != '' && password != '')
     {
       $.ajax({
-        url:"action.php",
+        url:"/action.php",
         method:"POST",
         data: {email:email, password:password, action:action},
         success:function(response){
@@ -298,7 +298,7 @@ $(function () {
 	var action = "register";
     if(Email != '' && Password !=''){
       $.ajax({
-        url:"action.php",
+        url:"/action.php",
         method:"POST",
         data:{action:action, email:Email, password:Password, username:Username, firstname:Firstname, lastname:Lastname, confirmpass:ConfirmPassword},
         success:function(response)
