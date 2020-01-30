@@ -20,6 +20,7 @@
                                         $q_author_id = $r['q_author'];
                                         $q_date = $r['q_date'];
                                         $q_tag = $r['q_tags'];
+                                        $q_score = $r["q_like"]-$r["q_dislike"];
                                         $category_id = $r['category'];
                                     }
                                     $sql = $conn->query("SELECT username FROM users WHERE user_id='$q_author_id'")->fetch();
@@ -44,18 +45,24 @@
                                                 </div>
                                                 <h6 class="text-muted time">Asked on, <?php echo $q_date; ?></h6>
                                             </div>
-                                            <div class="col-sm-7">
+                                            <div class="col-sm-5">
                                                 <button type="button" class="btn btn-success " id="btnLike" ><i class="fa fa-check"></i></button>
                                                 <button type="button" class="btn btn-danger " id="btnDislike" ><i class="fa fa-times"></i></button>
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <div class="counter">
+                                                    <i class="fa fa-star fa-2x" id="score"> <?php echo $q_score; ?></i>
+                                                    <h2 class="timer count-title count-number" data-to="100" data-speed="1500"></h2>
+                                                </div>
                                             </div>
                                         </div>
                                         <hr>  
                                         <div class="post-heading">     
-                                    <p>
-                                        <?php echo $q_description; ?>
-                                    </p>
+                                            <p>
+                                            <?php echo $q_description; ?>
+                                            </p>
+                                        </div>
                                     </div>
-                                </div>
                                 </article>
                                 <div class="like-btn">
                                     <form id="like-it-form" action="#" method="post">
@@ -161,8 +168,17 @@
                     method:"POST",
                     data: {q_id:q_id, action:action},
                     success:function(response){
-                        $("#btnLike").attr("disabled", true);
-                        $("#btnDislike").attr("disabled", true);
+                        if(response == "You must be logged in to vote."){
+                            alert(response);
+                        }
+                        else{
+                            var jLikes = $('#score');
+                            var sLikes = jLikes.text();
+                            var nLikes = parseInt(sLikes);
+                            jLikes.text(" "+(nLikes+1));
+                            $("#btnLike").attr("disabled", true);
+                            $("#btnDislike").attr("disabled", true);
+                        }
                     }
                 });
             });
@@ -174,8 +190,17 @@
                     method:"POST",
                     data: {q_id:q_id, action:action},
                     success:function(response){
-                        $("#btnLike").attr("disabled", true);
-                        $("#btnDislike").attr("disabled", true);
+                        if(response == "You must be logged in to vote."){
+                            alert(response);
+                        }
+                        else{
+                            var jLikes = $('#score');
+                            var sLikes = jLikes.text();
+                            var nLikes = parseInt(sLikes);
+                            jLikes.text(" "+(nLikes-1));
+                            $("#btnLike").attr("disabled", true);
+                            $("#btnDislike").attr("disabled", true);
+                        }
                     }
                 });
             });

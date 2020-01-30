@@ -6,6 +6,11 @@ session_start();
 $conne = new Mysql();
 $conn = $conne->dbConnect();
 
+if($_SESSION["user_UserID"] == NULL){
+    echo  "You must be logged in to vote.";
+    return;
+}
+
 $action = $_POST["action"];
 $q_id = $_POST['q_id'];
 

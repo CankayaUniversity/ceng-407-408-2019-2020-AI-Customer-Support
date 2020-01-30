@@ -49,7 +49,7 @@
                                             $q_id = $res['q_id'];
                                             $q_slug = $res['slug'];
                                             $origin_q_date = $res['q_date'];
-                                            $q_like = $res['q_like'];
+                                            $q_score = $res['q_like'] - $res['q_dislike'];
                                             $newDate = date("d m Y", strtotime($origin_q_date));
                                             $user = $conn->query("SELECT user_id, username, q_author FROM users,questions WHERE user_id='$q_author'",PDO::FETCH_ASSOC)->fetch();
                                             $user_id = $user['user_id'];
@@ -59,7 +59,7 @@
                                         <li class="article-entry">
                                             <h4> <a href='<?php echo "post/$q_slug"; ?>' class="d-block text-gray-dark"><?php echo $q_title; ?></a></h4>
                                             <span class="article-meta"><?php echo $newDate; ?> <a href='<?php echo "/author/$username"; ?>'><?php echo $user['username']; ?></a></span>
-                                            <span class="like-count"><?php echo $q_like; ?></span>
+                                            <span class="like-count"><?php echo $q_score; ?></span>
                                         </li>
                                     </ul>
                                 <?php endwhile; ?>
@@ -77,7 +77,7 @@
                                         $q_id = $res['q_id'];
                                         $q_slug = $res['slug'];
                                         $origin_q_date = $res['q_date'];
-                                        $q_like = $res['q_like'];
+                                        $q_score = $res['q_like'] - $res['q_dislike'];
                                         $newDate = date("d m Y", strtotime($origin_q_date));
                                         $user = $conn->query("SELECT user_id, username, q_author FROM users,questions WHERE user_id='$q_author'",PDO::FETCH_ASSOC)->fetch();
                                         $user_id = $user['user_id'];
@@ -87,7 +87,7 @@
                                         <li class="article-entry">
                                             <h4> <a href='<?php echo "post/$q_slug"; ?>' class="d-block text-gray-dark"><?php echo $q_title; ?></a></h4>
                                             <span class="article-meta"><?php echo $newDate; ?> <a href="<?php echo "/author/$username"; ?>"><?php echo $user['username']; ?></a></span>
-                                            <span class="like-count"><?php echo $q_like; ?></span>
+                                            <span class="like-count"><?php echo $q_score; ?></span>
                                         </li>
                                     </ul>
                                     <?php endwhile; ?>
