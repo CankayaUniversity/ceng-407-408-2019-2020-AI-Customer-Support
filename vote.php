@@ -26,7 +26,7 @@ if($action == "like"){
 else if($action == "dislike"){
     if(empty($checkLikeData)) {
         $query = $conn->query("UPDATE questions SET q_dislike=q_dislike+1 WHERE q_id=$q_id");
-        $logLikeData = "INSERT INTO like_data(q_id,user_id,status) VALUES ('$q_id', '$user_id', '1')";
+        $logLikeData = "INSERT INTO like_data(q_id,user_id,status) VALUES ('$q_id', '$user_id', '0')";
         $conn->exec($logLikeData);
     } else {
         echo "This cannot be done! You can only vote one question once!";
