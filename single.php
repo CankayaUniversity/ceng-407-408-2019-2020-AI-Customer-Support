@@ -11,6 +11,7 @@
                                     if (isset($_GET['post'])) {
                                         $slug = $_GET['post'];
                                     }
+                                    $user_id = $_SESSION['user_UserID'];
                                     $query = $conn->query("SELECT * FROM questions WHERE slug='$slug'",PDO::FETCH_ASSOC);
                                     $query->setFetchMode(PDO::FETCH_ASSOC);
                                     while($r=$query->fetch()){
@@ -24,7 +25,10 @@
                                         $category_id = $r['category'];
                                     }
                                     $sql = $conn->query("SELECT username FROM users WHERE user_id='$q_author_id'")->fetch();
-                                    $categoryName = $conn->query("SELECT cat_name FROM categories WHERE cat_id='$category_id'")->fetch(); 
+                                    $categoryName = $conn->query("SELECT cat_name FROM categories WHERE cat_id='$category_id'")->fetch();
+                                    $myQuery="SELECT * FROM like_data WHERE user_id = '$user_id' AND q_id ='$q_id'";
+                                    $ps = $conn->query($myQuery);
+                                    $checkLikeData = $ps->rowCount();
                                 ?>
                                 <ul class="breadcrumb">
                                     <li><a href="#"><?php echo $categoryName['cat_name'] ?></a><span class="divider">/</span></li>
@@ -160,6 +164,13 @@
                 <?php include "sidebar.php";?>
             </div>
             <script>
+            $( document ).ready(function() {
+                var checkLikeData = <?php echo $checkLikeData; ?>;
+                if(checkLikeData > 0) {
+                    $("#btnLike").attr("disabled", true);
+                    $("#btnDislike").attr("disabled", true);
+                }
+            });
             $( "#btnLike" ).click(function() {
                 var q_id = <?php echo $q_id; ?> ;
                 var action = "like";
