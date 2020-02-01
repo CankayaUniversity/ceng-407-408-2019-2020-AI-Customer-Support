@@ -182,6 +182,17 @@ if (isset($_POST['register'])) {
 
         echo "Categories table created successfully.</br> ";
 
+        $sql ="CREATE TABLE IF NOT EXISTS like_data (
+            id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+            q_id int NOT NULL,
+            user_id int NOT NULL,
+            status int NOT NULL,
+            FOREIGN KEY (user_id) REFERENCES users(user_id),
+            FOREIGN KEY (q_id) REFERENCES questions(q_id)
+            );";
+
+        echo "Like Data table created successfully.</br> ";
+
         $sql= "INSERT INTO users(firstname,surname,email,username,password_,is_verified,is_admin) 
         VALUES ('Arınç Alp','Eren','arinc@arinc.com','arinc','$2y$04$39Qbmj9YV04JXKBzWloixu4FIU37OwD3w7EAwICxNr6EZLMK6Wdky',0,0),
         ('Atakan','Demircioğlu','atakan@atakan.com','atakan','$2y$04$39Qbmj9YV04JXKBzWloixu4FIU37OwD3w7EAwICxNr6EZLMK6Wdky',0,0),
