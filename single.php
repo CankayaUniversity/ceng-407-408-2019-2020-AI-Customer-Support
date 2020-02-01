@@ -76,7 +76,7 @@
                                 </div>
                             </div>
                             <?php
-                                $limit = 100; // Şuan açık değil.
+                                $limit = 100; // TO:DO : Şuan açık değil.
                                 $query = "SELECT * FROM comments WHERE c_post_id='$q_id'";
                                 $s = $conn->prepare($query);
                                 $s->execute();
