@@ -13,15 +13,19 @@ if($_SESSION["user_UserID"] == NULL){
     $user_id = $_SESSION['user_UserID'];
 }
 
-$action = isset($_POST["action"]);
-$q_id = isset($_POST['q_id']);
+$action = $_POST["action"];
+$q_id = $_POST['q_id'];
 if(!empty($q_id) && !empty($user_id)) {
-    $checkLikeData = $conn->query("SELECT status FROM like_data WHERE user_id = ".$user_id." AND q_id =".$q_id."", PDO::FETCH_ASSOC)->fetch();
+    $sql="SELECT * FROM like_data WHERE user_id = '$user_id' AND q_id ='$q_id'";
+    $ps = $conn->query($sql);
+    $checkLikeData = $ps->rowCount();
 }
 
 if($action == "like"){
-    if(empty($checkLikeData)) {
-        $query = $conn->query("UPDATE questions SET q_like=q_like+1 WHERE q_id=$q_id");
+    if($checkLikeData === 0) {
+        $sql = "UPDATE questions SET q_like=q_like+1 WHERE q_id='$q_id'";
+        $gonder = $conn->prepare($sql);
+        $gonder->execute();
         $logLikeData = "INSERT INTO like_data(q_id,user_id,status) VALUES ('$q_id', '$user_id', '1')";
         $conn->exec($logLikeData);
     }else {
@@ -29,8 +33,9 @@ if($action == "like"){
     }
 }
 else if($action == "dislike"){
-    if(empty($checkLikeData)) {
-        $query = $conn->query("UPDATE questions SET q_dislike=q_dislike+1 WHERE q_id=$q_id");
+    if($checkLikeData === 0) {
+        $query = "UPDATE questions SET q_dislike=q_dislike+1 WHERE q_id=".$q_id."";
+        $conn->exec($query);
         $logLikeData = "INSERT INTO like_data(q_id,user_id,status) VALUES ('$q_id', '$user_id', '0')";
         $conn->exec($logLikeData);
     } else {

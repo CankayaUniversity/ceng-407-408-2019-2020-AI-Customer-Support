@@ -168,7 +168,7 @@
                     method:"POST",
                     data: {q_id:q_id, action:action},
                     success:function(response){
-                        if(response == "You must be logged in to vote." || "This cannot be done! You can only vote one question once!"){
+                        if(response === "You must be logged in to vote." || response === "This cannot be done! You can only vote one question once!"){
                             alert(response);
                         }
                         else{
@@ -190,7 +190,7 @@
                     method:"POST",
                     data: {q_id:q_id, action:action},
                     success:function(response){
-                        if(response == "You must be logged in to vote." || "This cannot be done! You can only vote one question once!"){
+                        if(response === "You must be logged in to vote." || response === "This cannot be done! You can only vote one question once!"){
                             alert(response);
                         }
                         else{
