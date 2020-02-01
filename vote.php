@@ -9,11 +9,16 @@ $conn = $conne->dbConnect();
 if($_SESSION["user_UserID"] == NULL){
     echo  "You must be logged in to vote.";
     return;
+} else {
+    $user_id = $_SESSION['user_UserID'];
 }
-$user_id = $_SESSION['user_UserID'];
-$action = $_POST["action"];
-$q_id = $_POST['q_id'];
-$checkLikeData = $conn->query("SELECT status FROM like_data WHERE user_id = ".$user_id." AND q_id =".$q_id."", PDO::FETCH_ASSOC)->fetch();
+
+$action = isset($_POST["action"]);
+$q_id = isset($_POST['q_id']);
+if(!empty($q_id) && !empty($user_id)) {
+    $checkLikeData = $conn->query("SELECT status FROM like_data WHERE user_id = ".$user_id." AND q_id =".$q_id."", PDO::FETCH_ASSOC)->fetch();
+}
+
 if($action == "like"){
     if(empty($checkLikeData)) {
         $query = $conn->query("UPDATE questions SET q_like=q_like+1 WHERE q_id=$q_id");
