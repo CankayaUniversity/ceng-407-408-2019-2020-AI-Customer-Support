@@ -191,6 +191,7 @@ if (isset($_POST['register'])) {
             FOREIGN KEY (q_id) REFERENCES questions(q_id)
             );";
 
+        $conn->exec($sql);
         echo "Like Data table created successfully.</br> ";
 
         $sql= "INSERT INTO users(firstname,surname,email,username,password_,is_verified,is_admin) 
