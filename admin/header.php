@@ -13,6 +13,8 @@
         $sUsername = $_SESSION['user_Username'];
         $userid = $_SESSION['user_UserID'];
     } else {
+        echo 'You cannot enter this page!';
+        exit(0);
         $sUsername = null;
     }
 ?>
@@ -38,7 +40,7 @@
                 <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Test</a>
+                <a class="nav-link" href="general-options.php">General Settings</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Test</a>
