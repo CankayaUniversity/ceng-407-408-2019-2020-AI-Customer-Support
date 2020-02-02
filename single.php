@@ -175,7 +175,7 @@
                 var q_id = <?php echo $q_id; ?> ;
                 var action = "like";
                 $.ajax({
-                    url:"/vote.php",
+                    url:"/action.php",
                     method:"POST",
                     data: {q_id:q_id, action:action},
                     success:function(response){
@@ -197,7 +197,7 @@
                 var q_id = <?php echo $q_id; ?> ;
                 var action = "dislike";
                 $.ajax({
-                    url:"/vote.php",
+                    url:"/action.php",
                     method:"POST",
                     data: {q_id:q_id, action:action},
                     success:function(response){
