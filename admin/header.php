@@ -43,7 +43,7 @@
                 <a class="nav-link" href="general-options.php">General Settings</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Test</a>
+                <a class="nav-link" href="users.php">Users</a>
             </li>
         </ul>
         <span class="navbar-text">
