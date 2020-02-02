@@ -52,17 +52,12 @@
                                             <div class="col-sm-5">
                                                 <button type="button" class="btn btn-success " id="btnLike" ><i class="fa fa-check"></i></button>
                                                 <button type="button" class="btn btn-danger " id="btnDislike" ><i class="fa fa-times"></i></button>
-                                            </div>
-                                            <div class="col-sm-2">
-                                                <div class="counter">
-                                                    <i class="fa fa-star fa-2x" id="score"> <?php echo $q_score; ?></i>
-                                                    <h2 class="timer count-title count-number" data-to="100" data-speed="1500"></h2>
-                                                </div>
+                                                <button type="button" class="btn btn-info " id="score" ><i class="fa fa-star"></i><?php echo $q_score; ?></button>
                                             </div>
                                         </div>
                                         <hr>  
                                         <div class="post-heading">     
-                                            <p>
+                                            <p class="post-description">
                                             <?php echo $q_description; ?>
                                             </p>
                                         </div>

@@ -966,10 +966,17 @@
     }
   }
   @media (max-width: 480px) {
+    .post-description{
+      margin-top: 25px;
+    }
+  }
+  @media (max-width: 575px) {
     .nav-collapse {
       -webkit-transform: translate3d(0, 0, 0);
     }
-  
+    .post-description{
+      margin-top: 25px;
+    }
     .page-header h1 small {
       display: block;
       line-height: 22px;
