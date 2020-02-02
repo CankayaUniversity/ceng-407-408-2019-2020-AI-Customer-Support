@@ -100,4 +100,12 @@ else if($action == "dislike"){
     }
    
 }
+
+if($action =="deleteUser") {
+    $user_id = $_POST['user_id'];
+    $query = "DELETE FROM users WHERE user_id = '$user_id'";
+    $statement = $conn->prepare($query);
+    $statement->execute();
+    echo "Deleted User!";
+}
 ?>

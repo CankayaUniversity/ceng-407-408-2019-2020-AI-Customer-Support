@@ -22,7 +22,7 @@ $AllUsers = adminController::getAllUsers();
                 <?php 
                 foreach ($AllUsers as $key) { ?>
                     <tr>
-                        <td><input type="checkbox" name="record"></td>
+                        <td><input type="checkbox" value="<?php echo $key['user_id'] ?>" name="record"></td>
                         <td><?php echo $key["username"] ?></td>
                         <td><?php echo $key["email"] ?></td>
                         <td><?php echo $key["is_admin"] ?></td>
@@ -43,9 +43,19 @@ $AllUsers = adminController::getAllUsers();
         });
         
         $(".delete-row").click(function(){
+            var action = "deleteUser";
             $("table tbody").find('input[name="record"]').each(function(){
                 if($(this).is(":checked")){
+                    var value = $(this).val();
                     $(this).parents("tr").remove();
+                    $.ajax({
+                        url:"/action.php",
+                        method:"POST",
+                        data: {user_id:value, action:action},
+                        success:function(response){
+                            alert(response);
+                        }
+                    });
                 }
             });
         });
