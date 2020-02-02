@@ -1,13 +1,24 @@
-import sys
+#import sys
 import json
-print (sys.argv[1], sys.argv[2], sys.argv[3]), # get parameters
+#print (sys.argv[1], sys.argv[2], sys.argv[3]), # get parameters
 
-print("Test")
+import pandas as pd
+import gzip
 
-# read file
-myfile = []
-with open('python/qa_Electronics.json', 'r') as myfile:
-    data=myfile.read()
+def parse(path):
+  g = gzip.open(path, 'rb')
+  for l in g:
+    yield eval(l)
 
+def getDF(path):
+  i = 0
+  df = {}
+  for d in parse(path):
+    df[i] = d
+    i += 1
+  return pd.DataFrame.from_dict(df, orient='index')
 
+df = getDF('python/qa_Software.json.gz')
+df.drop(["answerTime","unixTime"],axis=1,inplace=True)
+df.to_csv("data.csv")
 
