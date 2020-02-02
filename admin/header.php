@@ -4,10 +4,7 @@
     ini_set('display_errors', 1);
     error_reporting(-1); 
 
-    include '../inc/Conn.php';
-
-    $conne = new Mysql();
-    $conn = $conne->dbConnect();
+    include '../helpers/adminController.php';
 
     if (isset($_SESSION['user_Username'])) {
         $sUsername = $_SESSION['user_Username'];

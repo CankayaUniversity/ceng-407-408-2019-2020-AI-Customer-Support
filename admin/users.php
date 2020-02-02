@@ -1,5 +1,6 @@
 <?php
 include 'header.php';
+$AllUsers = adminController::getAllUsers();
 ?>
 <body>
     <div class="container">
@@ -14,14 +15,19 @@ include 'header.php';
                     <th>Select</th>
                     <th>Name</th>
                     <th>Email</th>
+                    <th>is Admin</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td><input type="checkbox" name="record"></td>
-                    <td>Atakan Demircioğlu</td>
-                    <td>a@a.com</td>
-                </tr>
+                <?php 
+                foreach ($AllUsers as $key) { ?>
+                    <tr>
+                        <td><input type="checkbox" name="record"></td>
+                        <td><?php echo $key["username"] ?></td>
+                        <td><?php echo $key["email"] ?></td>
+                        <td><?php echo $key["is_admin"] ?></td>
+                    </tr>
+               <? } ?>
             </tbody>
         </table>
         <button type="button" class="delete-row">Delete</button>
