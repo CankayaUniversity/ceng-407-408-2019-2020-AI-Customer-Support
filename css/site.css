@@ -1402,10 +1402,12 @@ a:hover {
     height: auto;
   }
   .post .post-description {
-    padding: 15px;
+    padding: 12px;
+
   }
   .post .post-description p {
     font-size: 14px;
+    font-family: Montserrat;
   }
   .post .post-description .stats {
     margin-top: 20px;
@@ -1677,6 +1679,16 @@ a:hover {
     align-items: stretch;
     width: 96.48%;
 }
-  .post-description{
-      
+  /* Single Page Post Comment */
+  .post-title {
+    font-family: Montserrat;
+    font-size: 23px;
   }
+.post-comment {
+  font-family: Montserrat;
+  font-size: 15px;
+}
+.time-ago {
+  font-family: Montserrat;
+  font-size: 13px;
+}

@@ -37,30 +37,31 @@
                                     </li>
                                 </ul>
                                 <article class=" type-post format-standard hentry clearfix">
-                                    <h2 class="post-title"><a href="#"><?php echo $q_title; ?></a></h1>
+                                    <h1 class="post-title"><a href="#"><?php echo $q_title; ?></a></h1>
                                     <div class="card bg-light post">
                                         <div class="post-heading row">
                                             <div class="float-left image col-sm-1">
                                                 <img src="../images/mascot.png" height="60" weight="60" class="img-circle avatar" alt="user profile image">
                                             </div>
                                             <div class="float-left meta col-sm-4">
-                                                <div class="title h5">
-                                                <b><?php echo $sql["username"]; ?></b>
+                                                <div class="post-comment">
+                                                <a href="#"><b><?php echo $sql["username"]; ?></b></a>
                                                 </div>
-                                                <h6 class="text-muted time">Asked on, <?php echo $q_date; ?></h6>
+                                                <h6 class="time-ago">Asked on, <?php echo $q_date; ?></h6>
                                             </div>
                                             <div class="col-sm-5">
                                                 <button type="button" class="btn btn-success " id="btnLike" ><i class="fa fa-check"></i></button>
                                                 <button type="button" class="btn btn-danger " id="btnDislike" ><i class="fa fa-times"></i></button>
-                                                <button type="button" class="btn btn-info " id="score" ><i class="fa fa-star"></i><?php echo $q_score; ?></button>
+                                                <button type="button" class="btn btn-dark " id="score" ><i class="fa fa-star"></i><?php echo $q_score; ?></button>
                                             </div>
                                         </div>
                                         <hr>  
-                                        <div class="post-heading">     
-                                            <p class="post-description">
+                                        <div class="post-heading">
+                                            <div class="post-description">
+                                            <p>
                                             <?php echo $q_description; ?>
                                             </p>
-                                        </div>
+                                        </div></div>
                                     </div>
                                 </article>
                                 <div class="like-btn">
@@ -102,10 +103,10 @@
                                     <img src="../images/mascot.png" height="60" weight="60" class="img-circle avatar" alt="user profile image">
                                     </div>
                                     <div class="float-left meta">
-                                        <div class="title h5">
+                                        <div class="post-comment">
                                             <a href="#"><b><?php echo $user['username'] ?></b></a> made a post.
                                         </div>
-                                        <h6 class="text-muted time"><?php echo $time_ago ?></h6>
+                                        <h6 class="time-ago"><?php echo $time_ago ?></h6>
                                     </div>
                                 </div>
                                 <div class="post-description">
