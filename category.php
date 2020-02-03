@@ -1,5 +1,6 @@
 <?php include "header.php";?>
 <body>
+    <div class="category-page">
     <div class="page-container">
         <div class="container">
             <div class="row">
@@ -45,4 +46,5 @@
             </div>
         </div>
     </div>
+</div>
     <?php include "footer.php";?>
