@@ -24,7 +24,7 @@
                         <div class="span8 page-content">
                             <!-- Basic Home Page Template -->
                             <div class="row separator">
-                                <section class="span4 articles-list">
+                                <section class="span8 articles-list">
                                     <h3>Featured Articles</h3>
                                     <?php
                                         $limit = 5;
@@ -64,7 +64,7 @@
                                     </ul>
                                 <?php endwhile; ?>
                                 </section>
-                                <section class="span4 articles-list">
+                                <section class="span8 articles-list">
                                     <h3>Popular Articles</h3>
                                     <?php
                                     $popular = "SELECT * FROM questions ORDER BY q_like DESC";

@@ -1566,7 +1566,7 @@ a:hover {
     margin: 0;
   }
   ul.articles::before {
-    content: '\f138';font-family: Montserrat;
+    content: '\f138';
     font-family: 'FontAwesome';
     float: left;
     margin-left: -0.5em;
