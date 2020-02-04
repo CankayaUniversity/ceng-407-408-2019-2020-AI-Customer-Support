@@ -37,7 +37,7 @@ blockquote p {
 /* Header - Search ---------------------------------------------------------------------------------------------------*/
 
 .search-area-wrapper {
-    background: #6c757d url(../images/mascot.png) center top no-repeat;
+    background: #6c757d;
     background-size: 10%;
     background-position: 80% 2%;
     min-height: 279px;
@@ -50,18 +50,18 @@ blockquote p {
 }
 
 h3.search-header {
-    font-family: "Open Sans", sans-serif;
+    font-family: "Montserrat", sans-serif;
     font-weight: bold;
-    font-size: 36px;
+    font-size: 30px;
     color: #fff;
     text-align: center;
 }
 
 p.search-tag-line {
-    font-family: "Droid Serif", serif;
+    font-family: "Montserrat", serif;
     font-style: italic;
-    font-size: 18px;
-    line-height: 28px;
+    font-size: 15px;
+    line-height: 20px;
     color: #fff;
     text-align: center;
 }
@@ -1545,7 +1545,7 @@ a:hover {
   .articles-list > h3 {
     font-weight: 600;
     margin-bottom: 20px;
-    font-family: monospace;
+    font-family: Montserrat;
     font-size: 20px;
     color:#6c757d
     
@@ -1566,7 +1566,7 @@ a:hover {
     margin: 0;
   }
   ul.articles::before {
-    content: '\f138';
+    content: '\f138';font-family: Montserrat;
     font-family: 'FontAwesome';
     float: left;
     margin-left: -0.5em;
@@ -1594,6 +1594,7 @@ a:hover {
     font-size: 13px;
     margin-bottom: 5px;
     font-weight: 600;
+    font-family: Montserrat;
   }
   .article-entry > h4 a {
     color: #6c757d;
@@ -1605,7 +1606,7 @@ a:hover {
     display: block;
     margin-bottom: 10px;
     color: #29212c;
-    font-family: monospace;
+    font-family: Montserrat;
     font-style: italic;
     font-size: small;
   }
