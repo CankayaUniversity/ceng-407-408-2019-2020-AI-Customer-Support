@@ -111,13 +111,4 @@ class helperDev
         $string = strtolower( trim($string, '-') );
         return $string;
     }
-/*     public function getEnv() {
-        if ($_SERVER['HTTP_HOST'] == 'localhost' || $_SERVER['HTTP_HOST'] == 'localhost:8080' || $_SERVER['HTTP_HOST'] == 'localhost:80') {
-            define('ENV', 'dev');
-            //$environment = 'dev';
-        } else {
-            define('ENV', 'live');
-            //$environment = 'live';
-        }
-    } */
 }
