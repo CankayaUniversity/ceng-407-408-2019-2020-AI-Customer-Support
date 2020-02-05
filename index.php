@@ -42,7 +42,6 @@
                                         $show = "SELECT * FROM questions ORDER BY q_id DESC LIMIT $starting_limit, $limit";
                                         $r = $conn->prepare($show);
                                         $r->execute();
-                                        /*<?php echo "single.php?post=$q_id"; ?>*/
                                         while($res = $r->fetch(PDO::FETCH_ASSOC)) :
                                             $q_author = $res['q_author'];
                                             $q_title = $res['q_title'];
