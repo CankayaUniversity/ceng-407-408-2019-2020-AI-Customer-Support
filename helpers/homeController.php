@@ -55,6 +55,16 @@ class HomeController
             $counter++;
         }
     }
+
+    public static function getAllCategories() {
+        $conne = new Mysql();
+        $conn = $conne->dbConnect();
+        $popular = "SELECT * FROM categories ";
+        $r = $conn->prepare($popular);
+        $r->execute();
+        $res = $r->fetchAll();
+        return $res;
+    }
 } 
 
 ?>

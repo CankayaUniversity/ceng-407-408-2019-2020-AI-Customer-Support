@@ -123,20 +123,15 @@ if (isset($_SESSION['user_Username'])) {
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ml-auto">
-        <?php 
-        $popular = "SELECT * FROM categories ";
-        $r = $conn->prepare($popular);
-        $r->execute(); 
-        ?>
         <div class="btn-group">
           <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <span class="header-category">Categories</span>
           </button>
           <div class="dropdown-menu">
-            <?php while($res = $r->fetch(PDO::FETCH_ASSOC)) : ?>
-            <?php $cat_slug = "/category/".$res["cat_slug"]; ?>
-            <a class="dropdown-item" href="<?php echo $cat_slug ?>"><?php echo $res['cat_name']; ?></a>
-            <?php endwhile; ?>
+            <?php foreach (homeController::getAllCategories() as $key) { ?>
+            <?php $cat_slug = "/category/".$key["cat_slug"]; ?>
+            <a class="dropdown-item" href="<?php echo $cat_slug ?>"><?php echo $key['cat_name']; ?></a>
+            <?php } ?>
           </div>
         </div>
         <?php if ($sUsername == null): ?>
