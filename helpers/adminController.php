@@ -1,6 +1,6 @@
 <?php
 /**
- * Class helperDev
+ * Class adminController
  * @author Atakan Demircioğlu
  * @blog https://www.atakann.com
  * @mail mehata1997@hotmail.com
