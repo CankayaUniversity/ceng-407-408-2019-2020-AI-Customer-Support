@@ -118,7 +118,7 @@ $qDescription = isset($_POST['QuestionDesc']);
 $qAuthor = $_SESSION["user_UserID"];
 
 if (isset($_POST['QuestionSubmit']) && $qTitle != '' && $qDescription != ''){ 
-    $qTitle = addslashes($_POST['QuestionTitle']);
+    $qTitle = htmlspecialchars(addslashes($_POST['QuestionTitle']));
     $qDescription = addslashes($_POST['QuestionDesc']);
     $qAuthor = $_SESSION["user_UserID"];
     $qTags = $_POST['QuestionTags'];
