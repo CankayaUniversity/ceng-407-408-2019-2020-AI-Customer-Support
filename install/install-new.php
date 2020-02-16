@@ -10,11 +10,11 @@
         <div class="stepwizard-row setup-panel">
             <div class="stepwizard-step col-xs-3"> 
                 <a href="#step-1" type="button" class="btn btn-success btn-circle">1</a>
-                <p><small>General Settings</small></p>
+                <p><small>Server Settings</small></p>
             </div>
             <div class="stepwizard-step col-xs-3"> 
                 <a href="#step-2" type="button" class="btn btn-default btn-circle" disabled="disabled">2</a>
-                <p><small>Server Settings</small></p>
+                <p><small>General Settings</small></p>
             </div>
             <div class="stepwizard-step col-xs-3"> 
                 <a href="#step-3" type="button" class="btn btn-default btn-circle" disabled="disabled">3</a>
@@ -24,7 +24,7 @@
     </div>
     
     <form role="form">
-        <div class="panel panel-primary setup-content" id="step-1">
+        <div class="panel panel-primary setup-content" id="step-2">
             <div class="panel-heading">
                  <h3 class="panel-title">General Settings</h3>
             </div>
@@ -53,28 +53,28 @@
             </div>
         </div>
         
-        <div class="panel panel-primary setup-content" id="step-2">
+        <div class="panel panel-primary setup-content" id="step-1">
             <div class="panel-heading">
                  <h3 class="panel-title">Server Settings</h3>
             </div>
             <div class="panel-body">
                 <div class="form-group">
                     <label class="control-label">Servername</label>
-                    <input maxlength="200" type="text" required="required" class="form-control" placeholder="Enter Servername" />
+                    <input maxlength="200" type="text" required="required" id="Servername" class="form-control" placeholder="Enter Servername" />
                 </div>
                 <div class="form-group">
                     <label class="control-label">Username</label>
-                    <input maxlength="200" type="text" required="required" class="form-control" placeholder="Enter Username" />
+                    <input maxlength="200" type="text" required="required" id="Username" class="form-control" placeholder="Enter Username" />
                 </div>
                 <div class="form-group">
                     <label class="control-label">Password</label>
-                    <input maxlength="200" type="text" required="required" class="form-control" placeholder="Enter Password" />
+                    <input maxlength="200" type="password" required="required" id="Password" class="form-control" placeholder="Enter Password" />
                 </div>
                 <div class="form-group">
                     <label class="control-label">DB Name</label>
-                    <input maxlength="200" type="text" required="required" class="form-control" placeholder="Enter DB Name" />
+                    <input maxlength="200" type="text" required="required" id="DB_Name" class="form-control" placeholder="Enter DB Name" />
                 </div>
-                <button class="btn btn-primary nextBtn pull-right" type="button">Next</button>
+                <button class="btn btn-primary nextBtn pull-right" onclick="saveServerSettings()" type="button">Next</button>
             </div>
         </div>
         
@@ -85,13 +85,14 @@
             <div class="panel-body">
                 <div class="form-group">
                     <label class="control-label">Admin Username</label>
-                    <input maxlength="200" type="text" required="required" class="form-control" placeholder="Enter Username" />
+                    <input maxlength="200" type="text" required="required" id="AdminUsername" class="form-control" placeholder="Enter Username" />
                 </div>
                 <div class="form-group">
                     <label class="control-label">Password</label>
-                    <input maxlength="200" type="text" required="required" class="form-control" placeholder="Enter Password" />
+                    <input maxlength="200" type="password" required="required" id="AdminPassword" class="form-control" placeholder="Enter Password" />
                 </div>
-                <button class="btn btn-success pull-right" type="submit">Finish</button>
+                <!--<button class="btn btn-success pull-right" onclick="saveAdminSettings()" type="submit">Finish</button>!-->
+                <button onclick="saveAdminSettings()" type="submit">Finish</button>
             </div>
         </div>
 

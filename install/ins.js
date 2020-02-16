@@ -47,18 +47,60 @@ function saveGeneralSettings() {
     var systemAddress = $("#systemAddress").val();
     var siteAddress = $("#siteAddress").val();
     var siteEmail = $("#siteEmail").val();
-    var action = 'settings';
+    var action = 'GeneralSettings';
 
     $.ajax({
-        url:"/install/action.php",
+        url:"/install/insActions.php",
         method:"POST",
         data:{action:action, siteTitle:siteTitle, siteSlogan:siteSlogan, systemAddress:systemAddress, siteAddress:siteAddress, siteEmail:siteEmail},
         success:function(response)
         {
           if(response){
-            console.log("basarili");
+            alert(response);
           } else {
             console.log("olmadı!");
+          }
+        }
+      });
+}
+
+function saveServerSettings() {
+    var Servername = $("#Servername").val();
+    var Username = $("#Username").val();
+    var Password = $("#Password").val();
+    var DB_Name = $("#DB_Name").val();
+    var action = 'ServerSettings';
+
+    $.ajax({
+        url:"/install/insActions.php",
+        method:"POST",
+        data:{action:action, Servername:Servername, Username:Username, Password:Password, DB_Name:DB_Name},
+        success:function(response)
+        {
+          if(response){
+            alert(response);
+          } else {
+            alert("olmadı!");
+          }
+        }
+      });
+}
+
+function saveAdminSettings() {
+    var AdminUsername = $("#AdminUsername").val();
+    var AdminPassword = $("#AdminPassword").val();
+    var action = 'AdminSettings';
+
+    $.ajax({
+        url:"/install/insActions.php",
+        method:"POST",
+        data:{action:action, AdminUsername:AdminUsername, AdminPassword:AdminPassword},
+        success:function(response)
+        {
+          if(response){
+            alert(response);
+          } else {
+            alert("olmadı!");
           }
         }
       });
