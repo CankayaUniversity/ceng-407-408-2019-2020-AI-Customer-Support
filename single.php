@@ -45,7 +45,8 @@
                                             </div>
                                             <div class="float-left meta col-sm-4">
                                                 <div class="post-comment">
-                                                <a href="#"><b><?php echo $sql["username"]; ?></b></a>
+                                                    <?php $username = $sql["username"] ?>
+                                                    <a href='<?php echo "/author/$username"; ?>'><b><?php echo $sql["username"]; ?></b></a>
                                                 </div>
                                                 <h6 class="time-ago">Asked on, <?php echo $q_date; ?></h6>
                                             </div>
@@ -104,7 +105,8 @@
                                     </div>
                                     <div class="float-left meta">
                                         <div class="post-comment">
-                                            <a href="#"><b><?php echo $user['username'] ?></b></a> made a post.
+                                            <?php $username = $user['username']; ?>
+                                            <a href='<?php echo "/author/$username"; ?>'><b><?php echo $user['username'] ?></b></a> made a post.
                                         </div>
                                         <h6 class="time-ago"><?php echo $time_ago ?></h6>
                                     </div>

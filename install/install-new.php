@@ -26,7 +26,7 @@
     <form role="form">
         <div class="panel panel-primary setup-content" id="step-2">
             <div class="panel-heading">
-                 <h3 class="panel-title">General Settings</h3>
+                <h3 class="panel-title">General Settings</h3>
             </div>
             <div class="panel-body">
                 <div class="form-group">
@@ -55,7 +55,7 @@
         
         <div class="panel panel-primary setup-content" id="step-1">
             <div class="panel-heading">
-                 <h3 class="panel-title">Server Settings</h3>
+                <h3 class="panel-title">Server Settings</h3>
             </div>
             <div class="panel-body">
                 <div class="form-group">
@@ -80,7 +80,7 @@
         
         <div class="panel panel-primary setup-content" id="step-3">
             <div class="panel-heading">
-                 <h3 class="panel-title">Admin Settings</h3>
+                <h3 class="panel-title">Admin Settings</h3>
             </div>
             <div class="panel-body">
                 <div class="form-group">
