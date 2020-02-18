@@ -200,6 +200,8 @@ if(isset($getAction)){
         $AdminFirstName = $_POST["AdminFirstName"];
         $AdminSurname = $_POST["AdminSurname"];
         $AdminEmail = $_POST["AdminEmail"];
+        $options = array("cost"=>4);
+        $hashPassword = password_hash($AdminPassword,PASSWORD_BCRYPT,$options);
 
         $conn = new PDO("mysql:host=$Servername", $Username, $Password);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -208,7 +210,7 @@ if(isset($getAction)){
         $conn->exec($sql);   
 
         $sql= "INSERT INTO users(firstname,surname,email,username,password_,is_verified,is_admin) 
-        VALUES ('$AdminFirstName','$AdminSurname','$AdminEmail','$AdminUsername','$AdminPassword',1,1)";
+        VALUES ('$AdminFirstName','$AdminSurname','$AdminEmail','$AdminUsername','$hashPassword',1,1)";
         $conn->exec($sql); 
     }
 } else {
