@@ -74,7 +74,6 @@ function saveGeneralSettings() {
     },
     success: function(response) {
       if (response) {
-        alert(response);
       } else {
         console.log("olmadı!");
       }
@@ -101,7 +100,6 @@ function saveServerSettings() {
     },
     success: function(response) {
       if (response) {
-        alert(response);
       } else {
         alert("olmadı!");
       }
@@ -112,6 +110,14 @@ function saveServerSettings() {
 function saveAdminSettings() {
   var AdminUsername = $("#AdminUsername").val();
   var AdminPassword = $("#AdminPassword").val();
+  var AdminFirstName = $("#AdminFirstName").val();
+  var AdminSurname = $("#AdminSurname").val();
+  var AdminEmail = $("#AdminEmail").val();
+  var Servername = $("#Servername").val();
+  var Username = $("#Username").val();
+  var Password = $("#Password").val();
+  var DB_Name = $("#DB_Name").val();
+
   var action = "AdminSettings";
 
   $.ajax({
@@ -120,11 +126,17 @@ function saveAdminSettings() {
     data: {
       action: action,
       AdminUsername: AdminUsername,
-      AdminPassword: AdminPassword
+      AdminPassword: AdminPassword,
+      AdminFirstName: AdminFirstName,
+      AdminSurname: AdminSurname,
+      AdminEmail: AdminEmail,
+      Servername: Servername,
+      Username: Username,
+      Password: Password,
+      DB_Name: DB_Name
     },
     success: function(response) {
       if (response) {
-        alert(response);
       } else {
         alert("olmadı!");
       }

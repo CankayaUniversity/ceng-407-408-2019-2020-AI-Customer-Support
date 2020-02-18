@@ -91,8 +91,20 @@
                     <label class="control-label">Password</label>
                     <input maxlength="200" type="password" required="required" id="AdminPassword" class="form-control" placeholder="Enter Password" />
                 </div>
-                <!--<button class="btn btn-success pull-right" onclick="saveAdminSettings()" type="submit">Finish</button>!-->
-                <button onclick="saveAdminSettings()" type="submit">Finish</button>
+                <div class="form-group">
+                    <label class="control-label">Admin First Name</label>
+                    <input maxlength="200" type="text" required="required" id="AdminFirstName" class="form-control" placeholder="Enter First Name" />
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Admin Surname</label>
+                    <input maxlength="200" type="text" required="required" id="AdminSurname" class="form-control" placeholder="Enter Surname" />
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Admin Email</label>
+                    <input maxlength="200" type="text" required="required" id="AdminEmail" class="form-control" placeholder="Enter Email" />
+                </div>
+                <button class="btn btn-success pull-right" onclick="saveAdminSettings()" type="submit">Finish</button>
+                <!-- <button onclick="saveAdminSettings()" type="submit">Finish</button> -->
             </div>
         </div>
 

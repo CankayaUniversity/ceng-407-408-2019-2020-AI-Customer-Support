@@ -191,7 +191,25 @@ if(isset($getAction)){
         echo "Site settings created and registered successfully.</br> ";
     }
     if($getAction == 'AdminSettings') {
-        print_r($_POST);
+        $Servername = $_POST["Servername"];
+        $Username = $_POST["Username"];
+        $Password = $_POST["Password"];
+        $DB_Name = $_POST["DB_Name"];
+        $AdminUsername = $_POST["AdminUsername"];
+        $AdminPassword = $_POST["AdminPassword"];
+        $AdminFirstName = $_POST["AdminFirstName"];
+        $AdminSurname = $_POST["AdminSurname"];
+        $AdminEmail = $_POST["AdminEmail"];
+
+        $conn = new PDO("mysql:host=$Servername", $Username, $Password);
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        $sql = "use $DB_Name";
+        $conn->exec($sql);   
+
+        $sql= "INSERT INTO users(firstname,surname,email,username,password_,is_verified,is_admin) 
+        VALUES ('$AdminFirstName','$AdminSurname','$AdminEmail','$AdminUsername','$AdminPassword',1,1)";
+        $conn->exec($sql); 
     }
 } else {
     echo "No action!";
