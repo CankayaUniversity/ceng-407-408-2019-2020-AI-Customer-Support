@@ -74,8 +74,8 @@ function insertInto($tableName,$values) {
     }
     $this->sqlQuery .= ')';
     $this->conn->prepare($this->sqlQuery)->execute();
+    $this->sqlQuery = NULL;
 }
-
 
 /*
 function selectWhere($tableName,$rowName,$operator,$value,$valueType)   {
@@ -90,13 +90,6 @@ function selectWhere($tableName,$rowName,$operator,$value,$valueType)   {
     $this -> sqlQuery = NULL;
     return $this -> dataSet;
     #return $this -> sqlQuery;
-}
-
-    $this -> sqlQuery .= ')';
-            #echo $this -> sqlQuery;
-    mysql_query($this -> sqlQuery,$this ->conn);
-            return $this -> sqlQuery;
-    #$this -> sqlQuery = NULL;
 }
 
 function selectFreeRun($query)  {
