@@ -113,11 +113,16 @@ $("#QuestionSubmit").click(function() {
 
 <?php
 
-$qTitle = isset($_POST['QuestionTitle']);
-$qDescription = isset($_POST['QuestionDesc']);
 $qAuthor = $_SESSION["user_UserID"];
 
-if (isset($_POST['QuestionSubmit']) && $qTitle != '' && $qDescription != ''){ 
+if  (
+    isset($_POST['QuestionSubmit']) &&
+    isset($_POST['QuestionTitle']); &&
+    $_POST['QuestionTitle'] != '' &&
+    $_POST['QuestionDesc'] != '' &&
+    isset($_POST['QuestionDesc'])
+    ) 
+{ 
     $qTitle = htmlspecialchars(addslashes($_POST['QuestionTitle']));
     $qDescription = addslashes($_POST['QuestionDesc']);
     $qAuthor = $_SESSION["user_UserID"];
