@@ -1,9 +1,6 @@
 <?php 
 include 'header.php';
 
-$conne = new Mysql();
-$conn = $conne->dbConnect();
-
 if($sUsername == null){
     echo"<script>
     window.location.replace('index.php')
@@ -80,7 +77,7 @@ if($sUsername == null){
                                     </div>
                                     <div class="form-group">
                                     <select name="QuestionCategory" id="QuestionCategory">
-                                    <?php foreach (homeController::getAllCategories() as $key) { ?>
+                                    <?php foreach ($conne->selectAll('categories') as $key) { ?>
                                     <option value="<?php echo $res['cat_id']; ?>"><?php echo $key['cat_name']; ?></option>
                                     <?php } ?>
                                     </select>

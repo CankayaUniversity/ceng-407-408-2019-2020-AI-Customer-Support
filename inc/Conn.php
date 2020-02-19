@@ -30,18 +30,14 @@ function Mysql()    {
 
 function checkEnv() {
     if(!defined('ENV')) {
-    if ($_SERVER['HTTP_HOST'] == 'localhost' || $_SERVER['HTTP_HOST'] == 'localhost:8080' || $_SERVER['HTTP_HOST'] == 'localhost:80') {
-        define('ENV', 'dev');
-        //$environment = 'dev';
-    } else {
-        define('ENV', 'live');
-        //$environment = 'live';
-    }
-    /* *** Set default timezone *** */
-
+        if ($_SERVER['HTTP_HOST'] == 'localhost' ||
+         $_SERVER['HTTP_HOST'] == 'localhost:8080' ||
+         $_SERVER['HTTP_HOST'] == 'localhost:80') {
+            define('ENV', 'dev');
+        } else {
+            define('ENV', 'live');
+        }
     date_default_timezone_set('Europe/Istanbul');
-
-    /* *** Find time ago for comments *** */
     }
 }
 
@@ -50,12 +46,15 @@ function dbConnect()    {
     return $this->conn;
 }
 
-/* function selectAll($tableName)  {
-    $this -> sqlQuery = 'SELECT * FROM '.$this -> databaseName.'.'.$tableName;
-    $this -> dataSet = mysql_query($this -> sqlQuery,$this -> conn);
-            return $this -> dataSet;
+ function selectAll($tableName) {
+    $this->sqlQuery = 'SELECT * FROM '.$tableName.'';
+    $this->dataSet = $this->conn->prepare($this->sqlQuery);
+    $this->dataSet->execute();
+    $this->dataSet = $this->dataSet->fetchAll();
+    return $this->dataSet;
 }
 
+/*
 function selectWhere($tableName,$rowName,$operator,$value,$valueType)   {
     $this -> sqlQuery = 'SELECT * FROM '.$tableName.' WHERE '.$rowName.' '.$operator.' ';
     if($valueType == 'int') {

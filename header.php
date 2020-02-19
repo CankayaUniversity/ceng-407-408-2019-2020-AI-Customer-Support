@@ -128,7 +128,7 @@ if (isset($_SESSION['user_Username'])) {
           <span class="header-category">Categories</span>
           </button>
           <div class="dropdown-menu">
-            <?php foreach (homeController::getAllCategories() as $key) { ?>
+            <?php foreach ($conne->selectAll('categories') as $key) { ?>
             <?php $cat_slug = "/category/".$key["cat_slug"]; ?>
             <a class="dropdown-item" href="<?php echo $cat_slug ?>"><?php echo $key['cat_name']; ?></a>
             <?php } ?>
