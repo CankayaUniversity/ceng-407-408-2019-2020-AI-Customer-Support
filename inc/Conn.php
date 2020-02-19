@@ -77,28 +77,33 @@ function insertInto($tableName,$values) {
     $this->sqlQuery = NULL;
 }
 
-/*
 function selectWhere($tableName,$rowName,$operator,$value,$valueType)   {
-    $this -> sqlQuery = 'SELECT * FROM '.$tableName.' WHERE '.$rowName.' '.$operator.' ';
+    $this->sqlQuery = 'SELECT * FROM '.$tableName.' WHERE '.$rowName.' '.$operator.' ';
     if($valueType == 'int') {
-        $this -> sqlQuery .= $value;
+        $this->sqlQuery .= $value;
     }
     else if($valueType == 'char')   {
-        $this -> sqlQuery .= "'".$value."'";
+        $this->sqlQuery.="'".$value."'";
     }
-    $this -> dataSet = mysql_query($this -> sqlQuery,$this -> conn);
-    $this -> sqlQuery = NULL;
-    return $this -> dataSet;
-    #return $this -> sqlQuery;
+
+    $this->dataSet = $this->conn->prepare($this->sqlQuery);
+    $this->dataSet->execute();
+    $this->dataSet = $this->dataSet->fetchAll();
+    
+    $this->sqlQuery = NULL;
+    return $this->dataSet;
 }
 
 function selectFreeRun($query)  {
-    $this -> dataSet = mysql_query($query,$this -> conn);
-    return $this -> dataSet;
+    $this->dataSet = $this->conn->prepare($query);
+    $this->dataSet->execute();
+    $this->dataSet = $this->dataSet->fetchAll();
+    return $this->dataSet;
 }
 
-function freeRun($query)    {
-    return mysql_query($query,$this -> conn);
-  } */
+function freeRun($query)  {
+    $this->dataSet = $this->conn->prepare($query)->execute();
+}
+
 }
 ?>
