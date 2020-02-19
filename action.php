@@ -85,7 +85,7 @@ if($action == "like"){
         $gonder->execute();
         $values[] = array('type' => 'int', 'val' => $q_id);
         $values[] = array('type' => 'int', 'val' => $user_id);
-        $values[] = array('type' => 'int', 'val' => 1);
+        $values[] = array('type' => 'int', 'val' => '1');
         $conne->insertInto("like_data",$values);
     }else {
         echo "This cannot be done! You can only vote one question once!";
@@ -95,8 +95,10 @@ else if($action == "dislike"){
     if($checkLikeData === 0) {
         $query = "UPDATE questions SET q_dislike=q_dislike+1 WHERE q_id=".$q_id."";
         $conn->exec($query);
-        $logLikeData = "INSERT INTO like_data(q_id,user_id,status) VALUES ('$q_id', '$user_id', '0')";
-        $conn->exec($logLikeData);
+        $values[] = array('type' => 'int', 'val' => $q_id);
+        $values[] = array('type' => 'int', 'val' => $user_id);
+        $values[] = array('type' => 'int', 'val' => '0');
+        $conne->insertInto("like_data",$values);
     } else {
         echo "This cannot be done! You can only vote one question once!";
     }
