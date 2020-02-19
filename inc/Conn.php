@@ -43,6 +43,7 @@ function checkEnv() {
 
 function dbConnect()    {
     $this->conn = new PDO("mysql:host=$this->hostName;dbname=$this->databaseName", $this->userName, $this->passCode);
+    //$this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     return $this->conn;
 }
 
@@ -53,6 +54,28 @@ function dbConnect()    {
     $this->dataSet = $this->dataSet->fetchAll();
     return $this->dataSet;
 }
+
+function insertInto($tableName,$values) {
+    $i = 0;
+    $this->sqlQuery = 'INSERT INTO '.$tableName.' VALUES (null, ';
+    while($values[$i]["val"] != NULL && $values[$i]["type"] != NULL) {
+        if($values[$i]["type"] == "char")   {
+            $this->sqlQuery .= "'";
+            $this->sqlQuery .= $values[$i]["val"];
+            $this->sqlQuery .= "'";
+        }
+        else if($values[$i]["type"] == 'int')   {
+            $this->sqlQuery .= $values[$i]["val"];
+        }
+        $i++;
+        if($values[$i]["val"] != NULL)  {
+            $this->sqlQuery .= ',';
+        }
+    }
+    $this->sqlQuery .= ')';
+    $this->conn->prepare($this->sqlQuery)->execute();
+}
+
 
 /*
 function selectWhere($tableName,$rowName,$operator,$value,$valueType)   {
@@ -69,25 +92,6 @@ function selectWhere($tableName,$rowName,$operator,$value,$valueType)   {
     #return $this -> sqlQuery;
 }
 
-function insertInto($tableName,$values) {
-    $i = NULL;
-
-    $this -> sqlQuery = 'INSERT INTO '.$tableName.' VALUES (';
-    $i = 0;
-    while($values[$i]["val"] != NULL && $values[$i]["type"] != NULL)    {
-        if($values[$i]["type"] == "char")   {
-            $this -> sqlQuery .= "'";
-            $this -> sqlQuery .= $values[$i]["val"];
-            $this -> sqlQuery .= "'";
-        }
-        else if($values[$i]["type"] == 'int')   {
-            $this -> sqlQuery .= $values[$i]["val"];
-        }
-        $i++;
-        if($values[$i]["val"] != NULL)  {
-            $this -> sqlQuery .= ',';
-        }
-    }
     $this -> sqlQuery .= ')';
             #echo $this -> sqlQuery;
     mysql_query($this -> sqlQuery,$this ->conn);

@@ -83,8 +83,10 @@ if($action == "like"){
         $sql = "UPDATE questions SET q_like=q_like+1 WHERE q_id='$q_id'";
         $gonder = $conn->prepare($sql);
         $gonder->execute();
-        $logLikeData = "INSERT INTO like_data(q_id,user_id,status) VALUES ('$q_id', '$user_id', '1')";
-        $conn->exec($logLikeData);
+        $values[] = array('type' => 'int', 'val' => $q_id);
+        $values[] = array('type' => 'int', 'val' => $user_id);
+        $values[] = array('type' => 'int', 'val' => 1);
+        $conne->insertInto("like_data",$values);
     }else {
         echo "This cannot be done! You can only vote one question once!";
     }
