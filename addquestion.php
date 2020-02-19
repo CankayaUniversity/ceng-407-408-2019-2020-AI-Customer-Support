@@ -9,9 +9,6 @@ if($sUsername == null){
     window.location.replace('index.php')
     </script>";
 }
-/* ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL); */
 ?>
 
 <body>
@@ -82,14 +79,10 @@ error_reporting(E_ALL); */
                                         <input type="text" class="form-control" id="QuestionTags" name="QuestionTags" placeholder="Please enter tags">
                                     </div>
                                     <div class="form-group">
-                                    <?php
-                                    $popular = "SELECT cat_id, cat_name FROM categories ";
-                                    $r = $conn->prepare($popular);
-                                    $r->execute(); ?>
                                     <select name="QuestionCategory" id="QuestionCategory">
-                                    <?php while($res = $r->fetch(PDO::FETCH_ASSOC)) : ?>
-                                    <option value="<?php echo $res['cat_id']; ?>"><?php echo $res['cat_name']; ?></option>
-                                    <?php endwhile; ?>
+                                    <?php foreach (homeController::getAllCategories() as $key) { ?>
+                                    <option value="<?php echo $res['cat_id']; ?>"><?php echo $key['cat_name']; ?></option>
+                                    <?php } ?>
                                     </select>
                                     </div>
                                     <button type="submit" class="btn btn-primary" name="QuestionSubmit" id="QuestionSubmit">Submit</button>
@@ -117,7 +110,7 @@ $qAuthor = $_SESSION["user_UserID"];
 
 if  (
     isset($_POST['QuestionSubmit']) &&
-    isset($_POST['QuestionTitle']); &&
+    isset($_POST['QuestionTitle']) &&
     $_POST['QuestionTitle'] != '' &&
     $_POST['QuestionDesc'] != '' &&
     isset($_POST['QuestionDesc'])
@@ -135,12 +128,17 @@ if  (
     $slug = helperDev::SEOFriendlyURL($qTitle);
     $qMetaKey = $qTags;
     $conn->exec("INSERT INTO questions(q_title,q_description,q_tags,title_meta,description_meta, keywords_meta, slug, q_author,category) VALUES ('$qTitle','$qDescription','$qTags','$qMetaTitle','$qMetaDesc','$qMetaKey','$slug','$qAuthor', '$qCategory');");
-
-    $sql = $conn->query("SELECT q_id FROM questions WHERE q_author = '$qAuthor' ORDER BY q_date DESC LIMIT 1",PDO::FETCH_ASSOC)->fetch();
+    $sql = $conn->query("SELECT q_id FROM questions 
+        WHERE q_author = '$qAuthor' 
+        ORDER BY q_date 
+        DESC LIMIT 1",PDO::FETCH_ASSOC)->fetch();
     $Qid = $sql['q_id'];
-    $sql = $conn->query("SELECT user_id FROM users WHERE is_admin = 1 LIMIT 1",PDO::FETCH_ASSOC)->fetch();
-    $adminID = $sql['user_id'];
     
+    $sql = $conn->query("SELECT user_id FROM users 
+        WHERE is_admin = 1 
+        LIMIT 1",PDO::FETCH_ASSOC)->fetch();
+    
+    $adminID = $sql['user_id'];
     $sql="INSERT INTO notifications (n_description,n_author,n_post_id, n_notified_id) VALUES
     ('A new question created: $qTitle', '$qAuthor',$Qid, $adminID);";
     $conn->exec($sql);
