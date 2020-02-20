@@ -91,6 +91,7 @@ function saveServerSettings() {
   $.ajax({
     url: "/install/insActions.php",
     method: "POST",
+    dataType: "JSON",
     data: {
       action: action,
       Servername: Servername,
@@ -99,9 +100,12 @@ function saveServerSettings() {
       DB_Name: DB_Name
     },
     success: function(response) {
-      if (response) {
-      } else {
-        alert("olmadı!");
+      if (response.ErrorCode == "ServerError") {
+        alert(response.ErrorMessage);
+        window.location.reload();
+      } else if (response.ErrorCode == "DBError") {
+        alert(response.ErrorMessage);
+        window.location.reload();
       }
     }
   });
@@ -123,6 +127,7 @@ function saveAdminSettings() {
   $.ajax({
     url: "/install/insActions.php",
     method: "POST",
+    dataType: "JSON",
     data: {
       action: action,
       AdminUsername: AdminUsername,

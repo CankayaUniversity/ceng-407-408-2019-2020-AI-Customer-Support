@@ -1,4 +1,8 @@
 <?php
+
+include '../helpers/ExceptionHandler.php';
+$EH = new ExceptionHandler();
+
 $getAction = $_POST["action"];
 
 if(isset($getAction)){
@@ -8,8 +12,13 @@ if(isset($getAction)){
         $Password = $_POST["Password"];
         $DB_Name = $_POST["DB_Name"];
 
-        $conn = new PDO("mysql:host=$Servername", $Username, $Password);
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        try{
+            $conn = new PDO("mysql:host=$Servername", $Username, $Password);
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        }catch(PDOException $e){
+            echo json_encode($EH->Connection("DBError"));
+            return;
+        }
 
         $sql = "DROP DATABASE IF EXISTS $DB_Name";
         $conn->exec($sql);
