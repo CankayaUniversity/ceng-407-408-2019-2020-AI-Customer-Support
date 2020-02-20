@@ -77,12 +77,12 @@ function insertInto($tableName,$values) {
     $this->sqlQuery = NULL;
 }
 
-function selectWhere($tableName,$rowName,$operator,$value,$valueType)   {
+function selectWhere($tableName,$rowName,$operator,$value,$valueType) {
     $this->sqlQuery = 'SELECT * FROM '.$tableName.' WHERE '.$rowName.' '.$operator.' ';
     if($valueType == 'int') {
         $this->sqlQuery .= $value;
     }
-    else if($valueType == 'char')   {
+    else if($valueType == 'char') {
         $this->sqlQuery.="'".$value."'";
     }
 
@@ -98,6 +98,13 @@ function selectFreeRun($query)  {
     $this->dataSet = $this->conn->prepare($query);
     $this->dataSet->execute();
     $this->dataSet = $this->dataSet->fetchAll();
+    return $this->dataSet;
+}
+
+function selectRowCount($query)  {
+    $this->dataSet = $this->conn->prepare($query);
+    $this->dataSet->execute();
+    $this->dataSet = $this->dataSet->rowCount();
     return $this->dataSet;
 }
 
