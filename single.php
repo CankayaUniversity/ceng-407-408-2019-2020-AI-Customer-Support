@@ -11,27 +11,28 @@
                                     if (isset($_GET['post'])) {
                                         $slug = $_GET['post'];
                                     }
+                                    
                                     $user_id = $_SESSION['user_UserID'];
-                                    $query = $conn->query("SELECT * FROM questions WHERE slug='$slug'",PDO::FETCH_ASSOC);
-                                    $query->setFetchMode(PDO::FETCH_ASSOC);
-                                    while($r=$query->fetch()){
-                                        $q_id = $r["q_id"];
-                                        $q_title = $r["q_title"];
-                                        $q_description = $r["q_description"];
-                                        $q_author_id = $r['q_author'];
-                                        $q_date = $r['q_date'];
-                                        $q_tag = $r['q_tags'];
-                                        $q_score = $r["q_like"]-$r["q_dislike"];
-                                        $category_id = $r['category'];
-                                    }
-                                    $sql = $conn->query("SELECT username FROM users WHERE user_id='$q_author_id'")->fetch();
-                                    $categoryName = $conn->query("SELECT cat_name FROM categories WHERE cat_id='$category_id'")->fetch();
+                                    
+                                    $getQuestion = $conne->selectWhere("questions","slug","=",$slug,"char");
+                                    $q_id = $getQuestion[0]["q_id"];
+                                    $q_title = $getQuestion[0]["q_title"];
+                                    $q_description = $getQuestion[0]["q_description"];
+                                    $q_author_id = $getQuestion[0]['q_author'];
+                                    $q_date = $getQuestion[0]['q_date'];
+                                    $q_tag = $getQuestion[0]['q_tags'];
+                                    $q_score = $getQuestion[0]["q_like"]-$r["q_dislike"];
+                                    $category_id = $getQuestion[0]['category'];
+
+                                    $getAuthor = $conne->selectWhere("users","user_id","=",$q_author_id,"int");
+
+                                    $getCategoryName = $conne->selectWhere("categories","cat_id","=",$category_id,"int");
+
                                     $myQuery="SELECT * FROM like_data WHERE user_id = '$user_id' AND q_id ='$q_id'";
-                                    $ps = $conn->query($myQuery);
-                                    $checkLikeData = $ps->rowCount();
+                                    $checkLikeData = $conne->selectRowCount($myQuery);
                                 ?>
                                 <ul class="breadcrumb">
-                                    <li><a href="#"><?php echo $categoryName['cat_name'] ?></a><span class="divider">/</span></li>
+                                    <li><a href="#"><?php echo $getCategoryName[0]['cat_name'] ?></a><span class="divider">/</span></li>
                                     <li class="active">
                                         <?php echo $q_title; ?>
                                     </li>
@@ -45,8 +46,8 @@
                                             </div>
                                             <div class="float-left meta col-sm-4">
                                                 <div class="post-comment">
-                                                    <?php $username = $sql["username"] ?>
-                                                    <a href='<?php echo "/author/$username"; ?>'><b><?php echo $sql["username"]; ?></b></a>
+                                                    <a href='<?php echo "/author/$username"; ?>'>
+                                                        <b><?php echo $getAuthor[0]["username"]; ?></b></a>
                                                 </div>
                                                 <h6 class="time-ago">Asked on, <?php echo $q_date; ?></h6>
                                             </div>
@@ -75,9 +76,7 @@
                             <?php
                                 $limit = 100; // Şuan açık değil.
                                 $query = "SELECT * FROM comments WHERE c_post_id='$q_id'";
-                                $s = $conn->prepare($query);
-                                $s->execute();
-                                $total_results = $s->rowCount();
+                                $total_results = $conne->selectRowCount($query);
                                 $total_pages = ceil($total_results/$limit);
                                 if (!isset($_GET['page'])) {
                                     $page = 1;
