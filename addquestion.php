@@ -124,12 +124,8 @@ if  (
     $qMetaDesc = $qDescription;
     $slug = helperDev::SEOFriendlyURL($qTitle);
     $qMetaKey = $qTags;
-    $check = $conne->freeRun("INSERT INTO questions(q_title,q_description,q_tags,title_meta,description_meta, keywords_meta, slug, q_author,category) VALUES ('$qTitle','$qDescription','$qTags','$qMetaTitle','$qMetaDesc','$qMetaKey','$slug','$qAuthor', '$qCategory');");
-    if(!$check){
-        print_r($check);
-        echo "check if sıkıntı var!";
-        die();
-    }
+    $conne->freeRun("INSERT INTO questions(q_title,q_description,q_tags,title_meta,description_meta, keywords_meta, slug, q_author,category) VALUES ('$qTitle','$qDescription','$qTags','$qMetaTitle','$qMetaDesc','$qMetaKey','$slug','$qAuthor', '$qCategory');");
+
     $sql = $conn->prepare("SELECT q_id FROM questions 
         WHERE q_author = '$qAuthor' 
         ORDER BY q_date 
