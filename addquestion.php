@@ -124,18 +124,26 @@ if  (
     $qMetaDesc = $qDescription;
     $slug = helperDev::SEOFriendlyURL($qTitle);
     $qMetaKey = $qTags;
-    $conne->freeRun("INSERT INTO questions(q_title,q_description,q_tags,title_meta,description_meta, keywords_meta, slug, q_author,category) VALUES ('$qTitle','$qDescription','$qTags','$qMetaTitle','$qMetaDesc','$qMetaKey','$slug','$qAuthor', '$qCategory');");
-    $sql = $conn->query("SELECT q_id FROM questions 
+    $check = $conne->freeRun("INSERT INTO questions(q_title,q_description,q_tags,title_meta,description_meta, keywords_meta, slug, q_author,category) VALUES ('$qTitle','$qDescription','$qTags','$qMetaTitle','$qMetaDesc','$qMetaKey','$slug','$qAuthor', '$qCategory');");
+/*    if(!$check){
+        print_r($check);
+        echo "check if sıkıntı var!";
+        die();
+    }*/
+    $sql = $conn->prepare("SELECT q_id FROM questions 
         WHERE q_author = '$qAuthor' 
         ORDER BY q_date 
-        DESC LIMIT 1",PDO::FETCH_ASSOC)->fetch();
+        DESC LIMIT 1");
+    $sql = $sql->execute();
+    if(!$sql) die("Sıkıntı var! -1");
     $Qid = $sql['q_id'];
     
-    $sql = $conn->query("SELECT user_id FROM users 
+    $query = $conn->prepare("SELECT user_id FROM users 
         WHERE is_admin = 1 
-        LIMIT 1",PDO::FETCH_ASSOC)->fetch();
-    
-    $adminID = $sql['user_id'];
+        LIMIT 1");
+    $query = $query->execute();
+    if(!$query) die("Sıkıntı var! -2");
+    $adminID = $query['user_id'];
     $sql="INSERT INTO notifications (n_description,n_author,n_post_id, n_notified_id) VALUES
     ('A new question created: $qTitle', '$qAuthor',$Qid, $adminID);";
     $conne->freeRun($sql);
