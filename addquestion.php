@@ -125,11 +125,11 @@ if  (
     $slug = helperDev::SEOFriendlyURL($qTitle);
     $qMetaKey = $qTags;
     $check = $conne->freeRun("INSERT INTO questions(q_title,q_description,q_tags,title_meta,description_meta, keywords_meta, slug, q_author,category) VALUES ('$qTitle','$qDescription','$qTags','$qMetaTitle','$qMetaDesc','$qMetaKey','$slug','$qAuthor', '$qCategory');");
-/*    if(!$check){
+    if(!$check){
         print_r($check);
         echo "check if sıkıntı var!";
         die();
-    }*/
+    }
     $sql = $conn->prepare("SELECT q_id FROM questions 
         WHERE q_author = '$qAuthor' 
         ORDER BY q_date 
@@ -144,9 +144,9 @@ if  (
     $query = $query->execute();
     if(!$query) die("Sıkıntı var! -2");
     $adminID = $query['user_id'];
-    $sql="INSERT INTO notifications (n_description,n_author,n_post_id, n_notified_id) VALUES
-    ('A new question created: $qTitle', '$qAuthor',$Qid, $adminID);";
-    $conne->freeRun($sql);
+    $sql1=prepare("INSERT INTO notifications (n_description,n_author,n_post_id, n_notified_id) VALUES
+    ('A new question created: ".$qTitle."', '".$qAuthor."',".$Qid.", ".$adminID.");");
+    $sql1 = $sql1->execute();
     ?>
     <script>window.location.replace("index.php");</script>
     <?php   
