@@ -75,44 +75,6 @@
 
                                 <?php endwhile; ?>
                                 </section>
-                                <section class="span8 articles-list">
-                                    <h3>Popular Articles</h3>
-                                    <?php
-                                    $popular = "SELECT * FROM questions ORDER BY q_like DESC";
-                                    $r = $conn->prepare($popular);
-                                    $r->execute();
-
-                                    while($res = $r->fetch(PDO::FETCH_ASSOC)) :
-                                        $q_author = $res['q_author'];
-                                        $q_title = $res['q_title'];
-                                        $q_id = $res['q_id'];
-                                        $q_slug = $res['slug'];
-                                        $origin_q_date = $res['q_date'];
-                                        $q_score = $res['q_like'] - $res['q_dislike'];
-                                        $newDate = date("d m Y", strtotime($origin_q_date));
-                                        $user = $conn->query("SELECT user_id, username, q_author FROM users,questions WHERE user_id='$q_author'",PDO::FETCH_ASSOC)->fetch();
-                                        $user_id = $user['user_id'];
-                                        $username = $user['username'];
-                                    ?>
-                                    <div class="forum-item">
-                                        <div class="row">
-                                            <div class="col-md-9">
-                                                <div class="forum-icon"> <i class="fa fa-bolt"></i></div> <a href="<?php echo "post/$q_slug"; ?>" class="forum-item-title"><?php echo $q_title; ?></a>
-                                                <div class="forum-sub-title"><a href="<?php echo "/author/$username"; ?>"><?php echo $username; ?></a> posted a post.</div>
-                                            </div>
-                                            <div class="col-md-1 forum-info"> <span class="views-number"> <?php echo $res['q_like'] ?> </span>
-                                                <div> <small>Likes</small></div>
-                                            </div>
-                                            <div class="col-md-1 forum-info"> <span class="views-number"> <?php echo $res['q_dislike'] ?> </span>
-                                                <div> <small>Dislikes</small></div>
-                                            </div>
-                                            <div class="col-md-1 forum-info"> <span class="views-number"> <?php echo $res['q_like'] - $res['q_dislike'] ?> </span>
-                                                <div> <small>Score</small></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <?php endwhile; ?>
-                                </section>
                             </div>
                             <?php  for ($page=1; $page <= $total_pages ; $page++):?>
                             <a href='<?php echo "?page=$page"; ?>' class="links">
