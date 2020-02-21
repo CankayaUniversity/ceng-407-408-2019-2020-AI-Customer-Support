@@ -49,7 +49,7 @@ function dbConnect()    {
 
 function dbConnectExternal($hostName,$userName,$passCode){
     $this->conn = new PDO("mysql:host=$hostName;", $userName, $passCode);
-    //$this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     return $this->conn;
 }
 
