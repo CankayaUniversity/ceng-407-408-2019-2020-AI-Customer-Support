@@ -14,12 +14,11 @@
   </section>
   <section class="widget">
     <div class="quick-links-widget">
-      <h3>Quick Links</h3>
+      <h3>Popular Articles</h3>
       <ul id="menu-quick-links" class="menu clearfix">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="articles-list.html">Articles List</a></li>
-        <li><a href="faq.html">FAQs</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <?php foreach (homeController::popularArticles() as $key) { ?>
+        <li><a href="<?php echo $key['slug']?>"><?php echo $key["q_title"]?></a></li>
+        <?php } ?>
       </ul>
     </div>
   </section>

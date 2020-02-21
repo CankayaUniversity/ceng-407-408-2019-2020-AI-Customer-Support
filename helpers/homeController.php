@@ -55,6 +55,13 @@ class HomeController
             $counter++;
         }
     }
+
+    public static function popularArticles(){
+        $conne = new Mysql();
+        $conn = $conne->dbConnect();
+        $popularArticles = $conne->selectFreeRun("SELECT * FROM questions ORDER BY q_like DESC LIMIT 5");
+        return $popularArticles;
+    }
 } 
 
 ?>
