@@ -16,7 +16,6 @@ if (isset($_GET['author'])) {
 
 ?>
 
-<div class="user-page">
     <div class="container bootstrap snippet">
         <div class="row">
             <div class="col-md-3">
@@ -98,5 +97,4 @@ if (isset($_GET['author'])) {
             </div>
         </div>
     </div>
-</div>
 <?php include 'footer.php';?>
