@@ -54,13 +54,25 @@
                                             $user_id = $user['user_id'];
                                             $username = $user['username'];
                                     ?>
-                                    <ul class="articles">
-                                        <li class="article-entry">
-                                            <h4> <a href='<?php echo "post/$q_slug"; ?>' class="d-block text-gray-dark"><?php echo $q_title; ?></a></h4>
-                                            <span class="article-meta"><?php echo $newDate; ?> <a href='<?php echo "/author/$username"; ?>'><?php echo $user['username']; ?></a></span>
-                                            <span class="like-count"><?php echo $q_score; ?></span>
-                                        </li>
-                                    </ul>
+                                    
+                                    <div class="forum-item">
+                                        <div class="row">
+                                            <div class="col-md-9">
+                                                <div class="forum-icon"> <i class="fa fa-bolt"></i></div> <a href="<?php echo "post/$q_slug"; ?>" class="forum-item-title"><?php echo $q_title; ?></a>
+                                                <div class="forum-sub-title"><a href="<?php echo "/author/$username"; ?>"><?php echo $username; ?></a> posted a post.</div>
+                                            </div>
+                                            <div class="col-md-1 forum-info"> <span class="views-number"> <?php echo $res['q_like'] ?> </span>
+                                                <div> <small>Likes</small></div>
+                                            </div>
+                                            <div class="col-md-1 forum-info"> <span class="views-number"> <?php echo $res['q_dislike'] ?> </span>
+                                                <div> <small>Dislikes</small></div>
+                                            </div>
+                                            <div class="col-md-1 forum-info"> <span class="views-number"> <?php echo $res['q_like'] - $res['q_dislike'] ?> </span>
+                                                <div> <small>Score</small></div>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 <?php endwhile; ?>
                                 </section>
                                 <section class="span8 articles-list">
@@ -82,13 +94,23 @@
                                         $user_id = $user['user_id'];
                                         $username = $user['username'];
                                     ?>
-                                    <ul class="articles">
-                                        <li class="article-entry">
-                                            <h4> <a href='<?php echo "post/$q_slug"; ?>' class="d-block text-gray-dark"><?php echo $q_title; ?></a></h4>
-                                            <span class="article-meta"><?php echo $newDate; ?> <a href="<?php echo "/author/$username"; ?>"><?php echo $user['username']; ?></a></span>
-                                            <span class="like-count"><?php echo $q_score; ?></span>
-                                        </li>
-                                    </ul>
+                                    <div class="forum-item">
+                                        <div class="row">
+                                            <div class="col-md-9">
+                                                <div class="forum-icon"> <i class="fa fa-bolt"></i></div> <a href="<?php echo "post/$q_slug"; ?>" class="forum-item-title"><?php echo $q_title; ?></a>
+                                                <div class="forum-sub-title"><a href="<?php echo "/author/$username"; ?>"><?php echo $username; ?></a> posted a post.</div>
+                                            </div>
+                                            <div class="col-md-1 forum-info"> <span class="views-number"> <?php echo $res['q_like'] ?> </span>
+                                                <div> <small>Likes</small></div>
+                                            </div>
+                                            <div class="col-md-1 forum-info"> <span class="views-number"> <?php echo $res['q_dislike'] ?> </span>
+                                                <div> <small>Dislikes</small></div>
+                                            </div>
+                                            <div class="col-md-1 forum-info"> <span class="views-number"> <?php echo $res['q_like'] - $res['q_dislike'] ?> </span>
+                                                <div> <small>Score</small></div>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <?php endwhile; ?>
                                 </section>
                             </div>
