@@ -78,7 +78,7 @@ if($sUsername == null){
                                     <div class="form-group">
                                     <select name="QuestionCategory" id="QuestionCategory">
                                     <?php foreach ($conne->selectAll('categories') as $key) { ?>
-                                    <option value="<?php echo $res['cat_id']; ?>"><?php echo $key['cat_name']; ?></option>
+                                    <option value="<?php echo $key['cat_id']; ?>"><?php echo $key['cat_name']; ?></option>
                                     <?php } ?>
                                     </select>
                                     </div>
