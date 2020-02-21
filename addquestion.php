@@ -124,7 +124,7 @@ if  (
     $qMetaDesc = $qDescription;
     $slug = helperDev::SEOFriendlyURL($qTitle);
     $qMetaKey = $qTags;
-    $conn->exec("INSERT INTO questions(q_title,q_description,q_tags,title_meta,description_meta, keywords_meta, slug, q_author,category) VALUES ('$qTitle','$qDescription','$qTags','$qMetaTitle','$qMetaDesc','$qMetaKey','$slug','$qAuthor', '$qCategory');");
+    $conne->freeRun("INSERT INTO questions(q_title,q_description,q_tags,title_meta,description_meta, keywords_meta, slug, q_author,category) VALUES ('$qTitle','$qDescription','$qTags','$qMetaTitle','$qMetaDesc','$qMetaKey','$slug','$qAuthor', '$qCategory');");
     $sql = $conn->query("SELECT q_id FROM questions 
         WHERE q_author = '$qAuthor' 
         ORDER BY q_date 
@@ -138,7 +138,7 @@ if  (
     $adminID = $sql['user_id'];
     $sql="INSERT INTO notifications (n_description,n_author,n_post_id, n_notified_id) VALUES
     ('A new question created: $qTitle', '$qAuthor',$Qid, $adminID);";
-    $conn->exec($sql);
+    $conne->freeRun($sql);
     ?>
     <script>window.location.replace("index.php");</script>
     <?php   
