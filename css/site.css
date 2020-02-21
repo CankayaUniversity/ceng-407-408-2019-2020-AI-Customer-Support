@@ -1763,9 +1763,9 @@ body{margin-top:20px;
       border-bottom: 1px solid #f1f1f1;
     }
     .views-number {
-      font-size: 24px;
-      line-height: 18px;
-      font-weight: 400;
+      font-size: 20px;
+      line-height: 16px;
+      font-weight: 375;
     }
     .forum-container,
     .forum-post-container {
@@ -1796,16 +1796,16 @@ body{margin-top:20px;
     a.forum-item-title {
       color: inherit;
       display: block;
-      font-size: 18px;
-      font-weight: 600;
+      font-size: 16px;
+      font-weight: 550;
     }
     a.forum-item-title:hover {
       color: inherit;
     }
     .forum-icon .fa {
-      font-size: 30px;
-      margin-top: 8px;
-      color: #9b9b9b;
+      font-size: 32px;
+      margin-top: 10px;
+      color: #e27932;
     }
     .forum-item.active .fa {
       color: #1ab394;
@@ -1823,11 +1823,6 @@ body{margin-top:20px;
         float: none !important;
       }
     }
-    
-    
-    
-    
-    
     .ibox {
       clear: both;
       margin-bottom: 25px;
