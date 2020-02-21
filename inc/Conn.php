@@ -47,7 +47,13 @@ function dbConnect()    {
     return $this->conn;
 }
 
- function selectAll($tableName) {
+function dbConnectExternal($hostName,$userName,$passCode){
+    $this->conn = new PDO("mysql:host=$hostName;", $userName, $passCode);
+    //$this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    return $this->conn;
+}
+
+function selectAll($tableName) {
     $this->sqlQuery = 'SELECT * FROM '.$tableName.'';
     $this->dataSet = $this->conn->prepare($this->sqlQuery);
     $this->dataSet->execute();
@@ -109,7 +115,8 @@ function selectRowCount($query)  {
 }
 
 function freeRun($query)  {
-    $this->dataSet = $this->conn->prepare($query)->execute();
+    $this->dataSet = $this->conn->prepare($query);
+    $this->dataSet->execute();
 }
 
 }

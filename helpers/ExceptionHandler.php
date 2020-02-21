@@ -1,5 +1,13 @@
 <?php 
 
+/**
+ * Class HomeController
+ * @author Arınç Alp Eren
+ * @mail arinc.alp.98@gmail.com
+ * @date 21.02.2020
+ * @update 22.02.2020
+ */ 
+
 class ExceptionHandler {
 
     private $ErrorMessage;
@@ -13,7 +21,7 @@ class ExceptionHandler {
     public function Connection($type){
         if($type == "DBError"){
             $this->ErrorMessage = "Database username and password does not match.";
-            $this->ErrorCode = "ServerError";
+            $this->ErrorCode = "DBError";
             return array("ErrorCode" => $this->ErrorCode, "ErrorMessage" => $this->ErrorMessage);
         }
         else if($type == "ServerError"){
@@ -30,7 +38,7 @@ class ExceptionHandler {
         }
         else if($type == "UsernameError"){
             $this->ErrorMessage = "This username already exists.";
-            $this->ErrorCode = "EmailError";
+            $this->ErrorCode = "UsernameError";
             return array("ErrorCode" => $this->ErrorCode, "ErrorMessage" => $this->ErrorMessage);
         }
     }
