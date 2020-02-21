@@ -13,7 +13,7 @@ protected $hostName;
 protected $userName;
 protected $passCode;
 
-function Mysql()    {
+function __construct()    {
     $this->conn = NULL;
     $this->sqlQuery = NULL;
     $this->dataSet = NULL;
