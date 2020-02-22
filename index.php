@@ -76,11 +76,11 @@
                                 <?php endwhile; ?>
                                 </section>
                             </div>
+                            <div class="index-paging">
                             <?php  for ($page=1; $page <= $total_pages ; $page++):?>
-                            <a href='<?php echo "?page=$page"; ?>' class="links">
-                                <?php echo $page; ?>
-                            </a>
+                            <a href='<?php echo "?page=$page"; ?>'><?php echo $page; ?></a>
                             <?php endfor; ?>
+                            </div>
                         </div>
                     </div>
                 </div>
