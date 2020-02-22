@@ -255,7 +255,7 @@ form.search-form input.search-btn:hover {
 .quick-links-widget {
     border: 1px solid #6c757d;
     padding: 10px 15px 15px;
-    background: #ffffff url(../images/links.png) no-repeat 95% 20px;
+    background: #ffffff;
 }
 .quick-links-widget a {
     color: black;

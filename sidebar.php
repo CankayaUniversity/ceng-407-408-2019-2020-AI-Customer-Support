@@ -15,12 +15,12 @@
   <section class="widget">
     <div class="quick-links-widget">
       <h3>Popular Articles</h3>
-      <ul id="menu-quick-links" class="menu clearfix">
+      <ul class="list-group list-group-flush">
         <?php 
           foreach (homeController::popularArticles() as $key) { 
           $popular_slug = $key['slug']; 
         ?>
-        <li><a href='<?php echo "/post/$popular_slug";?>'><?php echo $key["q_title"]?></a></li>
+        <li class="list-group-item"><a href='<?php echo "/post/$popular_slug";?>'><?php echo $key["q_title"]?></a></li>
         <?php } ?>
       </ul>
     </div>
@@ -55,4 +55,9 @@
   </section>
   <?php endif; ?>
 </aside>
-
+<script>
+$(".list-group-item").hover(
+  function(){ $(this).addClass("list-group-item-info");},
+  function(){ $(this).removeClass("list-group-item-info");}       
+);
+</script>
