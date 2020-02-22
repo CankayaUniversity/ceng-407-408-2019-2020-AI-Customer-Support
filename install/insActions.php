@@ -61,7 +61,7 @@ if(isset($getAction)){
             q_like int NOT NULL DEFAULT '0',
             q_dislike int NOT NULL  DEFAULT '0',
             q_date datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-            FOREIGN KEY (q_author) REFERENCES users(user_id)
+            FOREIGN KEY (q_author) REFERENCES users(user_id) ON DELETE CASCADE
             );";
 
         $Connect->freeRun($sql);
@@ -74,8 +74,8 @@ if(isset($getAction)){
             c_like int NOT NULL DEFAULT '0',
             c_dislike int NOT NULL  DEFAULT '0',
             c_date datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-            FOREIGN KEY (c_author) REFERENCES users(user_id),
-            FOREIGN KEY (c_post_id) REFERENCES questions(q_id)
+            FOREIGN KEY (c_author) REFERENCES users(user_id) ON DELETE CASCADE, 
+            FOREIGN KEY (c_post_id) REFERENCES questions(q_id) ON DELETE CASCADE
             );";
 
         $Connect->freeRun($sql);
@@ -88,8 +88,8 @@ if(isset($getAction)){
             n_notified_id int NOT NULL,
             n_isChecked int NOT NULL DEFAULT '0',
             n_date datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-            FOREIGN KEY (n_author) REFERENCES users(user_id),
-            FOREIGN KEY (n_post_id) REFERENCES questions(q_id)
+            FOREIGN KEY (n_author) REFERENCES users(user_id) ON DELETE CASCADE,
+            FOREIGN KEY (n_post_id) REFERENCES questions(q_id) ON DELETE CASCADE
             );";
 
         $Connect->freeRun($sql);
@@ -110,8 +110,8 @@ if(isset($getAction)){
             q_id int NOT NULL,
             user_id int NOT NULL,
             status int NOT NULL,
-            FOREIGN KEY (user_id) REFERENCES users(user_id),
-            FOREIGN KEY (q_id) REFERENCES questions(q_id)
+            FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,
+            FOREIGN KEY (q_id) REFERENCES questions(q_id) ON DELETE CASCADE
             );";
 
         $Connect->freeRun($sql);
