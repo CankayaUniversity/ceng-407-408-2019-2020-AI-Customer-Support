@@ -77,8 +77,12 @@
                                 </section>
                             </div>
                             <div class="index-paging">
-                            <?php  for ($page=1; $page <= $total_pages ; $page++):?>
-                            <a href='<?php echo "?page=$page"; ?>'><?php echo $page; ?></a>
+                            <?php  for ($i=1; $i <= $total_pages ; $i++):?>
+                            <?php if($page === $i ){ ?>
+                            <a href='<?php echo "?page=$i"; ?>' class="active"><?php echo $i; ?></a>
+                            <?php } else { ?>
+                            <a href='<?php echo "?page=$i"; ?>'><?php echo $i; ?></a>
+                            <?php } ?>
                             <?php endfor; ?>
                             </div>
                         </div>
