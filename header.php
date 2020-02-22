@@ -17,7 +17,11 @@ if (isset($_SESSION['user_Username'])) {
     $userid = $_SESSION['user_UserID'];
     HomeController::getNCount($userid);
 } else {
-    $sUsername = null;
+  $sUsername = null;
+}
+$isAdmin = 0;
+if(isset($_SESSION["user_isAdmin"])) {
+  $isAdmin = $_SESSION["user_isAdmin"];
 }
 
 ?>
@@ -134,6 +138,11 @@ if (isset($_SESSION['user_Username'])) {
             <?php } ?>
           </div>
         </div>
+        <?php if ($isAdmin == 1): ?>
+        <li class="nav-item">
+          <a class="nav-link" role="button" href="/admin/index.php" aria-expanded="false" aria-controls="collapseExample">Admin Panel</a>
+        </li>
+        <?php endif; ?>
         <?php if ($sUsername == null): ?>
         <li class="nav-item">
           <a class="nav-link" data-toggle="modal" href="#registerModal" role="button" aria-expanded="false" aria-controls="collapseExample">Sign Up</a>

@@ -55,7 +55,6 @@
                                             $user_id = $user['user_id'];
                                             $username = $user['username'];
                                     ?>
-                                    
                                     <div class="forum-item">
                                         <div class="row">
                                             <div class="col-md-9">
@@ -73,7 +72,6 @@
                                             </div>
                                         </div>
                                     </div>
-
                                 <?php endwhile; ?>
                                 </section>
                             </div>
