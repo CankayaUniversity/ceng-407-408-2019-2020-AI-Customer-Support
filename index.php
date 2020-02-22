@@ -103,9 +103,15 @@
                 resultDropdown.empty();
             }
         });
+
         $(document).on("click", ".liveresult li", function(){
             $(this).parents(".search-box").find('input[type="text"]').val($(this).text());
             $(this).parent(".liveresult").empty();
         });
+
+        $(".forum-item").hover(
+            function(){ $(this).addClass("active");},
+            function(){ $(this).removeClass("active");}       
+        );
     });
     </script>

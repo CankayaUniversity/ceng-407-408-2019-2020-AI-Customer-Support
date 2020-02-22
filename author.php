@@ -27,7 +27,7 @@ if (isset($_GET['author'])) {
                     <li class="list-group-item text-muted">Status</li>
                     <li class="list-group-item text-right"><span style="float: left"><strong>Questions asked</strong></span> 
                         <?php
-                            $sql="SELECT * FROM questions WHERE q_author='$id'";
+                            $sql="SELECT * FROM questions WHERE q_author='$user_id'";
                             $q = $conn->query($sql);
                             $q->setFetchMode(PDO::FETCH_ASSOC);
                             $count=0;

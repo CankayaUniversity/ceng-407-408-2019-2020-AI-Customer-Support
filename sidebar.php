@@ -16,8 +16,11 @@
     <div class="quick-links-widget">
       <h3>Popular Articles</h3>
       <ul id="menu-quick-links" class="menu clearfix">
-        <?php foreach (homeController::popularArticles() as $key) { ?>
-        <li><a href="<?php echo $key['slug']?>"><?php echo $key["q_title"]?></a></li>
+        <?php 
+          foreach (homeController::popularArticles() as $key) { 
+          $popular_slug = $key['slug']; 
+        ?>
+        <li><a href='<?php echo "/post/$popular_slug";?>'><?php echo $key["q_title"]?></a></li>
         <?php } ?>
       </ul>
     </div>
