@@ -55,9 +55,3 @@
   </section>
   <?php endif; ?>
 </aside>
-<script>
-$(".list-group-item").hover(
-  function(){ $(this).addClass("list-group-item-info");},
-  function(){ $(this).removeClass("list-group-item-info");}       
-);
-</script>

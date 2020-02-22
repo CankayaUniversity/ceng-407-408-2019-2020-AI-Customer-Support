@@ -221,10 +221,14 @@ form.search-form input.search-btn:hover {
 
 .support-widget {
     border: 1px solid #6c757d;
+    border-radius: 6px !important;
     padding: 10px 100px 10px 20px;
     background: var(--white) url(../images/mascot.png) no-repeat 95% 20px;
     background-size: 80px;
     margin-bottom: 20px;
+    padding-top: 30px;
+    border-left-width: 12px;
+    margin-left: 5px;
 }
 
 .tags-widget {
@@ -254,8 +258,12 @@ form.search-form input.search-btn:hover {
 
 .quick-links-widget {
     border: 1px solid #6c757d;
-    padding: 10px 15px 15px;
+    border-radius: 6px !important;
+    padding: 60px 30px 30px 10px;
     background: #ffffff;
+    padding-top: 30px;
+    border-left-width: 12px;
+    margin-left: 5px;
 }
 .quick-links-widget a {
     color: black;
@@ -1914,4 +1922,6 @@ body{margin-top:20px;
       border: 1px solid #e2793f;
     }
     .pagination a:hover:not(.active) {background-color: #ddd;}
+
+
 
