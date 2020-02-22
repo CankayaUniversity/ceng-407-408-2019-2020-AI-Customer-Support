@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="span8 page-content">
                     <div class="row separator">
-                     <section class="span8 articles-list">
+                        <section class="span8 articles-list">
                             <h3>All Questions</h3>
                             <?php
                                 if (isset($_GET['category'])) {

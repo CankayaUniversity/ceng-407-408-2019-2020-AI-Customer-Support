@@ -27,7 +27,7 @@ $AllUsers = adminController::getAllUsers();
                         <td><?php echo $key["email"] ?></td>
                         <td><?php echo $key["is_admin"] ?></td>
                     </tr>
-               <? } ?>
+                <? } ?>
             </tbody>
         </table>
         <button type="button" class="delete-row">Delete</button>

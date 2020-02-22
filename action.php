@@ -102,7 +102,6 @@ else if($action == "dislike"){
     } else {
         echo "This cannot be done! You can only vote one question once!";
     }
-   
 }
 
 if($action =="deleteUser") {

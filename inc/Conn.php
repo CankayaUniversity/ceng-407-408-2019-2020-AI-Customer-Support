@@ -39,8 +39,8 @@ function __construct() {
 function checkEnv() {
     if(!defined('ENV')) {
         if ($_SERVER['HTTP_HOST'] == 'localhost' ||
-         $_SERVER['HTTP_HOST'] == 'localhost:8080' ||
-         $_SERVER['HTTP_HOST'] == 'localhost:80') {
+        $_SERVER['HTTP_HOST'] == 'localhost:8080' ||
+        $_SERVER['HTTP_HOST'] == 'localhost:80') {
             define('ENV', 'dev');
         } else {
             define('ENV', 'live');

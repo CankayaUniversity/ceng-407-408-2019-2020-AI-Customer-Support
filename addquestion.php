@@ -140,7 +140,7 @@ if  (
     $query = $query->execute();
     if(!$query) die("Sıkıntı var! -2");
     $adminID = $query['user_id'];
-    $sql1=prepare("INSERT INTO notifications (n_description,n_author,n_post_id, n_notified_id) VALUES
+    $sql1 = $conn->prepare("INSERT INTO notifications (n_description,n_author,n_post_id, n_notified_id) VALUES
     ('A new question created: ".$qTitle."', '".$qAuthor."',".$Qid.", ".$adminID.");");
     $sql1 = $sql1->execute();
     ?>
