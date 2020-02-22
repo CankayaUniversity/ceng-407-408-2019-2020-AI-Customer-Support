@@ -1909,9 +1909,9 @@ body{margin-top:20px;
     }
 
     .index-paging a.active {
-      background-color: #4CAF50;
+      background-color: #e2793f;
       color: white;
-      border: 1px solid #4CAF50;
+      border: 1px solid #e2793f;
     }
     .pagination a:hover:not(.active) {background-color: #ddd;}
 

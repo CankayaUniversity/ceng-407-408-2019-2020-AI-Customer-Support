@@ -113,5 +113,8 @@
             function(){ $(this).addClass("active");},
             function(){ $(this).removeClass("active");}       
         );
+        $('.index-paging a').filter(function(){
+          return this.href === location.href;
+        }).addClass('active');
     });
     </script>
