@@ -12,8 +12,6 @@
                                         $slug = $_GET['post'];
                                     }
                                     
-                                    $user_id = $_SESSION['user_UserID'];
-                                    
                                     $getQuestion = $conne->selectWhere("questions","slug","=",$slug,"char");
                                     $q_id = $getQuestion[0]["q_id"];
                                     $q_title = $getQuestion[0]["q_title"];
@@ -27,9 +25,14 @@
                                     $getAuthor = $conne->selectWhere("users","user_id","=",$q_author_id,"int");
 
                                     $getCategoryName = $conne->selectWhere("categories","cat_id","=",$category_id,"int");
-
-                                    $myQuery="SELECT * FROM like_data WHERE user_id = '$user_id' AND q_id ='$q_id'";
-                                    $checkLikeData = $conne->selectRowCount($myQuery);
+                                    if(isset($_SESSION['user_UserID'])){
+                                        $user_id = $_SESSION['user_UserID'];
+                                        $myQuery="SELECT * FROM like_data WHERE user_id = '$user_id' AND q_id ='$q_id'";
+                                        $checkLikeData = $conne->selectRowCount($myQuery);
+                                    }else{
+                                        $checkLikeData = 1;
+                                    }
+                                    
                                 ?>
                                 <ul class="breadcrumb">
                                     <li><a href="#"><?php echo $getCategoryName[0]['cat_name'] ?></a><span class="divider">/</span></li>
