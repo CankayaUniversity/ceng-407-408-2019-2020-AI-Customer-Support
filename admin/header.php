@@ -5,7 +5,7 @@
     error_reporting(-1); 
 
     include '../helpers/adminController.php';
-    die();
+
     if (isset($_SESSION['user_Username'])) {
         $sUsername = $_SESSION['user_Username'];
         $userid = $_SESSION['user_UserID'];

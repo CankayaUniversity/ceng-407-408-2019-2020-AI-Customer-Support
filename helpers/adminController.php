@@ -10,7 +10,7 @@
 include '../inc/Conn.php';
 class adminController
 {
-    function getAllUsers() {
+    public static function getAllUsers() {
         $conne = new Mysql();
         $conn = $conne->dbConnect();
         $query = $conn->query("SELECT * FROM users");
@@ -19,7 +19,7 @@ class adminController
         return $r;
     }
 
-    function getAllQuestions(){
+    public static function getAllQuestions(){
         $conne = new Mysql();
         $conn = $conne->dbConnect();
         $query = $conn->query("SELECT * FROM questions");
@@ -28,7 +28,7 @@ class adminController
         return $r;
     }
 
-    function getAllCategories(){
+    public static function getAllCategories(){
         $conne = new Mysql();
         $conn = $conne->dbConnect();
         $query = $conn->query("SELECT * FROM categories");
