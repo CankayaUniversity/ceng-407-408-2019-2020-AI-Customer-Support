@@ -8,19 +8,16 @@ data = pd.read_csv("data.csv")
 
 import string
 
+from sklearn.feature_extraction.text import TfidfVectorizer
+
+nltk.download('punkt') # if necessary...
+
 text = ''
 for word in sys.argv[1:]:
     text += word + ' '
 
-print(data)
+print(text)
 exit()
-
-from sklearn.feature_extraction.text import TfidfVectorizer
-
-
-
-nltk.download('punkt') # if necessary...
-
 
 stemmer = nltk.stem.porter.PorterStemmer()
 remove_punctuation_map = dict((ord(char), None) for char in string.punctuation)
