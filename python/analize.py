@@ -19,6 +19,7 @@ for word in sys.argv[1:]:
     text += word + ' '
 
 print(text)
+exit()
 
 nltk.download('punkt') # if necessary...
 
