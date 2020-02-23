@@ -25,7 +25,7 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 <!-- Admin Header -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="index.php">
         <img src="../images/mascot.png" width="30" height="30" class="d-inline-block align-top" alt=""> Admin Dashboard V1.0
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
@@ -36,8 +36,8 @@
             <li class="nav-item active">
                 <a class="nav-link" href="/index.php">AICS <span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            <li class="nav-item">
+                <a class="nav-link" href="/install/install-new.php">Install</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="general-options.php">General Settings</a>
@@ -45,9 +45,12 @@
             <li class="nav-item">
                 <a class="nav-link" href="users.php">Users</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="questions.php">Questions</a>
+            </li>
         </ul>
         <span class="navbar-text">
-        Navbar text with an inline element
+            Navbar text with an inline element
         </span>
     </div>
 </nav>

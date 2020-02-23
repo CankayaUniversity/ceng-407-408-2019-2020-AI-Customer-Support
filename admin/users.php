@@ -13,9 +13,10 @@ $AllUsers = adminController::getAllUsers();
             <thead>
                 <tr>
                     <th>Select</th>
-                    <th>Name</th>
+                    <th>Username</th>
                     <th>Email</th>
-                    <th>is Admin</th>
+                    <th>Fullname</th>
+                    <th>Admin</th>
                 </tr>
             </thead>
             <tbody>
@@ -25,7 +26,8 @@ $AllUsers = adminController::getAllUsers();
                         <td><input type="checkbox" value="<?php echo $key['user_id'] ?>" name="record"></td>
                         <td><?php echo $key["username"] ?></td>
                         <td><?php echo $key["email"] ?></td>
-                        <td><?php echo $key["is_admin"] ?></td>
+                        <td><?php echo $key["firstname"].' '.$key["surname"];?></td>
+                        <td><?php if($key["is_admin"]) echo "Yes"; else echo "No"; ?></td>
                     </tr>
                 <? } ?>
             </tbody>

@@ -111,4 +111,12 @@ if($action =="deleteUser") {
     $statement->execute();
     echo "Deleted User!";
 }
+
+if($action =="deleteQuestion") {
+  $q_id = $_POST['q_id'];
+  $query = "DELETE FROM questions WHERE q_id = '$q_id'";
+  $statement = $conn->prepare($query);
+  $statement->execute();
+  echo "Deleted Question!";
+}
 ?>

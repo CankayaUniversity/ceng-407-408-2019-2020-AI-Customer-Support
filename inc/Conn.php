@@ -99,7 +99,6 @@ function selectWhere($tableName,$rowName,$operator,$value,$valueType) {
     else if($valueType == 'char') {
         $this->sqlQuery.="'".$value."'";
     }
-
     $this->dataSet = $this->conn->prepare($this->sqlQuery);
     $this->dataSet->execute();
     $this->dataSet = $this->dataSet->fetchAll();

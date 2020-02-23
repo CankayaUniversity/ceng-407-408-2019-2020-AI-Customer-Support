@@ -22,7 +22,6 @@
             </div>
         </div>
     </div>
-    
     <form role="form">
         <div class="panel panel-primary setup-content" id="step-2">
             <div class="panel-heading">
@@ -107,6 +106,6 @@
                 <!-- <button onclick="saveAdminSettings()" type="submit">Finish</button> -->
             </div>
         </div>
-
     </form>
+    <a href="../admin/index.php">Go back to admin panel</a>
 </div>
