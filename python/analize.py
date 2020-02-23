@@ -1,34 +1,14 @@
 #!/usr/bin/env python
 import sys
-text = ''
-for word in sys.argv[1:]:
-    text += word + ' '
-
-print(text)
-exit()
-import io
 import pandas as pd
-import numpy as np
-from nltk.corpus import stopwords 
 import nltk
-import pickle
-import re
-import matplotlib.pyplot as plt
-plt.style.use('ggplot')
-data = pd.read_csv("./data.csv")
+from nltk.corpus import stopwords 
+
+data = pd.read_csv("data.csv")
+
 import string
-import sys
+
 from sklearn.feature_extraction.text import TfidfVectorizer
-
-text = ''
-for word in sys.argv[1:]:
-    text += word + ' '
-
-print(text)
-exit()
-
-nltk.download('punkt') # if necessary...
-
 
 stemmer = nltk.stem.porter.PorterStemmer()
 remove_punctuation_map = dict((ord(char), None) for char in string.punctuation)
@@ -45,6 +25,10 @@ vectorizer = TfidfVectorizer(tokenizer=normalize, stop_words='english')
 def cosine_sim(text1, text2):
     tfidf = vectorizer.fit_transform([text1, text2])
     return ((tfidf * tfidf.T).A)[0,1]
+
+text = ''
+for word in sys.argv[1:]:
+    text += word + ' '
 
 update_df = pd.DataFrame(columns=['index' ,'text', 'similarity'])
 
