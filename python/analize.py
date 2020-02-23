@@ -4,7 +4,7 @@ import pandas as pd
 import nltk
 from nltk.corpus import stopwords 
 
-data = pd.read_csv("./data.csv")
+data = pd.read_csv("data.csv")
 
 import string
 
@@ -12,7 +12,7 @@ text = ''
 for word in sys.argv[1:]:
     text += word + ' '
 
-print(text)
+print(data)
 exit()
 
 from sklearn.feature_extraction.text import TfidfVectorizer
