@@ -7,7 +7,7 @@
  * @date 02.02.2020
  * @update 05.02.2020
  */ 
-include_once('../inc/Conn.php');
+include '../inc/Conn.php';
 class adminController
 {
     public static function getAllUsers() {
