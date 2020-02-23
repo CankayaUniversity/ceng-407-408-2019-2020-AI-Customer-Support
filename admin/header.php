@@ -33,8 +33,8 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="/index.php">AICS <span class="sr-only">(current)</span></a>
+            <li class="nav-item">
+                <a class="nav-link" href="/index.php">AICS</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/install/install-new.php">Install</a>
@@ -48,9 +48,12 @@
             <li class="nav-item">
                 <a class="nav-link" href="questions.php">Questions</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="categories.php">Categories</a>
+            </li>
         </ul>
         <span class="navbar-text">
-            Navbar text with an inline element
+            May the control be with you!
         </span>
     </div>
 </nav>

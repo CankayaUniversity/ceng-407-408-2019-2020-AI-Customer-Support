@@ -112,11 +112,30 @@ if($action =="deleteUser") {
     echo "Deleted User!";
 }
 
-if($action =="deleteQuestion") {
+if($action == "deleteQuestion") {
   $q_id = $_POST['q_id'];
   $query = "DELETE FROM questions WHERE q_id = '$q_id'";
   $statement = $conn->prepare($query);
   $statement->execute();
   echo "Deleted Question!";
+}
+
+if($action == "deleteCategory") {
+  $cat_id = $_POST['cat_id'];
+  $query = "DELETE FROM categories WHERE cat_id = '$cat_id'";
+  $statement = $conn->prepare($query);
+  $statement->execute();
+  echo "Deleted Category!";
+}
+
+if($action == "addCategory") {
+  $cat_name = $_POST['cat_name'];
+  $cat_description = $_POST['cat_description'];
+  $cat_slug = str_replace(' ', '-', strtolower($cat_name));
+  $cat_keywords = str_replace(' ', ',', $cat_name);
+  $query = "INSERT INTO categories(cat_name,cat_description,cat_keywords,cat_slug) VALUES('$cat_name','$cat_description','$cat_keywords','$cat_slug')";
+  $statement = $conn->prepare($query);
+  $statement->execute();
+  echo "Added Category!";
 }
 ?>

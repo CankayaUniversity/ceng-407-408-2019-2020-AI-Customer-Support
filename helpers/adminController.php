@@ -27,4 +27,14 @@ class adminController
         $r= $query->fetchAll();
         return $r;
     }
+
+    public static function getAllCategories(){
+        $conne = new Mysql();
+        $conn = $conne->dbConnect();
+        $query = $conn->query("SELECT * FROM categories");
+        $query->setFetchMode(PDO::FETCH_ASSOC);
+        $r= $query->fetchAll();
+        return $r;
+    }
+
 }
