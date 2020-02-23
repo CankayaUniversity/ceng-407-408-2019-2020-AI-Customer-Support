@@ -1,24 +1,30 @@
-#import sys
-import json
-#print (sys.argv[1], sys.argv[2], sys.argv[3]), # get parameters
+#!/usr/bin/env python
+import sys
+# import json
 
-import pandas as pd
-import gzip
+string = ''
+for word in sys.argv[1:]:
+    string += word + ' '
 
-def parse(path):
-  g = gzip.open(path, 'rb')
-  for l in g:
-    yield eval(l)
+print (string)
 
-def getDF(path):
-  i = 0
-  df = {}
-  for d in parse(path):
-    df[i] = d
-    i += 1
-  return pd.DataFrame.from_dict(df, orient='index')
+# import pandas as pd
+# import gzip
 
-df = getDF('python/qa_Software.json.gz')
-df.drop(["answerTime","unixTime"],axis=1,inplace=True)
-df.to_csv("data.csv")
+# def parse(path):
+#   g = gzip.open(path, 'rb')
+#   for l in g:
+#     yield eval(l)
+
+# def getDF(path):
+#   i = 0
+#   df = {}
+#   for d in parse(path):
+#     df[i] = d
+#     i += 1
+#   return pd.DataFrame.from_dict(df, orient='index')
+
+# df = getDF('python/qa_Software.json.gz')
+# df.drop(["answerTime","unixTime"],axis=1,inplace=True)
+# df.to_csv("data.csv")
 
