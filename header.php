@@ -200,12 +200,14 @@ if(isset($_SESSION["user_isAdmin"])) {
         </button>
         <form class="seminor-login-form">
           <div class="form-group">
-            <input type="email" class="form-control" id="email_label" required autocomplete="off">
-            <label class="form-control-placeholder" for="email">Email address</label>
+            <input type="email" class="form-control" id="email_label" aria-describedby="emailHelp" placeholder="Email" required autocomplete="off">
+         
+           
+  
           </div>
           <div class="form-group">
-            <input type="password" class="form-control" id="password_label" required autocomplete="off">
-            <label class="form-control-placeholder" for="password">Password</label>
+            <input type="password" class="form-control" id="password_label"  placeholder="Password" required autocomplete="off">
+            
           </div>
           <div class="form-group">
             <label class="container-checkbox">
