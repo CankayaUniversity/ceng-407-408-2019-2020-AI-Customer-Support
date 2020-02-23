@@ -4,9 +4,6 @@
     ini_set('display_errors', 1);
     error_reporting(-1); 
 
-    echo "asdaasdasasdasd";
-    exit(0);
-    
     include '../inc/Conn.php';
     $conne = new Mysql();
     $conn = $conne->dbConnect();
