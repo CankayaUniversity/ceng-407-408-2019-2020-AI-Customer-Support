@@ -8,7 +8,7 @@
     $conne = new Mysql();
     $conn = $conne->dbConnect();
 
-    if (isset($_SESSION['user_Username'])) {
+    if (isset($_SESSION['user_isAdmin']) && $_SESSION['user_isAdmin'] == 1) {
         $sUsername = $_SESSION['user_Username'];
         $userid = $_SESSION['user_UserID'];
     } else {

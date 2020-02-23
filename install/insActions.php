@@ -42,7 +42,8 @@ if(isset($getAction)){
             last_login datetime DEFAULT CURRENT_TIMESTAMP,
             ip_address nvarchar(50) DEFAULT 'UNKNOWN',
             is_verified int NOT NULL,
-            is_admin int NOT NULL
+            is_admin int NOT NULL,
+            image_link varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL
             );";
         
         $Connect->freeRun($sql);
