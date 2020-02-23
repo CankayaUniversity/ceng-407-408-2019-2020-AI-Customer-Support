@@ -1,5 +1,11 @@
 #!/usr/bin/env python
 import sys
+text = ''
+for word in sys.argv[1:]:
+    text += word + ' '
+
+print(text)
+exit()
 import io
 import pandas as pd
 import numpy as np
