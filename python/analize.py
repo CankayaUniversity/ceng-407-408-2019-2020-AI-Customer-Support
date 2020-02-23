@@ -1,17 +1,25 @@
+#!/usr/bin/env python
+import sys
 import io
-import nltk
 import pandas as pd
 import numpy as np
 from nltk.corpus import stopwords 
-nltk.download('wordnet')
+import nltk
 import pickle
 import re
-%matplotlib inline
 import matplotlib.pyplot as plt
 plt.style.use('ggplot')
-data = pd.read_csv(io.BytesIO(uploaded['ai customer.csv']))
-import nltk, string
+data = pd.read_csv("./data.csv")
+import string
+import sys
 from sklearn.feature_extraction.text import TfidfVectorizer
+
+text = ''
+for word in sys.argv[1:]:
+    text += word + ' '
+
+print(text)
+exit()
 
 nltk.download('punkt') # if necessary...
 
@@ -31,8 +39,6 @@ vectorizer = TfidfVectorizer(tokenizer=normalize, stop_words='english')
 def cosine_sim(text1, text2):
     tfidf = vectorizer.fit_transform([text1, text2])
     return ((tfidf * tfidf.T).A)[0,1]
-
-text = 'What is the difference between the City Navigator'
 
 update_df = pd.DataFrame(columns=['index' ,'text', 'similarity'])
 
@@ -54,4 +60,4 @@ update_df['text'] = texts
 update_df['similarity'] = similarities
 
 update_df.sort_values(by = 'similarity',ascending=False , inplace=True)
-update_df.head()
+print(update_df.head())
