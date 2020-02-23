@@ -1,6 +1,6 @@
 <?php
 include 'header.php';
-$AllUsers = adminController::getAllUsers();
+$AllUsers = $conne->selectAll("users");
 ?>
 <body>
     <div class="container">

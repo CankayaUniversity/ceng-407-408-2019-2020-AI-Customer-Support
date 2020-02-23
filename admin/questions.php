@@ -1,8 +1,6 @@
 <?php
 include 'header.php';
-$AllQuestions = adminController::getAllQuestions();
-$Connection = new Mysql();
-$DBConnection = $Connection->dbConnect();
+$AllQuestions = $conne->selectAll("questions");
 ?>
 <body>
     <div class="container">
@@ -28,12 +26,12 @@ $DBConnection = $Connection->dbConnect();
                         <td><?php echo $key["q_tags"] ?></td>
                         <?php 
                             $statement = $key['q_author'];
-                            $q_author = $Connection->selectWhere("users","user_id","=",$statement,"int"); 
+                            $q_author = $conne->selectWhere("users","user_id","=",$statement,"int"); 
                         ?>
                         <td><?php echo $q_author[0]['firstname'].' '.$q_author[0]['surname'] ?></td>
                         <?php
                             $statement = $key['q_author'];
-                            $category = $Connection->selectWhere("categories","cat_id","=",$statement,"int"); 
+                            $category = $conne->selectWhere("categories","cat_id","=",$statement,"int"); 
                         ?>
                         <td><?php echo $category[0]['cat_name'] ?></td>
                         <td><a href='<?php $link = $key['slug']; echo "/post/$link" ?>'>Link</a></td>

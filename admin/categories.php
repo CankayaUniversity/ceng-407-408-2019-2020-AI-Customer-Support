@@ -1,6 +1,6 @@
 <?php
 include 'header.php';
-$AllUsers = adminController::getAllCategories();
+$AllCategories = $conne->selectAll("categories");
 ?>
 <body>
     <div class="container">
@@ -22,7 +22,7 @@ $AllUsers = adminController::getAllCategories();
             </thead>
             <tbody>
                 <?php 
-                foreach ($AllUsers as $key) { ?>
+                foreach ($AllCategories as $key) { ?>
                     <tr>
                         <td><input type="checkbox" value="<?php echo $key['cat_id'] ?>" name="record"></td>
                         <td><?php echo $key["cat_name"] ?></td>
