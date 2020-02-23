@@ -1,24 +1,27 @@
-#import sys
-import json
-#print (sys.argv[1], sys.argv[2], sys.argv[3]), # get parameters
+#!/usr/bin/env python
 
-import pandas as pd
-import gzip
+import sys
+# import json
+test = "atakan"
+print (test, sys.argv[2], sys.argv[3]) # get parameters
 
-def parse(path):
-  g = gzip.open(path, 'rb')
-  for l in g:
-    yield eval(l)
+# import pandas as pd
+# import gzip
 
-def getDF(path):
-  i = 0
-  df = {}
-  for d in parse(path):
-    df[i] = d
-    i += 1
-  return pd.DataFrame.from_dict(df, orient='index')
+# def parse(path):
+#   g = gzip.open(path, 'rb')
+#   for l in g:
+#     yield eval(l)
 
-df = getDF('python/qa_Software.json.gz')
-df.drop(["answerTime","unixTime"],axis=1,inplace=True)
-df.to_csv("data.csv")
+# def getDF(path):
+#   i = 0
+#   df = {}
+#   for d in parse(path):
+#     df[i] = d
+#     i += 1
+#   return pd.DataFrame.from_dict(df, orient='index')
+
+# df = getDF('python/qa_Software.json.gz')
+# df.drop(["answerTime","unixTime"],axis=1,inplace=True)
+# df.to_csv("data.csv")
 
