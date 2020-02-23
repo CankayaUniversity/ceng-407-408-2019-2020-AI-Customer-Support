@@ -1,7 +1,7 @@
 <?php
 ini_set('display_errors', 1);
 error_reporting(-1); 
-include 'header.php';
+//include 'header.php';
 $AllCategories = $conne->selectAll("categories");
 ?>
 <body>
