@@ -1,24 +1,8 @@
 #!/usr/bin/env python
 import sys
-text = ''
-for word in sys.argv[1:]:
-    text += word + ' '
-
-print(text)
-exit()
-import io
 import pandas as pd
-import numpy as np
-from nltk.corpus import stopwords 
 import nltk
-import pickle
-import re
-import matplotlib.pyplot as plt
-plt.style.use('ggplot')
-data = pd.read_csv("./data.csv")
-import string
-import sys
-from sklearn.feature_extraction.text import TfidfVectorizer
+from nltk.corpus import stopwords 
 
 text = ''
 for word in sys.argv[1:]:
@@ -26,6 +10,12 @@ for word in sys.argv[1:]:
 
 print(text)
 exit()
+
+data = pd.read_csv("./data.csv")
+
+import string
+
+from sklearn.feature_extraction.text import TfidfVectorizer
 
 nltk.download('punkt') # if necessary...
 
