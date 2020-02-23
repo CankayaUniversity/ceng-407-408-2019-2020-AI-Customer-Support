@@ -1,5 +1,7 @@
 <?php
-include 'header.php';
+include( dirname(__FILE__).'/header.php');
+echo dirname(__FILE__).'/header.php';
+exit(0);
 $AllUsers = $conne->selectAll("users");
 ?>
 <body>
