@@ -1,6 +1,7 @@
 <?php
 include 'header.php';
-$AllUsers = adminController::getAllUsers();
+/*$AllUsers = adminController::getAllUsers();*/
+exit(0);
 ?>
 <body>
     <div class="container">
