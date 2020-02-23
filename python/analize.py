@@ -10,15 +10,6 @@ import string
 
 from sklearn.feature_extraction.text import TfidfVectorizer
 
-nltk.download('punkt') # if necessary...
-
-text = ''
-for word in sys.argv[1:]:
-    text += word + ' '
-
-print(text)
-exit()
-
 stemmer = nltk.stem.porter.PorterStemmer()
 remove_punctuation_map = dict((ord(char), None) for char in string.punctuation)
 
@@ -34,6 +25,10 @@ vectorizer = TfidfVectorizer(tokenizer=normalize, stop_words='english')
 def cosine_sim(text1, text2):
     tfidf = vectorizer.fit_transform([text1, text2])
     return ((tfidf * tfidf.T).A)[0,1]
+
+text = ''
+for word in sys.argv[1:]:
+    text += word + ' '
 
 update_df = pd.DataFrame(columns=['index' ,'text', 'similarity'])
 
