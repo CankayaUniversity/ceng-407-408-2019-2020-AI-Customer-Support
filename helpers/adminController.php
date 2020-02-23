@@ -1,4 +1,6 @@
 <?php
+echo  "adfasdf";
+exit(0);
 /**
  * Class adminController
  * @author Atakan Demircioğlu , Arınç Alp Eren
