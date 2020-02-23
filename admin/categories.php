@@ -40,40 +40,40 @@ $AllCategories = $conne->selectAll("categories");
     </div>
 </body>
 <script>
-    $(document).ready(function(){
+    // $(document).ready(function(){
 
-        $(".add-row").click(function(){
-            var cat_name = $("#cat_name").val();
-            var cat_description = $("#cat_description").val();
-            var markup = "<tr><td><input type='checkbox' name='record'></td><td>" + cat_name + "</td><td>" + cat_description + "</td></tr>";
-            var action = "addCategory";
-            $("table tbody").append(markup);
-            $.ajax({
-                url:"/action.php",
-                method:"POST",
-                data: {cat_name:cat_name, cat_description:cat_description, action:action},
-                success:function(response){
-                    alert(response);
-                }       
-            })
-        });
+    //     $(".add-row").click(function(){
+    //         var cat_name = $("#cat_name").val();
+    //         var cat_description = $("#cat_description").val();
+    //         var markup = "<tr><td><input type='checkbox' name='record'></td><td>" + cat_name + "</td><td>" + cat_description + "</td></tr>";
+    //         var action = "addCategory";
+    //         $("table tbody").append(markup);
+    //         $.ajax({
+    //             url:"/action.php",
+    //             method:"POST",
+    //             data: {cat_name:cat_name, cat_description:cat_description, action:action},
+    //             success:function(response){
+    //                 alert(response);
+    //             }       
+    //         })
+    //     });
         
-        $(".delete-row").click(function(){
-            var action = "deleteCategory";
-            $("table tbody").find('input[name="record"]').each(function(){
-                if($(this).is(":checked")){
-                    var value = $(this).val();
-                    $(this).parents("tr").remove();
-                    $.ajax({
-                        url:"/action.php",
-                        method:"POST",
-                        data: {cat_id:value, action:action},
-                        success:function(response){
-                            alert(response);
-                        }
-                    });
-                }
-            });
-        });
-    });    
+    //     $(".delete-row").click(function(){
+    //         var action = "deleteCategory";
+    //         $("table tbody").find('input[name="record"]').each(function(){
+    //             if($(this).is(":checked")){
+    //                 var value = $(this).val();
+    //                 $(this).parents("tr").remove();
+    //                 $.ajax({
+    //                     url:"/action.php",
+    //                     method:"POST",
+    //                     data: {cat_id:value, action:action},
+    //                     success:function(response){
+    //                         alert(response);
+    //                     }
+    //                 });
+    //             }
+    //         });
+    //     });
+    // });    
 </script>
