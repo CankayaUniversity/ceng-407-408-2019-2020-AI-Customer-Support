@@ -1,7 +1,5 @@
 <?php
 include "header.php";
-$Connection = new Mysql();
-$DBConnection = $Connection->dbConnect();
 ?>
 <body>
     <div class="container">
@@ -48,10 +46,10 @@ $DBConnection = $Connection->dbConnect();
         $SystemAdress = $_POST['SystemAdress'];
         $SiteAddress = $_POST['SiteAddress'];
         $EmailAddress = $_POST['EmailAddress'];
-        $Connection->freeRun("TRUNCATE TABLE site_settings");
+        $conne->freeRun("TRUNCATE TABLE site_settings");
         $sql= "INSERT INTO site_settings(slogan, system_address, site_address, mail_address) VALUES
             ('$Slogan','$SystemAdress','$SiteAddress','$EmailAddress')";
-        $Connection->freeRun($sql);
+        $conne->freeRun($sql);
     }
 
 ?>
