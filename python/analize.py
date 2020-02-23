@@ -4,18 +4,18 @@ import pandas as pd
 import nltk
 from nltk.corpus import stopwords 
 
+data = pd.read_csv("./data.csv")
+
+import string
+
+from sklearn.feature_extraction.text import TfidfVectorizer
+
 text = ''
 for word in sys.argv[1:]:
     text += word + ' '
 
 print(text)
 exit()
-
-data = pd.read_csv("./data.csv")
-
-import string
-
-from sklearn.feature_extraction.text import TfidfVectorizer
 
 nltk.download('punkt') # if necessary...
 
