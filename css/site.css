@@ -606,6 +606,11 @@ a#scroll-top:hover {
         width: 248px;
     }
 }
+/* margin bottom */
+
+.margin-botton{
+    margin-bottom: 150px;
+}
 
 
 /* Menu Fix for resizing to Bigger Screen sizes */
