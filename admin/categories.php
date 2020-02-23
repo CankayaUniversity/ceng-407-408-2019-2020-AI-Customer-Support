@@ -1,5 +1,5 @@
 <?php
-include "header.php";
+include "../admin/header.php";
 echo "categories";
 exit(0);
 $AllCategories = $conne->selectAll("categories");
