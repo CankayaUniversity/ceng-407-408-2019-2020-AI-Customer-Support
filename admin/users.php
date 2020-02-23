@@ -1,5 +1,6 @@
 <?php
 include 'header.php';
+die();
 $AllUsers = adminController::getAllUsers();
 ?>
 <body>
