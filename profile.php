@@ -1,6 +1,5 @@
 <?php 
 include 'header.php';
-include 'class.upload.php';
 
 $id=  $_SESSION["user_UserID"];
 
@@ -54,29 +53,12 @@ if ($count = $query -> rowCount()){
     }
 }
 
-if($_FILES){
-    $foo = new Upload($_FILES['resim']);
-    $foo -> file_new_name_body = 'profile_'.rand(1,9000);
-    $foo->Process('images/');
-    if($foo->processed){
-        $path = 'images/'.$foo->file_dst_name;
-      echo path;
-    }
-}
-
 ?>
-
     <div class="container bootstrap snippet">
         <div class="row">
             <div class="col-md-3">
                 <div class="text-center">
                     <img src="images/avatar.png" class="avatar img-circle img-thumbnail" alt="avatar"> 
-                </div>
-                <div>
-            <form action="profile.php" method="POST" enctype="multipart/form-data">
-            <input type="file" name="resim">
-            <button type="submit" name="submit"> Upload Profile Page </button>
-            </form>
                 </div>
                 <br>
                 <ul class="list-group">
