@@ -42,8 +42,8 @@ if ($action == "register") {
   $ConfirmPassword = $_POST['confirmpass'];
   $UserIp = helperDev::get_client_ip();
   if($ConfirmPassword == $Password){
-    $sqlAddUser = "INSERT IGNORE INTO users(firstname,surname,email,username,password_,ip_address,is_verified,is_admin)
-    VALUES ('$Firstname','$Lastname','$Email','$Username','$hashPassword','$UserIp',0,0);";
+    $sqlAddUser = "INSERT IGNORE INTO users(firstname,surname,email,username,password_,ip_address,is_verified,is_admin,image_link)
+    VALUES ('$Firstname','$Lastname','$Email','$Username','$hashPassword','$UserIp',0,0,'images/avatar.png');";
     $conn->exec($sqlAddUser);
     $query = $conn->query("SELECT * FROM users WHERE email='$Email'",PDO::FETCH_ASSOC)->fetch();
     if (isset($query)){
