@@ -138,4 +138,15 @@ if($action == "addCategory") {
   $statement->execute();
   echo "Added Category!";
 }
+
+if($action == "addUser") {
+  $username = $_POST['username'];
+  $email = $_POST['email'];
+  $options = array("cost"=>4);
+  $hashPassword = password_hash("123123",PASSWORD_BCRYPT,$options);
+  $query = "INSERT INTO users(firstname,surname,email,username,password_,is_verified,is_admin) VALUES('test','test','$email','$username','$hashPassword',1,1)";
+  $statement = $conn->prepare($query);
+  $statement->execute();
+  echo "Added Category!";
+}
 ?>

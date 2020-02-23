@@ -38,10 +38,19 @@ $AllUsers = $conne->selectAll("users");
 <script>
     $(document).ready(function(){
         $(".add-row").click(function(){
-            var name = $("#name").val();
+            var username = $("#name").val();
             var email = $("#email").val();
             var markup = "<tr><td><input type='checkbox' name='record'></td><td>" + name + "</td><td>" + email + "</td></tr>";
             $("table tbody").append(markup);
+            var action = "addUser";
+            $.ajax({
+                url:"/action.php",
+                method:"POST",
+                data: {username:username, email:email, action:action},
+                success:function(response){
+                    alert(response);
+                }       
+            })
         });
         
         $(".delete-row").click(function(){
