@@ -121,7 +121,7 @@ if ($uploadOk == 0) {
                     <form action="profile.php" method="post" enctype="multipart/form-data">
   
     <input type="file" name="fileToUpload" id="fileToUpload">
-    <input type="submit" value="Upload Image" name="submit">
+    <input type="submit" value="Upload Image"  class="btn btn-xs btn-warning pull-right" name="submit">
 </form>
                 </div>
                 <br>
