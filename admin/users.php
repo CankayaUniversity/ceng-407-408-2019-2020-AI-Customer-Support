@@ -29,7 +29,7 @@ $AllUsers = $conne->selectAll("users");
                         <td><?php echo $key["firstname"].' '.$key["surname"];?></td>
                         <td><?php if($key["is_admin"]) echo "Yes"; else echo "No"; ?></td>
                     </tr>
-                <? } ?>
+                <?php } ?>
             </tbody>
         </table>
         <button type="button" class="delete-row">Delete</button>

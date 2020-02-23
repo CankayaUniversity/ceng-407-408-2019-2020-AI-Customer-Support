@@ -36,7 +36,7 @@ $AllQuestions = $conne->selectAll("questions");
                         <td><?php echo $category[0]['cat_name'] ?></td>
                         <td><a href='<?php $link = $key['slug']; echo "/post/$link" ?>'>Link</a></td>
                     </tr>
-                <? } ?>
+                <?php } ?>
             </tbody>
         </table>
         <button type="button" class="delete-row">Delete</button>

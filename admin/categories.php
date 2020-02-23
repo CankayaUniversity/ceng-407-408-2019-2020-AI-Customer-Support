@@ -31,7 +31,7 @@ $AllCategories = $conne->selectAll("categories");
                         <td><?php echo $key["cat_slug"] ?></td>
                         <td><?php echo $key["cat_totalquestion"] ?></td>
                     </tr>
-                <? } ?>
+                <?php } ?>
             </tbody>
         </table>
         <button type="button" class="delete-row">Delete</button>
