@@ -78,6 +78,7 @@ if(!empty($q_id) && !empty($user_id)) {
     $checkLikeData = $ps->rowCount();
 }
 
+// Like Action
 if($action == "like"){
     if($checkLikeData === 0) {
         $sql = "UPDATE questions SET q_like=q_like+1 WHERE q_id='$q_id'";
