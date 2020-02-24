@@ -6,6 +6,8 @@ from nltk.corpus import stopwords
 
 data = pd.read_csv("data.csv")
 
+nltk.download('punkt')
+
 import string
 
 from sklearn.feature_extraction.text import TfidfVectorizer
