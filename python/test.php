@@ -9,7 +9,5 @@ if($_SERVER['HTTP_HOST'] == 'localhost'){
 } else {
     $tmp =exec('python3 /var/www/html/python/analyse.py ' . $question . " 2>&1");
 }
-echo "<pre>";
 echo $tmp;
-
 ?>
