@@ -7,7 +7,7 @@ if($_SERVER['HTTP_HOST'] == 'localhost'){
 } else if($_SERVER['HTTP_HOST'] == 'localhost:8080'){
     $tmp = exec("C:/Users/Arinc/AppData/Local/Programs/Python/Python37-32/python.exe analyse.py $question", $out);
 } else {
-    $tmp =shell_exec('python3 /var/www/html/python/analyse.py ' . $question . " 2>&1");
+    $tmp =exec('python3 /var/www/html/python/analyse.py ' . $question . " 2>&1");
 }
 echo "<pre>";
 echo $tmp;
