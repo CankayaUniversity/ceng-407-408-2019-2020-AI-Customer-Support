@@ -63,7 +63,7 @@ if ($action == "register") {
   }
 }
 
-if($_SESSION["user_UserID"] == NULL){
+if($_SESSION["user_UserID"] == NULL && $action == NULL){
     echo  "You must be logged in to vote.";
     return;
 } else {
