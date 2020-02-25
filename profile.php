@@ -109,21 +109,23 @@ if ($uploadOk == 0) {
     }
 }
 }
-?>
-
-
-    <div class="container bootstrap snippet">
+?><br>
+<div class="page-container">
+    <div class="container">
         <div class="row">
             <div class="col-md-3">
                 <div class="text-center">
                     <img src="<?php echo $_SESSION["image_link"]?>" class="avatar img-circle img-thumbnail" alt="avatar"> 
                 
                     <form action="profile.php" method="post" enctype="multipart/form-data">
-  
-    <input type="file" name="fileToUpload" id="fileToUpload">
-    <input type="submit" value="Upload Image"  class="btn btn-xs btn-warning pull-right" name="submit">
-</form>
                 </div>
+                <div class="input-group-text">
+                    <input type="file" name="fileToUpload" id="fileToUpload">  
+                </div>  
+                <br>       
+                <div class="input-group">
+                    <input type="submit" value="Upload Image"  class="btn btn-outline-warning" name="submit">    
+                </div> 
                 <br>
                 <ul class="list-group">
                     <li class="list-group-item text-muted">Status</li>
@@ -296,7 +298,8 @@ if ($uploadOk == 0) {
                 </div>
             </div>
         </div>
-    </div>
+    </div>    
+</div>
 
 <script>
 $(document).ready(function(){
