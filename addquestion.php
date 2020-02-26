@@ -124,25 +124,37 @@ if  (
     $qMetaDesc = $qDescription;
     $slug = helperDev::SEOFriendlyURL($qTitle);
     $qMetaKey = $qTags;
-    $conne->freeRun("INSERT INTO questions(q_title,q_description,q_tags,title_meta,description_meta, keywords_meta, slug, q_author,category) VALUES ('$qTitle','$qDescription','$qTags','$qMetaTitle','$qMetaDesc','$qMetaKey','$slug','$qAuthor', '$qCategory');");
-
-    $sql = $conn->prepare("SELECT q_id FROM questions 
-        WHERE q_author = '$qAuthor' 
-        ORDER BY q_date 
-        DESC LIMIT 1");
-    $sql = $sql->execute();
-    if(!$sql) die("Sıkıntı var! -1");
-    $Qid = $sql['q_id'];
+    
+    $prepareData = $conn->prepare("INSERT INTO questions(q_title,q_description,q_tags,title_meta,description_meta, keywords_meta, slug, q_author,category) VALUES ('$qTitle','$qDescription','$qTags','$qMetaTitle','$qMetaDesc','$qMetaKey','$slug','$qAuthor', '$qCategory');");
+    $prepareData->execute();
+    $lastInsertedID = $conn->lastInsertId();
     
     $query = $conn->prepare("SELECT user_id FROM users 
         WHERE is_admin = 1 
         LIMIT 1");
     $query = $query->execute();
-    if(!$query) die("Sıkıntı var! -2");
     $adminID = $query['user_id'];
-    $sql1 = $conn->prepare("INSERT INTO notifications (n_description,n_author,n_post_id, n_notified_id) VALUES
-    ('A new question created: ".$qTitle."', '".$qAuthor."',".$Qid.", ".$adminID.");");
-    $sql1 = $sql1->execute();
+    $notificationsQuery = $conn->prepare("INSERT INTO notifications (n_description,n_author,n_post_id, n_notified_id) VALUES
+    ('A new question created: ".$qTitle."', '".$qAuthor."',".$lastInsertedID.", ".$adminID.");");
+    $notificationsQuery = $notificationsQuery->execute();
+
+    /* Running python script*/
+
+    $questionToAnalyse = urlencode($_POST['QuestionTitle']);
+
+    if($_SERVER['HTTP_HOST'] == 'localhost'){
+        continue;
+        //$url = "http://localhost:80/python/index.php?question=".$questionToAnalyse."&questionID=".$lastInsertedID."";
+    } else {
+        $ch = curl_init();
+        $url = "http://atakde.site:80/python/index.php?question=".$questionToAnalyse."&questionID=".$lastInsertedID."";
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, false);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 1);
+        curl_exec($ch);
+        curl_close($ch);
+    }
+    
     ?>
     <script>window.location.replace("index.php");</script>
     <?php   
