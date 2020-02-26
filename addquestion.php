@@ -143,7 +143,6 @@ if  (
     $questionToAnalyse = urlencode($_POST['QuestionTitle']);
 
     if($_SERVER['HTTP_HOST'] == 'localhost'){
-        continue;
         //$url = "http://localhost:80/python/index.php?question=".$questionToAnalyse."&questionID=".$lastInsertedID."";
     } else {
         $ch = curl_init();
