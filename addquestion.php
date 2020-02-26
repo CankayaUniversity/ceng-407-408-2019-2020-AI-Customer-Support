@@ -134,9 +134,9 @@ if  (
         LIMIT 1");
     $query = $query->execute();
     $adminID = $query['user_id'];
-    $notificationsQuery = $conn->prepare("INSERT INTO notifications (n_description,n_author,n_post_id, n_notified_id) VALUES
+/*    $notificationsQuery = $conn->prepare("INSERT INTO notifications (n_description,n_author,n_post_id, n_notified_id) VALUES
     ('$qTitle','$qAuthor', '$lastInsertedID', '$adminID')");
-    $notificationsQuery = $notificationsQuery->execute();
+    $notificationsQuery = $notificationsQuery->execute();*/
 
     /* Running python script*/
 
