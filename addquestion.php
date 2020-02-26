@@ -124,7 +124,9 @@ if  (
     $qMetaDesc = $qDescription;
     $slug = helperDev::SEOFriendlyURL($qTitle);
     $qMetaKey = $qTags;
-    $conne->freeRun("INSERT INTO questions(q_title,q_description,q_tags,title_meta,description_meta, keywords_meta, slug, q_author,category) VALUES ('$qTitle','$qDescription','$qTags','$qMetaTitle','$qMetaDesc','$qMetaKey','$slug','$qAuthor', '$qCategory');");
+    $prepareData = $conn->prepare("INSERT INTO questions(q_title,q_description,q_tags,title_meta,description_meta, keywords_meta, slug, q_author,category) VALUES ('$qTitle','$qDescription','$qTags','$qMetaTitle','$qMetaDesc','$qMetaKey','$slug','$qAuthor', '$qCategory');");
+    $prepareData->execute();
+    $lastInsertedID = $conn->lastInsertId();
 
     $sql = $conn->prepare("SELECT q_id FROM questions 
         WHERE q_author = '$qAuthor' 
