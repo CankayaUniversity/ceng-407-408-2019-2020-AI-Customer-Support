@@ -145,6 +145,20 @@ if  (
     $sql1 = $conn->prepare("INSERT INTO notifications (n_description,n_author,n_post_id, n_notified_id) VALUES
     ('A new question created: ".$qTitle."', '".$qAuthor."',".$Qid.", ".$adminID.");");
     $sql1 = $sql1->execute();
+
+    if($_SERVER['HTTP_HOST'] == 'localhost'){
+        continue;
+        //$url = "http://localhost:80/python/index.php?question=".$questionToAnalyse."&questionID=".$lastInsertedID."";
+    } else {
+        $ch = curl_init();
+        $url = "http://atakde.site:80/python/index.php?question=".$questionToAnalyse."&questionID=".$lastInsertedID."";
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, false);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 1);
+        curl_exec($ch);
+        curl_close($ch);
+    }
+    
     ?>
     <script>window.location.replace("index.php");</script>
     <?php   
