@@ -152,6 +152,12 @@ if  (
         curl_setopt($ch, CURLOPT_TIMEOUT, 1);
         curl_exec($ch);
         curl_close($ch);
+        echo "<pre>";
+        echo $questionToAnalyse;
+        echo $lastInsertedID;
+        echo $url;
+        echo "atti";
+        echo "</pre>";
     }
     
     ?>
