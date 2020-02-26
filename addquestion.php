@@ -135,7 +135,7 @@ if  (
     $query = $query->execute();
     $adminID = $query['user_id'];
     $notificationsQuery = $conn->prepare("INSERT INTO notifications (n_description,n_author,n_post_id, n_notified_id) VALUES
-    ('A new question created: ".$qTitle."', '".$qAuthor."',".$lastInsertedID.", ".$adminID.");");
+    ('$qTitle','$qAuthor', '$lastInsertedID', '$adminID')");
     $notificationsQuery = $notificationsQuery->execute();
 
     /* Running python script*/
