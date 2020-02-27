@@ -2,6 +2,8 @@
 
 body {
     background-color: #dee2e642;
+    height: 100%;  
+    margin: 0;
 }
 
 a:hover {
@@ -630,8 +632,11 @@ a#scroll-top:hover {
 /* Main Footer */
 
 footer .main-footer {
+    
     padding: 20px 0;
-    background: #343a40;
+    background: #343a40; 
+    position: relative;
+    margin-top: 150px; 
 }
 
 footer ul {
@@ -644,7 +649,7 @@ footer ul {
 
 .footer-copyright {
     background: #343a40;
-    padding: 10px 0;
+    padding: 20px 0;
 }
 
 .footer-copyright .logo {
