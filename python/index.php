@@ -19,7 +19,8 @@ if( $_GET["question"] !== NULL && !empty($_GET["question"]) && $_GET["questionID
         $questionAuthorArray = $conne->selectFreeRun($sql);
         $questionAuthor = $questionAuthorArray[0]["q_author"];
 
-        $sql = "INSERT INTO notifications (n_description,n_author,n_post_id, n_notified_id) VALUES ('$question',12,'$id', '$questionAuthor')";
+        $n_desc = "Your question($question) is answered.";
+        $sql = "INSERT INTO notifications (n_description,n_author,n_post_id, n_notified_id) VALUES ('$n_desc',12,'$id', '$questionAuthor')";
         $conne->freeRun($sql);
     }
 }
