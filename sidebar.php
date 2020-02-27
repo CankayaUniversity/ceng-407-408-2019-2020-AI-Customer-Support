@@ -1,9 +1,9 @@
 <aside class="span3 page-sidebar">
   <?php if ($sUsername == null) : ?>
-  <a href="#loginModal" data-toggle="modal" class="btn btn-dark btn-lg btn-block" role="button" aria-pressed="true">Ask a Question</a>
+  <a href="#loginModal" data-toggle="modal" class="button-wrap" role="button" aria-pressed="true">Ask a Question</a>
   <?php endif; ?>
   <?php if ($sUsername !== null) : ?>
-  <a href="/addquestion.php" class="btn btn-dark btn-lg btn-block" role="button" aria-pressed="true">Ask a Question</a>
+  <a href="/addquestion.php" class="button-wrap" role="button" aria-pressed="true">Ask a Question</a>
   <?php endif; ?>
   </p>
   <section class="widget">
