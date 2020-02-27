@@ -76,8 +76,10 @@ if($sUsername == null){
                                         <input type="text" class="form-control" id="QuestionTags" name="QuestionTags" placeholder="Please enter tags">
                                     </div>
                                     <div class="form-group">
-                                    <select name="QuestionCategory" id="QuestionCategory">
-                                    <?php foreach ($conne->selectAll('categories') as $key) { ?>
+                                    <select name="QuestionCategory" class="form-control" id="QuestionCategory">
+                                    <?php
+                                    $allCategories = $conne->selectAll('categories');
+                                    foreach ($allCategories as $key) { ?>
                                     <option value="<?php echo $key['cat_id']; ?>"><?php echo $key['cat_name']; ?></option>
                                     <?php } ?>
                                     </select>
