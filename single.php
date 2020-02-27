@@ -45,7 +45,7 @@
                                     <div class="card bg-light post">
                                         <div class="post-heading row">
                                             <div class="float-left image col-sm-1">
-                                                <img src="../images/mascot.png" height="60" weight="60" class="img-circle avatar" alt="user profile image">
+                                                <img src="<?php echo $getAuthor[0]["image_link"]?>" height="60" weight="60" class="img-circle avatar" alt="user profile image">
                                             </div>
                                             <div class="float-left meta col-sm-4">
                                                 <div class="post-comment">
