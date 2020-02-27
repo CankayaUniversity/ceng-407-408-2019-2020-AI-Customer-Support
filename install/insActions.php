@@ -33,27 +33,27 @@ if(isset($getAction)){
 
         $sql = "CREATE TABLE IF NOT EXISTS users (
             user_id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-            firstname varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ,
+            firstname varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ,
             surname varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-            email varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-            username varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+            email varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+            username varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
             password_ varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
             create_date datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
             last_login datetime DEFAULT CURRENT_TIMESTAMP,
             ip_address nvarchar(50) DEFAULT 'UNKNOWN',
             is_verified int NOT NULL,
             is_admin int NOT NULL,
-            image_link varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL
+            image_link varchar(1000) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL
             );";
         
         $Connect->freeRun($sql);
 
         $sql = "CREATE TABLE IF NOT EXISTS questions (
             q_id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-            q_title varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+            q_title varchar(1000) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
             q_description varchar(1000) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
             q_tags varchar(1000) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-            title_meta varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+            title_meta varchar(1000) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
             description_meta varchar(1000) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
             keywords_meta varchar(1000) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
             slug varchar(1000) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
