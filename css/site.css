@@ -1980,3 +1980,37 @@ body{margin-top:20px;
         -moz-transition: border-color .2s ease-in-out;
         transition: border-color .2s ease-in-out;
     }
+
+/* Profil page choose a*/
+
+.mtop20{
+    margin-top:20px;
+}
+
+.btn-group-or>.btn:first-child {
+    padding-right: 1.2rem;
+} 
+.btn-group-or>.btn:last-child {
+    padding-left: 1.2rem;
+} 
+.btn-group-or .or {
+    position: relative;
+    width: .3rem;
+    height: 2.5rem;
+    z-index: 3;
+}
+.btn-group-or .or:before {
+    position: absolute;
+    text-align: center;
+    border-radius: 50%;
+    content: '&';
+    top: 50%;
+    left: 50%;
+    background-color: #fff;
+    margin-top: -1rem;
+    margin-left: -1rem;
+    width: 2rem;
+    height: 2rem;
+    line-height:1.8rem;
+    color: #868e96;
+}

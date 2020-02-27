@@ -114,19 +114,32 @@ if ($uploadOk == 0) {
 <div class="page-container">
     <div class="container">
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <div class="text-center">
                     <img src="<?php echo $_SESSION["image_link"]?>" class="avatar img-circle img-thumbnail" alt="avatar"> 
                 
                     <form action="profile.php" method="post" enctype="multipart/form-data">
                 </div>
-                <div class="input-group-text">
-                    <input type="file" name="fileToUpload" id="fileToUpload">  
-                </div>  
-                <br>       
-                <div class="input-group">
-                    <input type="submit" value="Upload Image"  class="btn btn-outline-warning" name="submit">    
-                </div> 
+                <div class="mtop20">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col text-center">
+                                <div class="btn-group btn-group-or" role="group">
+                                    <button type="button" class="btn btn-secondary">
+                                        
+                                            <i class="fa fa-camera"></i>
+                                            <input style="display:none;" type="file" name="fileToUpload" id="fileToUpload"/>
+                                            <label for="fileToUpload">Choose Photo</label>
+                                        
+                                    </button>
+                                    <div class="or"></div>
+                                    <input type="submit" value="Upload Photo" class="btn btn-success" name="submit">
+                                </div>  
+                            </div>    
+                        </div>    
+                    </div> 
+                </div>
+
                 <br>
                 <ul class="list-group">
                     <li class="list-group-item text-muted">Status</li>
@@ -144,7 +157,7 @@ if ($uploadOk == 0) {
                     </li>
                 </ul>
             </div>
-            <div class="col-md-9">
+            <div class="col-md-8">
                 <div class="tab-content">
                     <div class="tab-pane active" id="home">
                         <form id="form1" name="form1" action="profile.php" method="post"><hr>
