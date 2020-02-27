@@ -264,7 +264,7 @@ if(isset($_SESSION["user_isAdmin"])) {
           </div>
           <div class="form-group forgot-pass-fau text-center ">
             <a href="/terms-conditions/" class="text-secondary">
-              By Clicking "SIGN UP" you accept our<br>
+              By clicking "SIGN UP" you accept our<br>
               <span class="text-primary-fau">Terms and Conditions</span>
             </a>
           </div>
@@ -272,7 +272,7 @@ if(isset($_SESSION["user_isAdmin"])) {
             <button type="submit" name="SignUp" id="SignUp" onclick="registerProcess()" class="btn-check-login">SIGN UP</button>
           </div>
           <div class="create-new-fau text-center pt-3">
-            <a href="#" class="text-primary-fau"><span data-toggle="modal" data-target="#loginModal" data-dismiss="modal">Already Have An Account</span></a>
+            <a href="#" class="text-primary-fau"><span data-toggle="modal" data-target="#loginModal" data-dismiss="modal">Already have an account?</span></a>
           </div>
         </form>
       </div>

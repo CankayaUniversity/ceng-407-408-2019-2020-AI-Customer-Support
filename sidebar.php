@@ -9,7 +9,7 @@
   <section class="widget">
     <div class="support-widget">
       <h3>Support</h3>
-      <p class="intro">Need more support? If you did not found an answer, contact us for further help.</p>
+      <p class="intro">Need more support? If you couldn't find what you are looking for, contact us for further assistance.</p>
     </div>
   </section>
   <section class="widget">
@@ -36,13 +36,13 @@
         $i = 0;
         while(isset($q_tag[$i]) && $q_tag[$i] != null){
           if($q_tag[$i] == ','){
-            echo "<a href='#' rel='tag' class='btn btn-dark'>".substr($q_tag,0,$i)."</a> ";
+            echo "<a href='/tag/".substr($q_tag,0,$i+1)."' rel='tag' class='btn btn-dark'>".substr($q_tag,0,$i)."</a> ";
             $delete = substr($q_tag,0,$i+1);
             $q_tag = str_replace($delete,"",$q_tag);
             $i = -1;
           }
           else if($i == strlen($q_tag)-1){
-            echo "<a href='#' rel='tag' class='btn btn-dark'>".substr($q_tag,0,$i+1)."</a>";
+            echo "<a href='/tag/".substr($q_tag,0,$i+1)."' rel='tag' class='btn btn-dark'>".substr($q_tag,0,$i+1)."</a>";
             $delete = substr($q_tag,0,$i+1);
             $q_tag = str_replace($delete,"",$q_tag);
             $i = -1;

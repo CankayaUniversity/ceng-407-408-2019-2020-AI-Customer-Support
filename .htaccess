@@ -8,4 +8,7 @@ RewriteRule ^category/([a-zA-Z-0-9-]+)/ category.php?category=$1
 RewriteRule ^author/([a-zA-Z0-9-/]+)$ author.php?author=$1
 RewriteRule ^author/([a-zA-Z-0-9-]+)/ author.php?author=$1
 
+RewriteRule ^tag/([a-zA-Z0-9-/]+)$ tags.php?tag=$1
+RewriteRule ^tag/([a-zA-Z-0-9-]+)/ tags.php?tag=$1
+
 ErrorDocument 404 /404.php
