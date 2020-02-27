@@ -13,7 +13,7 @@ class HomeController
     public static function getNCount($userid) {
         $conne = new Mysql();
         $conn = $conne->dbConnect();
-        $n_sql = "SELECT * FROM notifications WHERE n_notified_id = '$userid'";
+        $n_sql = "SELECT * FROM notifications WHERE n_notified_id = '$userid' AND n_isChecked=0";
         $n_count = $conn->prepare($n_sql);
         $n_count->execute();
         $count = $n_count->rowCount();
@@ -23,7 +23,7 @@ class HomeController
     public static function getNotifications($userid){
         $conne = new Mysql();
         $conn = $conne->dbConnect();
-        $n_sql = "SELECT * FROM notifications WHERE n_notified_id = '$userid'";
+        $n_sql = "SELECT * FROM notifications WHERE n_notified_id = '$userid' AND n_isChecked=0";
         $n_count = $conn->prepare($n_sql);
         $n_count->execute();
         $count = $n_count->rowCount();

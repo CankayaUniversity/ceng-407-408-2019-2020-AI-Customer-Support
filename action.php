@@ -150,4 +150,10 @@ if($action == "addUser") {
   $statement->execute();
   echo "Added Category!";
 }
+
+if($action == "resetNoti"){
+  $user_id = $_POST['user_id'];
+  $sql = "UPDATE notifications SET n_isChecked=1 WHERE n_notified_id = '$user_id'";
+  $conne->freeRun($sql);
+}
 ?>

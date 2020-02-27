@@ -154,7 +154,7 @@ if(isset($_SESSION["user_isAdmin"])) {
         <?php if ($sUsername !== null): ?>
           <li class="nav-item">
           <div class="dropdown nav-button notifications-button hidden-sm-down">
-            <a class="btn btn-secondary dropdown-toggle" href="#" id="notifications-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="btn btn-secondary dropdown-toggle" href="#" id="notifications-dropdown" onclick="resetNoti();" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <i id="notificationsIcon" class="fa fa-bell-o" aria-hidden="true"></i>
               <span id="notificationsBadge" class="badge badge-danger"><i class="fa fa-spinner fa-pulse fa-fw" aria-hidden="true"></i></span>
             </a>
@@ -201,13 +201,9 @@ if(isset($_SESSION["user_isAdmin"])) {
         <form class="seminor-login-form">
           <div class="form-group">
             <input type="email" class="form-control" id="email_label" aria-describedby="emailHelp" placeholder="Email" required autocomplete="off">
-         
-           
-  
           </div>
           <div class="form-group">
             <input type="password" class="form-control" id="password_label"  placeholder="Password" required autocomplete="off">
-            
           </div>
           <div class="form-group">
             <label class="container-checkbox">
@@ -305,4 +301,23 @@ if (isset($userid)) {
     HomeController::getNotifications($userid);
 }
 ?>
+
+<script>
+function resetNoti(){ 
+  var user_id = <?php echo $userid; ?>;
+  var action = "resetNoti";
+  $.ajax({
+    url: "/action.php",
+    method: "POST",
+    data: {
+      action: action,
+      user_id: user_id,
+    },
+    success: function(response) {
+      if (response) {
+      }
+    }
+  });
+}
+</script>
 

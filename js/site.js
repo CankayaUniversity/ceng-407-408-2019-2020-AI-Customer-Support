@@ -173,7 +173,6 @@ $(function() {
       setTimeout(function() {
         // TEMP : for the template
         for (i = 0; i < count; i++) {
-          console.log("count = " + count);
           var template = $("#notificationTemplate").html();
           template = template.replace("{{image}}", notifications[i].image);
           template = template.replace("{{href}}", notifications[i].href);
