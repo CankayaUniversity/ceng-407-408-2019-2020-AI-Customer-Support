@@ -1925,6 +1925,7 @@ body{margin-top:20px;
       border: 1px solid #e2793f;
     }
     .pagination a:hover:not(.active) {background-color: #ddd;}
-
-
-
+    .totalScore {
+      font-size: 12px;
+      padding-left: 2.5px;
+    }
