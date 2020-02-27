@@ -49,7 +49,7 @@
                                             </div>
                                             <div class="float-left meta col-sm-4">
                                                 <div class="post-comment">
-                                                    <a href='<?php echo "/author/$getAuthor[0]['username']"; ?>'>
+                                                    <a href='<?php echo "/author/$username"; ?>'>
                                                         <b><?php echo $getAuthor[0]["username"]; ?></b></a>
                                                 </div>
                                                 <h6 class="time-ago">Asked on, <?php echo $q_date; ?></h6>
