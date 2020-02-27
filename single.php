@@ -43,8 +43,8 @@
                                 <article class=" type-post format-standard hentry clearfix">
                                     <h1 class="post-title"><a href="#"><?php echo $q_title; ?></a></h1>
                                     <div class="card bg-light post">
-                                        <div class="post-heading row">
-                                            <div class="float-left image col-sm-1">
+                                        <div class="post-heading">
+                                            <div class="float-left image">
                                                 <img src="../<?php echo $getAuthor[0]["image_link"]?>" height="60" weight="60" class="img-circle avatar" alt="user profile image">
                                             </div>
                                             <div class="float-left meta col-sm-4">
@@ -57,7 +57,7 @@
                                             <div class="col-sm-5">
                                                 <button type="button" class="btn btn-success " id="btnLike" ><i class="fa fa-check"></i></button>
                                                 <button type="button" class="btn btn-danger " id="btnDislike" ><i class="fa fa-times"></i></button>
-                                                <button type="button" class="btn btn-dark " id="score" ><i class="fa fa-star"></i><?php echo $q_score; ?></button>
+                                                <button type="button" class="btn btn-dark " id="score" ><i class="fa fa-star"></i><span class="totalScore" data-value="<?php echo $q_score; ?>"><?php echo $q_score; ?></span></button>
                                             </div>
                                         </div>
                                         <hr>  
@@ -183,7 +183,7 @@
                             alert(response);
                         }
                         else{
-                            var jLikes = $('#score');
+                            var jLikes = $('.totalScore');
                             var sLikes = jLikes.text();
                             var nLikes = parseInt(sLikes);
                             jLikes.text(" "+(nLikes+1));
@@ -205,7 +205,7 @@
                             alert(response);
                         }
                         else{
-                            var jLikes = $('#score');
+                            var jLikes = $('.totalScore');
                             var sLikes = jLikes.text();
                             var nLikes = parseInt(sLikes);
                             jLikes.text(" "+(nLikes-1));
