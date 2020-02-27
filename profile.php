@@ -70,10 +70,10 @@ $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 if(isset($_POST["submit"])) {
     $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
     if($check !== false) {
-        echo "File is an image - " . $check["mime"] . ".";
+        //echo "File is an image - " . $check["mime"] . ".";
         $uploadOk = 1;
     } else {
-        echo "File is not an image.";
+        //echo "File is not an image.";
         $uploadOk = 0;
     }
 }
@@ -100,9 +100,10 @@ if ($uploadOk == 0) {
 } else {
     if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
        
-        echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
-         $query = $conn->query("UPDATE users SET image_link='$target_file ' WHERE user_id=$id",PDO::FETCH_ASSOC);
-    $query->setFetchMode(PDO::FETCH_ASSOC);
+        //echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+        $query = $conn->query("UPDATE users SET image_link='$target_file ' WHERE user_id=$id",PDO::FETCH_ASSOC);
+        $query->setFetchMode(PDO::FETCH_ASSOC);
+        echo("<meta http-equiv='refresh' content='1'>");
 
     } else {
         echo "Sorry, there was an error uploading your file.";
