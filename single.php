@@ -98,12 +98,12 @@
                                 $c_description = $res['c_description'];
                                 $c_id = $res['c_id'];
                                 $time_ago = helperDev::timeAgo($res['c_date']);
-                                $user = $conn->query("SELECT user_id, username, q_author FROM users,questions WHERE user_id='$c_author'",PDO::FETCH_ASSOC)->fetch();
+                                $user = $conn->query("SELECT user_id, username, q_author, image_link FROM users,questions WHERE user_id='$c_author'",PDO::FETCH_ASSOC)->fetch();
                             ?>
                             <div class="card bg-light post single-reserve">
                                 <div class="post-heading">
                                     <div class="float-left image">
-                                    <img src="../images/mascot.png" height="60" weight="60" class="img-circle avatar" alt="user profile image">
+                                    <img src="../<?php echo $getAuthor[0]["image_link"]?>" height="60" weight="60" class="img-circle avatar" alt="user profile image">
                                     </div>
                                     <div class="float-left meta">
                                         <div class="post-comment">
