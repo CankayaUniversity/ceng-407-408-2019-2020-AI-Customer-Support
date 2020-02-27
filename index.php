@@ -77,7 +77,7 @@
                             </div>
                             <div class="index-paging">
                             <?php  for ($i=1; $i <= $total_pages ; $i++):?>
-                            <?php if($page === $i ){ ?>
+                            <?php if($page == $i ){ ?>
                             <a href='<?php echo "?page=$i"; ?>' class="active"><?php echo $i; ?></a>
                             <?php } else { ?>
                             <a href='<?php echo "?page=$i"; ?>'><?php echo $i; ?></a>
