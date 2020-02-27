@@ -20,7 +20,7 @@ $email=$r['email'];
     <div class="row">
         <div class="col-md-3">
             <div class="text-center">
-                <img src="/images/avatar.png" class="avatar img-circle img-thumbnail" alt="avatar"> 
+                <img src="../<?php echo $user['image_link']?>" class="avatar img-circle img-thumbnail" alt="avatar"> 
             </div>
             <br>
             <ul class="list-group">
