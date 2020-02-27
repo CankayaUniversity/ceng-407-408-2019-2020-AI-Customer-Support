@@ -13,6 +13,7 @@ $surname=$r['surname'];
 $is_admin=$r['is_admin'];
 $is_verified=$r['is_verified'];
 $email=$r['email']; 
+$profileImage=$r['image_link']; 
 
 ?>
 
@@ -20,7 +21,7 @@ $email=$r['email'];
     <div class="row">
         <div class="col-md-3">
             <div class="text-center">
-                <img src="../<?php echo $user['image_link']?>" class="avatar img-circle img-thumbnail" alt="avatar"> 
+                <img src="../<?php echo $profileImage?>" class="avatar img-circle img-thumbnail" alt="avatar"> 
             </div>
             <br>
             <ul class="list-group">
