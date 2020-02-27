@@ -129,14 +129,11 @@ if  (
     $prepareData->execute();
     $lastInsertedID = $conn->lastInsertId();
     
-    $query = $conn->prepare("SELECT user_id FROM users 
-        WHERE is_admin = 1 
-        LIMIT 1");
-    $query = $query->execute();
-    $adminID = $query['user_id'];
-/*    $notificationsQuery = $conn->prepare("INSERT INTO notifications (n_description,n_author,n_post_id, n_notified_id) VALUES
-    ('$qTitle','$qAuthor', '$lastInsertedID', '$adminID')");
-    $notificationsQuery = $notificationsQuery->execute();*/
+    $query = "SELECT user_id FROM users WHERE is_admin=1 LIMIT 1";
+    $adminIDArray = $conne->selectFreeRun($query);
+    $adminID = $adminIDArray[0]['user_id'];   
+    $notificationsQuery = $conn->prepare("INSERT INTO notifications (n_description,n_author,n_post_id, n_notified_id) VALUES ('$qTitle','$qAuthor', '$lastInsertedID', '$adminID')");
+    $notificationsQuery = $notificationsQuery->execute();
 
     /* Running python script*/
 

@@ -14,6 +14,13 @@ if( $_GET["question"] !== NULL && !empty($_GET["question"]) && $_GET["questionID
         $sql = "INSERT INTO comments (c_post_id, c_description, c_author) VALUES ('".$id."', '".$runPython."', 12)";
         $gonder = $conn->prepare($sql);
         $gonder->execute();
+
+        $sql = "SELECT q_author FROM questions WHERE q_id ='$id'";
+        $questionAuthorArray = $conne->selectFreeRun($sql);
+        $questionAuthor = $questionAuthorArray[0]["q_author"];
+
+        $sql = "INSERT INTO notifications (n_description,n_author,n_post_id, n_notified_id) VALUES ('$question',12,'$id', '$questionAuthor')";
+        $conne->freeRun($sql);
     }
 }
 ?>
