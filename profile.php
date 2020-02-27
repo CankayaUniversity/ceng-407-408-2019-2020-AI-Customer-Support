@@ -129,7 +129,7 @@ if ($uploadOk == 0) {
                                         
                                             <i class="fa fa-camera"></i>
                                             <input style="display:none;" type="file" name="fileToUpload" id="fileToUpload"/>
-                                            <label for="fileToUpload">Choose Photo</label>
+                                            <label for="fileToUpload" style=" margin-top: 7px; ">Choose Photo</label>
                                         
                                     </button>
                                     <div class="or"></div>
