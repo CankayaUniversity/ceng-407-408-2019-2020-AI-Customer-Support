@@ -22,6 +22,8 @@
                                     $q_score = $getQuestion[0]["q_like"]-$r["q_dislike"];
                                     $category_id = $getQuestion[0]['category'];
 
+                                    $conne->freeRun("UPDATE questions SET q_view = q_view + 1 WHERE q_id = $q_id");
+
                                     $getAuthor = $conne->selectWhere("users","user_id","=",$q_author_id,"int");
 
                                     $getCategoryName = $conne->selectWhere("categories","cat_id","=",$category_id,"int");

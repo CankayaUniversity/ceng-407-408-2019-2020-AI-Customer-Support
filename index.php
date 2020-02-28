@@ -54,6 +54,7 @@
                                             $user = $conn->query("SELECT user_id, username, q_author FROM users,questions WHERE user_id='$q_author'",PDO::FETCH_ASSOC)->fetch();
                                             $user_id = $user['user_id'];
                                             $username = $user['username'];
+                                            $commentCount = $conne->selectRowCount("SELECT * FROM comments WHERE c_post_id = $q_id");
                                     ?>
                                     <div class="forum-item">
                                         <div class="row">
@@ -61,11 +62,11 @@
                                                 <div class="forum-icon"> <i class="fa fa-bolt"></i></div> <a href="<?php echo "post/$q_slug"; ?>" class="forum-item-title"><?php echo $q_title; ?></a>
                                                 <div class="forum-sub-title"><a href="<?php echo "/author/$username"; ?>"><?php echo $username; ?></a> posted a post.</div>
                                             </div>
-                                            <div class="col-md-1 forum-info"> <span class="views-number"> <?php echo $res['q_like'] ?> </span>
-                                                <div> <small>Likes</small></div>
+                                            <div class="col-md-1 forum-info"> <span class="views-number"> <?php echo $commentCount ?> </span>
+                                                <div> <small>Replies</small></div>
                                             </div>
-                                            <div class="col-md-1 forum-info"> <span class="views-number"> <?php echo $res['q_dislike'] ?> </span>
-                                                <div> <small>Dislikes</small></div>
+                                            <div class="col-md-1 forum-info"> <span class="views-number"> <?php echo $res['q_view'] ?> </span>
+                                                <div> <small>Views</small></div>
                                             </div>
                                             <div class="col-md-1 forum-info"> <span class="views-number"> <?php echo $res['q_like'] - $res['q_dislike'] ?> </span>
                                                 <div> <small>Score</small></div>
