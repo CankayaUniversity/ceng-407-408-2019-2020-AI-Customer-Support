@@ -156,7 +156,8 @@
                                     </div>
                                     <form>
                                         <textarea name="AnswerDesc" id="AnswerDesc" required="required" style="display:none;"></textarea><br>
-                                        <button type="submit" class="btn btn-warning" name="AnswerSubmit" id="AnswerSubmit">Post Answer</button>
+                                        <button type="submit" class="btn btn-warning" id="answerSubmit" 
+                                        onclick="submitAnswer(<?php echo $user_id?>,<?php echo $q_id?>)">Post Answer</button>
                                     </form>
                                 </div>
                             </div>

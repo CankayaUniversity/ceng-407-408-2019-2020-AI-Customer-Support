@@ -11,6 +11,7 @@ $Email = $_POST['email'];
 
 $q_id = isset($_POST['q_id']) ? $_POST['q_id'] : NULL;
 $user_id = isset($_SESSION['user_UserID']) ? $_SESSION['user_UserID'] : NULL;
+$answer = isset($_POST['answer']) ? $_POST['answer'] : NULL;
 
 $Password = trim($_POST['password']);
 $options = array("cost"=>4);
@@ -109,46 +110,53 @@ if($action =="deleteUser") {
 }
 
 if($action == "deleteQuestion") {
-  $q_id = $_POST['q_id'];
-  $query = "DELETE FROM questions WHERE q_id = '$q_id'";
-  $statement = $conn->prepare($query);
-  $statement->execute();
-  echo "Deleted Question!";
+    $q_id = $_POST['q_id'];
+    $query = "DELETE FROM questions WHERE q_id = '$q_id'";
+    $statement = $conn->prepare($query);
+    $statement->execute();
+    echo "Deleted Question!";
 }
 
 if($action == "deleteCategory") {
-  $cat_id = $_POST['cat_id'];
-  $query = "DELETE FROM categories WHERE cat_id = '$cat_id'";
-  $statement = $conn->prepare($query);
-  $statement->execute();
-  echo "Deleted Category!";
+    $cat_id = $_POST['cat_id'];
+    $query = "DELETE FROM categories WHERE cat_id = '$cat_id'";
+    $statement = $conn->prepare($query);
+    $statement->execute();
+    echo "Deleted Category!";
 }
 
 if($action == "addCategory") {
-  $cat_name = $_POST['cat_name'];
-  $cat_description = $_POST['cat_description'];
-  $cat_slug = str_replace(' ', '-', strtolower($cat_name));
-  $cat_keywords = str_replace(' ', ',', $cat_name);
-  $query = "INSERT INTO categories(cat_name,cat_description,cat_keywords,cat_slug) VALUES('$cat_name','$cat_description','$cat_keywords','$cat_slug')";
-  $statement = $conn->prepare($query);
-  $statement->execute();
-  echo "Added Category!";
+    $cat_name = $_POST['cat_name'];
+    $cat_description = $_POST['cat_description'];
+    $cat_slug = str_replace(' ', '-', strtolower($cat_name));
+    $cat_keywords = str_replace(' ', ',', $cat_name);
+    $query = "INSERT INTO categories(cat_name,cat_description,cat_keywords,cat_slug) VALUES('$cat_name','$cat_description','$cat_keywords','$cat_slug')";
+    $statement = $conn->prepare($query);
+    $statement->execute();
+    echo "Added Category!";
 }
 
 if($action == "addUser") {
-  $username = $_POST['username'];
-  $email = $_POST['email'];
-  $options = array("cost"=>4);
-  $hashPassword = password_hash("123123",PASSWORD_BCRYPT,$options);
-  $query = "INSERT INTO users(firstname,surname,email,username,password_,is_verified,is_admin) VALUES('test','test','$email','$username','$hashPassword',1,1)";
-  $statement = $conn->prepare($query);
-  $statement->execute();
-  echo "Added Category!";
+    $username = $_POST['username'];
+    $email = $_POST['email'];
+    $options = array("cost"=>4);
+    $hashPassword = password_hash("123123",PASSWORD_BCRYPT,$options);
+    $query = "INSERT INTO users(firstname,surname,email,username,password_,is_verified,is_admin) 
+    VALUES('test','test','$email','$username','$hashPassword',1,1)";
+    $statement = $conn->prepare($query);
+    $statement->execute();
+    echo "Added Category!";
 }
 
-if($action == "resetNoti"){
+if ($action == "resetNoti") {
   $user_id = $_POST['user_id'];
   $sql = "UPDATE notifications SET n_isChecked=1 WHERE n_notified_id = '$user_id'";
   $conne->freeRun($sql);
+}
+
+if ($action == "answer" && $answer !== NULL) {
+    $query = "INSERT INTO comments (c_description,c_author,c_post_id) VALUES ('$answer', $user_id, $q_id);";
+    $conne->freeRun($query);
+    echo 1;
 }
 ?>

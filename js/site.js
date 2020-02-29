@@ -303,3 +303,20 @@ function registerProcess() {
     });
   }
 }
+function submitAnswer(user_id, q_id) {
+  var answer = $("#editor").html();
+  var action = "answer";
+  $.ajax({
+    url:"/action.php",
+    method:"POST",
+    data: {answer:answer, action:action, q_id:q_id, user_id:user_id},
+    success:function(response){
+      if(response == -1){
+        return;
+      }
+      else{
+        location.reload();
+      }
+    }
+  });
+}
