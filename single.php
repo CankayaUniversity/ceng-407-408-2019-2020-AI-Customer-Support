@@ -19,7 +19,7 @@
                                     $q_author_id = $getQuestion[0]['q_author'];
                                     $q_date = $getQuestion[0]['q_date'];
                                     $q_tag = $getQuestion[0]['q_tags'];
-                                    $q_score = $getQuestion[0]["q_like"]-$r["q_dislike"];
+                                    $q_score = $getQuestion[0]["q_like"]-$getQuestion[0]["q_dislike"];
                                     $category_id = $getQuestion[0]['category'];
 
                                     $conne->freeRun("UPDATE questions SET q_view = q_view + 1 WHERE q_id = $q_id");
@@ -181,8 +181,8 @@
                     method:"POST",
                     data: {q_id:q_id, action:action},
                     success:function(response){
-                        if(response === "You must be logged in to vote." || response === "This cannot be done! You can only vote one question once!"){
-                            alert(response);
+                        if(response == -1){
+                            return;
                         }
                         else{
                             var jLikes = $('.totalScore');
@@ -203,8 +203,8 @@
                     method:"POST",
                     data: {q_id:q_id, action:action},
                     success:function(response){
-                        if(response === "You must be logged in to vote." || response === "This cannot be done! You can only vote one question once!"){
-                            alert(response);
+                        if(response == -1){
+                            return;
                         }
                         else{
                             var jLikes = $('.totalScore');

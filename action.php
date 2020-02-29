@@ -8,6 +8,10 @@ $conn = $conne->dbConnect();
 
 $action = $_POST["action"];
 $Email = $_POST['email'];
+
+$q_id = isset($_POST['q_id']) ? $_POST['q_id'] : NULL;
+$user_id = isset($_SESSION['user_UserID']) ? $_SESSION['user_UserID'] : NULL;
+
 $Password = trim($_POST['password']);
 $options = array("cost"=>4);
 $hashPassword = password_hash($Password,PASSWORD_BCRYPT,$options);
@@ -64,23 +68,14 @@ if ($action == "register") {
   }
 }
 
-if($_SESSION["user_UserID"] == NULL && $action == NULL){
-    echo  "You must be logged in to vote.";
-    return;
-} else {
-    $user_id = $_SESSION['user_UserID'];
-}
-
-$q_id = $_POST['q_id'];
-
-if(!empty($q_id) && !empty($user_id)) {
+if($q_id !== NULL && $user_id !== NULL && ($action == "like" || $action == "dislike" )) {
     $sql="SELECT * FROM like_data WHERE user_id = '$user_id' AND q_id ='$q_id'";
     $ps = $conn->query($sql);
     $checkLikeData = $ps->rowCount();
 }
 
 // Like Action
-if($action == "like"){
+if($action == "like" && isset($checkLikeData)){
     if($checkLikeData === 0) {
         $sql = "UPDATE questions SET q_like=q_like+1 WHERE q_id='$q_id'";
         $gonder = $conn->prepare($sql);
@@ -90,10 +85,10 @@ if($action == "like"){
         $values[] = array('type' => 'int', 'val' => '1');
         $conne->insertInto("like_data",$values);
     }else {
-        echo "This cannot be done! You can only vote one question once!";
+        echo -1;
     }
 }
-else if($action == "dislike"){
+else if($action == "dislike" && isset($checkLikeData)){
     if($checkLikeData === 0) {
         $query = "UPDATE questions SET q_dislike=q_dislike+1 WHERE q_id=".$q_id."";
         $conn->exec($query);
@@ -102,7 +97,7 @@ else if($action == "dislike"){
         $values[] = array('type' => 'int', 'val' => '0');
         $conne->insertInto("like_data",$values);
     } else {
-        echo "This cannot be done! You can only vote one question once!";
+        echo -1;
     }
 }
 
