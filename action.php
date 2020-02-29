@@ -60,7 +60,6 @@ if ($action == "register") {
           $_SESSION["user_isVerified"]=$query['is_verified'];
           $_SESSION["user_Email"]=$Email;
           echo 1;
-          return;
       }else {
         echo -1;// Email and password does not match
       }

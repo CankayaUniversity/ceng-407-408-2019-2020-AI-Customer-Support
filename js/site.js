@@ -256,7 +256,7 @@ function loginProcess() {
       method: "POST",
       data: { email: email, password: password, action: action },
       success: function(response) {
-        if (response == "1") {
+        if (response == 1) {
           $("#loginModal").hide();
           location.reload();
         } else if (response == "0") {
@@ -294,10 +294,10 @@ function registerProcess() {
         confirmpass: ConfirmPassword
       },
       success: function(response) {
-        if (response) {
+        if (response == 1) {
           $("#registerModal").hide();
-          window.location.replace("index.php");
-          //location.reload();
+          //window.location.replace("index.php");
+          location.reload();
         }
       }
     });
