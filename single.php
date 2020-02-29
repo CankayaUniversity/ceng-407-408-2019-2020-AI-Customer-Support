@@ -123,6 +123,7 @@
                             <?php for ($page=1; $page <= $total_pages ; $page++):?>
                             <a href='<?php echo "?page=$page"; ?>' class="links"><?php echo $page; ?></a>
                             <?php endfor; ?>
+                            <?php if(isset($_SESSION["user_UserID"]) && $_SESSION["user_isAdmin"] == 1) : ?>
                             <div class="card">
                                 <div class="card-header">
                                     Your Answer
@@ -161,9 +162,11 @@
                                     </form>
                                 </div>
                             </div>
-                        </section>
-                    </div>
+                        </div>
+                    <?php endif; ?>
+                    </section>
                 </div>
+            </div>
                 <?php include "sidebar.php";?>
             </div>
             <script>
