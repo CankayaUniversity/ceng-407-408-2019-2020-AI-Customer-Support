@@ -50,4 +50,8 @@ update_df['index'] = indexes
 update_df['similarity'] = similarities
 
 update_df.sort_values(by = 'similarity',ascending=False , inplace=True)
-print(update_df.iloc[0,3])
+
+if update_df.iloc[0,2] < 0.3:
+    print("We will be dealing with your problem as soon as possible. Thank you for your patience.")
+else:
+    print(update_df.iloc[0,3])
