@@ -16,8 +16,9 @@
     <div class="quick-links-widget">
       <h3>Popular Articles</h3>
       <ul class="list-group list-group-flush">
-        <?php 
-          foreach (homeController::popularArticles() as $key) { 
+        <?php
+          $popularArticles = homeController::popularArticles();
+          foreach ($popularArticles as $key) { 
           $popular_slug = $key['slug']; 
         ?>
         <li class="list-group-item"><a href='<?php echo "/post/$popular_slug";?>'><?php echo $key["q_title"]?></a></li>
