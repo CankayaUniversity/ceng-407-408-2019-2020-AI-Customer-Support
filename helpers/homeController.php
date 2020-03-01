@@ -23,7 +23,7 @@ class HomeController
     public static function getNotifications($userid){
         $conne = new Mysql();
         $conn = $conne->dbConnect();
-        $n_sql = "SELECT * FROM notifications WHERE n_notified_id = '$userid' AND n_isChecked=0";
+        $n_sql = "SELECT * FROM notifications WHERE n_notified_id = '$userid' AND n_isChecked=0 ORDER BY n_id DESC";
         $n_count = $conn->prepare($n_sql);
         $n_count->execute();
         $count = $n_count->rowCount();
