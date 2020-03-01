@@ -7,16 +7,17 @@ $AllUsers = $conne->selectAll("users");
         <form>
             <input type="text" id="name" placeholder="Name">
             <input type="text" id="email" placeholder="Email Address">
-            <input type="button" class="add-row" value="Add">
+            <input type="button" class="btn btn-info" value="Add">
         </form>
-        <table class="table">
+        <input type="text" id="searchInput" class="inputStyle" onkeyup="search()" placeholder="Search for names.." title="Type in a name">
+        <table class="table table-bordered" id="myTable">
             <thead>
                 <tr>
-                    <th>Select</th>
-                    <th>Username</th>
-                    <th>Email</th>
-                    <th>Fullname</th>
-                    <th>Admin</th>
+                    <th scope="col">Select</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Fullname</th>
+                    <th scope="col">Admin</th>
                 </tr>
             </thead>
             <tbody>
@@ -32,7 +33,7 @@ $AllUsers = $conne->selectAll("users");
                 <?php } ?>
             </tbody>
         </table>
-        <button type="button" class="delete-row">Delete</button>
+        <button type="button" class="btn btn-danger">Delete</button>
     </div>
 </body>
 <script>
@@ -70,5 +71,25 @@ $AllUsers = $conne->selectAll("users");
                 }
             });
         });
-    });    
+    }); 
+
+    function search() {
+      var input, filter, table, tr, td, i, txtValue;
+      input = document.getElementById("searchInput");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("myTable");
+      tr = table.getElementsByTagName("tr");
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[2];
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      }
+    }
+
 </script>

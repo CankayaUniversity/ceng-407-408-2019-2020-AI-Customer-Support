@@ -59,3 +59,12 @@
         </span>
     </div>
 </nav>
+
+<style type="text/css">
+    .inputStyle {
+        padding: 10px 14px;
+        line-height: 1.3333333;
+        border-radius: 5px;
+        margin-bottom: 10px;
+    }
+</style>
