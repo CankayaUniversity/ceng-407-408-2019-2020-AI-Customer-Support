@@ -7,7 +7,7 @@ $AllCategories = $conne->selectAll("categories");
         <form>
             <input type="text" id="cat_name" placeholder="Category Name">
             <input type="text" id="cat_description" placeholder="Category Description">
-            <input type="button" class="btn btn-info" value="Add">
+            <input type="button" class="btn btn-info" value="Add" id="add-row">
         </form>
         <input type="text" id="searchInput" class="inputStyle" onkeyup="search()" placeholder="Search for names.." title="Type in a name">
         <table class="table table-bordered" id="myTable">
@@ -35,13 +35,13 @@ $AllCategories = $conne->selectAll("categories");
                 <?php } ?>
             </tbody>
         </table>
-        <button type="button" class="btn btn-danger">Delete</button>
+        <button type="button" class="btn btn-danger" id="delete-row">Delete</button>
     </div>
 </body>
 <script>
     $(document).ready(function(){
 
-        $(".add-row").click(function(){
+        $("#add-row").click(function(){
             var cat_name = $("#cat_name").val();
             var cat_description = $("#cat_description").val();
             var markup = "<tr><td><input type='checkbox' name='record'></td><td>" + cat_name + "</td><td>" + cat_description + "</td></tr>";
@@ -57,7 +57,7 @@ $AllCategories = $conne->selectAll("categories");
             })
         });
         
-        $(".delete-row").click(function(){
+        $("#delete-row").click(function(){
             var action = "deleteCategory";
             $("table tbody").find('input[name="record"]').each(function(){
                 if($(this).is(":checked")){
@@ -77,21 +77,21 @@ $AllCategories = $conne->selectAll("categories");
     });
 
     function search() {
-      var input, filter, table, tr, td, i, txtValue;
-      input = document.getElementById("searchInput");
-      filter = input.value.toUpperCase();
-      table = document.getElementById("myTable");
-      tr = table.getElementsByTagName("tr");
-      for (i = 0; i < tr.length; i++) {
-        td = tr[i].getElementsByTagName("td")[1];
-        if (td) {
-          txtValue = td.textContent || td.innerText;
-          if (txtValue.toUpperCase().indexOf(filter) > -1) {
-            tr[i].style.display = "";
-          } else {
-            tr[i].style.display = "none";
-          }
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("searchInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[1];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
         }
-      }
     }
 </script>

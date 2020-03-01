@@ -19,54 +19,54 @@ $options = array("cost"=>4);
 $hashPassword = password_hash($Password,PASSWORD_BCRYPT,$options);
 
 if($action == "login") {
-  $query = $conn->query("SELECT * FROM users WHERE email='$Email'",PDO::FETCH_ASSOC)->fetch();
-  if (isset($query)){
-      if(password_verify($Password,$query['password_'])){
-          $_SESSION["user_UserID"]=$query['user_id'];
-          $_SESSION["user_Username"]=$query['username'];
-          $_SESSION["user_Firstname"]=$query['firstname'];
-          $_SESSION["user_Surname"]=$query['surname'];
-          $_SESSION["user_isAdmin"]=$query['is_admin'];
-          $_SESSION["user_isVerified"]=$query['is_verified'];
-          $_SESSION["user_Email"]=$Email;
-          echo 1;
-    }else {
-        // Email and password does not match
-        echo -1;
+    $query = $conn->query("SELECT * FROM users WHERE email='$Email'",PDO::FETCH_ASSOC)->fetch();
+    if (isset($query)){
+        if(password_verify($Password,$query['password_'])){
+            $_SESSION["user_UserID"]=$query['user_id'];
+            $_SESSION["user_Username"]=$query['username'];
+            $_SESSION["user_Firstname"]=$query['firstname'];
+            $_SESSION["user_Surname"]=$query['surname'];
+            $_SESSION["user_isAdmin"]=$query['is_admin'];
+            $_SESSION["user_isVerified"]=$query['is_verified'];
+            $_SESSION["user_Email"]=$Email;
+            echo 1;
+        }else {
+            // Email and password does not match
+            echo -1;
+        }
     }
-  }
 }
 
 if ($action == "register") {
-  if($Email == NULL || $Email == ''){
-    header('Location: index.php');
-  }
-
-  $Username = $_POST['username'];
-  $Firstname = $_POST['firstname'];
-  $Lastname = $_POST['lastname']; 
-  $ConfirmPassword = $_POST['confirmpass'];
-  $UserIp = helperDev::get_client_ip();
-  if($ConfirmPassword == $Password){
-    $sqlAddUser = "INSERT IGNORE INTO users(firstname,surname,email,username,password_,ip_address,is_verified,is_admin,image_link)
-    VALUES ('$Firstname','$Lastname','$Email','$Username','$hashPassword','$UserIp',0,0,'images/avatar.png');";
-    $conn->exec($sqlAddUser);
-    $query = $conn->query("SELECT * FROM users WHERE email='$Email'",PDO::FETCH_ASSOC)->fetch();
-    if (isset($query)){
-      if(password_verify($Password,$query['password_'])){
-          $_SESSION["user_UserID"]=$query['user_id'];
-          $_SESSION["user_Username"]=$query['username'];
-          $_SESSION["user_Firstname"]=$query['firstname'];
-          $_SESSION["user_Surname"]=$query['surname'];
-          $_SESSION["user_isAdmin"]=$query['is_admin'];
-          $_SESSION["user_isVerified"]=$query['is_verified'];
-          $_SESSION["user_Email"]=$Email;
-          echo 1;
-      }else {
-        echo -1;// Email and password does not match
-      }
+    if($Email == NULL || $Email == ''){
+        header('Location: index.php');
     }
-  }
+
+    $Username = $_POST['username'];
+    $Firstname = $_POST['firstname'];
+    $Lastname = $_POST['lastname']; 
+    $ConfirmPassword = $_POST['confirmpass'];
+    $UserIp = helperDev::get_client_ip();
+    if($ConfirmPassword == $Password){
+        $sqlAddUser = "INSERT IGNORE INTO users(firstname,surname,email,username,password_,ip_address,is_verified,is_admin,image_link)
+        VALUES ('$Firstname','$Lastname','$Email','$Username','$hashPassword','$UserIp',0,0,'images/avatar.png');";
+        $conn->exec($sqlAddUser);
+        $query = $conn->query("SELECT * FROM users WHERE email='$Email'",PDO::FETCH_ASSOC)->fetch();
+        if (isset($query)){
+        if(password_verify($Password,$query['password_'])){
+            $_SESSION["user_UserID"]=$query['user_id'];
+            $_SESSION["user_Username"]=$query['username'];
+            $_SESSION["user_Firstname"]=$query['firstname'];
+            $_SESSION["user_Surname"]=$query['surname'];
+            $_SESSION["user_isAdmin"]=$query['is_admin'];
+            $_SESSION["user_isVerified"]=$query['is_verified'];
+            $_SESSION["user_Email"]=$Email;
+            echo 1;
+        }else {
+            echo -1;// Email and password does not match
+        }
+        }
+    }
 }
 
 if($q_id !== NULL && $user_id !== NULL && ($action == "like" || $action == "dislike" )) {
@@ -184,9 +184,9 @@ if($action == "addUser") {
 }
 
 if ($action == "resetNoti") {
-  $user_id = $_POST['user_id'];
-  $sql = "UPDATE notifications SET n_isChecked=1 WHERE n_notified_id = '$user_id'";
-  $conne->freeRun($sql);
+    $user_id = $_POST['user_id'];
+    $sql = "UPDATE notifications SET n_isChecked=1 WHERE n_notified_id = '$user_id'";
+    $conne->freeRun($sql);
 }
 
 if ($action == "answer" && $answer !== NULL) {

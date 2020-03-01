@@ -99,7 +99,7 @@ if($sUsername == null){
 
 <script> 
 $("#QuestionSubmit").click(function() {
-  $("#QuestionDesc").val($("#editor").html());
+    $("#QuestionDesc").val($("#editor").html());
 });
 </script>
 

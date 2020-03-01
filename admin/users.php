@@ -7,7 +7,7 @@ $AllUsers = $conne->selectAll("users");
         <form>
             <input type="text" id="name" placeholder="Name">
             <input type="text" id="email" placeholder="Email Address">
-            <input type="button" class="btn btn-info" value="Add">
+            <input type="button" class="btn btn-info" value="Add" id="add-row">
         </form>
         <input type="text" id="searchInput" class="inputStyle" onkeyup="search()" placeholder="Search for names.." title="Type in a name">
         <table class="table table-bordered" id="myTable">
@@ -33,12 +33,12 @@ $AllUsers = $conne->selectAll("users");
                 <?php } ?>
             </tbody>
         </table>
-        <button type="button" class="btn btn-danger">Delete</button>
+        <button type="button" class="btn btn-danger" id="delete-row">Delete</button>
     </div>
 </body>
 <script>
     $(document).ready(function(){
-        $(".add-row").click(function(){
+        $("#add-row").click(function(){
             var username = $("#name").val();
             var email = $("#email").val();
             var markup = "<tr><td><input type='checkbox' name='record'></td><td>" + name + "</td><td>" + email + "</td></tr>";
@@ -54,7 +54,7 @@ $AllUsers = $conne->selectAll("users");
             })
         });
         
-        $(".delete-row").click(function(){
+        $("#delete-row").click(function(){
             var action = "deleteUser";
             $("table tbody").find('input[name="record"]').each(function(){
                 if($(this).is(":checked")){
@@ -74,22 +74,22 @@ $AllUsers = $conne->selectAll("users");
     }); 
 
     function search() {
-      var input, filter, table, tr, td, i, txtValue;
-      input = document.getElementById("searchInput");
-      filter = input.value.toUpperCase();
-      table = document.getElementById("myTable");
-      tr = table.getElementsByTagName("tr");
-      for (i = 0; i < tr.length; i++) {
-        td = tr[i].getElementsByTagName("td")[2];
-        if (td) {
-          txtValue = td.textContent || td.innerText;
-          if (txtValue.toUpperCase().indexOf(filter) > -1) {
-            tr[i].style.display = "";
-          } else {
-            tr[i].style.display = "none";
-          }
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("searchInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[2];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
         }
-      }
     }
 
 </script>
