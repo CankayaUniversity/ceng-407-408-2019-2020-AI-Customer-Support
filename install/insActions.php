@@ -117,7 +117,17 @@ if(isset($getAction)){
             );";
 
         $Connect->freeRun($sql);
-        echo "Like Data table created successfully.</br> ";
+
+        $sql ="CREATE TABLE IF NOT EXISTS c_like_data (
+            id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+            c_id int NOT NULL,
+            user_id int NOT NULL,
+            status int NOT NULL,
+            FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,
+            FOREIGN KEY (c_id) REFERENCES comments(c_id) ON DELETE CASCADE
+            );";
+
+        $Connect->freeRun($sql);
 
         $sql= "INSERT INTO users(firstname,surname,email,username,password_,is_verified,is_admin,image_link) 
         VALUES ('Arınç Alp','Eren','arinc@arinc.com','arinc','$2y$04$39Qbmj9YV04JXKBzWloixu4FIU37OwD3w7EAwICxNr6EZLMK6Wdky',0,0,'images/avatar.png'),

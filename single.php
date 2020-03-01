@@ -71,12 +71,6 @@
                                         </div></div>
                                     </div>
                                 </article>
-                                <div class="like-btn">
-                                    <form id="like-it-form" action="#" method="post">
-                                        <input type="hidden" name="post_id" value="99">
-                                        <input type="hidden" name="action" value="like_it">
-                                    </form>
-                                </div>
                             </div>
                             <?php
                                 $limit = 100; // Şuan açık değil.
@@ -99,6 +93,7 @@
                                 $c_title = isset($res['c_title']);
                                 $c_description = $res['c_description'];
                                 $c_id = $res['c_id'];
+                                $c_score = $res["c_like"] - $res['c_dislike'];
                                 $time_ago = helperDev::timeAgo($res['c_date']);
                                 $user = $conn->query("SELECT user_id, username, q_author, image_link FROM users,questions WHERE user_id='$c_author'",PDO::FETCH_ASSOC)->fetch();
                             ?>
@@ -114,6 +109,24 @@
                                         </div>
                                         <h6 class="time-ago"><?php echo $time_ago ?></h6>
                                     </div>
+                                </div>
+                                <div class="col-sm-5">
+                                    <?php    
+                                    if(isset($_SESSION['user_UserID'])){
+                                        $user_id = $_SESSION['user_UserID'];
+                                        $commentStatus = $conne->selectRowCount("SELECT * FROM c_like_data WHERE c_id ='$c_id' AND user_id = '$user_id'");
+                                        if($commentStatus > 0){
+                                            echo '<button type="button" class="btn btn-success" disabled="disabled"><i class="fa fa-check"></i></button>';
+                                            echo '<button type="button" class="btn btn-danger" disabled="disabled"><i class="fa fa-times"></i></button>';
+                                        }else {
+                                            echo '<button type="button" class="btn btn-success" onclick="likeComment(this)" name="'.$c_id.'" id="c_btnLike_'.$c_id.'"><i class="fa fa-check"></i></button>';
+                                            echo '<button type="button" class="btn btn-danger" onclick="dislikeComment(this)" name="'.$c_id.'" id="c_btndislike_'.$c_id.'"><i class="fa fa-times"></i></button>';
+                                        }
+                                    }else{
+                                        $commentStatus = 1;
+                                    }
+                                    ?>
+                                    <button type="button" class="btn btn-dark" id="c_score" ><i class="fa fa-star"></i><span id="c_score_<?php echo $c_id;?>" class="c_totalScore" data-value="<?php echo $c_score; ?>"><?php echo $c_score; ?></span></button>
                                 </div>
                                 <div class="post-description">
                                     <p><?php echo $c_description; ?></p>
@@ -170,6 +183,7 @@
                 <?php include "sidebar.php";?>
             </div>
             <script>
+            // Question Like
             $( document ).ready(function() {
                 var checkLikeData = <?php echo $checkLikeData; ?>;
                 if(checkLikeData > 0) {
@@ -177,6 +191,7 @@
                     $("#btnDislike").attr("disabled", true);
                 }
             });
+
             $( "#btnLike" ).click(function() {
                 var q_id = <?php echo $q_id; ?> ;
                 var action = "like";
@@ -199,6 +214,7 @@
                     }
                 });
             });
+
             $( "#btnDislike" ).click(function() {
                 var q_id = <?php echo $q_id; ?> ;
                 var action = "dislike";
@@ -221,6 +237,52 @@
                     }
                 });
             });
+
+            // Comment Like
+            function likeComment(element){
+                var c_id = $(element).attr("name");
+                var action = "c_like";
+                $.ajax({
+                    url:"/action.php",
+                    method:"POST",
+                    data: {c_id:c_id, action:action},
+                    success:function(response){
+                        if(response == -1){
+                            return;
+                        }
+                        else{
+                            var jLikes = $('#c_score_'+c_id);
+                            var sLikes = jLikes.text();
+                            var nLikes = parseInt(sLikes);
+                            jLikes.text(" "+(nLikes+1));
+                            $("#c_btnLike_"+c_id).attr("disabled", true);
+                            $("#c_btnDislike_"+c_id).attr("disabled", true);
+                        }
+                    }
+                });
+            }
+            function dislikeComment(element){
+                var c_id = $(element).attr("name");
+                var action = "c_dislike";
+                $.ajax({
+                    url:"/action.php",
+                    method:"POST",
+                    data: {c_id:c_id, action:action},
+                    success:function(response){
+                        if(response == -1){
+                            return;
+                        }
+                        else{
+                            var jLikes = $('#c_score_'+c_id);
+                            var sLikes = jLikes.text();
+                            var nLikes = parseInt(sLikes);
+                            jLikes.text(" "+(nLikes-1));
+                            $("#c_btnLike_"+c_id).attr("disabled", true);
+                            $("#c_btnDislike_"+c_id).attr("disabled", true);
+                        }
+                    }
+                });
+            }
             </script>
         </div>
     </div>

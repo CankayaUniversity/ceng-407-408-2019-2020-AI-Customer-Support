@@ -10,6 +10,7 @@ $action = $_POST["action"];
 $Email = $_POST['email'];
 
 $q_id = isset($_POST['q_id']) ? $_POST['q_id'] : NULL;
+$c_id = isset($_POST['c_id']) ? $_POST['c_id'] : NULL;
 $user_id = isset($_SESSION['user_UserID']) ? $_SESSION['user_UserID'] : NULL;
 $answer = isset($_POST['answer']) ? $_POST['answer'] : NULL;
 
@@ -74,7 +75,13 @@ if($q_id !== NULL && $user_id !== NULL && ($action == "like" || $action == "disl
     $checkLikeData = $ps->rowCount();
 }
 
-// Like Action
+if($c_id !== NULL && $user_id !== NULL && ($action == "c_like" || $action == "c_dislike" )) {
+    $sql="SELECT * FROM c_like_data WHERE user_id = '$user_id' AND c_id ='$c_id'";
+    $ps = $conn->query($sql);
+    $c_checkLikeData = $ps->rowCount();
+}
+
+// Question Like Action
 if($action == "like" && isset($checkLikeData)){
     if($checkLikeData === 0) {
         $sql = "UPDATE questions SET q_like=q_like+1 WHERE q_id='$q_id'";
@@ -100,6 +107,34 @@ else if($action == "dislike" && isset($checkLikeData)){
         echo -1;
     }
 }
+
+// Comment Like Action
+if($action == "c_like" && isset($c_checkLikeData)){
+    if($c_checkLikeData === 0) {
+        $sql = "UPDATE comments SET c_like=c_like+1 WHERE c_id='$c_id'";
+        $gonder = $conn->prepare($sql);
+        $gonder->execute();
+        $values[] = array('type' => 'int', 'val' => $c_id);
+        $values[] = array('type' => 'int', 'val' => $user_id);
+        $values[] = array('type' => 'int', 'val' => '1');
+        $conne->insertInto("c_like_data",$values);
+    }else {
+        echo -1;
+    }
+}
+else if($action == "c_dislike" && isset($c_checkLikeData)){
+    if($c_checkLikeData === 0) {
+        $query = "UPDATE comments SET c_dislike=c_dislike+1 WHERE c_id=".$c_id."";
+        $conn->exec($query);
+        $values[] = array('type' => 'int', 'val' => $c_id);
+        $values[] = array('type' => 'int', 'val' => $user_id);
+        $values[] = array('type' => 'int', 'val' => '0');
+        $conne->insertInto("c_like_data",$values);
+    } else {
+        echo -1;
+    }
+}
+
 
 if($action =="deleteUser") {
     $user_id = $_POST['user_id'];
