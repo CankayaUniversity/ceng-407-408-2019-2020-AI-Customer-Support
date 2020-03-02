@@ -115,29 +115,29 @@
                                     if(isset($_SESSION['user_UserID'])){
                                         $user_id = $_SESSION['user_UserID'];
                                         $commentStatus = $conne->selectRowCount("SELECT * FROM c_like_data WHERE c_id ='$c_id' AND user_id = '$user_id'");
-                                        if($commentStatus > 0){
+                                        if($c_author == 1 && $user_id==$q_author_id){
+                                            echo "<div>";
+                                            echo '<button type="button" class="btn btn-success" onclick="helpful(this)" name="'.$c_id.'">Helpful<i class="fa fa-check"></i></button>';
+                                            echo '<button type="button" class="btn btn-danger" onclick="not_helpful(this)" name="'.$c_id.'">Not Helpful<i class="fa fa-times"></i></button>';
+                                            echo "</div>";
+                                        }else if($commentStatus > 0){
                                             echo '<button type="button" class="btn btn-success" disabled="disabled"><i class="fa fa-check"></i></button>';
                                             echo '<button type="button" class="btn btn-danger" disabled="disabled"><i class="fa fa-times"></i></button>';
+                                            echo '<button type="button" class="btn btn-dark" id="c_score" ><i class="fa fa-star"></i><span id="c_score_'.$c_id.'" class="c_totalScore" data-value="'.$c_score.'">'.$c_score.'</span></button>';
                                         }else {
                                             echo '<button type="button" class="btn btn-success" onclick="likeComment(this)" name="'.$c_id.'" id="c_btnLike_'.$c_id.'"><i class="fa fa-check"></i></button>';
                                             echo '<button type="button" class="btn btn-danger" onclick="dislikeComment(this)" name="'.$c_id.'" id="c_btndislike_'.$c_id.'"><i class="fa fa-times"></i></button>';
+                                            echo '<button type="button" class="btn btn-dark" id="c_score" ><i class="fa fa-star"></i><span id="c_score_'.$c_id.'" class="c_totalScore" data-value="'.$c_score.'">'.$c_score.'</span></button>';
                                         }
                                     }else{
                                         $commentStatus = 1;
                                     }
                                     ?>
-                                    <button type="button" class="btn btn-dark" id="c_score" ><i class="fa fa-star"></i><span id="c_score_<?php echo $c_id;?>" class="c_totalScore" data-value="<?php echo $c_score; ?>"><?php echo $c_score; ?></span></button>
                                 </div>
                                 <div class="post-description">
                                     <p><?php echo $c_description; ?></p>
                                 </div>
                                 <?php
-                                if($c_author == 12 && $user_id==$q_author_id){
-                                    echo "<div>";
-                                    echo '<button type="button" class="btn btn-success" onclick="helpful(this)" name="'.$c_id.'">Helpful<i class="fa fa-check"></i></button>';
-                                    echo '<button type="button" class="btn btn-danger" onclick="not_helpful(this)" name="'.$c_id.'">Not Helpful<i class="fa fa-times"></i></button>';
-                                    echo "</div>";
-                                }
                                 ?>
                             </div>                 
                             <?php endwhile; ?>
@@ -294,12 +294,13 @@
             }
 
             function helpful(element){
-                var c_id = $(element).attr("name");
+                var q_id = <?php echo $q_id; ?> ;
+                var q_author = <?php echo $q_author_id ?>;
                 var action = "helpful";
                 $.ajax({
                     url: "/action.php",
                     method: "POST",
-                    data: {c_id:c_id,action:action},
+                    data: {action:action,q_id:q_id,q_author:q_author},
                     success:function(response){
                         if(response == -1){
                             return;
@@ -312,12 +313,13 @@
             }
 
             function not_helpful(element){
-                var c_id = $(element).attr("name");
+                var q_id = <?php echo $q_id; ?> ;
+                var q_author = <?php echo $q_author_id ?>;
                 var action = "not_helpful";
                 $.ajax({
                     url: "/action.php",
                     method: "POST",
-                    data: {c_id:c_id,action:action},
+                    data: {action:action,q_id:q_id,q_author:q_author},
                     success:function(response){
                         if(response == -1){
                             return;

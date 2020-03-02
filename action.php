@@ -13,6 +13,7 @@ $q_id = isset($_POST['q_id']) ? $_POST['q_id'] : NULL;
 $c_id = isset($_POST['c_id']) ? $_POST['c_id'] : NULL;
 $user_id = isset($_SESSION['user_UserID']) ? $_SESSION['user_UserID'] : NULL;
 $answer = isset($_POST['answer']) ? $_POST['answer'] : NULL;
+$q_author = isset($_POST['q_author']) ? $_POST['q_author'] : NULL;
 
 $Password = trim($_POST['password']);
 $options = array("cost"=>4);
@@ -203,7 +204,14 @@ if($action == "helpful"){
     //$conne->freeRun("DELETE FROM comments WHERE c_id = '$c_id'");
 }
 if($action == "not_helpful"){
-    $conne->freeRun("DELETE FROM comments WHERE c_id = '$c_id'");
-    // TODO notification
+    $string = "";
+    $admins = $conne->selectFreeRun("SELECT * FROM users WHERE is_admin = 1");
+    foreach ($admins as $key => $value) {
+        $id = $value["user_id"];
+        $string .= " ('Reply marked as not helpful.','$user_id','$q_id','$id'),";
+    }
+    $string = rtrim($string,',');
+    $query = "INSERT INTO notifications(n_description,n_author,n_post_id,n_notified_id) VALUES ".$string;
+    $conne->freeRun($query);
 }
 ?>
