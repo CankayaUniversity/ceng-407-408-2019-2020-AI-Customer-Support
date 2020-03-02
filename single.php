@@ -131,6 +131,14 @@
                                 <div class="post-description">
                                     <p><?php echo $c_description; ?></p>
                                 </div>
+                                <?php
+                                if($c_author == 12 && $user_id==$q_author_id){
+                                    echo "<div>";
+                                    echo '<button type="button" class="btn btn-success" onclick="helpful(this)" name="'.$c_id.'">Helpful<i class="fa fa-check"></i></button>';
+                                    echo '<button type="button" class="btn btn-danger" onclick="not_helpful(this)" name="'.$c_id.'">Not Helpful<i class="fa fa-times"></i></button>';
+                                    echo "</div>";
+                                }
+                                ?>
                             </div>                 
                             <?php endwhile; ?>
                             <?php for ($page=1; $page <= $total_pages ; $page++):?>
@@ -261,6 +269,7 @@
                     }
                 });
             }
+
             function dislikeComment(element){
                 var c_id = $(element).attr("name");
                 var action = "c_dislike";
@@ -282,6 +291,44 @@
                         }
                     }
                 });
+            }
+
+            function helpful(element){
+                var c_id = $(element).attr("name");
+                var action = "helpful";
+                $.ajax({
+                    url: "/action.php",
+                    method: "POST",
+                    data: {c_id:c_id,action:action},
+                    success:function(response){
+                        if(response == -1){
+                            return;
+                        }
+                        else{
+                            alert("Thanks for your feedback!");
+                        }
+                    }
+                })
+            }
+
+            function not_helpful(element){
+                var c_id = $(element).attr("name");
+                var action = "not_helpful";
+                $.ajax({
+                    url: "/action.php",
+                    method: "POST",
+                    data: {c_id:c_id,action:action},
+                    success:function(response){
+                        if(response == -1){
+                            return;
+                        }
+                        else{
+                            alert("Thanks for your feedback! Our experts will inform you about your problem as soon as possible.");
+                            $(element).remove();
+                            // TODO notification
+                        }
+                    }
+                })
             }
             </script>
         </div>

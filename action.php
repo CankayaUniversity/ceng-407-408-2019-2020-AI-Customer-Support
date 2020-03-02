@@ -198,4 +198,12 @@ if ($action == "answer" && $answer !== NULL) {
     $conne->freeRun($query);
     echo 1;
 }
+
+if($action == "helpful"){
+    //$conne->freeRun("DELETE FROM comments WHERE c_id = '$c_id'");
+}
+if($action == "not_helpful"){
+    $conne->freeRun("DELETE FROM comments WHERE c_id = '$c_id'");
+    // TODO notification
+}
 ?>
