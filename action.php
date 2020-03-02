@@ -192,6 +192,10 @@ if ($action == "resetNoti") {
 if ($action == "answer" && $answer !== NULL) {
     $query = "INSERT INTO comments (c_description,c_author,c_post_id) VALUES ('$answer', $user_id, $q_id);";
     $conne->freeRun($query);
+    $sql = $conne->selectFreeRun("SELECT q_author FROM questions WHERE q_id='$q_id'");
+    $q_author = $sql[0]['q_author'];
+    $query = "INSERT INTO notifications(n_description,n_author,n_post_id,n_notified_id) VALUES ('Your question is answered','$user_id','$q_id','$q_author')";
+    $conne->freeRun($query);
     echo 1;
 }
 ?>
