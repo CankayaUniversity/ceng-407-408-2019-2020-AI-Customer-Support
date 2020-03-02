@@ -73,17 +73,9 @@
                                 </article>
                             </div>
                             <?php
-                                $limit = 100; // Şuan açık değil.
                                 $query = "SELECT * FROM comments WHERE c_post_id='$q_id'";
-                                $total_results = $conne->selectRowCount($query);
-                                $total_pages = ceil($total_results/$limit);
-                                if (!isset($_GET['page'])) {
-                                    $page = 1;
-                                } else{
-                                    $page = $_GET['page'];
-                                }
-                                $starting_limit = ($page-1)*$limit;
-                                $show = "SELECT * FROM comments WHERE c_post_id='$q_id' ORDER BY c_id DESC LIMIT $starting_limit, $limit";
+                                $rowcount = $conne->selectRowCount($query);
+                                $show = "SELECT * FROM comments WHERE c_post_id='$q_id' ORDER BY c_id DESC LIMIT 0, 3";
                                 $r = $conn->prepare($show);
                                 $r->execute();
                             ?>
@@ -137,13 +129,13 @@
                                 <div class="post-description">
                                     <p><?php echo $c_description; ?></p>
                                 </div>
-                                <?php
-                                ?>
-                            </div>                 
+                            </div>
+                            <br>               
                             <?php endwhile; ?>
-                            <?php for ($page=1; $page <= $total_pages ; $page++):?>
-                            <a href='<?php echo "?page=$page"; ?>' class="links"><?php echo $page; ?></a>
-                            <?php endfor; ?>
+                            <br>
+                            <button type="button" onclick="loadmore()" id="postAnswerText" class="btn btn-success">Load More Comments</button>
+                            
+                            <br><br>
                             <?php if(isset($_SESSION["user_UserID"]) && $_SESSION["user_isAdmin"] == 1) : ?>
                             <div class="card">
                                 <div class="card-header">
@@ -331,6 +323,28 @@
                         }
                     }
                 })
+            }
+            var starting_limit = 3;
+            function loadmore(){
+                var q_id = <?php echo $q_id; ?> ;
+                var action = "loadmore";
+                $.ajax({
+                    url: "/action.php",
+                    method: "POST",
+                    data: {action:action,q_id:q_id,starting_limit: starting_limit},
+                    success:function(response){
+                        if(response == -1){
+                            return;
+                        }
+                        else{
+                            starting_limit = starting_limit + 3;
+                            $(response).insertBefore( $("#postAnswerText") );
+                            if(starting_limit >= <?php echo $rowcount ?>){
+                                $("#postAnswerText").remove();
+                            }
+                        }
+                    }
+                });
             }
             </script>
         </div>

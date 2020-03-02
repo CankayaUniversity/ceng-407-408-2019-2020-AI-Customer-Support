@@ -214,4 +214,45 @@ if($action == "not_helpful"){
     $query = "INSERT INTO notifications(n_description,n_author,n_post_id,n_notified_id) VALUES ".$string;
     $conne->freeRun($query);
 }
+
+if($action == "loadmore"){
+    $html = "";
+    $limit = 3;
+    $starting_limit = $_POST['starting_limit'];
+    $query = "SELECT * FROM comments WHERE c_post_id='$q_id' ORDER BY c_id DESC LIMIT $starting_limit, $limit";
+    $rowCount = $conne->selectRowCount( $query);
+    if($rowCount < $limit){
+        $limit = $rowCount;
+    }
+    $newQ = $conne->selectFreeRun($query);
+    for($i=0;$i < $limit ; $i++){
+        $c_author = $newQ[$i]["c_author"];
+        $query2 = "SELECT * FROM users WHERE user_id = $c_author ";
+        $newU = $conne->selectFreeRun($query2);
+        $image = $newU[0]["image_link"];
+        $username = $newU[0]["username"];
+        $time_ago = helperDev::timeAgo($newQ[$i]['c_date']);
+        $c_description = $newQ[$i]["c_description"];
+        $html .= '<div class="card bg-light post single-reserve">';
+        $html .= '<div class="post-heading">';
+        $html .= '<div class="float-left image">';
+        $html .= '<img src="../'.$image.'" height="60" weight="60" class="img-circle avatar" alt="user profile image">';
+        $html .= '</div>';
+        $html .= '<div class="float-left meta">';
+        $html .= '<div class="post-comment">';
+        $html .= '<a href="/author/'.$username.'"><b>'.$username.'</b></a> made a post.';
+        $html .= '</div>';
+        $html .= '<h6 class="time-ago">'.$time_ago.'</h6>';
+        $html .= '</div>';
+        $html .= '</div>';
+        $html .= '<div class="post-description">';
+        $html .= '<p>'.$c_description.'</p>';
+        $html .= '</div>';
+        $html .= '</div>';
+        $html .= '<br>';
+
+    }
+    echo $html;
+}
 ?>
+
