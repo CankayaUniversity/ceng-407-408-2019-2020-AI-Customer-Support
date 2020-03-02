@@ -44,6 +44,8 @@ if($sUsername == null){
                                         <input type="text" class="form-control" id="QuestionTitle" name="QuestionTitle" placeholder="What is your question about?">
                                     </div>
                                 </div>
+                                <div id="editor" contenteditable>
+                                    </div>
                                 <div id="editparent">
                                     <div id="editControls">
                                         <div class="btn-group">
@@ -67,8 +69,6 @@ if($sUsername == null){
                                             <a class="btn btn-xs btn-default" data-role="h3" href="#" title="Heading 3"><i class="fa fa-header"></i><sup>3</sup></a>
                                             <a class="btn btn-xs btn-default" data-role="p" href="#" title="Paragraph"><i class="fa fa-paragraph"></i></a>
                                         </div>
-                                    </div>
-                                    <div id="editor" contenteditable>
                                     </div>
                                     <textarea name="QuestionDesc" id="QuestionDesc" required="required" style="display:none;"></textarea><br>
                                     <div class="form-group">
@@ -136,6 +136,8 @@ if  (
     $adminID = $adminIDArray[0]['user_id'];   
     $notificationsQuery = $conn->prepare("INSERT INTO notifications (n_description,n_author,n_post_id, n_notified_id) VALUES ('$qTitle','$qAuthor', '$lastInsertedID', '$adminID')");
     $notificationsQuery = $notificationsQuery->execute();
+
+    $conne->freeRun("UPDATE categories SET cat_totalquestion=cat_totalquestion+1 WHERE cat_id = '$qCategory'");
 
     /* Running python script*/
 
