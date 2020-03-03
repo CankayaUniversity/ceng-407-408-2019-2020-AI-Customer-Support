@@ -9,12 +9,13 @@ $AllQuestions = $conne->selectAll("questions");
             <thead>
                 <tr>
                     <th>Select</th>
-                    <th>Question Title</th>
-                    <th>Question Description</th>
+                    <th style="width:20%">Question Title</th>
+                    <th style="width:20%">Question Description</th>
                     <th>Question Tags</th>
                     <th>Question Author</th>
                     <th>Question Category</th>
                     <th>Question Page</th>
+                    <th style="width:12%">Question Status</th>
                 </tr>
             </thead>
             <tbody>
@@ -36,6 +37,17 @@ $AllQuestions = $conne->selectAll("questions");
                         ?>
                         <td><?php echo $category[0]['cat_name'] ?></td>
                         <td><a href='<?php $link = $key['slug']; echo "/post/$link" ?>'>Link</a></td>
+                        <?php
+                        if($key['is_solved'] == -1){
+                            echo '<td><button type="button" class="btn btn-secondary">Not issued</button></td>';
+                        }
+                        if($key['is_solved'] == 0){
+                            echo '<td><button type="button" class="btn btn-danger">Not Solved</button></td>';
+                        }
+                        if($key['is_solved'] == 1){
+                            echo '<td><button type="button" class="btn btn-success">Solved</button></td>';
+                        }
+                        ?>
                     </tr>
                 <?php } ?>
             </tbody>
