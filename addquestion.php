@@ -41,7 +41,7 @@ if($sUsername == null){
                                     <h3>Add a new question!</h3>
                                     <div class="form-group">
                                         <label for="QuestionTitle">Question Title</label>
-                                        <input type="text" class="form-control" id="QuestionTitle" name="QuestionTitle" placeholder="What is your question about?">
+                                        <input type="text" class="form-control" id="QuestionTitle" name="QuestionTitle" maxlength="75" placeholder="What is your question about?">
                                     </div>
                                 </div>
                                 <div id="editor" contenteditable>
