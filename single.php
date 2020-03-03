@@ -132,9 +132,7 @@
                             </div>
                             <br>               
                             <?php endwhile; ?>
-                            <br>
-                            <button type="button" onclick="loadmore()" id="postAnswerText" class="btn btn-success">Load More Comments</button>
-                            
+                            <button type="button"  onclick="loadmore()" id="postAnswerText" class="btn btn-single"><i class="fa fa-arrow-down fa-1x" ></i>   More Comments</button> 
                             <br><br>
                             <?php if(isset($_SESSION["user_UserID"]) && $_SESSION["user_isAdmin"] == 1) : ?>
                             <div class="card">

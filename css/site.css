@@ -2019,3 +2019,50 @@ body{margin-top:20px;
     line-height:1.8rem;
     color: #868e96;
 }
+
+
+/* single page load more button */
+
+
+.btn-single{
+    position: relative;
+    vertical-align: center;
+    margin: 0px;
+    height: 100x;
+    padding: 20px 20px;
+    font-size: 4px;
+    color:#e2793f;
+    text-align: center;
+    text-shadow: 0 3px 2px rgba(0, 0, 0, 0.3);
+    background: #e2793f;
+    border: 0;
+    border-bottom: 3px solid #e2793f;
+    cursor: pointer;
+    -webkit-box-shadow: inset 0 -3px;
+    box-shadow: inset 0 -3px #e2793f;
+}
+
+.btn-single:active {
+    top: 2px;
+    outline: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+.btn-single:hover {
+    background: #e2793f;
+}
+
+
+.btn-post-answer{
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    
+}
