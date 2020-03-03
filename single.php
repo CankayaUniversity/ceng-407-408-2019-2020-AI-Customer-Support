@@ -44,7 +44,19 @@
                                     </li>
                                 </ul>
                                 <article class=" type-post format-standard hentry clearfix">
-                                    <h1 class="post-title"><a href="#"><?php echo $q_title; ?></a></h1>
+                                    <h1 class="post-title"><a href="#"><?php echo $q_title; ?></a>
+                                    <?php 
+                                        if($is_solved == 1){
+                                            echo '<td><button type="button" class="btn btn-success">Solved</button></td>';
+                                        }
+                                        else if($is_solved == 0){
+                                            echo '<td><button type="button" class="btn btn-danger">Not Solved</button></td>';
+                                        }
+                                        else if($is_solved == -1){
+                                            echo '<td><button type="button" class="btn btn-secondary">Not issued</button></td>';
+                                        }
+                                        ?>
+                                    </h1>
                                     <div class="card bg-light post">
                                         <div class="post-heading">
                                             <div class="float-left image">
@@ -108,7 +120,7 @@
                                     if(isset($_SESSION['user_UserID'])){
                                         $user_id = $_SESSION['user_UserID'];
                                         $commentStatus = $conne->selectRowCount("SELECT * FROM c_like_data WHERE c_id ='$c_id' AND user_id = '$user_id'");
-                                        if($c_author == 12 && $user_id==$q_author_id && $is_solved != 1){
+                                        if($c_author == 12 && $user_id==$q_author_id && $is_solved == -1){
                                             echo "<div>";
                                             echo '<button type="button" class="btn btn-success" onclick="helpful(this)" name="'.$c_id.'">Helpful<i class="fa fa-check"></i></button>';
                                             echo '<button type="button" class="btn btn-danger" onclick="not_helpful(this)" name="'.$c_id.'">Not Helpful<i class="fa fa-times"></i></button>';
@@ -286,7 +298,6 @@
 
             function helpful(element){
                 var q_id = <?php echo $q_id; ?> ;
-                var q_author = <?php echo $q_author_id ?>;
                 var action = "helpful";
                 $.ajax({
                     url: "/action.php",
@@ -305,12 +316,11 @@
 
             function not_helpful(element){
                 var q_id = <?php echo $q_id; ?> ;
-                var q_author = <?php echo $q_author_id ?>;
                 var action = "not_helpful";
                 $.ajax({
                     url: "/action.php",
                     method: "POST",
-                    data: {action:action,q_id:q_id,q_author:q_author},
+                    data: {action:action,q_id:q_id},
                     success:function(response){
                         if(response == -1){
                             return;

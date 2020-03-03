@@ -134,9 +134,9 @@ if  (
     $query = "SELECT user_id FROM users WHERE is_admin=1 LIMIT 1";
     $adminIDArray = $conne->selectFreeRun($query);
     $adminID = $adminIDArray[0]['user_id'];   
-    $notificationsQuery = $conn->prepare("INSERT INTO notifications (n_description,n_author,n_post_id, n_notified_id) VALUES ('$qTitle','$qAuthor', '$lastInsertedID', '$adminID')");
+    $notificationsQuery = $conn->prepare("INSERT INTO notifications (n_description,n_author,n_post_id, n_notified_id, n_image) VALUES ('$qTitle','$qAuthor', '$lastInsertedID', '$adminID','/images/noti_icons/new_question.png')");
     $notificationsQuery = $notificationsQuery->execute();
-
+    
     $conne->freeRun("UPDATE categories SET cat_totalquestion=cat_totalquestion+1 WHERE cat_id = '$qCategory'");
 
     /* Running python script*/

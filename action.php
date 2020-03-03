@@ -195,25 +195,34 @@ if ($action == "answer" && $answer !== NULL) {
     $conne->freeRun($query);
     $sql = $conne->selectFreeRun("SELECT q_author FROM questions WHERE q_id='$q_id'");
     $q_author = $sql[0]['q_author'];
-    $query = "INSERT INTO notifications(n_description,n_author,n_post_id,n_notified_id) VALUES ('Your question is answered','$user_id','$q_id','$q_author')";
+    $query = "INSERT INTO notifications(n_description,n_author,n_post_id,n_notified_id,n_image) VALUES ('Your question is answered','$user_id','$q_id','$q_author','/images/noti_icons/comment.png')";
     $conne->freeRun($query);
     echo 1;
 }
 
 if($action == "helpful"){
+    $string = "";
+    $admins = $conne->selectFreeRun("SELECT * FROM users WHERE is_admin = 1");
+    foreach ($admins as $key => $value) {
+        $id = $value["user_id"];
+        $string .= " ('Reply marked as helpful.','$user_id','$q_id','$id','/images/noti_icons/helpful.png'),";
+    }
+    $string = rtrim($string,',');
+    $query = "INSERT INTO notifications(n_description,n_author,n_post_id,n_notified_id,n_image) VALUES ".$string;
+    $conne->freeRun($query);
     $query = "UPDATE questions SET is_solved = 1 WHERE q_id = $q_id";
     $conne->freeRun($query);
-    echo $query;
 }
+
 if($action == "not_helpful"){
     $string = "";
     $admins = $conne->selectFreeRun("SELECT * FROM users WHERE is_admin = 1");
     foreach ($admins as $key => $value) {
         $id = $value["user_id"];
-        $string .= " ('Reply marked as not helpful.','$user_id','$q_id','$id'),";
+        $string .= " ('Reply marked as not helpful.','$user_id','$q_id','$id','/images/noti_icons/not_helpful.png'),";
     }
     $string = rtrim($string,',');
-    $query = "INSERT INTO notifications(n_description,n_author,n_post_id,n_notified_id) VALUES ".$string;
+    $query = "INSERT INTO notifications(n_description,n_author,n_post_id,n_notified_id,n_image) VALUES ".$string;
     $conne->freeRun($query);
     $query = "UPDATE questions SET is_solved = 0 WHERE q_id = $q_id";
     $conne->freeRun($query);

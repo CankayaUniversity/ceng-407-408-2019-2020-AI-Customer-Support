@@ -91,6 +91,7 @@ if(isset($getAction)){
             n_notified_id int NOT NULL,
             n_isChecked int NOT NULL DEFAULT '0',
             n_date datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+            n_image varchar(1000) DEFAULT NULL,
             FOREIGN KEY (n_author) REFERENCES users(user_id) ON DELETE CASCADE,
             FOREIGN KEY (n_post_id) REFERENCES questions(q_id) ON DELETE CASCADE
             );";

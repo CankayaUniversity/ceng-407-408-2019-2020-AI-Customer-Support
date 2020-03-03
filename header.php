@@ -287,7 +287,7 @@ if(isset($_SESSION["user_isAdmin"])) {
       <div class="notification-read">
         <i class="fa fa-times" aria-hidden="true"></i>
       </div>
-      <img class="notification-img" src="https://placehold.it/48x48" alt="Icone Notification" />
+      <img class="notification-img" src="{{image}}" alt="Icone Notification" />
       <div class="notifications-body">
         <p class="notification-texte">{{texte}}</p>
         <p class="notification-date text-muted">

@@ -38,6 +38,7 @@ class HomeController
             $desc = wordwrap($desc, 40, "<br>", true);
             $n_date = $value['n_date'];
             $n_post_id = $value['n_post_id'];
+            $n_image = $value['n_image'];
             
             $sql = $conn->query("SELECT slug FROM questions WHERE q_id = $n_post_id ",PDO::FETCH_ASSOC)->fetch();
             $slug = $sql['slug'];
@@ -47,7 +48,7 @@ class HomeController
             <script>
                 notifications.push({
                     href: '/post/$slug',
-                    image: 'Modification',
+                    image: '$n_image',
                     texte: '$desc',
                     date: '$n_date'
                 });
