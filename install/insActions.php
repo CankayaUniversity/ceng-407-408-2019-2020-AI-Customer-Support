@@ -63,6 +63,7 @@ if(isset($getAction)){
             q_dislike int NOT NULL  DEFAULT '0',
             q_date datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
             q_view int NOT NULL  DEFAULT '0',
+            is_solved int NOT NULL DEFAULT '-1',
             FOREIGN KEY (q_author) REFERENCES users(user_id) ON DELETE CASCADE
             );";
 

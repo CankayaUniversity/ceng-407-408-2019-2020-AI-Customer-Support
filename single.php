@@ -21,6 +21,7 @@
                                     $q_tag = $getQuestion[0]['q_tags'];
                                     $q_score = $getQuestion[0]["q_like"]-$getQuestion[0]["q_dislike"];
                                     $category_id = $getQuestion[0]['category'];
+                                    $is_solved = $getQuestion[0]['is_solved'];
 
                                     $conne->freeRun("UPDATE questions SET q_view = q_view + 1 WHERE q_id = $q_id");
 
@@ -107,7 +108,7 @@
                                     if(isset($_SESSION['user_UserID'])){
                                         $user_id = $_SESSION['user_UserID'];
                                         $commentStatus = $conne->selectRowCount("SELECT * FROM c_like_data WHERE c_id ='$c_id' AND user_id = '$user_id'");
-                                        if($c_author == 1 && $user_id==$q_author_id){
+                                        if($c_author == 12 && $user_id==$q_author_id && $is_solved != 1){
                                             echo "<div>";
                                             echo '<button type="button" class="btn btn-success" onclick="helpful(this)" name="'.$c_id.'">Helpful<i class="fa fa-check"></i></button>';
                                             echo '<button type="button" class="btn btn-danger" onclick="not_helpful(this)" name="'.$c_id.'">Not Helpful<i class="fa fa-times"></i></button>';
@@ -290,7 +291,7 @@
                 $.ajax({
                     url: "/action.php",
                     method: "POST",
-                    data: {action:action,q_id:q_id,q_author:q_author},
+                    data: {action:action,q_id:q_id},
                     success:function(response){
                         if(response == -1){
                             return;
@@ -316,8 +317,6 @@
                         }
                         else{
                             alert("Thanks for your feedback! Our experts will inform you about your problem as soon as possible.");
-                            $(element).remove();
-                            // TODO notification
                         }
                     }
                 })

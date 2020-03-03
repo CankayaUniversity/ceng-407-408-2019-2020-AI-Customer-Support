@@ -201,7 +201,9 @@ if ($action == "answer" && $answer !== NULL) {
 }
 
 if($action == "helpful"){
-    //$conne->freeRun("DELETE FROM comments WHERE c_id = '$c_id'");
+    $query = "UPDATE questions SET is_solved = 1 WHERE q_id = $q_id";
+    $conne->freeRun($query);
+    echo $query;
 }
 if($action == "not_helpful"){
     $string = "";
@@ -212,6 +214,8 @@ if($action == "not_helpful"){
     }
     $string = rtrim($string,',');
     $query = "INSERT INTO notifications(n_description,n_author,n_post_id,n_notified_id) VALUES ".$string;
+    $conne->freeRun($query);
+    $query = "UPDATE questions SET is_solved = 0 WHERE q_id = $q_id";
     $conne->freeRun($query);
 }
 
