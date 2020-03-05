@@ -6,9 +6,9 @@
  * @mail mehata1997@hotmail.com
  * @date 10.12.2019
  * @update 05.02.2020
- */ 
+ */
 include 'inc/Conn.php';
-class HomeController 
+class HomeController
 {
     public static function getNCount($userid) {
         $conne = new Mysql();
@@ -17,10 +17,10 @@ class HomeController
         $n_count = $conn->prepare($n_sql);
         $n_count->execute();
         $count = $n_count->rowCount();
-        echo "<script>var n_count = ".json_encode($count).";</script>";
+        echo "<script>var n_count = " . json_encode($count) . ";</script>";
     }
 
-    public static function getNotifications($userid){
+    public static function getNotifications($userid) {
         $conne = new Mysql();
         $conn = $conne->dbConnect();
         $n_sql = "SELECT * FROM notifications WHERE n_notified_id = '$userid' AND n_isChecked=0 ORDER BY n_id DESC";
@@ -39,12 +39,12 @@ class HomeController
             $n_date = $value['n_date'];
             $n_post_id = $value['n_post_id'];
             $n_image = $value['n_image'];
-            
-            $sql = $conn->query("SELECT slug FROM questions WHERE q_id = $n_post_id ",PDO::FETCH_ASSOC)->fetch();
+
+            $sql = $conn->query("SELECT slug FROM questions WHERE q_id = $n_post_id ", PDO::FETCH_ASSOC)->fetch();
             $slug = $sql['slug'];
 
-            echo 
-            "
+            echo
+                "
             <script>
                 notifications.push({
                     href: '/post/$slug',
@@ -57,12 +57,10 @@ class HomeController
         }
     }
 
-    public static function popularArticles(){
+    public static function popularArticles() {
         $conne = new Mysql();
         $conn = $conne->dbConnect();
         $popularArticles = $conne->selectFreeRun("SELECT * FROM questions ORDER BY q_view DESC LIMIT 5");
         return $popularArticles;
     }
-} 
-
-?>
+}

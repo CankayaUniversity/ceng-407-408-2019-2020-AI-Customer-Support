@@ -3,7 +3,7 @@
 session_start();
 
 ini_set('display_errors', 1);
-error_reporting(-1); 
+error_reporting(-1);
 
 include 'helpers/helperMeta.php';
 include 'helpers/homeController.php';
@@ -17,11 +17,11 @@ if (isset($_SESSION['user_Username'])) {
     $userid = $_SESSION['user_UserID'];
     HomeController::getNCount($userid);
 } else {
-  $sUsername = null;
+    $sUsername = null;
 }
 $isAdmin = 0;
-if(isset($_SESSION["user_isAdmin"])) {
-  $isAdmin = $_SESSION["user_isAdmin"];
+if (isset($_SESSION["user_isAdmin"])) {
+    $isAdmin = $_SESSION["user_isAdmin"];
 }
 
 ?>

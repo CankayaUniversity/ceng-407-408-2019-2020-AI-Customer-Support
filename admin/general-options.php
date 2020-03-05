@@ -41,15 +41,15 @@ include "header.php";
 
 
 <?php
-    if(isset($_POST['Slogan'])){
-        $Slogan = $_POST['Slogan'];
-        $SystemAdress = $_POST['SystemAdress'];
-        $SiteAddress = $_POST['SiteAddress'];
-        $EmailAddress = $_POST['EmailAddress'];
-        $conne->freeRun("TRUNCATE TABLE site_settings");
-        $sql= "INSERT INTO site_settings(slogan, system_address, site_address, mail_address) VALUES
+if (isset($_POST['Slogan'])) {
+    $Slogan = $_POST['Slogan'];
+    $SystemAdress = $_POST['SystemAdress'];
+    $SiteAddress = $_POST['SiteAddress'];
+    $EmailAddress = $_POST['EmailAddress'];
+    $conne->freeRun("TRUNCATE TABLE site_settings");
+    $sql = "INSERT INTO site_settings(slogan, system_address, site_address, mail_address) VALUES
             ('$Slogan','$SystemAdress','$SiteAddress','$EmailAddress')";
-        $conne->freeRun($sql);
-    }
+    $conne->freeRun($sql);
+}
 
 ?>

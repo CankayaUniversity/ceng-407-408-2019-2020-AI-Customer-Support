@@ -6,7 +6,7 @@
  * @mail mehata1997@hotmail.com
  * @date 17.11.2019
  * @update 05.02.2020
- */ 
+ */
 class helperMeta
 {
 

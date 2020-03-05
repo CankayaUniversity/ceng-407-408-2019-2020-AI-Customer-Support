@@ -8,16 +8,16 @@ $Connect = new Mysql();
 
 $getAction = $_POST["action"];
 
-if(isset($getAction)){
-    if($getAction == 'ServerSettings') {
+if (isset($getAction)) {
+    if ($getAction == 'ServerSettings') {
         $Servername = $_POST["Servername"];
         $Username = $_POST["Username"];
         $Password = $_POST["Password"];
         $DB_Name = $_POST["DB_Name"];
 
-        try{
-            $Connection = $Connect->dbConnectExternal($Servername,$Username,$Password);
-        }catch(PDOException $e){
+        try {
+            $Connection = $Connect->dbConnectExternal($Servername, $Username, $Password);
+        } catch (PDOException $e) {
             echo json_encode($EH->Connection("DBError"));
             return;
         }
@@ -45,7 +45,7 @@ if(isset($getAction)){
             is_admin int NOT NULL,
             image_link varchar(1000) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL
             );";
-        
+
         $Connect->freeRun($sql);
 
         $sql = "CREATE TABLE IF NOT EXISTS questions (
@@ -77,12 +77,12 @@ if(isset($getAction)){
             c_like int NOT NULL DEFAULT '0',
             c_dislike int NOT NULL  DEFAULT '0',
             c_date datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-            FOREIGN KEY (c_author) REFERENCES users(user_id) ON DELETE CASCADE, 
+            FOREIGN KEY (c_author) REFERENCES users(user_id) ON DELETE CASCADE,
             FOREIGN KEY (c_post_id) REFERENCES questions(q_id) ON DELETE CASCADE
             );";
 
         $Connect->freeRun($sql);
-        
+
         $sql = "CREATE TABLE IF NOT EXISTS notifications (
             n_id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
             n_description varchar(1000) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
@@ -109,7 +109,7 @@ if(isset($getAction)){
 
         $Connect->freeRun($sql);
 
-        $sql ="CREATE TABLE IF NOT EXISTS like_data (
+        $sql = "CREATE TABLE IF NOT EXISTS like_data (
             id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
             q_id int NOT NULL,
             user_id int NOT NULL,
@@ -120,7 +120,7 @@ if(isset($getAction)){
 
         $Connect->freeRun($sql);
 
-        $sql ="CREATE TABLE IF NOT EXISTS c_like_data (
+        $sql = "CREATE TABLE IF NOT EXISTS c_like_data (
             id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
             c_id int NOT NULL,
             user_id int NOT NULL,
@@ -131,7 +131,7 @@ if(isset($getAction)){
 
         $Connect->freeRun($sql);
 
-        $sql= "INSERT INTO users(firstname,surname,email,username,password_,is_verified,is_admin,image_link) 
+        $sql = "INSERT INTO users(firstname,surname,email,username,password_,is_verified,is_admin,image_link)
         VALUES ('Arınç Alp','Eren','arinc@arinc.com','arinc','$2y$04$39Qbmj9YV04JXKBzWloixu4FIU37OwD3w7EAwICxNr6EZLMK6Wdky',0,0,'images/avatar.png'),
         ('Atakan','Demircioğlu','atakan@atakan.com','atakan','$2y$04$39Qbmj9YV04JXKBzWloixu4FIU37OwD3w7EAwICxNr6EZLMK6Wdky',0,0,'images/avatar.png'),
         ('Alperen','Sarınay','alperen@alperen.com','alperen','$2y$04$39Qbmj9YV04JXKBzWloixu4FIU37OwD3w7EAwICxNr6EZLMK6Wdky',0,0,'images/avatar.png'),
@@ -141,27 +141,27 @@ if(isset($getAction)){
         ('c','c','c@c.com','c','$2y$04$39Qbmj9YV04JXKBzWloixu4FIU37OwD3w7EAwICxNr6EZLMK6Wdky',0,1,'images/avatar.png');";
         $Connect->freeRun($sql);
 
-        $sql= "INSERT INTO questions(q_title, q_description, q_tags, q_author, title_meta, description_meta, keywords_meta, slug) VALUES
+        $sql = "INSERT INTO questions(q_title, q_description, q_tags, q_author, title_meta, description_meta, keywords_meta, slug) VALUES
         ('Sample Question Title 1 ', 'Sample Question Description 1 ', 'help', 1, 'Sample Question Title 1', 'Sample Question Description 1', 'sample,question,description,1', 'sample-question-1'),
         ('Sample Question Title 2 ', 'Sample Question Description 2 ', 'help', 2, 'Sample Question Title 2', 'Sample Question Description 2', 'sample,question,description,2', 'sample-question-2'),
         ('Sample Question Title 3 ', 'Sample Question Description 3 ', 'help', 3, 'Sample Question Title 3', 'Sample Question Description 3', 'sample,question,description,3', 'sample-question-3');";
         $Connect->freeRun($sql);
 
-        $sql="INSERT INTO comments (c_description,c_author,c_post_id) VALUES
+        $sql = "INSERT INTO comments (c_description,c_author,c_post_id) VALUES
         ('Sample Comment Description 1 ', 1, 1),
         ('Sample Comment Description 2 ', 2, 1),
         ('Sample Comment Description 3 ', 3, 2),
         ('Sample Comment Description 4 ', 4, 2);";
         $Connect->freeRun($sql);
 
-        $sql="INSERT INTO notifications (n_description,n_author,n_post_id,n_notified_id) VALUES
+        $sql = "INSERT INTO notifications (n_description,n_author,n_post_id,n_notified_id) VALUES
         ('Sample Notification Description 1 ', 1, 1, 2),
         ('Sample Notification Description 2 ', 2, 1, 2),
         ('Sample Notification Description 3 ', 3, 2, 1),
         ('Sample Notification Description 4 ', 4, 2, 1);";
         $Connect->freeRun($sql);
 
-        $sql="INSERT INTO categories (cat_name,cat_description,cat_keywords,cat_slug) VALUES
+        $sql = "INSERT INTO categories (cat_name,cat_description,cat_keywords,cat_slug) VALUES
         ('Commerce', 'Support for your products', 'Commerce','commerce'),
         ('Profile', 'Profile Support', 'Profile','profile'),
         ('Technical Issues', 'Technical Support', 'Technical,Issues','technical-issues'),
@@ -169,7 +169,7 @@ if(isset($getAction)){
         $Connect->freeRun($sql);
 
     }
-    if($getAction == 'GeneralSettings') {
+    if ($getAction == 'GeneralSettings') {
         $siteTitle = $_POST["siteTitle"];
         $siteSlogan = $_POST["siteSlogan"];
         $systemAddress = $_POST["systemAddress"];
@@ -180,12 +180,12 @@ if(isset($getAction)){
         $Password = $_POST["Password"];
         $DB_Name = $_POST["DB_Name"];
 
-        $Connection = $Connect->dbConnectExternal($Servername,$Username,$Password);
+        $Connection = $Connect->dbConnectExternal($Servername, $Username, $Password);
 
         $sql = "use $DB_Name";
         $Connect->freeRun($sql);
 
-        $sql ="CREATE TABLE IF NOT EXISTS site_settings (
+        $sql = "CREATE TABLE IF NOT EXISTS site_settings (
             id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
             slogan varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
             system_address varchar(1000) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
@@ -194,13 +194,13 @@ if(isset($getAction)){
             );";
         $Connect->freeRun($sql);
 
-        $sql= "INSERT INTO site_settings(slogan, system_address, site_address, mail_address) VALUES
+        $sql = "INSERT INTO site_settings(slogan, system_address, site_address, mail_address) VALUES
         ('$siteSlogan','$systemAddress','$siteAddress','$siteEmail')";
         $Connect->freeRun($sql);
 
         echo "Site settings created and registered successfully.</br> ";
     }
-    if($getAction == 'AdminSettings') {
+    if ($getAction == 'AdminSettings') {
         $Servername = $_POST["Servername"];
         $Username = $_POST["Username"];
         $Password = $_POST["Password"];
@@ -210,21 +210,18 @@ if(isset($getAction)){
         $AdminFirstName = $_POST["AdminFirstName"];
         $AdminSurname = $_POST["AdminSurname"];
         $AdminEmail = $_POST["AdminEmail"];
-        $options = array("cost"=>4);
-        $hashPassword = password_hash($AdminPassword,PASSWORD_BCRYPT,$options);
-        
-        $Connection = $Connect->dbConnectExternal($Servername,$Username,$Password);
+        $options = array("cost" => 4);
+        $hashPassword = password_hash($AdminPassword, PASSWORD_BCRYPT, $options);
+
+        $Connection = $Connect->dbConnectExternal($Servername, $Username, $Password);
 
         $sql = "use $DB_Name";
-        $Connect->freeRun($sql);   
+        $Connect->freeRun($sql);
 
-        $sql= "INSERT INTO users(firstname,surname,email,username,password_,is_verified,is_admin) 
+        $sql = "INSERT INTO users(firstname,surname,email,username,password_,is_verified,is_admin)
         VALUES ('$AdminFirstName','$AdminSurname','$AdminEmail','$AdminUsername','$hashPassword',1,1)";
-        $Connect->freeRun($sql); 
+        $Connect->freeRun($sql);
     }
 } else {
     echo "No action!";
 }
-
-?>
-

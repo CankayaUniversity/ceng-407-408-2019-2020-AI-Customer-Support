@@ -1,6 +1,6 @@
 <?php
-include_once("inc/Conn.php");
-include_once("helpers/helperDev.php");
+include_once "inc/Conn.php";
+include_once "helpers/helperDev.php";
 session_start();
 
 $conne = new Mysql();
@@ -9,29 +9,29 @@ $conn = $conne->dbConnect();
 $action = $_POST["action"];
 $Email = $_POST['email'];
 
-$q_id = isset($_POST['q_id']) ? $_POST['q_id'] : NULL;
-$c_id = isset($_POST['c_id']) ? $_POST['c_id'] : NULL;
-$user_id = isset($_SESSION['user_UserID']) ? $_SESSION['user_UserID'] : NULL;
-$answer = isset($_POST['answer']) ? $_POST['answer'] : NULL;
-$q_author = isset($_POST['q_author']) ? $_POST['q_author'] : NULL;
+$q_id = isset($_POST['q_id']) ? $_POST['q_id'] : null;
+$c_id = isset($_POST['c_id']) ? $_POST['c_id'] : null;
+$user_id = isset($_SESSION['user_UserID']) ? $_SESSION['user_UserID'] : null;
+$answer = isset($_POST['answer']) ? $_POST['answer'] : null;
+$q_author = isset($_POST['q_author']) ? $_POST['q_author'] : null;
 
 $Password = trim($_POST['password']);
-$options = array("cost"=>4);
-$hashPassword = password_hash($Password,PASSWORD_BCRYPT,$options);
+$options = array("cost" => 4);
+$hashPassword = password_hash($Password, PASSWORD_BCRYPT, $options);
 
-if($action == "login") {
-    $query = $conn->query("SELECT * FROM users WHERE email='$Email'",PDO::FETCH_ASSOC)->fetch();
-    if (isset($query)){
-        if(password_verify($Password,$query['password_'])){
-            $_SESSION["user_UserID"]=$query['user_id'];
-            $_SESSION["user_Username"]=$query['username'];
-            $_SESSION["user_Firstname"]=$query['firstname'];
-            $_SESSION["user_Surname"]=$query['surname'];
-            $_SESSION["user_isAdmin"]=$query['is_admin'];
-            $_SESSION["user_isVerified"]=$query['is_verified'];
-            $_SESSION["user_Email"]=$Email;
+if ($action == "login") {
+    $query = $conn->query("SELECT * FROM users WHERE email='$Email'", PDO::FETCH_ASSOC)->fetch();
+    if (isset($query)) {
+        if (password_verify($Password, $query['password_'])) {
+            $_SESSION["user_UserID"] = $query['user_id'];
+            $_SESSION["user_Username"] = $query['username'];
+            $_SESSION["user_Firstname"] = $query['firstname'];
+            $_SESSION["user_Surname"] = $query['surname'];
+            $_SESSION["user_isAdmin"] = $query['is_admin'];
+            $_SESSION["user_isVerified"] = $query['is_verified'];
+            $_SESSION["user_Email"] = $Email;
             echo 1;
-        }else {
+        } else {
             // Email and password does not match
             echo -1;
         }
@@ -39,105 +39,102 @@ if($action == "login") {
 }
 
 if ($action == "register") {
-    if($Email == NULL || $Email == ''){
+    if ($Email == null || $Email == '') {
         header('Location: index.php');
     }
 
     $Username = $_POST['username'];
     $Firstname = $_POST['firstname'];
-    $Lastname = $_POST['lastname']; 
+    $Lastname = $_POST['lastname'];
     $ConfirmPassword = $_POST['confirmpass'];
     $UserIp = helperDev::get_client_ip();
-    if($ConfirmPassword == $Password){
+    if ($ConfirmPassword == $Password) {
         $sqlAddUser = "INSERT IGNORE INTO users(firstname,surname,email,username,password_,ip_address,is_verified,is_admin,image_link)
         VALUES ('$Firstname','$Lastname','$Email','$Username','$hashPassword','$UserIp',0,0,'images/avatar.png');";
         $conn->exec($sqlAddUser);
-        $query = $conn->query("SELECT * FROM users WHERE email='$Email'",PDO::FETCH_ASSOC)->fetch();
-        if (isset($query)){
-        if(password_verify($Password,$query['password_'])){
-            $_SESSION["user_UserID"]=$query['user_id'];
-            $_SESSION["user_Username"]=$query['username'];
-            $_SESSION["user_Firstname"]=$query['firstname'];
-            $_SESSION["user_Surname"]=$query['surname'];
-            $_SESSION["user_isAdmin"]=$query['is_admin'];
-            $_SESSION["user_isVerified"]=$query['is_verified'];
-            $_SESSION["user_Email"]=$Email;
-            echo 1;
-        }else {
-            echo -1;// Email and password does not match
-        }
+        $query = $conn->query("SELECT * FROM users WHERE email='$Email'", PDO::FETCH_ASSOC)->fetch();
+        if (isset($query)) {
+            if (password_verify($Password, $query['password_'])) {
+                $_SESSION["user_UserID"] = $query['user_id'];
+                $_SESSION["user_Username"] = $query['username'];
+                $_SESSION["user_Firstname"] = $query['firstname'];
+                $_SESSION["user_Surname"] = $query['surname'];
+                $_SESSION["user_isAdmin"] = $query['is_admin'];
+                $_SESSION["user_isVerified"] = $query['is_verified'];
+                $_SESSION["user_Email"] = $Email;
+                echo 1;
+            } else {
+                echo -1; // Email and password does not match
+            }
         }
     }
 }
 
-if($q_id !== NULL && $user_id !== NULL && ($action == "like" || $action == "dislike" )) {
-    $sql="SELECT * FROM like_data WHERE user_id = '$user_id' AND q_id ='$q_id'";
+if ($q_id !== null && $user_id !== null && ($action == "like" || $action == "dislike")) {
+    $sql = "SELECT * FROM like_data WHERE user_id = '$user_id' AND q_id ='$q_id'";
     $ps = $conn->query($sql);
     $checkLikeData = $ps->rowCount();
 }
 
-if($c_id !== NULL && $user_id !== NULL && ($action == "c_like" || $action == "c_dislike" )) {
-    $sql="SELECT * FROM c_like_data WHERE user_id = '$user_id' AND c_id ='$c_id'";
+if ($c_id !== null && $user_id !== null && ($action == "c_like" || $action == "c_dislike")) {
+    $sql = "SELECT * FROM c_like_data WHERE user_id = '$user_id' AND c_id ='$c_id'";
     $ps = $conn->query($sql);
     $c_checkLikeData = $ps->rowCount();
 }
 
 // Question Like Action
-if($action == "like" && isset($checkLikeData)){
-    if($checkLikeData === 0) {
+if ($action == "like" && isset($checkLikeData)) {
+    if ($checkLikeData === 0) {
         $sql = "UPDATE questions SET q_like=q_like+1 WHERE q_id='$q_id'";
         $gonder = $conn->prepare($sql);
         $gonder->execute();
         $values[] = array('type' => 'int', 'val' => $q_id);
         $values[] = array('type' => 'int', 'val' => $user_id);
         $values[] = array('type' => 'int', 'val' => '1');
-        $conne->insertInto("like_data",$values);
-    }else {
+        $conne->insertInto("like_data", $values);
+    } else {
         echo -1;
     }
-}
-else if($action == "dislike" && isset($checkLikeData)){
-    if($checkLikeData === 0) {
-        $query = "UPDATE questions SET q_dislike=q_dislike+1 WHERE q_id=".$q_id."";
+} else if ($action == "dislike" && isset($checkLikeData)) {
+    if ($checkLikeData === 0) {
+        $query = "UPDATE questions SET q_dislike=q_dislike+1 WHERE q_id=" . $q_id . "";
         $conn->exec($query);
         $values[] = array('type' => 'int', 'val' => $q_id);
         $values[] = array('type' => 'int', 'val' => $user_id);
         $values[] = array('type' => 'int', 'val' => '0');
-        $conne->insertInto("like_data",$values);
+        $conne->insertInto("like_data", $values);
     } else {
         echo -1;
     }
 }
 
 // Comment Like Action
-if($action == "c_like" && isset($c_checkLikeData)){
-    if($c_checkLikeData === 0) {
+if ($action == "c_like" && isset($c_checkLikeData)) {
+    if ($c_checkLikeData === 0) {
         $sql = "UPDATE comments SET c_like=c_like+1 WHERE c_id='$c_id'";
         $gonder = $conn->prepare($sql);
         $gonder->execute();
         $values[] = array('type' => 'int', 'val' => $c_id);
         $values[] = array('type' => 'int', 'val' => $user_id);
         $values[] = array('type' => 'int', 'val' => '1');
-        $conne->insertInto("c_like_data",$values);
-    }else {
+        $conne->insertInto("c_like_data", $values);
+    } else {
         echo -1;
     }
-}
-else if($action == "c_dislike" && isset($c_checkLikeData)){
-    if($c_checkLikeData === 0) {
-        $query = "UPDATE comments SET c_dislike=c_dislike+1 WHERE c_id=".$c_id."";
+} else if ($action == "c_dislike" && isset($c_checkLikeData)) {
+    if ($c_checkLikeData === 0) {
+        $query = "UPDATE comments SET c_dislike=c_dislike+1 WHERE c_id=" . $c_id . "";
         $conn->exec($query);
         $values[] = array('type' => 'int', 'val' => $c_id);
         $values[] = array('type' => 'int', 'val' => $user_id);
         $values[] = array('type' => 'int', 'val' => '0');
-        $conne->insertInto("c_like_data",$values);
+        $conne->insertInto("c_like_data", $values);
     } else {
         echo -1;
     }
 }
 
-
-if($action =="deleteUser") {
+if ($action == "deleteUser") {
     $user_id = $_POST['user_id'];
     $query = "DELETE FROM users WHERE user_id = '$user_id'";
     $statement = $conn->prepare($query);
@@ -145,7 +142,7 @@ if($action =="deleteUser") {
     echo "Deleted User!";
 }
 
-if($action == "deleteQuestion") {
+if ($action == "deleteQuestion") {
     $q_id = $_POST['q_id'];
     $query = "DELETE FROM questions WHERE q_id = '$q_id'";
     $statement = $conn->prepare($query);
@@ -153,7 +150,7 @@ if($action == "deleteQuestion") {
     echo "Deleted Question!";
 }
 
-if($action == "deleteCategory") {
+if ($action == "deleteCategory") {
     $cat_id = $_POST['cat_id'];
     $query = "DELETE FROM categories WHERE cat_id = '$cat_id'";
     $statement = $conn->prepare($query);
@@ -161,7 +158,7 @@ if($action == "deleteCategory") {
     echo "Deleted Category!";
 }
 
-if($action == "addCategory") {
+if ($action == "addCategory") {
     $cat_name = $_POST['cat_name'];
     $cat_description = $_POST['cat_description'];
     $cat_slug = str_replace(' ', '-', strtolower($cat_name));
@@ -172,12 +169,12 @@ if($action == "addCategory") {
     echo "Added Category!";
 }
 
-if($action == "addUser") {
+if ($action == "addUser") {
     $username = $_POST['username'];
     $email = $_POST['email'];
-    $options = array("cost"=>4);
-    $hashPassword = password_hash("123123",PASSWORD_BCRYPT,$options);
-    $query = "INSERT INTO users(firstname,surname,email,username,password_,is_verified,is_admin) 
+    $options = array("cost" => 4);
+    $hashPassword = password_hash("123123", PASSWORD_BCRYPT, $options);
+    $query = "INSERT INTO users(firstname,surname,email,username,password_,is_verified,is_admin)
     VALUES('test','test','$email','$username','$hashPassword',1,1)";
     $statement = $conn->prepare($query);
     $statement->execute();
@@ -190,7 +187,7 @@ if ($action == "resetNoti") {
     $conne->freeRun($sql);
 }
 
-if ($action == "answer" && $answer !== NULL) {
+if ($action == "answer" && $answer !== null) {
     $query = "INSERT INTO comments (c_description,c_author,c_post_id) VALUES ('$answer', $user_id, $q_id);";
     $conne->freeRun($query);
     $sql = $conne->selectFreeRun("SELECT q_author FROM questions WHERE q_id='$q_id'");
@@ -200,45 +197,45 @@ if ($action == "answer" && $answer !== NULL) {
     echo 1;
 }
 
-if($action == "helpful"){
+if ($action == "helpful") {
     $string = "";
     $admins = $conne->selectFreeRun("SELECT * FROM users WHERE is_admin = 1");
     foreach ($admins as $key => $value) {
         $id = $value["user_id"];
         $string .= " ('Reply marked as helpful.','$user_id','$q_id','$id','/images/noti_icons/helpful.png'),";
     }
-    $string = rtrim($string,',');
-    $query = "INSERT INTO notifications(n_description,n_author,n_post_id,n_notified_id,n_image) VALUES ".$string;
+    $string = rtrim($string, ',');
+    $query = "INSERT INTO notifications(n_description,n_author,n_post_id,n_notified_id,n_image) VALUES " . $string;
     $conne->freeRun($query);
     $query = "UPDATE questions SET is_solved = 1 WHERE q_id = $q_id";
     $conne->freeRun($query);
 }
 
-if($action == "not_helpful"){
+if ($action == "not_helpful") {
     $string = "";
     $admins = $conne->selectFreeRun("SELECT * FROM users WHERE is_admin = 1");
     foreach ($admins as $key => $value) {
         $id = $value["user_id"];
         $string .= " ('Reply marked as not helpful.','$user_id','$q_id','$id','/images/noti_icons/not_helpful.png'),";
     }
-    $string = rtrim($string,',');
-    $query = "INSERT INTO notifications(n_description,n_author,n_post_id,n_notified_id,n_image) VALUES ".$string;
+    $string = rtrim($string, ',');
+    $query = "INSERT INTO notifications(n_description,n_author,n_post_id,n_notified_id,n_image) VALUES " . $string;
     $conne->freeRun($query);
     $query = "UPDATE questions SET is_solved = 0 WHERE q_id = $q_id";
     $conne->freeRun($query);
 }
 
-if($action == "loadmore"){
+if ($action == "loadmore") {
     $html = "";
     $limit = 3;
     $starting_limit = $_POST['starting_limit'];
     $query = "SELECT * FROM comments WHERE c_post_id='$q_id' ORDER BY c_id DESC LIMIT $starting_limit, $limit";
-    $rowCount = $conne->selectRowCount( $query);
-    if($rowCount < $limit){
+    $rowCount = $conne->selectRowCount($query);
+    if ($rowCount < $limit) {
         $limit = $rowCount;
     }
     $newQ = $conne->selectFreeRun($query);
-    for($i=0;$i < $limit ; $i++){
+    for ($i = 0; $i < $limit; $i++) {
         $c_author = $newQ[$i]["c_author"];
         $query2 = "SELECT * FROM users WHERE user_id = $c_author ";
         $newU = $conne->selectFreeRun($query2);
@@ -249,17 +246,17 @@ if($action == "loadmore"){
         $html .= '<div class="card bg-light post single-reserve">';
         $html .= '<div class="post-heading">';
         $html .= '<div class="float-left image">';
-        $html .= '<img src="../'.$image.'" height="60" weight="60" class="img-circle avatar" alt="user profile image">';
+        $html .= '<img src="../' . $image . '" height="60" weight="60" class="img-circle avatar" alt="user profile image">';
         $html .= '</div>';
         $html .= '<div class="float-left meta">';
         $html .= '<div class="post-comment">';
-        $html .= '<a href="/author/'.$username.'"><b>'.$username.'</b></a> made a post.';
+        $html .= '<a href="/author/' . $username . '"><b>' . $username . '</b></a> made a post.';
         $html .= '</div>';
-        $html .= '<h6 class="time-ago">'.$time_ago.'</h6>';
+        $html .= '<h6 class="time-ago">' . $time_ago . '</h6>';
         $html .= '</div>';
         $html .= '</div>';
         $html .= '<div class="post-description">';
-        $html .= '<p>'.$c_description.'</p>';
+        $html .= '<p>' . $c_description . '</p>';
         $html .= '</div>';
         $html .= '</div>';
         $html .= '<br>';
@@ -267,5 +264,3 @@ if($action == "loadmore"){
     }
     echo $html;
 }
-?>
-

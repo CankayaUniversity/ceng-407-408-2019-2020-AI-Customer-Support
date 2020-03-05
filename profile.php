@@ -1,87 +1,87 @@
-<?php 
+<?php
 include 'header.php';
 
 $id = $_SESSION["user_UserID"];
 
-if($_SESSION["user_Username"] == null){
-    echo"<script>
+if ($_SESSION["user_Username"] == null) {
+    echo "<script>
     window.location.replace('index.php')
     </script>";
 }
 
-if(isset($_POST['Username_']) && $_POST['Username_'] != ''){
+if (isset($_POST['Username_']) && $_POST['Username_'] != '') {
     $username = $_POST['Username_'];
-    $query = $conn->query("UPDATE users SET username='$username' WHERE user_id=$id",PDO::FETCH_ASSOC);
-    $query->setFetchMode(PDO::FETCH_ASSOC);                  
+    $query = $conn->query("UPDATE users SET username='$username' WHERE user_id=$id", PDO::FETCH_ASSOC);
+    $query->setFetchMode(PDO::FETCH_ASSOC);
 }
 
-if(isset($_POST['last_name']) && $_POST['last_name'] != ''){
+if (isset($_POST['last_name']) && $_POST['last_name'] != '') {
     $lastname = $_POST['last_name'];
-    $query = $conn->query("UPDATE users SET surname='$lastname' WHERE user_id=$id",PDO::FETCH_ASSOC);
-    $query->setFetchMode(PDO::FETCH_ASSOC);                   
+    $query = $conn->query("UPDATE users SET surname='$lastname' WHERE user_id=$id", PDO::FETCH_ASSOC);
+    $query->setFetchMode(PDO::FETCH_ASSOC);
 }
 
-if(isset($_POST['first_name']) && $_POST['first_name'] != ''){
+if (isset($_POST['first_name']) && $_POST['first_name'] != '') {
     $firstname = $_POST['first_name'];
-    $query = $conn->query("UPDATE users SET firstname='$firstname' WHERE user_id=$id",PDO::FETCH_ASSOC);
-    $query->setFetchMode(PDO::FETCH_ASSOC);                  
+    $query = $conn->query("UPDATE users SET firstname='$firstname' WHERE user_id=$id", PDO::FETCH_ASSOC);
+    $query->setFetchMode(PDO::FETCH_ASSOC);
 }
 
-if(isset($_POST['email']) && $_POST['email'] != ''){
+if (isset($_POST['email']) && $_POST['email'] != '') {
     $email = $_POST['email'];
-    $query = $conn->query("UPDATE users SET email='$email' WHERE user_id=$id",PDO::FETCH_ASSOC);
-    $query->setFetchMode(PDO::FETCH_ASSOC);   
+    $query = $conn->query("UPDATE users SET email='$email' WHERE user_id=$id", PDO::FETCH_ASSOC);
+    $query->setFetchMode(PDO::FETCH_ASSOC);
 }
 
-if(isset($_POST['Password_']) && $_POST['Password_'] != ''){
-    $Password_= $_POST['Password_'];
+if (isset($_POST['Password_']) && $_POST['Password_'] != '') {
+    $Password_ = $_POST['Password_'];
     $Password_1 = $_POST['Password_1'];
     $Password_2 = $_POST['Password_2'];
-    $options = array("cost"=>4);
+    $options = array("cost" => 4);
     $userinfo = $conne->selectFreeRun("SELECT password_ FROM users WHERE user_id ='$id'");
     $userpass = $userinfo[0]["password_"];
 
-    if($Password_1 == $Password_2 && password_verify($Password_,$userpass) == true){
-        $hashPasswordnew = password_hash($Password_1,PASSWORD_BCRYPT,$options);
-        $query = $conn->query("UPDATE users SET password_='$hashPasswordnew' WHERE user_id=$id",PDO::FETCH_ASSOC);
+    if ($Password_1 == $Password_2 && password_verify($Password_, $userpass) == true) {
+        $hashPasswordnew = password_hash($Password_1, PASSWORD_BCRYPT, $options);
+        $query = $conn->query("UPDATE users SET password_='$hashPasswordnew' WHERE user_id=$id", PDO::FETCH_ASSOC);
         $query->setFetchMode(PDO::FETCH_ASSOC);
-    } else if($Password_1 != $Password_2){
+    } else if ($Password_1 != $Password_2) {
         ?><script>alert("Your new passwords do not match");</script><?php
-    } else if(password_verify($userpass,$Password_) == false){
+} else if (password_verify($userpass, $Password_) == false) {
         ?><script>alert("Your old password does not match");</script><?php
-    }
+}
 }
 
-$query = $conn->query("SELECT * FROM users WHERE user_id='$id'",PDO::FETCH_ASSOC);
-if ($count = $query -> rowCount()){
-    if($count > 0){
+$query = $conn->query("SELECT * FROM users WHERE user_id='$id'", PDO::FETCH_ASSOC);
+if ($count = $query->rowCount()) {
+    if ($count > 0) {
         // Email and password match
         $sql = "SELECT user_id,firstname,surname,username,is_verified,is_admin,email,image_link
                 FROM users WHERE user_id='$id'";
         $q = $conn->query($sql);
         $q->setFetchMode(PDO::FETCH_ASSOC);
-        while($r=$q->fetch()){
-            $_SESSION["user_UserID"]=$r['user_id'];
-            $_SESSION["user_Username"]=$r['username'];
-            $_SESSION["user_Firstname"]=$r['firstname'];
-            $_SESSION["user_Surname"]=$r['surname'];
-            $_SESSION["user_isAdmin"]=$r['is_admin'];
-            $_SESSION["user_isVerified"]=$r['is_verified'];
-            $_SESSION["user_Email"]=$r['email'];
-            $_SESSION["image_link"]=$r['image_link'];
+        while ($r = $q->fetch()) {
+            $_SESSION["user_UserID"] = $r['user_id'];
+            $_SESSION["user_Username"] = $r['username'];
+            $_SESSION["user_Firstname"] = $r['firstname'];
+            $_SESSION["user_Surname"] = $r['surname'];
+            $_SESSION["user_isAdmin"] = $r['is_admin'];
+            $_SESSION["user_isVerified"] = $r['is_verified'];
+            $_SESSION["user_Email"] = $r['email'];
+            $_SESSION["image_link"] = $r['image_link'];
         }
     }
 }
 
-if(isset($_POST["submit"])){
+if (isset($_POST["submit"])) {
     $target_dir = "uploads/";
     $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
     $uploadOk = 1;
-    $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+    $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
     // Check if image file is a actual image or fake image
-    if(isset($_POST["submit"])) {
+    if (isset($_POST["submit"])) {
         $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-        if($check !== false) {
+        if ($check !== false) {
             //echo "File is an image - " . $check["mime"] . ".";
             $uploadOk = 1;
         } else {
@@ -100,21 +100,21 @@ if(isset($_POST["submit"])){
         $uploadOk = 0;
     }
     // Allow certain file formats
-    if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-    && $imageFileType != "gif" ) {
+    if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+        && $imageFileType != "gif") {
         echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
         $uploadOk = 0;
     }
     // Check if $uploadOk is set to 0 by an error
     if ($uploadOk == 0) {
         echo "Sorry, your file was not uploaded.";
-    // if everything is ok, try to upload file
+        // if everything is ok, try to upload file
     } else {
         if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
             //echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
-            $query = $conn->query("UPDATE users SET image_link='$target_file ' WHERE user_id=$id",PDO::FETCH_ASSOC);
+            $query = $conn->query("UPDATE users SET image_link='$target_file ' WHERE user_id=$id", PDO::FETCH_ASSOC);
             $query->setFetchMode(PDO::FETCH_ASSOC);
-            echo("<meta http-equiv='refresh' content='1'>");
+            echo ("<meta http-equiv='refresh' content='1'>");
         } else {
             echo "Sorry, there was an error uploading your file.";
         }

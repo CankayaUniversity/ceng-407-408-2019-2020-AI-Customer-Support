@@ -5,15 +5,16 @@ if (isset($_GET['author'])) {
     $username = $_GET['author'];
 }
 
-$r = $conn->query("SELECT * FROM users WHERE username='$username'",PDO::FETCH_ASSOC)->fetch();
-$user_id=$r['user_id'];
-$username=$r['username'];
-$firstname=$r['firstname'];
-$surname=$r['surname'];
-$is_admin=$r['is_admin'];
-$is_verified=$r['is_verified'];
-$email=$r['email']; 
-$profileImage=$r['image_link']; 
+$r = $conn->query("SELECT * FROM users WHERE username='$username'", PDO::FETCH_ASSOC)->fetch();
+$user_id = $r['user_id'];
+$username = $r['username'];
+$firstname = $r['firstname'];
+$surname = $r['surname'];
+$is_admin = $r['is_admin'];
+$is_verified = $r['is_verified'];
+$email = $r['email'];
+$profileImage = $r['image_link'];
+
 
 ?><br>
 <body>
