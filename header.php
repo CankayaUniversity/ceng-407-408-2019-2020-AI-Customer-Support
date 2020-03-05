@@ -50,37 +50,32 @@ if (isset($_SESSION["user_isAdmin"])) {
         if (isset($_GET['category'])) {
             $category_slug = $_GET['category'];
         }
-        $query = $conn->query("SELECT * FROM categories WHERE cat_id='$category_slug'",PDO::FETCH_ASSOC);
-        $query->setFetchMode(PDO::FETCH_ASSOC);
-        while($r=$query->fetch()){
-            $title_meta = $r["cat_name"];
-            $description_meta = $r["cat_description"];
-            $keywords_meta = $r["cat_keywords"];
+        $result = $conne->selectFreeRun("SELECT * FROM categories WHERE cat_slug='$category_slug'");
+        foreach ($result as $key => $value) {
+            $title_meta = $value["cat_name"];
+            $description_meta = $value["cat_description"];
+            $keywords_meta = $value["cat_keywords"];
         }
     }
     else if(preg_match('/author/', $_SERVER['REQUEST_URI'])) {
         if (isset($_GET['author'])) {
             $author = $_GET['author'];
         }
-        $query = $conn->query("SELECT * FROM users WHERE username='$author'",PDO::FETCH_ASSOC);
-        $query->setFetchMode(PDO::FETCH_ASSOC);
-        while($r=$query->fetch()){
-          $fullname = $r["firstname"]." ";
-          $fullname.=$r["surname"];
+        $result = $conne->selectFreeRun("SELECT * FROM users WHERE username='$author'");
+        foreach ($result as $key => $value) {
+            $fullname = $value["firstname"]." " .$value["surname"];
             $title_meta = $fullname."'s Profile Page";
-            $description_meta = "Eklenecek";
+            $description_meta = $fullname."'s Profile Page";
             $keywords_meta = $fullname;
         }
     }
     else if(preg_match('/profile/', $_SERVER['REQUEST_URI'])) {
       $metaUserID = $_SESSION["user_UserID"];
-      $query = $conn->query("SELECT * FROM users WHERE user_id='$metaUserID'",PDO::FETCH_ASSOC);
-      $query->setFetchMode(PDO::FETCH_ASSOC);
-      while($r=$query->fetch()){
-        $fullname = $r["firstname"]." ";
-        $fullname.=$r["surname"];
+      $result = $conne->selectFreeRun("SELECT * FROM users WHERE user_id='$metaUserID'");
+      foreach ($result as $key => $value) {
+          $fullname = $value["firstname"]." " .$value["surname"];
           $title_meta = $fullname."'s Profile Page";
-          $description_meta = "Eklenecek"; //TODO
+          $description_meta = $fullname."'s Profile Page";
           $keywords_meta = $fullname;
       }
   }
