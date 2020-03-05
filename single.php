@@ -86,21 +86,18 @@
                                 </article>
                             </div>
                             <?php
+                                $limit = 3;
                                 $query = "SELECT * FROM comments WHERE c_post_id='$q_id'";
                                 $rowcount = $conne->selectRowCount($query);
-                                $show = "SELECT * FROM comments WHERE c_post_id='$q_id' ORDER BY c_id DESC LIMIT 0, 3";
-                                $r = $conn->prepare($show);
-                                $r->execute();
-                            ?>
-                            <?php 
-                            while($res = $r->fetch(PDO::FETCH_ASSOC)) :
-                                $c_author = $res['c_author'];
-                                $c_title = isset($res['c_title']);
-                                $c_description = $res['c_description'];
-                                $c_id = $res['c_id'];
-                                $c_score = $res["c_like"] - $res['c_dislike'];
-                                $time_ago = helperDev::timeAgo($res['c_date']);
-                                $user = $conn->query("SELECT user_id, username, q_author, image_link FROM users,questions WHERE user_id='$c_author'",PDO::FETCH_ASSOC)->fetch();
+                                $show = $conne->selectFreeRun("SELECT * FROM comments WHERE c_post_id='$q_id' ORDER BY c_id DESC LIMIT 0, $limit");
+                                foreach ($show as $key => $value) {
+                                    $c_author = $value['c_author'];
+                                    $c_title = isset($value['c_title']) ? $value['c_title'] : null;
+                                    $c_description = $value['c_description'];
+                                    $c_id = $value['c_id'];
+                                    $c_score = $value["c_like"] - $value['c_dislike'];
+                                    $time_ago = helperDev::timeAgo($value['c_date']);
+                                    $user = $conn->query("SELECT user_id, username, q_author, image_link FROM users,questions WHERE user_id='$c_author'",PDO::FETCH_ASSOC)->fetch();
                             ?>
                             <div class="card bg-light post single-reserve">
                                 <div class="post-heading">
@@ -143,10 +140,13 @@
                                     <p><?php echo $c_description; ?></p>
                                 </div>
                             </div>
-                            <br>               
-                            <?php endwhile; ?>
+                            <br>
+                            <?php }
+                            if( count($show) >= $limit) {
+                             ?>
                             <button type="button"  onclick="loadmore()" id="postAnswerText" class="btn btn-single"><i class="fa fa-arrow-down fa-1x" ></i>  Show More Comments</button> 
                             <br><br>
+                            <?php } ?>
                             <?php if(isset($_SESSION["user_UserID"]) && $_SESSION["user_isAdmin"] == 1) : ?>
                             <div class="card">
                                 <div class="card-header">
