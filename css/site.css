@@ -636,7 +636,7 @@ footer .main-footer {
     padding: 20px 0;
     background: #343a40; 
     position: relative;
-    margin-top: 200px; 
+    margin-top: 250px; 
 }
 
 footer ul {
@@ -2053,16 +2053,95 @@ body{margin-top:20px;
 }
 
 
-.btn-post-answer{
-    background-color: #4CAF50; /* Green */
-    border: none;
-    color: white;
-    padding: 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-    
+/* Post Button*/
+
+.btn-postAnswer{
+    color: #212529 !important;
+    background-color: #e2793f !important;
+    border-color: #e2793f !important;
 }
+
+
+/* voting buttons */
+
+body{margin:40px;}
+
+.btn-circle {
+  width: 30px ;
+  height: 30px ;
+  text-align: center ;
+  padding: 6px 0 ;
+  font-size: 12px ;
+  line-height: 1.428571429;
+  border-radius: 15px ;
+}
+
+.btn-circle.btn-lg {
+  width: 50px !important;
+  height: 50px !important;
+  padding: 10px 16px!important;
+  font-size: 18px!important;
+  line-height: 1.33!important;
+  border-radius: 25px!important;
+}
+
+.btn-circle.btn-xl {
+  width: 70px;
+  height: 70px;
+  padding: 10px 16px;
+  font-size: 24px;
+  line-height: 1.33;
+  border-radius: 35px;
+}
+
+
+/* single page - solved button */
+
+@-webkit-keyframes Floatingy{
+    from {-webkit-transform:translate(0, 0px);}
+    65% {-webkit-transform:translate(50px, 0);}
+    to {-webkit-transform: translate(0, -0px);}
+}
+@-moz-keyframes Floatingy{
+    from {-moz-transform:translate(0, 0px);}
+    65% {-moz-transform:translate(50px, 0);}
+    to {-moz-transform: translate(0, -0px);}
+}
+@-webkit-keyframes Floatingx{
+    from {-webkit-transform:translate(50px, 0px);}
+    65% {-webkit-transform:translate(0, 0);}
+    to {-webkit-transform: translate(50px, -0px);}
+}
+@-moz-keyframes Floatingx{
+    from {-moz-transform:translate(50px, 0px);}
+    65% {-moz-transform:translate(0, 0);}
+    to {-moz-transform: translate(50px, -0px);}
+}
+
+
+.btn-animation
+{
+	-webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: ease-in-out;
+    -moz-animation-iteration-count: infinite;
+    -moz-animation-timing-function: ease-in-out;
+    -webkit-animation-name: Floatingy;
+    -moz-animation-name: Floatingy;
+	-webkit-animation-duration: 5s;
+    -moz-animation-duration: 5s;
+    border-radius:30px;
+    box-shadow:0 14px 26px -12px rgba(0,0,0,.42),0 4px 23px 0 rgba(0,0,0,.12),0 8px 10px -5px rgba(0,0,0,.2)
+}
+
+
+.btn-animation:hover
+{
+	box-shadow:0 14px 26px -12px rgba(0,0,0,.42),0 4px 23px 0 rgba(0,0,0,.12),0 8px 10px -5px rgba(0,0,0,.2)
+}
+
+
+.mt-60
+{
+	margin-top:60px;
+}
+

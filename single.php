@@ -55,7 +55,7 @@
                                         else if($is_solved == -1){
                                             echo '<td><button type="button" class="btn btn-secondary">Not issued</button></td>';
                                         }
-                                        ?>
+                                    ?>
                                     </h1>
                                     <div class="card bg-light post">
                                         <div class="post-heading">
@@ -70,11 +70,12 @@
                                                 <h6 class="time-ago">Asked on, <?php echo $q_date; ?></h6>
                                             </div>
                                             <div class="col-sm-5">
-                                                <button type="button" class="btn btn-success " id="btnLike" ><i class="fa fa-check"></i></button>
-                                                <button type="button" class="btn btn-danger " id="btnDislike" ><i class="fa fa-times"></i></button>
-                                                <button type="button" class="btn btn-dark " id="score" ><i class="fa fa-star"></i><span class="totalScore" data-value="<?php echo $q_score; ?>"><?php echo $q_score; ?></span></button>
+                                                <button type="button" class="btn btn-success btn-circle btn-lg" id="btnLike"><i class="fa fa-check"></i></button>
+                                                <button type="button" class="btn btn-danger btn-circle btn-lg" id="btnDislike"><i class="fa fa-times"></i></button>
+                                                <button type="button" class="btn btn-dark btn-circle btn-lg" id="score"><i class="fa fa-star"></i></i><span class="totalScore" data-value="<?php echo $q_score; ?>"><?php echo $q_score; ?></span></button>
                                             </div>
                                         </div>
+                                        <br>
                                         <hr>  
                                         <div class="post-heading">
                                             <div class="post-description">
@@ -104,38 +105,45 @@
                                     <div class="float-left image">
                                     <img src="../<?php echo $user['image_link']?>" height="60" weight="60" class="img-circle avatar" alt="user profile image">
                                     </div>
-                                    <div class="float-left meta">
+                                    <div class="float-left meta col-sm-4">
                                         <div class="post-comment">
                                             <?php $username = $user['username']; ?>
                                             <a href='<?php echo "/author/$username"; ?>'><b><?php echo $user['username'] ?></b></a> made a post.
                                         </div>
                                         <h6 class="time-ago"><?php echo $time_ago ?></h6>
                                     </div>
-                                </div>
-                                <div class="col-sm-5">
-                                    <?php    
-                                    if(isset($_SESSION['user_UserID'])){
-                                        $user_id = $_SESSION['user_UserID'];
-                                        $commentStatus = $conne->selectRowCount("SELECT * FROM c_like_data WHERE c_id ='$c_id' AND user_id = '$user_id'");
-                                        if($c_author == 12 && $user_id==$q_author_id && $is_solved == -1){
-                                            echo "<div>";
-                                            echo '<button type="button" class="btn btn-success" onclick="helpful(this)" name="'.$c_id.'">Helpful<i class="fa fa-check"></i></button>';
-                                            echo '<button type="button" class="btn btn-danger" onclick="not_helpful(this)" name="'.$c_id.'">Not Helpful<i class="fa fa-times"></i></button>';
-                                            echo "</div>";
-                                        }else if($commentStatus > 0){
-                                            echo '<button type="button" class="btn btn-success" disabled="disabled"><i class="fa fa-check"></i></button>';
-                                            echo '<button type="button" class="btn btn-danger" disabled="disabled"><i class="fa fa-times"></i></button>';
-                                            echo '<button type="button" class="btn btn-dark" id="c_score" ><i class="fa fa-star"></i><span id="c_score_'.$c_id.'" class="c_totalScore" data-value="'.$c_score.'">'.$c_score.'</span></button>';
-                                        }else {
-                                            echo '<button type="button" class="btn btn-success" onclick="likeComment(this)" name="'.$c_id.'" id="c_btnLike_'.$c_id.'"><i class="fa fa-check"></i></button>';
-                                            echo '<button type="button" class="btn btn-danger" onclick="dislikeComment(this)" name="'.$c_id.'" id="c_btndislike_'.$c_id.'"><i class="fa fa-times"></i></button>';
-                                            echo '<button type="button" class="btn btn-dark" id="c_score" ><i class="fa fa-star"></i><span id="c_score_'.$c_id.'" class="c_totalScore" data-value="'.$c_score.'">'.$c_score.'</span></button>';
+                                
+                                    <div class="col-sm-5">
+                                        <?php    
+                                        if(isset($_SESSION['user_UserID'])){
+                                            $user_id = $_SESSION['user_UserID'];
+                                            $commentStatus = $conne->selectRowCount("SELECT * FROM c_like_data WHERE c_id ='$c_id' AND user_id = '$user_id'");
+                                            if($c_author == 12 && $user_id==$q_author_id && $is_solved == -1){
+                                                echo "<div>";
+                                                echo '<button type="button" class="btn btn-success btn-circle btn-lg" onclick="helpful(this)" name="'.$c_id.'">Helpful<i class="fa fa-check"></i></button>';
+                                                echo '<button type="button" class="btn btn-danger btn-circle btn-lg" onclick="not_helpful(this)" name="'.$c_id.'">Not Helpful<i class="fa fa-times"></i></button>';
+                                                echo "</div>";
+                                            }else if($commentStatus > 0){
+                                                echo '<button type="button" class="btn btn-success btn-circle btn-lg" disabled="disabled"><i class="fa fa-check"></i></button>';
+                                                echo ' ';
+                                                echo '<button type="button" class="btn btn-danger btn-circle btn-lg" disabled="disabled"><i class="fa fa-times"></i></button>';
+                                                echo ' ';
+                                                echo '<button type="button" class="btn btn-dark btn-circle btn-lg" id="score"><i class="fa fa-star"></i></i><span id="c_score_'.$c_id.'" class="c_totalScore" data-value="'.$c_score.'">'.$c_score.'</span></button>';
+                                            }else {
+                                                echo '<button type="button"class="btn btn-success btn-circle btn-lg" onclick="likeComment(this)" name="'.$c_id.'" id="c_btnLike_'.$c_id.'"><i class="fa fa-check"></i></button>';
+                                                echo ' ';
+                                                echo '<button type="button" class="btn btn-danger btn-circle btn-lg" onclick="dislikeComment(this)" name="'.$c_id.'" id="c_btndislike_'.$c_id.'"><i class="fa fa-times"></i></button>';
+                                                echo ' ';
+                                                echo '<button type="button" class="btn btn-dark btn-circle btn-lg" id="c_score" ><i class="fa fa-star"></i><span id="c_score_'.$c_id.'" class="c_totalScore" data-value="'.$c_score.'">'.$c_score.'</span></button>';
+                                            }
+                                        }else{
+                                            $commentStatus = 1;
                                         }
-                                    }else{
-                                        $commentStatus = 1;
-                                    }
-                                    ?>
+                                        ?>
+                                    </div>
                                 </div>
+                                <br>
+                                <hr>
                                 <div class="post-description">
                                     <p><?php echo $c_description; ?></p>
                                 </div>
