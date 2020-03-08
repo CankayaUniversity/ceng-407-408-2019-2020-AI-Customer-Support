@@ -128,13 +128,13 @@
                                                 echo ' ';
                                                 echo '<button type="button" class="btn btn-danger btn-circle btn-lg" disabled="disabled"><i class="fa fa-times"></i></button>';
                                                 echo ' ';
-                                                echo '<button type="button" class="btn btn-dark btn-circle btn-lg" id="score"><i class="fa fa-star"></i></i><span id="c_score_'.$c_id.'" class="c_totalScore" data-value="'.$c_score.'">'.$c_score.'</span></button>';
+                                                echo '<button type="button" class="btn btn-dark btn-circle btn-lg" id="score"><i class="fa fa-star"></i></i><span id="c_score_'.$c_id.'" class="totalScore" data-value="'.$c_score.'">'.$c_score.'</span></button>';
                                             }else {
                                                 echo '<button type="button"class="btn btn-success btn-circle btn-lg" onclick="likeComment(this)" name="'.$c_id.'" id="c_btnLike_'.$c_id.'"><i class="fa fa-check"></i></button>';
                                                 echo ' ';
                                                 echo '<button type="button" class="btn btn-danger btn-circle btn-lg" onclick="dislikeComment(this)" name="'.$c_id.'" id="c_btndislike_'.$c_id.'"><i class="fa fa-times"></i></button>';
                                                 echo ' ';
-                                                echo '<button type="button" class="btn btn-dark btn-circle btn-lg" id="c_score" ><i class="fa fa-star"></i><span id="c_score_'.$c_id.'" class="c_totalScore" data-value="'.$c_score.'">'.$c_score.'</span></button>';
+                                                echo '<button type="button" class="btn btn-dark btn-circle btn-lg" id="c_score" ><i class="fa fa-star"></i><span id="c_score_'.$c_id.'" class="totalScore" data-value="'.$c_score.'">'.$c_score.'</span></button>';
                                             }
                                         }else{
                                             $commentStatus = 1;
@@ -189,7 +189,7 @@
                                     </div>
                                     <form>
                                         <textarea name="AnswerDesc" id="AnswerDesc" required="required" style="display:none;"></textarea><br>
-                                        <button type="submit" class="btn btn-warning" id="answerSubmit" 
+                                        <button type="submit" class="btn btn-postAnswer" id="answerSubmit" 
                                         onclick="submitAnswer(<?php echo $user_id?>,<?php echo $q_id?>)">Post Answer</button>
                                     </form>
                                 </div>
