@@ -39,7 +39,7 @@ $AllQuestions = $conne->selectAll("questions");
                         <td><a href='<?php $link = $key['slug']; echo "/post/$link" ?>'>Link</a></td>
                         <?php
                         if($key['is_solved'] == -1){
-                            echo '<td><button type="button" class="btn btn-secondary">Not issued</button></td>';
+                            echo '<td><button type="button" class="btn btn-secondary">Not Answered</button></td>';
                         }
                         if($key['is_solved'] == 0){
                             echo '<td><button type="button" class="btn btn-danger">Not Solved</button></td>';

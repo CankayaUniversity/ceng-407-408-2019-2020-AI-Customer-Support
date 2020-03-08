@@ -53,7 +53,7 @@
                                             echo '<td><button type="button" class="btn btn-danger">Not Solved</button></td>';
                                         }
                                         else if($is_solved == -1){
-                                            echo '<td><button type="button" class="btn btn-secondary">Not issued</button></td>';
+                                            echo '<td><button type="button" class="btn btn-secondary">Not Answered</button></td>';
                                         }
                                     ?>
                                     </h1>
