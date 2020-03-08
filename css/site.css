@@ -2064,36 +2064,34 @@ body{margin-top:20px;
 
 /* voting buttons */
 
-body{margin:40px;}
 
 .btn-circle {
-  width: 30px ;
-  height: 30px ;
-  text-align: center ;
-  padding: 6px 0 ;
-  font-size: 12px ;
-  line-height: 1.428571429;
-  border-radius: 15px ;
+    width: 30px ;
+    height: 30px ;
+    text-align: center ;
+    padding: 6px 0 ;
+    font-size: 12px ;
+    line-height: 1.428571429;
+    border-radius: 15px ;
 }
 
 .btn-circle.btn-lg {
-  width: 50px !important;
-  height: 50px !important;
-  padding: 10px 16px!important;
-  font-size: 18px!important;
-  line-height: 1.33!important;
-  border-radius: 25px!important;
+    width: 50px !important;
+    height: 50px !important;
+    padding: 10px 16px!important;
+    font-size: 18px!important;
+    line-height: 1.33!important;
+    border-radius: 25px!important;
 }
 
 .btn-circle.btn-xl {
-  width: 70px;
-  height: 70px;
-  padding: 10px 16px;
-  font-size: 24px;
-  line-height: 1.33;
-  border-radius: 35px;
+    width: 70px;
+    height: 70px;
+    padding: 10px 16px;
+    font-size: 24px;
+    line-height: 1.33;
+    border-radius: 35px;
 }
-
 
 /* single page - solved button */
 
