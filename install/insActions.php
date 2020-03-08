@@ -75,7 +75,8 @@ if (isset($getAction)) {
             c_author int NOT NULL,
             c_post_id int NOT NULL,
             c_like int NOT NULL DEFAULT '0',
-            c_dislike int NOT NULL  DEFAULT '0',
+            c_dislike int NOT NULL DEFAULT '0',
+            status int NOT NULL DEFAULT '0',
             c_date datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
             FOREIGN KEY (c_author) REFERENCES users(user_id) ON DELETE CASCADE,
             FOREIGN KEY (c_post_id) REFERENCES questions(q_id) ON DELETE CASCADE
