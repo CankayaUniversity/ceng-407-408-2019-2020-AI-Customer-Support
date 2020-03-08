@@ -53,6 +53,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="categories.php">Categories</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="comments.php">Comments</a>
+            </li>
         </ul>
         <span class="navbar-text">
             May the control be with you!
