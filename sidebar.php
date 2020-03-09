@@ -21,6 +21,7 @@
           foreach ($popularArticles as $key) { 
           $popular_slug = $key['slug']; 
         ?>
+        
         <li class="list-group-item"><a href='<?php echo "/post/$popular_slug";?>'><?php echo $key["q_title"]?></a></li>
         <?php } ?>
       </ul>
