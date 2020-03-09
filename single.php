@@ -44,19 +44,25 @@
                                     </li>
                                 </ul>
                                 <article class=" type-post format-standard hentry clearfix">
-                                    <h1 class="post-title"><a href="#"><?php echo $q_title; ?></a>
-                                    <?php 
-                                        if($is_solved == 1){
-                                            echo '<td><button type="button" class="btn btn-success">Solved</button></td>';
-                                        }
-                                        else if($is_solved == 0){
-                                            echo '<td><button type="button" class="btn btn-danger">Not Solved</button></td>';
-                                        }
-                                        else if($is_solved == -1){
-                                            echo '<td><button type="button" class="btn btn-secondary">Not Answered</button></td>';
-                                        }
-                                    ?>
-                                    </h1>
+                                    <div class="row">
+                                        <div class="col-md-9">
+                                            <h1 class="post-title"><a href="#"><?php echo $q_title; ?></a></h1>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <?php 
+                                                if($is_solved == 1){
+                                                    echo '<h4><span class="badge badge-success"><i class="fa fa-check"></i> Solved</span></h4>';
+                                                }
+                                                else if($is_solved == 0){
+                                                    echo '<h4><span class="badge badge-danger"><i class="fa fa-times"></i> Not Solved</span></h4>';
+                                                }
+                                                else if($is_solved == -1){
+                                                    echo '<h4><span class="badge badge-secondary"><i class="fa fa-clock-o" aria-hidden="true"></i> Not Answered</span></h4>';
+                                                }
+                                            ?>
+                                            
+                                        </div>
+                                    </div>    
                                     <div class="card bg-light post">
                                         <div class="post-heading">
                                             <div class="float-left image">
