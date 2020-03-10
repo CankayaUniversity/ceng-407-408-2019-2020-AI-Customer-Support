@@ -151,7 +151,6 @@ if  (
     $q_id = $conne->selectFreeRun("SELECT q_id FROM questions WHERE slug='$slug'");
     $q_id = $q_id[0]["q_id"];
 
-    // File upload configuration 
     $targetDir = "images/q_images/"; 
     $allowTypes = array('jpg','png','jpeg','gif'); 
     
@@ -160,16 +159,12 @@ if  (
 
     if(!empty($fileNames)){ 
         foreach($_FILES['files']['name'] as $key=>$val){ 
-            // File upload path 
             $fileName = basename($_FILES['files']['name'][$key]); 
             $targetFilePath = $targetDir . $fileName; 
             
-            // Check whether file type is valid 
             $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
             if(in_array($fileType, $allowTypes)){ 
-                // Upload file to server 
                 if(move_uploaded_file($_FILES["files"]["tmp_name"][$key], $targetFilePath)){ 
-                    // Image db insert sql 
                     $insertValuesSQL .= "(".$q_id.",'".$fileName."'),"; 
                 }else{ 
                     $errorUpload .= $_FILES['files']['name'][$key].' | '; 
@@ -181,7 +176,6 @@ if  (
 
         if(!empty($insertValuesSQL)){ 
             $insertValuesSQL = trim($insertValuesSQL, ','); 
-            // Insert image file name into database 
             $conne->freeRun("INSERT INTO q_images (q_id, image_link) VALUES $insertValuesSQL"); 
             if($insert){ 
                 $errorUpload = !empty($errorUpload)?'Upload Error: '.trim($errorUpload, ' | '):''; 

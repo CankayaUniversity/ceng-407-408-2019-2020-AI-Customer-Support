@@ -126,8 +126,8 @@
                                             $commentStatus = $conne->selectRowCount("SELECT * FROM c_like_data WHERE c_id ='$c_id' AND user_id = '$user_id'");
                                             if($c_author == 12 && $user_id==$q_author_id && $is_solved == -1){
                                                 echo "<div>";
-                                                echo '<button type="button" class="btn btn-success btn-circle btn-lg" onclick="helpful(this)" name="'.$c_id.'">Helpful<i class="fa fa-check"></i></button>';
-                                                echo '<button type="button" class="btn btn-danger btn-circle btn-lg" onclick="not_helpful(this)" name="'.$c_id.'">Not Helpful<i class="fa fa-times"></i></button>';
+                                                echo '<button type="button" class="btn btn-success" onclick="helpful(this)" name="'.$c_id.'">Helpful<i class="fa fa-check"></i></button>';
+                                                echo '<button type="button" class="btn btn-danger" onclick="not_helpful(this)" name="'.$c_id.'">Not Helpful<i class="fa fa-times"></i></button>';
                                                 echo "</div>";
                                             }else if($commentStatus > 0){
                                                 echo '<button type="button" class="btn btn-success btn-circle btn-lg" disabled="disabled"><i class="fa fa-check"></i></button>';
@@ -157,7 +157,7 @@
                             <br>
                             <?php }
                             if( count($show) >= $limit) {
-                             ?>
+                            ?>
                             <button type="button"  onclick="loadmore()" id="postAnswerText" class="btn btn-single"><i class="fa fa-arrow-down fa-1x" ></i>  Show More Comments</button> 
                             <br><br>
                             <?php } ?>
