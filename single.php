@@ -84,7 +84,7 @@
                                             </div>
                                                 <button type="button" class="btn btn-success btn-circle btn-lg" id="btnLike"><i class="fa fa-check"></i></button>
                                                 <button type="button" class="btn btn-danger btn-circle btn-lg" id="btnDislike"><i class="fa fa-times"></i></button>
-                                                <button type="button" class="btn btn-dark btn-circle btn-lg" id="score"><i class="fa fa-star"></i></i><span class="totalScore" data-value="<?php echo $q_score; ?>"><?php echo $q_score; ?></span></button>
+                                                <button type="button" class="btn btn-dark btn-circle btn-lg" id="score"><i class="fa fa-star"></i></i><span id="questionScore" class="totalScore" data-value="<?php echo $q_score; ?>"><?php echo $q_score; ?></span></button>
                                         </div>
                                         <br>
                                         <hr>  
@@ -231,7 +231,7 @@
                             return;
                         }
                         else{
-                            var jLikes = $('.totalScore');
+                            var jLikes = $('#questionScore');
                             var sLikes = jLikes.text();
                             var nLikes = parseInt(sLikes);
                             jLikes.text(" "+(nLikes+1));
@@ -254,7 +254,7 @@
                             return;
                         }
                         else{
-                            var jLikes = $('.totalScore');
+                            var jLikes = $('#questionScore');
                             var sLikes = jLikes.text();
                             var nLikes = parseInt(sLikes);
                             jLikes.text(" "+(nLikes-1));
