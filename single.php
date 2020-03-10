@@ -23,6 +23,15 @@
                                     $category_id = $getQuestion[0]['category'];
                                     $is_solved = $getQuestion[0]['is_solved'];
 
+                                    $query = "SELECT * FROM q_images WHERE q_id = '$q_id'";
+                                    $q_images_rowcount = $conne->selectRowCount($query);
+                                    $q_images = $conne->selectFreeRun("SELECT image_link FROM q_images WHERE q_id = '$q_id'");
+                                    $i = 0;
+                                    for($i = 0;$i<$q_images_rowcount;$i++){
+                                        $image_link = $q_images[$i]["image_link"];
+                                        $q_description = str_replace('imghere_'.$i, "/images/q_images/$image_link", $q_description);
+                                    }
+
                                     $conne->freeRun("UPDATE questions SET q_view = q_view + 1 WHERE q_id = $q_id");
 
                                     $getAuthor = $conne->selectWhere("users","user_id","=",$q_author_id,"int");
@@ -48,6 +57,7 @@
                                         <div class="col-md-9">
                                             <h1 class="post-title"><a href="#"><?php echo $q_title; ?></a></h1>
                                         </div>
+                                        <div class="col-md-3">
                                             <?php 
                                                 if($is_solved == 1){
                                                     echo '<h4><span class="badge badge-success"><i class="fa fa-check"></i> Solved</span></h4>';
@@ -59,6 +69,8 @@
                                                     echo '<h4><span class="badge badge-secondary"><i class="fa fa-clock-o" aria-hidden="true"></i> Not Answered</span></h4>';
                                                 }
                                             ?>
+                                            
+                                        </div>
                                     </div>    
                                     <div class="card bg-light post">
                                         <div class="post-heading">
@@ -72,9 +84,11 @@
                                                 </div>
                                                 <h6 class="time-ago">Asked on, <?php echo $q_date; ?></h6>
                                             </div>
+                                            <div class="col-sm-5">
                                                 <button type="button" class="btn btn-success btn-circle btn-lg" id="btnLike"><i class="fa fa-check"></i></button>
                                                 <button type="button" class="btn btn-danger btn-circle btn-lg" id="btnDislike"><i class="fa fa-times"></i></button>
                                                 <button type="button" class="btn btn-dark btn-circle btn-lg" id="score"><i class="fa fa-star"></i></i><span class="totalScore" data-value="<?php echo $q_score; ?>"><?php echo $q_score; ?></span></button>
+                                            </div>
                                         </div>
                                         <br>
                                         <hr>  
@@ -113,14 +127,16 @@
                                         </div>
                                         <h6 class="time-ago"><?php echo $time_ago ?></h6>
                                     </div>
+                                
+                                    <div class="col-sm-5">
                                         <?php    
                                         if(isset($_SESSION['user_UserID'])){
                                             $user_id = $_SESSION['user_UserID'];
                                             $commentStatus = $conne->selectRowCount("SELECT * FROM c_like_data WHERE c_id ='$c_id' AND user_id = '$user_id'");
                                             if($c_author == 12 && $user_id==$q_author_id && $is_solved == -1){
                                                 echo "<div>";
-                                                echo '<button type="button" class="btn btn-success btn-circle btn-lg" onclick="helpful(this)" name="'.$c_id.'">Helpful<i class="fa fa-check"></i></button>';
-                                                echo '<button type="button" class="btn btn-danger btn-circle btn-lg" onclick="not_helpful(this)" name="'.$c_id.'">Not Helpful<i class="fa fa-times"></i></button>';
+                                                echo '<button type="button" class="btn btn-success" onclick="helpful(this)" name="'.$c_id.'">Helpful<i class="fa fa-check"></i></button>';
+                                                echo '<button type="button" class="btn btn-danger" onclick="not_helpful(this)" name="'.$c_id.'">Not Helpful<i class="fa fa-times"></i></button>';
                                                 echo "</div>";
                                             }else if($commentStatus > 0){
                                                 echo '<button type="button" class="btn btn-success btn-circle btn-lg" disabled="disabled"><i class="fa fa-check"></i></button>';
@@ -138,7 +154,8 @@
                                         }else{
                                             $commentStatus = 1;
                                         }
-                                        ?> 
+                                        ?>
+                                    </div>
                                 </div>
                                 <br>
                                 <hr>
@@ -149,7 +166,7 @@
                             <br>
                             <?php }
                             if( count($show) >= $limit) {
-                             ?>
+                            ?>
                             <button type="button"  onclick="loadmore()" id="postAnswerText" class="btn btn-single"><i class="fa fa-arrow-down fa-1x" ></i>  Show More Comments</button> 
                             <br><br>
                             <?php } ?>
