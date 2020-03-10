@@ -20,7 +20,7 @@ if( $_GET["question"] !== NULL && !empty($_GET["question"]) && $_GET["questionID
         $questionAuthor = $questionAuthorArray[0]["q_author"];
 
         $n_desc = "Your question($question) is answered.";
-        $sql = "INSERT INTO notifications (n_description,n_author,n_post_id, n_notified_id,n_image) VALUES ('$n_desc',12,'$id', '$questionAuthor','images/noti_icons/comment.png')";
+        $sql = "INSERT INTO notifications (n_description,n_author,n_post_id, n_notified_id,n_image) VALUES ('$n_desc',12,'$id', '$questionAuthor','/images/noti_icons/comment.png')";
         $conne->freeRun($sql);
     }
 }
