@@ -32,7 +32,7 @@ if($sUsername == null){
 <div class="page-container">
     <div class="container">
         <div class="row">
-            <form action="addquestion.php" method="post" name="QuestionForm" id="QuestionForm" novalidate>
+            <form action="addquestion.php" method="post" name="QuestionForm" id="QuestionForm" enctype="multipart/form-data" novalidate>
                 <div class="span8 page-content">
                     <div class="row separator">
                         <section class="span8 articles-list">
@@ -68,6 +68,8 @@ if($sUsername == null){
                                             <a class="btn btn-xs btn-default" data-role="h2" href="#" title="Heading 2"><i class="fa fa-header"></i><sup>2</sup></a>
                                             <a class="btn btn-xs btn-default" data-role="h3" href="#" title="Heading 3"><i class="fa fa-header"></i><sup>3</sup></a>
                                             <a class="btn btn-xs btn-default" data-role="p" href="#" title="Paragraph"><i class="fa fa-paragraph"></i></a>
+                                        <div>
+                                            <a class="btn btn-xs btn-default" id="addimage" href="#" title="Add Image"><i class="fa fa-image"></i></a>
                                         </div>
                                     </div>
                                     <textarea name="QuestionDesc" id="QuestionDesc" required="required" style="display:none;"></textarea><br>
@@ -84,7 +86,9 @@ if($sUsername == null){
                                     <?php } ?>
                                     </select>
                                     </div>
-                                    <button type="submit" class="btn btn-primary" name="QuestionSubmit" id="QuestionSubmit">Submit</button>
+                                    <input type="file" name="files[]" multiple >
+                                    <br>
+                                    <button type="submit" class="btn btn-primary" name="QuestionSubmit" id="QuestionSubmit">Submit</button>                                    
                                 </div>
                             </div>
                         </section>
@@ -100,6 +104,9 @@ if($sUsername == null){
 <script> 
 $("#QuestionSubmit").click(function() {
     $("#QuestionDesc").val($("#editor").html());
+});
+$("#addimage").click(function() {
+    $("#editor").text($("#editor").text() + "<br><img src='imghere'>");
 });
 </script>
 
@@ -138,6 +145,56 @@ if  (
     $notificationsQuery = $notificationsQuery->execute();
     
     $conne->freeRun("UPDATE categories SET cat_totalquestion=cat_totalquestion+1 WHERE cat_id = '$qCategory'");
+
+    /* Upload Photo */
+
+    $q_id = $conne->selectFreeRun("SELECT q_id FROM questions WHERE slug='$slug'");
+    $q_id = $q_id[0]["q_id"];
+
+    // File upload configuration 
+    $targetDir = "images/q_images/"; 
+    $allowTypes = array('jpg','png','jpeg','gif'); 
+    
+    $statusMsg = $errorMsg = $insertValuesSQL = $errorUpload = $errorUploadType = ''; 
+    $fileNames = array_filter($_FILES['files']['name']); 
+
+    if(!empty($fileNames)){ 
+        foreach($_FILES['files']['name'] as $key=>$val){ 
+            // File upload path 
+            $fileName = basename($_FILES['files']['name'][$key]); 
+            $targetFilePath = $targetDir . $fileName; 
+            
+            // Check whether file type is valid 
+            $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
+            if(in_array($fileType, $allowTypes)){ 
+                // Upload file to server 
+                if(move_uploaded_file($_FILES["files"]["tmp_name"][$key], $targetFilePath)){ 
+                    // Image db insert sql 
+                    $insertValuesSQL .= "(".$q_id.",'".$fileName."'),"; 
+                }else{ 
+                    $errorUpload .= $_FILES['files']['name'][$key].' | '; 
+                } 
+            }else{ 
+                $errorUploadType .= $_FILES['files']['name'][$key].' | '; 
+            } 
+        } 
+
+        if(!empty($insertValuesSQL)){ 
+            $insertValuesSQL = trim($insertValuesSQL, ','); 
+            // Insert image file name into database 
+            $conne->freeRun("INSERT INTO q_images (q_id, image_link) VALUES $insertValuesSQL"); 
+            if($insert){ 
+                $errorUpload = !empty($errorUpload)?'Upload Error: '.trim($errorUpload, ' | '):''; 
+                $errorUploadType = !empty($errorUploadType)?'File Type Error: '.trim($errorUploadType, ' | '):''; 
+                $errorMsg = !empty($errorUpload)?'<br/>'.$errorUpload.'<br/>'.$errorUploadType:'<br/>'.$errorUploadType; 
+                $statusMsg = "Files are uploaded successfully.".$errorMsg; 
+            }else{ 
+                $statusMsg = "Sorry, there was an error uploading your file."; 
+            } 
+        } 
+    }else{ 
+        $statusMsg = 'Please select a file to upload.'; 
+    } 
 
     /* Running python script*/
 

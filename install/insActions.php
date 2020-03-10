@@ -131,6 +131,15 @@ if (isset($getAction)) {
 
         $Connect->freeRun($sql);
 
+        $sql = "CREATE TABLE IF NOT EXISTS q_images (
+            id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+            q_id int NOT NULL,
+            image_link varchar(1000) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+            FOREIGN KEY (q_id) REFERENCES questions(q_id) ON DELETE CASCADE
+            );";
+
+        $Connect->freeRun($sql);
+
         $sql = "INSERT INTO users(firstname,surname,email,username,password_,is_verified,is_admin,image_link)
         VALUES ('Arınç Alp','Eren','arinc@arinc.com','arinc','$2y$04$39Qbmj9YV04JXKBzWloixu4FIU37OwD3w7EAwICxNr6EZLMK6Wdky',0,0,'images/avatar.png'),
         ('Atakan','Demircioğlu','atakan@atakan.com','atakan','$2y$04$39Qbmj9YV04JXKBzWloixu4FIU37OwD3w7EAwICxNr6EZLMK6Wdky',0,0,'images/avatar.png'),
