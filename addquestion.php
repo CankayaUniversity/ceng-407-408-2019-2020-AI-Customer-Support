@@ -102,11 +102,13 @@ if($sUsername == null){
 <?php include "footer.php";?>
 
 <script> 
+var count = 0;
 $("#QuestionSubmit").click(function() {
     $("#QuestionDesc").val($("#editor").html());
 });
 $("#addimage").click(function() {
-    $("#editor").text($("#editor").text() + "<br><img src='imghere'>");
+    $("#editor").text($("#editor").text() + "<br><img src='imghere_" + count + "'>");
+    count++;
 });
 </script>
 

@@ -23,6 +23,15 @@
                                     $category_id = $getQuestion[0]['category'];
                                     $is_solved = $getQuestion[0]['is_solved'];
 
+                                    $query = "SELECT * FROM q_images WHERE q_id = '$q_id'";
+                                    $q_images_rowcount = $conne->selectRowCount($query);
+                                    $q_images = $conne->selectFreeRun("SELECT image_link FROM q_images WHERE q_id = '$q_id'");
+                                    $i = 0;
+                                    for($i = 0;$i<$q_images_rowcount;$i++){
+                                        $image_link = $q_images[$i]["image_link"];
+                                        $q_description = str_replace('imghere_'.$i, "/images/q_images/$image_link", $q_description);
+                                    }
+
                                     $conne->freeRun("UPDATE questions SET q_view = q_view + 1 WHERE q_id = $q_id");
 
                                     $getAuthor = $conne->selectWhere("users","user_id","=",$q_author_id,"int");
