@@ -1936,8 +1936,7 @@ body{margin-top:20px;
     }
     .pagination a:hover:not(.active) {background-color: #ddd;}
     .totalScore {
-      font-size: 12px;
-      padding-left: 2.5px;
+      font-size: 15px;
     }
     .button-wrap{
         padding: 14px 46px;
