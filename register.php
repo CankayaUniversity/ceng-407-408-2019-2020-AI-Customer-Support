@@ -10,7 +10,7 @@ include "header.php";
                 </div>
             </div>
             <div class="d-flex justify-content-center form_container">
-                <form>
+                <form method="post">
                     <h4 class="card-title mt-3 text-center">Create Account</h4>
                     <p class="text-center">Get started with your free account</p>
                     <div class="input-group mb-2">
@@ -64,21 +64,22 @@ include "header.php";
 </div>
 <?php include "footer.php"; ?>
 <?php
-if(isset($_POST['RegisterSystem']) && isset($_POST['email_label']) && $_POST['email_label'] != '' && $_POST['password_label'] != '' && isset($_POST['password_label'])) {
+
+$Username = $_POST['Username'];
+$Firstname = $_POST['Firstname'];
+$Lastname = $_POST['Lastname'];
+$Email = $_POST['Email'];
+$ConfirmPassword = $_POST['ConfirmPassword'];
+$Password = trim($_POST['Password']);
+$options = array("cost" => 4);
+$hashPassword = password_hash($Password, PASSWORD_BCRYPT, $options);
+$UserIp = helperDev::get_client_ip();
+
+if(isset($_POST['RegisterSystem']) && isset($_POST['Username']) && $_POST['Username'] != '' && $_POST['Email'] != '' && isset($_POST['Email'])) {
     if ($Email == null || $Email == '') {
         header('Location: index.php');
     }
 
-    $Username = $_POST['Username'];
-    $Firstname = $_POST['Firstname'];
-    $Lastname = $_POST['Lastname'];
-    $Email = $_POST['Email'];
-    $ConfirmPassword = $_POST['ConfirmPassword'];
-    $Password = trim($_POST['Password']);
-    $options = array("cost" => 4);
-    $hashPassword = password_hash($Password, PASSWORD_BCRYPT, $options);
-
-    $UserIp = helperDev::get_client_ip();
     if ($ConfirmPassword == $Password) {
         $sqlAddUser = "INSERT IGNORE INTO users(firstname,surname,email,username,password_,ip_address,is_verified,is_admin,image_link)
         VALUES ('$Firstname','$Lastname','$Email','$Username','$hashPassword','$UserIp',0,0,'images/avatar.png');";
