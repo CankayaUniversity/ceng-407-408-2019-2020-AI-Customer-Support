@@ -7,49 +7,12 @@ $conne = new Mysql();
 $conn = $conne->dbConnect();
 
 $action = $_POST["action"];
-$Email = $_POST['email'];
 
 $q_id = isset($_POST['q_id']) ? $_POST['q_id'] : null;
 $c_id = isset($_POST['c_id']) ? $_POST['c_id'] : null;
 $user_id = isset($_SESSION['user_UserID']) ? $_SESSION['user_UserID'] : null;
 $answer = isset($_POST['answer']) ? $_POST['answer'] : null;
 $q_author = isset($_POST['q_author']) ? $_POST['q_author'] : null;
-
-$Password = trim($_POST['password']);
-$options = array("cost" => 4);
-$hashPassword = password_hash($Password, PASSWORD_BCRYPT, $options);
-
-if ($action == "register") {
-    if ($Email == null || $Email == '') {
-        header('Location: index.php');
-    }
-
-    $Username = $_POST['username'];
-    $Firstname = $_POST['firstname'];
-    $Lastname = $_POST['lastname'];
-    $ConfirmPassword = $_POST['confirmpass'];
-    $UserIp = helperDev::get_client_ip();
-    if ($ConfirmPassword == $Password) {
-        $sqlAddUser = "INSERT IGNORE INTO users(firstname,surname,email,username,password_,ip_address,is_verified,is_admin,image_link)
-        VALUES ('$Firstname','$Lastname','$Email','$Username','$hashPassword','$UserIp',0,0,'images/avatar.png');";
-        $conn->exec($sqlAddUser);
-        $query = $conn->query("SELECT * FROM users WHERE email='$Email'", PDO::FETCH_ASSOC)->fetch();
-        if (isset($query)) {
-            if (password_verify($Password, $query['password_'])) {
-                $_SESSION["user_UserID"] = $query['user_id'];
-                $_SESSION["user_Username"] = $query['username'];
-                $_SESSION["user_Firstname"] = $query['firstname'];
-                $_SESSION["user_Surname"] = $query['surname'];
-                $_SESSION["user_isAdmin"] = $query['is_admin'];
-                $_SESSION["user_isVerified"] = $query['is_verified'];
-                $_SESSION["user_Email"] = $Email;
-                echo 1;
-            } else {
-                echo -1; // Email and password does not match
-            }
-        }
-    }
-}
 
 if ($q_id !== null && $user_id !== null && ($action == "like" || $action == "dislike")) {
     $sql = "SELECT * FROM like_data WHERE user_id = '$user_id' AND q_id ='$q_id'";

@@ -230,35 +230,6 @@ $(function() {
   appNotifications.init();
 });
 
-function registerProcess() {
-  var Email = $("#Email").val();
-  var Password = $("#Password").val();
-  var Username = $("#Username").val();
-  var Firstname = $("#Firstname").val();
-  var Lastname = $("#Lastname").val();
-  var ConfirmPassword = $("#ConfirmPassword").val();
-  var action = "register";
-  if (Email != "" && Password != "") {
-    $.ajax({
-      url: "/action.php",
-      method: "POST",
-      data: {
-        action: action,
-        email: Email,
-        password: Password,
-        username: Username,
-        firstname: Firstname,
-        lastname: Lastname,
-        confirmpass: ConfirmPassword
-      },
-      success: function(response) {
-        if (response == 1) {
-          window.location.replace("index.php");
-        }
-      }
-    });
-  }
-}
 function submitAnswer(user_id, q_id) {
   var answer = $("#editor").html();
   var action = "answer";
