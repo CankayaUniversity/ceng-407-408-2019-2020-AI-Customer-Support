@@ -141,10 +141,10 @@ if (isset($_SESSION["user_isAdmin"])) {
         <?php endif; ?>
         <?php if ($sUsername == null): ?>
         <li class="nav-item">
-          <a class="nav-link" data-toggle="modal" href="#registerModal" role="button" aria-expanded="false" aria-controls="collapseExample">Sign Up</a>
+          <a class="nav-link" href="/register.php" role="button" aria-expanded="false" aria-controls="collapseExample">Sign Up</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" data-toggle="modal" href="#loginModal" role="button" aria-expanded="false" aria-controls="collapseExample">Login</a>
+          <a class="nav-link" href="/login.php" role="button" aria-expanded="false" aria-controls="collapseExample">Login</a>
         </li>
         <?php endif;?>
         <?php if ($sUsername !== null): ?>
@@ -185,97 +185,6 @@ if (isset($_SESSION["user_isAdmin"])) {
     </div>
   </div>
 </nav>
-<!-- The Login Modal -->
-<div class="modal fade seminor-login-modal" data-backdrop="static" id="loginModal">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-body seminor-login-modal-body">
-        <h5 class="modal-title text-center">LOGIN MY ACCOUNT!</h5>
-        <button type="button" class="close" data-dismiss="modal">
-          <span><i class="fa fa-times-circle" aria-hidden="true"></i></span>
-        </button>
-        <form class="seminor-login-form">
-          <div class="form-group">
-            <input type="email" class="form-control" id="email_label" aria-describedby="emailHelp" placeholder="Email" required autocomplete="off">
-          </div>
-          <div class="form-group">
-            <input type="password" class="form-control" id="password_label"  placeholder="Password" required autocomplete="off">
-          </div>
-          <div class="form-group">
-            <label class="container-checkbox">
-              Remember Me On This Computer
-              <input type="checkbox" checked="checked" required>
-              <span class="checkmark-box"></span>
-            </label>
-          </div>
-          <div class="btn-check-log">
-            <button type="submit" id="login_button" onclick="loginProcess()" class="btn-check-login">LOGIN</button>
-          </div>
-          <div class="forgot-pass-fau text-center pt-3">
-            <a href="/reset_pass" class="text-secondary">Forgot Your Password?</a>
-          </div>
-          <div class="create-new-fau text-center pt-3">
-            <a href="#" class="text-primary-fau"><span data-toggle="modal" data-target="#registerModal" data-dismiss="modal">Create A New Account</span></a>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- The Register Modal -->
-<div class="modal fade seminor-login-modal" data-backdrop="static" id="registerModal">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-body seminor-login-modal-body">
-        <h5 class="modal-title text-center">CREATE AN ACCOUNT</h5>
-        <button type="button" class="close" data-dismiss="modal">
-          <span><i class="fa fa-times-circle" aria-hidden="true"></i></span>
-        </button>
-        <form class="seminor-login-form" name="SignUp">
-          <div class="form-group">
-            <input type="text" name="Firstname" id="Firstname" class="form-control" required autocomplete="off">
-            <label class="form-control-placeholder" for="Firstname">First Name</label>
-          </div>
-          <div class="form-group">
-            <input type="text" name="Lastname" id="Lastname" class="form-control" required autocomplete="off">
-            <label class="form-control-placeholder" for="Lastname">Last Name</label>
-          </div>
-          <div class="form-group">
-            <input type="text" name="Username" id="Username" class="form-control" required autocomplete="off">
-            <label class="form-control-placeholder" for="Username">User Name</label>
-          </div>
-          <div class="form-group">
-            <input type="email" name="Email" id="Email" class="form-control" required autocomplete="off">
-            <label class="form-control-placeholder" for="Email">Email address</label>
-          </div>
-          <div class="form-group">
-            <input type="password" name="Password" id ="Password" class="form-control" required autocomplete="off" onkeyup='check();'>
-            <label class="form-control-placeholder" for="Password">Password</label>
-          </div>
-          <div class="form-group">
-            <input type="password" name="ConfirmPassword" id="ConfirmPassword" class="form-control" required autocomplete="off" onkeyup='check();'>
-            <label class="form-control-placeholder" for="ConfirmPassword">Confirm Password</label>
-            <span id='message'></span>
-          </div>
-          <div class="form-group forgot-pass-fau text-center ">
-            <a href="/terms-conditions/" class="text-secondary">
-              By clicking "SIGN UP" you accept our<br>
-              <span class="text-primary-fau">Terms and Conditions</span>
-            </a>
-          </div>
-          <div class="btn-check-log">
-            <button type="submit" name="SignUp" id="SignUp" onclick="registerProcess()" class="btn-check-login">SIGN UP</button>
-          </div>
-          <div class="create-new-fau text-center pt-3">
-            <a href="#" class="text-primary-fau"><span data-toggle="modal" data-target="#loginModal" data-dismiss="modal">Already have an account?</span></a>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
-
 <script type="text/javascript" src="/js/site.js"></script>
 <script id="notificationTemplate" type="text/html">
     <!-- NOTIFICATION -->

@@ -1,20 +1,4 @@
-var check = function() {
-  if (
-    document.getElementById("Password").value ==
-    document.getElementById("ConfirmPassword").value
-  ) {
-    document.getElementById("message").style.color = "green";
-    document.getElementById("message").innerHTML = "Password matching";
-  } else {
-    document.getElementById("message").style.color = "red";
-    document.getElementById("message").innerHTML = "Password is not matching";
-  }
-};
-
 jQuery(document).ready(function($) {
-  /** ******************************
-   * Simple WYSIWYG
-   ****************************** **/
   $("#editControls a").click(function(e) {
     e.preventDefault();
     switch ($(this).data("role")) {
@@ -257,14 +241,11 @@ function loginProcess() {
       data: { email: email, password: password, action: action },
       success: function(response) {
         if (response == 1) {
-          $("#loginModal").hide();
-          location.reload();
-        } else if (response == "0") {
-          alert("Email and password does not match");
-          //location.reload();
+          window.location.replace("index.php");
         } else if (response == "-1") {
+          alert("Email and password does not match");
+        } else if (response == "0") {
           alert("System-based error");
-          //location.reload();
         }
       }
     });
@@ -295,9 +276,7 @@ function registerProcess() {
       },
       success: function(response) {
         if (response == 1) {
-          $("#registerModal").hide();
-          //window.location.replace("index.php");
-          location.reload();
+          window.location.replace("index.php");
         }
       }
     });
