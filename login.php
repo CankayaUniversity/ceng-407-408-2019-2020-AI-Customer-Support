@@ -14,7 +14,6 @@ if ($sUsername != null){
             </div>
             <div class="user_card-header">
                 <h4 class="card-title mt-3 text-center">Create Account</h4>
-                <p class="text-center">Get started with your free account</p>
                 <div class="d-flex justify-content-center">
                 <a class="btn btn-primary social-login-btn social-facebook" href="#"><i class="fa fa-facebook"></i></a>
                 <a class="btn btn-primary social-login-btn social-twitter" href="#"><i class="fa fa-twitter"></i></a>
@@ -33,7 +32,6 @@ if ($sUsername != null){
                         </div>
                         <input name="email_label" class="form-control input_user" placeholder="Email address" type="email">
                     </div> 
-
                     <div class="input-group mb-2">
                         <div class="input-group-append">
                             <span class="input-group-text"> <i class="fas fa-key"></i> </span>
@@ -53,7 +51,7 @@ if ($sUsername != null){
             </div>
             <div class="mt-4">
                 <div class="d-flex justify-content-center links">
-                    Don't have an account? <a href="#" class="ml-2">Sign Up</a>
+                    Don't have an account? <a href="register.php" class="ml-2">Sign Up</a>
                 </div>
                 <div class="d-flex justify-content-center links">
                     <a href="#">Forgot your password?</a>
@@ -82,7 +80,6 @@ if(isset($_POST['LoginSystem']) && isset($_POST['email_label']) && $_POST['email
             $_SESSION["user_Email"] = $Email;
             echo "<script>window.location.replace('index.php');</script>";
             die();
-            //header('Location: index.php');
         } else {
             echo "<script>alert('Your email and password does not match.');</script>";
         }

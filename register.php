@@ -12,7 +12,6 @@ include "header.php";
             <div class="d-flex justify-content-center form_container">
                 <form method="post">
                     <h4 class="card-title mt-3 text-center">Create Account</h4>
-                    <p class="text-center">Get started with your free account</p>
                     <div class="input-group mb-2">
                         <div class="input-group-append">
                             <span class="input-group-text"><i class="fas fa-user"></i></span>
@@ -56,7 +55,7 @@ include "header.php";
             </div>
             <div class="mt-4">
                 <div class="d-flex justify-content-center links">
-                Have an account? <a href="#" class="ml-2">Login</a>
+                Have an account? <a href="login.php" class="ml-2">Login</a>
                 </div>
             </div>
         </div>
