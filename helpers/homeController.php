@@ -63,4 +63,11 @@ class HomeController
         $popularArticles = $conne->selectFreeRun("SELECT * FROM questions ORDER BY q_view DESC LIMIT 5");
         return $popularArticles;
     }
+
+    public static function getQuestionNumber() {
+        $conne = new Mysql();
+        $conn = $conne->dbConnect();
+        $count = $conne->selectRowCount("SELECT * FROM questions");
+        return $count;
+    }
 }

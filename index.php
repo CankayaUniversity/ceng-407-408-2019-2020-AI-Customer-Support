@@ -26,7 +26,8 @@
                             <!-- Basic Home Page Template -->
                             <div class="row separator">
                                 <section class="span8 articles-list">
-                                    <h3>Featured Articles</h3>
+                                    <?php $totalQuestions = homeController::getQuestionNumber(); ?>
+                                    <h3>Featured Articles <small>Total Questions : <?php echo $totalQuestions ?></small></h3>
                                     <?php
                                         $limit = 5;
                                         $query = "SELECT * FROM questions";
