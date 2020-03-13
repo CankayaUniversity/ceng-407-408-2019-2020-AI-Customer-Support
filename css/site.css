@@ -2299,27 +2299,17 @@ a.forum-item-title:hover {
     padding: 7px;
     font-size: 12px;
     position: relative;
-    z-index: 2;
+    z-index: 2; 
 }
 
 .divider-text:after {
     content: "";
     position: absolute;
     width: 100%;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid rgb(189, 186, 186);
     top: 55%;
     left: 0;
     z-index: 1;
-}
-
-.btn-facebook {
-    background-color: #405D9D;
-    color: #fff;
-}
-
-.btn-twitter {
-    background-color: #42AEEC;
-    color: #fff;
 }
 
 
@@ -2385,4 +2375,68 @@ a.forum-item-title:hover {
 }
 .custom-checkbox .custom-control-input:checked~.custom-control-label::before {
     background-color: #e2793f !important;
+}
+.user_card-header{
+    margin-top: 80px;
+    margin-bottom: -50px;
+}
+.social-login-btn {
+    margin: 5px;
+    width: 20%;
+    font-size: 250%;
+    padding: 0;
+}
+
+.social-login-more {
+    width: 45%;
+}
+.social-google {
+    background-color: #da573b !important;
+    border-color: #be5238 !important;
+}
+.social-google:hover{
+    background-color: #be5238 !important;
+    border-color: #9b4631 !important;
+}
+
+.social-twitter {
+    background-color: #1daee3 !important;
+    border-color: #3997ba !important;
+}
+.social-twitter:hover {
+    background-color: #3997ba !important;
+    border-color: #347b95 !important;
+}
+.social-facebook {
+    background-color: #4c699e !important;
+    border-color: #47618d !important;
+}
+.social-facebook:hover {
+    background-color: #47618d !important;
+    border-color: #3c5173 !important;
+}
+.login-or {
+    position: relative;
+    font-size: 18px;
+    color: #aaa;
+    margin-top: -20px;
+    margin-bottom: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.span-or {
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: -2px;
+    margin-left: -25px;
+    background-color: #dce2e2;
+    width: 50px;
+    text-align: center;
+}
+.hr-or {
+    background-color: #cdcdcd;
+    height: 1px;
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
 }

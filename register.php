@@ -6,7 +6,7 @@ include "header.php";
         <div class="user_card">
             <div class="d-flex justify-content-center">
                 <div class="brand_logo_container">
-                    <img src="../images/mascot.png" class="brand_logo" alt="Logo">
+                    <img src="../images/mascot.png" class="brand_logo" alt="Logo_regiter">
                 </div>
             </div>
             <div class="d-flex justify-content-center form_container">
