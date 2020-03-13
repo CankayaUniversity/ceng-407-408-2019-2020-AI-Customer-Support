@@ -230,29 +230,6 @@ $(function() {
   appNotifications.init();
 });
 
-function loginProcess() {
-  var email = $("#email_label").val();
-  var password = $("#password_label").val();
-  var action = "login";
-  if (email != "" && password != "") {
-    $.ajax({
-      url: "/action.php",
-      method: "POST",
-      data: { email: email, password: password, action: action },
-      success: function(response) {
-        if (response == 1) {
-          window.location.replace("index.php");
-        } else if (response == "-1") {
-          alert("Email and password does not match");
-        } else if (response == "0") {
-          alert("System-based error");
-        }
-      }
-    });
-  } else {
-    alert("Both Fields are required");
-  }
-}
 function registerProcess() {
   var Email = $("#Email").val();
   var Password = $("#Password").val();

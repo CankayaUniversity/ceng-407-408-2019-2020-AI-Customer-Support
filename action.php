@@ -19,25 +19,6 @@ $Password = trim($_POST['password']);
 $options = array("cost" => 4);
 $hashPassword = password_hash($Password, PASSWORD_BCRYPT, $options);
 
-if ($action == "login") {
-    $query = $conn->query("SELECT * FROM users WHERE email='$Email'", PDO::FETCH_ASSOC)->fetch();
-    if (isset($query)) {
-        if (password_verify($Password, $query['password_'])) {
-            $_SESSION["user_UserID"] = $query['user_id'];
-            $_SESSION["user_Username"] = $query['username'];
-            $_SESSION["user_Firstname"] = $query['firstname'];
-            $_SESSION["user_Surname"] = $query['surname'];
-            $_SESSION["user_isAdmin"] = $query['is_admin'];
-            $_SESSION["user_isVerified"] = $query['is_verified'];
-            $_SESSION["user_Email"] = $Email;
-            echo 1;
-        } else {
-            // Email and password does not match
-            echo -1;
-        }
-    }
-}
-
 if ($action == "register") {
     if ($Email == null || $Email == '') {
         header('Location: index.php');
