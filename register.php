@@ -61,20 +61,20 @@ include "header.php";
         </div>
     </div>
 </div>
-<?php include "footer.php"; ?>
 <?php
+include "footer.php";
 
-$Username = $_POST['Username'];
-$Firstname = $_POST['Firstname'];
-$Lastname = $_POST['Lastname'];
-$Email = $_POST['Email'];
-$ConfirmPassword = $_POST['ConfirmPassword'];
-$Password = trim($_POST['Password']);
+$Username = isset($_POST['Username']) ? $_POST['Username'] : null;
+$Firstname = isset($_POST['Firstname']) ? $_POST['Firstname'] : null;
+$Lastname = isset($_POST['Lastname']) ? $_POST['Lastname'] : null;
+$Email = isset($_POST['Email']) ? $_POST['Email'] : null;
+$ConfirmPassword = isset($_POST['ConfirmPassword']) ? $_POST['ConfirmPassword'] : null;
+$Password = isset($_POST['Password']) ? trim($_POST['Password']) : null;
 $options = array("cost" => 4);
 $hashPassword = password_hash($Password, PASSWORD_BCRYPT, $options);
 $UserIp = helperDev::get_client_ip();
 
-if(isset($_POST['RegisterSystem']) && isset($_POST['Username']) && $_POST['Username'] != '' && $_POST['Email'] != '' && isset($_POST['Email'])) {
+if (isset($_POST['RegisterSystem']) && isset($_POST['Username']) && $_POST['Username'] != '' && $_POST['Email'] != '' && isset($_POST['Email'])) {
     if ($Email == null || $Email == '') {
         header('Location: index.php');
     }
@@ -100,4 +100,3 @@ if(isset($_POST['RegisterSystem']) && isset($_POST['Username']) && $_POST['Usern
         }
     }
 }
-?>
