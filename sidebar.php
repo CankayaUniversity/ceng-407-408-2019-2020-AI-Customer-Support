@@ -1,6 +1,6 @@
 <aside class="span3 page-sidebar">
   <?php if ($sUsername == null) : ?>
-  <a href="#loginModal" data-toggle="modal" class="button-wrap" role="button" aria-pressed="true">Ask a Question</a>
+  <a href="/login.php" class="button-wrap" role="button" aria-pressed="true">Ask a Question</a>
   <?php endif; ?>
   <?php if ($sUsername !== null) : ?>
   <a href="/addquestion.php" class="button-wrap" role="button" aria-pressed="true">Ask a Question</a>
@@ -21,7 +21,6 @@
           foreach ($popularArticles as $key) { 
           $popular_slug = $key['slug']; 
         ?>
-        
         <li class="list-group-item"><a href='<?php echo "/post/$popular_slug";?>'><?php echo $key["q_title"]?></a></li>
         <?php } ?>
       </ul>

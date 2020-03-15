@@ -13,7 +13,7 @@ if($sUsername == null){
 <div class="search-area-wrapper">
     <div class="search-area container">
         <h3 class="search-header">Have a Question?</h3>
-        <p class="search-tag-line">If you have any question you can ask below or enter what you are looking!</p>
+        <p class="search-tag-line">If you have any question you can search for a related article below or simply enter what you are looking for!</p>
         <form id="search-form" class="search-form clearfix" method="get" action="#" autocomplete="off">
             <div class="input-group">
                 <input type="text" class="form-control" autocomplete="off" placeholder="Search this blog" 
