@@ -47,7 +47,7 @@ if ($sUsername != null){
                     </div>
 
             
-                        <div id = "error" class="alert alert-danger"  style="display:none"> Password and username is not matched!
+                        <div id = "error" class="alert alert-danger"  style="display:none"> Username or password is invalid!
                     </div>
                    
 
