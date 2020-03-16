@@ -231,7 +231,7 @@ $(function() {
 });
 
 function submitAnswer(user_id, q_id) {
-  var answer = $("#editor").html();
+  var answer = CKEDITOR.instances['editor'].getData()
   var action = "answer";
   $.ajax({
     url:"/action.php",

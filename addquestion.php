@@ -44,35 +44,8 @@ if($sUsername == null){
                                         <input type="text" class="form-control" id="QuestionTitle" name="QuestionTitle" maxlength="75" placeholder="What is your question about?">
                                     </div>
                                 </div>
-                                <div id="editor" contenteditable>
-                                    </div>
-                                <div id="editparent">
-                                    <div id="editControls">
-                                        <div class="btn-group">
-                                            <a class="btn btn-xs btn-default" data-role="undo" href="#" title="Undo"><i class="fa fa-undo"></i></a>
-                                            <a class="btn btn-xs btn-default" data-role="redo" href="#" title="Redo"><i class="fa fa-repeat"></i></a>
-                                        </div>
-                                        <div class="btn-group">
-                                            <a class="btn btn-xs btn-default" data-role="bold" href="#" title="Bold"><i class="fa fa-bold"></i></a>
-                                            <a class="btn btn-xs btn-default" data-role="italic" href="#" title="Italic"><i class="fa fa-italic"></i></a>
-                                            <a class="btn btn-xs btn-default" data-role="underline" href="#" title="Underline"><i class="fa fa-underline"></i></a>
-                                            <a class="btn btn-xs btn-default" data-role="strikeThrough" href="#" title="Strikethrough"><i class="fa fa-strikethrough"></i></a>
-                                        </div>
-                                        <div class="btn-group">
-                                            <a class="btn btn-xs btn-default" data-role="indent" href="#" title="Blockquote"><i class="fa fa-indent"></i></a>
-                                            <a class="btn btn-xs btn-default" data-role="insertUnorderedList" href="#" title="Unordered List"><i class="fa fa-list-ul"></i></a>
-                                            <a class="btn btn-xs btn-default" data-role="insertOrderedList" href="#" title="Ordered List"><i class="fa fa-list-ol"></i></a>
-                                        </div>
-                                        <div class="btn-group">
-                                            <a class="btn btn-xs btn-default" data-role="h1" href="#" title="Heading 1"><i class="fa fa-header"></i><sup>1</sup></a>
-                                            <a class="btn btn-xs btn-default" data-role="h2" href="#" title="Heading 2"><i class="fa fa-header"></i><sup>2</sup></a>
-                                            <a class="btn btn-xs btn-default" data-role="h3" href="#" title="Heading 3"><i class="fa fa-header"></i><sup>3</sup></a>
-                                            <a class="btn btn-xs btn-default" data-role="p" href="#" title="Paragraph"><i class="fa fa-paragraph"></i></a>
-                                        <div>
-                                            <a class="btn btn-xs btn-default" id="addimage" href="#" title="Add Image"><i class="fa fa-image"></i></a>
-                                        </div>
-                                    </div>
-                                    <textarea name="QuestionDesc" id="QuestionDesc" required="required" style="display:none;"></textarea><br>
+                                 <textarea name="editor"></textarea>
+                                    <br>
                                     <div class="form-group">
                                         <label for="QuestionTags">Question Tags</label>
                                         <input type="text" class="form-control" id="QuestionTags" name="QuestionTags" placeholder="Please enter tags">
@@ -89,7 +62,6 @@ if($sUsername == null){
                                     <input type="file" name="files[]" multiple >
                                     <br>
                                     <button type="submit" class="btn btn-primary" name="QuestionSubmit" id="QuestionSubmit">Submit</button>                                    
-                                </div>
                             </div>
                         </section>
                     </div>
@@ -102,14 +74,15 @@ if($sUsername == null){
 <?php include "footer.php";?>
 
 <script> 
-var count = 0;
-$("#QuestionSubmit").click(function() {
-    $("#QuestionDesc").val($("#editor").html());
+$( document ).ready(function() {
+    CKEDITOR.replace('editor'); 
 });
-$("#addimage").click(function() {
+var count = 0;
+
+/*$("#addimage").click(function() {
     $("#editor").text($("#editor").text() + "<br><img src='imghere_" + count + "'>");
     count++;
-});
+});*/
 </script>
 
 <?php
@@ -120,12 +93,12 @@ if  (
     isset($_POST['QuestionSubmit']) &&
     isset($_POST['QuestionTitle']) &&
     $_POST['QuestionTitle'] != '' &&
-    $_POST['QuestionDesc'] != '' &&
-    isset($_POST['QuestionDesc'])
+    $_POST['editor'] != '' &&
+    isset($_POST['editor'])
     ) 
 { 
     $qTitle = htmlspecialchars(addslashes($_POST['QuestionTitle']));
-    $qDescription = addslashes($_POST['QuestionDesc']);
+    $qDescription = addslashes($_POST['editor']);
     $qAuthor = $_SESSION["user_UserID"];
     $qTags = $_POST['QuestionTags'];
     $qTags = str_replace('-', ',', strtolower($qTags));

@@ -102,6 +102,8 @@ if (isset($_SESSION["user_isAdmin"])) {
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <script src="https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
+
 
     <!-- Style Sheet-->
     <script src="/js/jquery.min.js"></script>
