@@ -1,7 +1,9 @@
 <?php 
 include "header.php";
+$error = false;
 if ($sUsername != null){
     echo "<script>window.location.replace('index.php');</script>";
+ 
 }
 ?>
 <div class="container h-100">
@@ -44,6 +46,13 @@ if ($sUsername != null){
                             <label class="custom-control-label" for="customControlInline">Remember me</label>
                         </div>
                     </div>
+
+            
+                        <div id = "error" class="alert alert-danger"  style="display:none"> Password and username is not matched!
+                    </div>
+                   
+
+
                         <div class="d-flex justify-content-center mt-3 login_container">
                             <button name="LoginSystem" type="submit" class="btn login_btn">Login</button>
                         </div>
@@ -78,10 +87,13 @@ if(isset($_POST['LoginSystem']) && isset($_POST['email_label']) && $_POST['email
             $_SESSION["user_isAdmin"] = $query['is_admin'];
             $_SESSION["user_isVerified"] = $query['is_verified'];
             $_SESSION["user_Email"] = $Email;
+            $error = false;
             echo "<script>window.location.replace('index.php');</script>";
             die();
         } else {
-            echo "<script>alert('Your email and password does not match.');</script>";
+            $error = true ;
+            echo "<script>$('#error').show().delay(5000).fadeOut();</script>";
+         
         }
     }
 }
