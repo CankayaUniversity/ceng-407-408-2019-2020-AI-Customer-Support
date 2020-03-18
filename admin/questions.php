@@ -3,7 +3,7 @@ include 'header.php';
 $AllQuestions = $conne->selectAll("questions");
 ?>
 <body>
-    <div class="container">
+    <div class="container-fluid">
         <input type="text" id="searchInput" class="inputStyle" onkeyup="search()" placeholder="Search for names.." title="Type in a name">
         <table class="table table-bordered" id="myTable">
             <thead>
