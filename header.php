@@ -192,7 +192,7 @@ if (isset($_SESSION["user_isAdmin"])) {
     <!-- NOTIFICATION -->
     <a class="dropdown-item dropdown-notification" href="{{href}}">
       <div class="notification-read">
-        <i class="fa fa-times" aria-hidden="true"></i>
+        <i class="fa fa-times" href="#" aria-hidden="true"></i>
       </div>
       <img class="notification-img" src="{{image}}" alt="Icone Notification" />
       <div class="notifications-body">
