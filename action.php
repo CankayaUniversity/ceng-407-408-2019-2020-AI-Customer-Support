@@ -170,10 +170,13 @@ if ($action == "not_helpful") {
 }
 
 if ($action == "loadmore") {
+    $questionQuery = $conne->selectFreeRun("SELECT * FROM questions WHERE q_id = $q_id");
+    $is_solved = $questionQuery[0]["is_solved"];
+    $q_author_id = $questionQuery[0]["q_author_id"];
     $html = "";
     $limit = 3;
     $starting_limit = $_POST['starting_limit'];
-    $query = "SELECT * FROM comments WHERE c_post_id='$q_id' ORDER BY c_id DESC LIMIT $starting_limit, $limit";
+    $query = "SELECT * FROM comments WHERE c_post_id='$q_id' ORDER BY c_id ASC LIMIT $starting_limit, $limit";
     $rowCount = $conne->selectRowCount($query);
     if ($rowCount < $limit) {
         $limit = $rowCount;
@@ -181,6 +184,30 @@ if ($action == "loadmore") {
     $newQ = $conne->selectFreeRun($query);
     for ($i = 0; $i < $limit; $i++) {
         $c_author = $newQ[$i]["c_author"];
+        $c_id = $newQ[$i]["c_id"];
+        $c_score = $newQ[$i]["c_like"] - $newQ[$i]["c_dislike"];
+        $commentStatus = $conne->selectRowCount("SELECT * FROM c_like_data WHERE c_id ='$c_id' AND user_id = '$user_id'");
+        if($c_author == 12 && $user_id==$q_author_id && $is_solved == -1){
+            $commentButtons = 
+            '<div>'
+            .'<button type="button" class="btn btn-success" onclick="helpful(this)" name="'.$c_id.'">Helpful<i class="fa fa-check"></i></button>'
+            .'<button type="button" class="btn btn-danger" onclick="not_helpful(this)" name="'.$c_id.'">Not Helpful<i class="fa fa-times"></i></button>'
+            ."</div>";
+        }else if($commentStatus > 0){
+            $commentButtons = 
+            '<button type="button" class="btn btn-success btn-circle btn-lg" disabled="disabled"><i class="fa fa-check"></i></button>'
+            .' '
+            .'<button type="button" class="btn btn-danger btn-circle btn-lg" disabled="disabled"><i class="fa fa-times"></i></button>'
+            .' '
+            .'<button type="button" class="btn btn-dark btn-circle btn-lg" id="score"><i class="fa fa-star"></i></i><span id="c_score_'.$c_id.'" class="totalScore" data-value="'.$c_score.'">'.$c_score.'</span></button>';
+        }else{
+            $commentButtons = 
+            '<button type="button"class="btn btn-success btn-circle btn-lg" onclick="likeComment(this)" name="'.$c_id.'" id="c_btnLike_'.$c_id.'"><i class="fa fa-check"></i></button>'
+            .' '
+            .'<button type="button" class="btn btn-danger btn-circle btn-lg" onclick="dislikeComment(this)" name="'.$c_id.'" id="c_btndislike_'.$c_id.'"><i class="fa fa-times"></i></button>'
+            .' '
+            .'<button type="button" class="btn btn-dark btn-circle btn-lg" id="c_score" ><i class="fa fa-star"></i><span id="c_score_'.$c_id.'" class="totalScore" data-value="'.$c_score.'">'.$c_score.'</span></button>';
+        }
         $query2 = "SELECT * FROM users WHERE user_id = $c_author ";
         $newU = $conne->selectFreeRun($query2);
         $image = $newU[0]["image_link"];
@@ -198,6 +225,7 @@ if ($action == "loadmore") {
         $html .= '</div>';
         $html .= '<h6 class="time-ago">' . $time_ago . '</h6>';
         $html .= '</div>';
+        $html .= $commentButtons;
         $html .= '</div>';
         $html .= '<div class="post-description">';
         $html .= '<p>' . $c_description . '</p>';

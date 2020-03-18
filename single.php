@@ -101,7 +101,7 @@
                                 $limit = 3;
                                 $query = "SELECT * FROM comments WHERE c_post_id='$q_id'";
                                 $rowcount = $conne->selectRowCount($query);
-                                $show = $conne->selectFreeRun("SELECT * FROM comments WHERE c_post_id='$q_id' ORDER BY c_id DESC LIMIT 0, $limit");
+                                $show = $conne->selectFreeRun("SELECT * FROM comments WHERE c_post_id='$q_id' ORDER BY c_id ASC LIMIT 0, $limit");
                                 foreach ($show as $key => $value) {
                                     $c_author = $value['c_author'];
                                     $c_title = isset($value['c_title']) ? $value['c_title'] : null;
@@ -158,7 +158,7 @@
                             </div>
                             <br>
                             <?php }
-                            if( count($show) >= $limit) {
+                                if( count($show) >= $limit) {
                             ?>
                             <button type="button"  onclick="loadmore()" id="postAnswerText" class="btn btn-single"><i class="fa fa-arrow-down fa-1x" ></i>  Show More Comments</button> 
                             <br><br>
@@ -169,15 +169,16 @@
                                     Your Answer
                                 </div>
                                 <div class="card-body">
-                                     <textarea name="editor"></textarea>
-                                        <button type="submit" class="btn btn-postAnswer" id="answerSubmit" 
-                                        onclick="submitAnswer(<?php echo $user_id?>,<?php echo $q_id?>)">Post Answer</button>
+                                    <textarea name="editor"></textarea>
+                                    <button type="submit" class="btn btn-postAnswer" id="answerSubmit" onclick="submitAnswer(<?php echo $user_id?>,<?php echo $q_id?>)">
+                                        Post Answer
+                                    </button>
+                                </div>
                             </div>
-                        </div>
-                    <?php endif; ?>
-                    </section>
+                        <?php endif; ?>
+                        </section>
+                    </div>
                 </div>
-            </div>
                 <?php include "sidebar.php";?>
             </div>
             <script>
@@ -322,11 +323,12 @@
             var starting_limit = 3;
             function loadmore(){
                 var q_id = <?php echo $q_id; ?> ;
+                var user_id = <?php echo $user_id ?> ;
                 var action = "loadmore";
                 $.ajax({
                     url: "/action.php",
                     method: "POST",
-                    data: {action:action,q_id:q_id,starting_limit: starting_limit},
+                    data: {action:action,q_id:q_id,starting_limit: starting_limit,user_id:user_id},
                     success:function(response){
                         if(response == -1){
                             return;
