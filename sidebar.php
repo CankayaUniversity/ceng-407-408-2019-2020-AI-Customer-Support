@@ -35,15 +35,16 @@
       <?php 
         $tagCount = substr_count($q_tag,",")+1;
         $i = 0;
+        $randomColor = helperDev::generateRandomColor();
         while(isset($q_tag[$i]) && $q_tag[$i] != null){
           if($q_tag[$i] == ','){
-            echo "<a href='/tag/".substr($q_tag,0,$i)."' rel='tag' class='btn btn-dark'>".substr($q_tag,0,$i)."</a> ";
+            echo "<a href='/tag/".substr($q_tag,0,$i)."' rel='tag' class='badge badge-pill badge-".$randomColor."'>".substr($q_tag,0,$i)."</a> ";
             $delete = substr($q_tag,0,$i+1);
             $q_tag = str_replace($delete,"",$q_tag);
             $i = -1;
           }
           else if($i == strlen($q_tag)-1){
-            echo "<a href='/tag/".substr($q_tag,0,$i+1)."' rel='tag' class='btn btn-dark'>".substr($q_tag,0,$i+1)."</a>";
+            echo "<a href='/tag/".substr($q_tag,0,$i+1)."' rel='tag' class='badge badge-pill badge-".$randomColor."'>".substr($q_tag,0,$i+1)."</a>";
             $delete = substr($q_tag,0,$i+1);
             $q_tag = str_replace($delete,"",$q_tag);
             $i = -1;
