@@ -11,7 +11,8 @@
                                     if (isset($_GET['post'])) {
                                         $slug = $_GET['post'];
                                     }
-                                    $AutoReplyID = 12;
+                                    $BotAccount = $conne->selectFreeRun("SELECT user_id FROM users WHERE username='AutoReply'");
+                                    $AutoReplyID = $BotAccount[0]["user_id"];
                                     $getQuestion = $conne->selectWhere("questions","slug","=",$slug,"char");
                                     $q_id = $getQuestion[0]["q_id"];
                                     $q_title = $getQuestion[0]["q_title"];
