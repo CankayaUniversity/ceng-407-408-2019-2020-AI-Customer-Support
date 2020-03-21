@@ -114,7 +114,7 @@
                             <div class="card bg-light post single-reserve">
                                 <div class="post-heading">
                                     <div class="float-left image">
-                                    <img src="../<?php echo $user['image_link']?>" height="60" weight="60" class="img-circle avatar" alt="user profile image">
+                                        <img src="../<?php echo $user['image_link']?>" height="60" weight="60" class="img-circle avatar" alt="user profile image">
                                     </div>
                                     <div class="float-left meta col-sm-4">
                                         <div class="post-comment">
@@ -151,9 +151,13 @@
                                         ?>
                                 </div>
                                 <br>
-                                <hr>
-                                <div class="post-description">
-                                    <p><?php echo $c_description; ?></p>
+                                <hr>  
+                                <div class="post-heading">
+                                    <div class="post-description">
+                                        <p>
+                                        <?php echo $q_description; ?>
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                             <br>

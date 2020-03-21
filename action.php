@@ -219,7 +219,7 @@ if ($action == "loadmore") {
         $html .= '<div class="float-left image">';
         $html .= '<img src="../' . $image . '" height="60" weight="60" class="img-circle avatar" alt="user profile image">';
         $html .= '</div>';
-        $html .= '<div class="float-left meta">';
+        $html .= '<div class="float-left meta col-sm-4">';
         $html .= '<div class="post-comment">';
         $html .= '<a href="/author/' . $username . '"><b>' . $username . '</b></a> made a post.';
         $html .= '</div>';
@@ -227,6 +227,8 @@ if ($action == "loadmore") {
         $html .= '</div>';
         $html .= $commentButtons;
         $html .= '</div>';
+        $html .= '<br>';
+        $html .= '<hr>';
         $html .= '<div class="post-description">';
         $html .= '<p>' . $c_description . '</p>';
         $html .= '</div>';
