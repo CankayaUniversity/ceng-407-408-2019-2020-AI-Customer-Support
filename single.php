@@ -11,7 +11,7 @@
                                     if (isset($_GET['post'])) {
                                         $slug = $_GET['post'];
                                     }
-                                    
+                                    $AutoReplyID = 12;
                                     $getQuestion = $conne->selectWhere("questions","slug","=",$slug,"char");
                                     $q_id = $getQuestion[0]["q_id"];
                                     $q_title = $getQuestion[0]["q_title"];
@@ -95,6 +95,7 @@
                                 </article>
                             </div>
                             <?php
+                                $botflag = 0;
                                 $limit = 3;
                                 $query = "SELECT * FROM comments WHERE c_post_id='$q_id'";
                                 $rowcount = $conne->selectRowCount($query);
@@ -107,6 +108,66 @@
                                     $c_score = $value["c_like"] - $value['c_dislike'];
                                     $time_ago = helperDev::timeAgo($value['c_date']);
                                     $user = $conn->query("SELECT user_id, username, q_author, image_link FROM users,questions WHERE user_id='$c_author'",PDO::FETCH_ASSOC)->fetch();
+                            ?>
+                            <?php if($c_author == $AutoReplyID) : ?>
+                                <?php $botflag = 1;?>
+                                <h3> Reply </h3>
+                                <div class="card bg-light post single-reserve">
+                                <div class="post-heading">
+                                    <div class="float-left image">
+                                        <img src="../<?php echo $user['image_link']?>" height="60" weight="60" class="img-circle avatar" alt="user profile image">
+                                    </div>
+                                    <div class="float-left meta col-sm-4">
+                                        <div class="post-comment">
+                                            <?php $username = $user['username']; ?>
+                                            <a href='<?php echo "/author/$username"; ?>'><b><?php echo $user['username'] ?></b></a> made a post.
+                                        </div>
+                                        <h6 class="time-ago"><?php echo $time_ago ?></h6>
+                                    </div>
+                                    <?php    
+                                    if(isset($_SESSION['user_UserID'])){
+                                        $user_id = $_SESSION['user_UserID'];
+                                        $commentStatus = $conne->selectRowCount("SELECT * FROM c_like_data WHERE c_id ='$c_id' AND user_id = '$user_id'");
+                                        if($c_author == $AutoReplyID && $user_id==$q_author_id && $is_solved == -1){
+                                            echo "<div>";
+                                            echo '<button type="button" class="btn btn-success" onclick="helpful(this)" name="'.$c_id.'">Helpful<i class="fa fa-check"></i></button>';
+                                            echo '<button type="button" class="btn btn-danger" onclick="not_helpful(this)" name="'.$c_id.'">Not Helpful<i class="fa fa-times"></i></button>';
+                                            echo "</div>";
+                                        }else if($commentStatus > 0){
+                                            echo '<button type="button" class="btn btn-success btn-circle btn-lg" disabled="disabled"><i class="fa fa-check"></i></button>';
+                                            echo ' ';
+                                            echo '<button type="button" class="btn btn-danger btn-circle btn-lg" disabled="disabled"><i class="fa fa-times"></i></button>';
+                                            echo ' ';
+                                            echo '<button type="button" class="btn btn-dark btn-circle btn-lg" id="score"><i class="fa fa-star"></i></i><span id="c_score_'.$c_id.'" class="totalScore" data-value="'.$c_score.'">'.$c_score.'</span></button>';
+                                        }else {
+                                            echo '<button type="button"class="btn btn-success btn-circle btn-lg" onclick="likeComment(this)" name="'.$c_id.'" id="c_btnLike_'.$c_id.'"><i class="fa fa-check"></i></button>';
+                                            echo ' ';
+                                            echo '<button type="button" class="btn btn-danger btn-circle btn-lg" onclick="dislikeComment(this)" name="'.$c_id.'" id="c_btndislike_'.$c_id.'"><i class="fa fa-times"></i></button>';
+                                            echo ' ';
+                                            echo '<button type="button" class="btn btn-dark btn-circle btn-lg" id="c_score" ><i class="fa fa-star"></i><span id="c_score_'.$c_id.'" class="totalScore" data-value="'.$c_score.'">'.$c_score.'</span></button>';
+                                        }
+                                    }else{
+                                        $commentStatus = 1;
+                                    }
+                                    ?>
+                                </div>
+                                <br>
+                                <hr>  
+                                <div class="post-heading">
+                                    <div class="post-description">
+                                        <p>
+                                        <?php echo $c_description; ?>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <?php endif; ?>
+                            <?php 
+                            if($botflag == 1){
+                                if($value['c_author'] == $AutoReplyID)
+                                    continue;
+                            }
                             ?>
                             <div class="card bg-light post single-reserve">
                                 <div class="post-heading">
@@ -124,18 +185,13 @@
                                         if(isset($_SESSION['user_UserID'])){
                                             $user_id = $_SESSION['user_UserID'];
                                             $commentStatus = $conne->selectRowCount("SELECT * FROM c_like_data WHERE c_id ='$c_id' AND user_id = '$user_id'");
-                                            if($c_author == 12 && $user_id==$q_author_id && $is_solved == -1){
-                                                echo "<div>";
-                                                echo '<button type="button" class="btn btn-success" onclick="helpful(this)" name="'.$c_id.'">Helpful<i class="fa fa-check"></i></button>';
-                                                echo '<button type="button" class="btn btn-danger" onclick="not_helpful(this)" name="'.$c_id.'">Not Helpful<i class="fa fa-times"></i></button>';
-                                                echo "</div>";
-                                            }else if($commentStatus > 0){
+                                            if($commentStatus > 0){
                                                 echo '<button type="button" class="btn btn-success btn-circle btn-lg" disabled="disabled"><i class="fa fa-check"></i></button>';
                                                 echo ' ';
                                                 echo '<button type="button" class="btn btn-danger btn-circle btn-lg" disabled="disabled"><i class="fa fa-times"></i></button>';
                                                 echo ' ';
                                                 echo '<button type="button" class="btn btn-dark btn-circle btn-lg" id="score"><i class="fa fa-star"></i></i><span id="c_score_'.$c_id.'" class="totalScore" data-value="'.$c_score.'">'.$c_score.'</span></button>';
-                                            }else {
+                                            }else{
                                                 echo '<button type="button"class="btn btn-success btn-circle btn-lg" onclick="likeComment(this)" name="'.$c_id.'" id="c_btnLike_'.$c_id.'"><i class="fa fa-check"></i></button>';
                                                 echo ' ';
                                                 echo '<button type="button" class="btn btn-danger btn-circle btn-lg" onclick="dislikeComment(this)" name="'.$c_id.'" id="c_btndislike_'.$c_id.'"><i class="fa fa-times"></i></button>';
