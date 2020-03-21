@@ -21,7 +21,7 @@ $allComments = $conne->selectAll("comments");
                     $postName = $conne->selectFreeRun('SELECT q_title FROM questions WHERE q_id = '.$key["c_post_id"].'');
                 ?>
                     <tr>
-                        <td><input type="checkbox" value="<?php echo $key['user_id'] ?>" name="record"></td>
+                        <td><input type="checkbox" value="<?php echo $key['c_id'] ?>" name="record"></td>
                         <td><?php echo $key["c_description"] ?></td>
                         <td><?php echo $authorName[0]["username"] ?></td>
                         <td><?php echo $postName[0]["q_title"] ?></td>
@@ -34,6 +34,26 @@ $allComments = $conne->selectAll("comments");
 </body>
 
 <script type="text/javascript">
+    $(document).ready(function(){
+        $("#delete-row").click(function(){
+            var action = "deleteComment";
+            $("table tbody").find('input[name="record"]').each(function(){
+                if($(this).is(":checked")){
+                    var value = $(this).val();
+                    $(this).parents("tr").remove();
+                    $.ajax({
+                        url:"/action.php",
+                        method:"POST",
+                        data: {c_id:value, action:action},
+                        success:function(response){
+                            alert(response);
+                        }
+                    });
+                }
+            });
+        });
+    });    
+
     function search() {
     var input, filter, table, tr, td, i, txtValue;
     input = document.getElementById("searchInput");

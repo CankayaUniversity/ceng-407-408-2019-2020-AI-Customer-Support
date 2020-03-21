@@ -94,6 +94,14 @@ if ($action == "deleteQuestion") {
     echo "Deleted Question!";
 }
 
+if ($action == "deleteComment") {
+    $c_id = $_POST['c_id'];
+    $query = "DELETE FROM comments WHERE c_id = '$c_id'";
+    $statement = $conn->prepare($query);
+    $statement->execute();
+    echo "Deleted Comment!";
+}
+
 if ($action == "deleteCategory") {
     $cat_id = $_POST['cat_id'];
     $query = "DELETE FROM categories WHERE cat_id = '$cat_id'";
