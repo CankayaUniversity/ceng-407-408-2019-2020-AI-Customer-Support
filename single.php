@@ -129,10 +129,9 @@
                                         $user_id = $_SESSION['user_UserID'];
                                         $commentStatus = $conne->selectRowCount("SELECT * FROM c_like_data WHERE c_id ='$c_id' AND user_id = '$user_id'");
                                         if($c_author == $AutoReplyID && $user_id==$q_author_id && $is_solved == -1){
-                                            echo "<div>";
-                                            echo '<button type="button" class="btn btn-success" onclick="helpful(this)" name="'.$c_id.'">Helpful<i class="fa fa-check"></i></button>';
-                                            echo '<button type="button" class="btn btn-danger" onclick="not_helpful(this)" name="'.$c_id.'">Not Helpful<i class="fa fa-times"></i></button>';
-                                            echo "</div>";
+                                            echo '<button type="button" class="btn btn-success btn-circle btn-xl" onclick="helpful(this)" name="'.$c_id.'">Helpful</button>';
+                                            echo ' ';
+                                            echo '<button type="button" class="btn btn-danger btn-circle btn-xl" onclick="not_helpful(this)" name="'.$c_id.'">Not Helpful</button>';
                                         }else if($commentStatus > 0){
                                             echo '<button type="button" class="btn btn-success btn-circle btn-lg" disabled="disabled"><i class="fa fa-check"></i></button>';
                                             echo ' ';

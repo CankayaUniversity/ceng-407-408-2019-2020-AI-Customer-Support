@@ -2153,12 +2153,13 @@ a.forum-item-title:hover {
 }
 
 .btn-circle.btn-xl {
-  width: 70px;
-  height: 70px;
-  padding: 10px 16px;
-  font-size: 24px;
-  line-height: 1.33;
-  border-radius: 35px;
+  width: 90px !important;
+  height: 50px !important;
+  text-align: center !important;
+  padding: 10px 0 !important;
+  font-size: 15px !important;
+  line-height: 1.428571429 !important;
+  border-radius: 35px !important;
 }
 
 /* single page - solved button */
