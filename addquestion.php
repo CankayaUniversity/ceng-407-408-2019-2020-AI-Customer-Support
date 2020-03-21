@@ -104,8 +104,8 @@ if  (
     $qTags = str_replace('-', ',', strtolower($qTags));
     $qCategory = addslashes($_POST['QuestionCategory']);
     $qMetaTitle = $qTitle;
-    $qMetaTitle .= " | Atakde.Site";
-    $qMetaDesc = $qDescription;
+    $qMetaTitle .= " | Atakde.Site"; 
+    $qMetaDesc = htmlspecialchars(strip_tags(($qDescription)));
     $slug = helperDev::SEOFriendlyURL($qTitle);
     $qMetaKey = $qTags;
     

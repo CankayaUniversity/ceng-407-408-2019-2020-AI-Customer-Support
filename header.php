@@ -41,7 +41,7 @@ if (isset($_SESSION["user_isAdmin"])) {
         $query->setFetchMode(PDO::FETCH_ASSOC);
         while($r=$query->fetch()){
             $title_meta = $r["title_meta"];
-            $description_meta = $r["description_meta"];
+            $description_meta = htmlspecialchars_decode($r["description_meta"]);
             $keywords_meta = $r["keywords_meta"];
         }
     }
