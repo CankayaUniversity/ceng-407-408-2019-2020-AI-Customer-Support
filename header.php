@@ -210,6 +210,13 @@ if (isset($userid)) {
 ?>
 
 <script>
+var loader = "<div id='cover-spin'></div>";
+$(function() {
+    $("body").prepend(loader);
+    $("#cover-spin").delay(200).fadeOut(200, function(){
+        $(this).remove();
+    });
+});
 function resetNoti(){ 
   var user_id = <?php echo $userid; ?>;
   var action = "resetNoti";
