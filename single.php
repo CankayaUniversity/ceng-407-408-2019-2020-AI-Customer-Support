@@ -152,7 +152,7 @@
                                 <div class="post-heading">
                                     <div class="post-description">
                                         <p>
-                                        <?php echo $q_description; ?>
+                                        <?php echo $c_description; ?>
                                         </p>
                                     </div>
                                 </div>
