@@ -15,7 +15,6 @@ function drawChart() {
     {
         $.post("data.php",
             function(response) {
-                console.log(typeof(response.solved));
                 var data = google.visualization.arrayToDataTable([
                     ['Questions', ''],
                     ['solved', parseInt(response.solved)],
