@@ -123,7 +123,7 @@ class helperDev {
 
     public static function generateRandomColor() {
         $bs_buttons = ["success","info", "warning", "danger" , "primary", "secondary" , "light" , "dark"];
-        $randomNumber = rand(0, count($bs_buttons)); 
+        $randomNumber = rand(0, count($bs_buttons)-1); 
         return $bs_buttons[$randomNumber];
     }
 }
