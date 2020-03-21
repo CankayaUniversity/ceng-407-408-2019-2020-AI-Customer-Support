@@ -33,10 +33,9 @@
                                     }
 
                                     $conne->freeRun("UPDATE questions SET q_view = q_view + 1 WHERE q_id = $q_id");
-
                                     $getAuthor = $conne->selectWhere("users","user_id","=",$q_author_id,"int");
-
                                     $getCategoryName = $conne->selectWhere("categories","cat_id","=",$category_id,"int");
+
                                     if(isset($_SESSION['user_UserID'])){
                                         $user_id = $_SESSION['user_UserID'];
                                         $myQuery="SELECT * FROM like_data WHERE user_id = '$user_id' AND q_id ='$q_id'";
@@ -44,15 +43,14 @@
                                     }else{
                                         $checkLikeData = 1;
                                     }
-                                    
-                                ?><div class ="container">
-                                    <ul class="breadcrumb">
-                                        <li><a href="#"><?php echo $getCategoryName[0]['cat_name'] ?></a><span class="divider">/</span></li>
-                                        <li class="active">
-                                            <?php echo $q_title; ?>
-                                        </li>
-                                    </ul>
-                                    <article class=" type-post format-standard hentry clearfix">
+                                ?>
+                                <ul class="breadcrumb">
+                                    <li><a href="#"><?php echo $getCategoryName[0]['cat_name'] ?></a><span class="divider">/</span></li>
+                                    <li class="active">
+                                        <?php echo $q_title; ?>
+                                    </li>
+                                </ul>
+                                <article class=" type-post format-standard hentry clearfix">
                                     <div class="row">
                                         <div class="col-md-9">
                                             <h1 class="post-title"><a href="#"><?php echo $q_title; ?></a></h1>
@@ -69,7 +67,6 @@
                                             }
                                         ?>
                                     </div>
-                                </div>    
                                     <div class="card bg-light post">
                                         <div class="post-heading">
                                             <div class="float-left image">
@@ -78,22 +75,22 @@
                                             <div class="float-left meta col-sm-4">
                                                 <div class="post-comment">
                                                     <a href='<?php echo "/author/".$getAuthor[0]['username'].""; ?>'>
-                                                        <b><?php echo $getAuthor[0]['username']; ?></b></a>
+                                                        <b><?php echo $getAuthor[0]['username']; ?></b>
+                                                    </a>
                                                 </div>
                                                 <h6 class="time-ago">Asked on, <?php echo $q_date; ?></h6>
                                             </div>
-                                                <button type="button" class="btn btn-success btn-circle btn-lg" id="btnLike"><i class="fa fa-check"></i></button>
-                                                <button type="button" class="btn btn-danger btn-circle btn-lg" id="btnDislike"><i class="fa fa-times"></i></button>
-                                                <button type="button" class="btn btn-dark btn-circle btn-lg" id="score"></i><span id="questionScore" class="totalScore" data-value="<?php echo $q_score; ?>"><?php echo $q_score; ?></span></button>
+                                            <button type="button" class="btn btn-success btn-circle btn-lg" id="btnLike"><i class="fa fa-check"></i></button>
+                                            <button type="button" class="btn btn-danger btn-circle btn-lg" id="btnDislike"><i class="fa fa-times"></i></button>
+                                            <button type="button" class="btn btn-dark btn-circle btn-lg" id="score"></i><span id="questionScore" class="totalScore" data-value="<?php echo $q_score; ?>"><?php echo $q_score; ?></span></button>
                                         </div>
                                         <br>
                                         <hr>  
                                         <div class="post-heading">
                                             <div class="post-description">
-                                            <p>
-                                            <?php echo $q_description; ?>
-                                            </p>
-                                        </div></div>
+                                                <p><?php echo $q_description; ?></p>
+                                            </div>
+                                        </div>
                                     </div>
                                 </article>
                             </div>
