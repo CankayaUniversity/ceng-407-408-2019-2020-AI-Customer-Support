@@ -1,4 +1,9 @@
 jQuery(document).ready(function($) {
+var loader = "<div id='cover-spin'></div>";
+  $("body").prepend(loader);
+  $("#cover-spin").delay(200).fadeOut(200, function(){
+      $(this).remove();
+  });
   $("#editControls a").click(function(e) {
     e.preventDefault();
     switch ($(this).data("role")) {
