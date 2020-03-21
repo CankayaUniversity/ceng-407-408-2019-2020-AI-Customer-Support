@@ -111,7 +111,7 @@
                             ?>
                             <?php if($c_author == $AutoReplyID) : ?>
                                 <?php $botflag = 1;?>
-                                <h3> Reply </h3>
+                                <h3><u class="u-reply">Reply</u></h3>
                                 <div class="card bg-light post single-reserve">
                                 <div class="post-heading">
                                     <div class="float-left image">
@@ -161,7 +161,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <hr>
+                            <hr class="single-or">
                             <?php endif; ?>
                             <?php 
                             if($botflag == 1){
