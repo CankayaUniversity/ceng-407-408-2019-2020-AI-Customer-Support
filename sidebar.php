@@ -38,13 +38,13 @@
         while(isset($q_tag[$i]) && $q_tag[$i] != null){
           $randomColor = helperDev::generateRandomColor();
           if($q_tag[$i] == ','){
-            echo "<a href='/tag/".substr($q_tag,0,$i)."' rel='tag' class='badge badge-pill badge-".$randomColor."'>".substr($q_tag,0,$i)."</a> ";
+            echo "<a href='/tag/".trim(substr($q_tag,0,$i))."' rel='tag' class='badge badge-pill badge-".$randomColor."'>".substr($q_tag,0,$i)."</a> ";
             $delete = substr($q_tag,0,$i+1);
             $q_tag = str_replace($delete,"",$q_tag);
             $i = -1;
           }
           else if($i == strlen($q_tag)-1){
-            echo "<a href='/tag/".substr($q_tag,0,$i+1)."' rel='tag' class='badge badge-pill badge-".$randomColor."'>".substr($q_tag,0,$i+1)."</a>";
+            echo "<a href='/tag/".trim(substr($q_tag,0,$i+1))."' rel='tag' class='badge badge-pill badge-".$randomColor."'>".substr($q_tag,0,$i+1)."</a>";
             $delete = substr($q_tag,0,$i+1);
             $q_tag = str_replace($delete,"",$q_tag);
             $i = -1;
