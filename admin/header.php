@@ -57,6 +57,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="comments.php">Comments</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="unresolved.php">Unresolved Issues</a>
+            </li>
         </ul>
         <span class="navbar-text">
             May the control be with you!
