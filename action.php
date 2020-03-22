@@ -8,11 +8,11 @@ $conn = $conne->dbConnect();
 
 $action = $_POST["action"];
 
-$q_id = isset($_POST['q_id']) ? mysql_escape_string($_POST['q_id']) : null;
-$c_id = isset($_POST['c_id']) ? mysql_escape_string($_POST['c_id']) : null;
-$user_id = isset($_SESSION['user_UserID']) ? mysql_escape_string($_SESSION['user_UserID']) : null;
-$answer = isset($_POST['answer']) ? mysql_escape_string($_POST['answer']) : null;
-$q_author = isset($_POST['q_author']) ? mysql_escape_string($_POST['q_author']) : null;
+$q_id = isset($_POST['q_id']) ? $_POST['q_id'] : null;
+$c_id = isset($_POST['c_id']) ? $_POST['c_id'] : null;
+$user_id = isset($_SESSION['user_UserID']) ? $_SESSION['user_UserID'] : null;
+$answer = isset($_POST['answer']) ? $_POST['answer'] : null;
+$q_author = isset($_POST['q_author']) ? $_POST['q_author'] : null;
 
 if ($q_id !== null && $user_id !== null && ($action == "like" || $action == "dislike")) {
     $sql = "SELECT * FROM like_data WHERE user_id = '$user_id' AND q_id ='$q_id'";
@@ -252,7 +252,7 @@ if($action == "expertReply"){
         $query = $conne->selectFreeRun("SELECT `user_id` FROM `users` WHERE `username` = 'AutoReply'");
         $AutoReplyID = $query[0]['user_id'];
         $conne->freeRun("INSERT INTO `comments` (`c_description`,`c_author`,`c_post_id`) VALUES ('$answer', $AutoReplyID, $q_id);");
-        echo "Replied!";
+        echo "Replied";
     }else{
         $conne->freeRun("UPDATE `comments` SET `c_description` = '$answer' WHERE `c_id` = '$c_id'");
         echo "Updated!";
