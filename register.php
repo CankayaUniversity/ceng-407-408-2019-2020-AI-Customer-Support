@@ -72,7 +72,7 @@ $ConfirmPassword = isset($_POST['ConfirmPassword']) ? $_POST['ConfirmPassword'] 
 $Password = isset($_POST['Password']) ? trim($_POST['Password']) : null;
 $options = array("cost" => 4);
 $hashPassword = password_hash($Password, PASSWORD_BCRYPT, $options);
-$UserIp = helperDev::get_client_ip();
+$UserIp = Functions::get_client_ip();
 
 if (isset($_POST['RegisterSystem']) && isset($_POST['Username']) && $_POST['Username'] != '' && $_POST['Email'] != '' && isset($_POST['Email'])) {
     if ($Email == null || $Email == '') {

@@ -1,6 +1,6 @@
 <?php
 include_once "inc/Conn.php";
-include_once "helpers/helperDev.php";
+include_once "helpers/Functions.php";
 session_start();
 
 $conne = new Mysql();
@@ -220,7 +220,7 @@ if ($action == "loadmore") {
         $newU = $conne->selectFreeRun($query2);
         $image = $newU[0]["image_link"];
         $username = $newU[0]["username"];
-        $time_ago = helperDev::timeAgo($newQ[$i]['c_date']);
+        $time_ago = Functions::timeAgo($newQ[$i]['c_date']);
         $c_description = $newQ[$i]["c_description"];
         $html .= '<div class="card bg-light post single-reserve">';
         $html .= '<div class="post-heading">';

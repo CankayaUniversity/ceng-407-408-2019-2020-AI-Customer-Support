@@ -107,7 +107,7 @@
                                     $c_description = $value['c_description'];
                                     $c_id = $value['c_id'];
                                     $c_score = $value["c_like"] - $value['c_dislike'];
-                                    $time_ago = helperDev::timeAgo($value['c_date']);
+                                    $time_ago = Functions::timeAgo($value['c_date']);
                                     $user = $conn->query("SELECT user_id, username, q_author, image_link FROM users,questions WHERE user_id='$c_author'",PDO::FETCH_ASSOC)->fetch();
                             ?>
                             <?php if($c_author == $AutoReplyID) : ?>

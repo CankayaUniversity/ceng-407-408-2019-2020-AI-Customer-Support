@@ -36,7 +36,7 @@
         $tagCount = substr_count($q_tag,",")+1;
         $i = 0;
         while(isset($q_tag[$i]) && $q_tag[$i] != null){
-          $randomColor = helperDev::generateRandomColor();
+          $randomColor = Functions::generateRandomColor();
           if($q_tag[$i] == ','){
             echo "<a href='/tag/".trim(substr($q_tag,0,$i))."' rel='tag' class='badge badge-pill badge-".$randomColor."'>".substr($q_tag,0,$i)."</a> ";
             $delete = substr($q_tag,0,$i+1);

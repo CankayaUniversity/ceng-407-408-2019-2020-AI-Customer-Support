@@ -7,7 +7,6 @@ error_reporting(-1);
 
 include 'helpers/SEOHelper.php';
 include 'helpers/Functions.php';
-include 'helpers/helperDev.php';
 
 $conne = new Mysql();
 $conn = $conne->dbConnect();

@@ -65,7 +65,6 @@
 </body>
 
 <?php 
-include '../helpers/helperDev.php';
 /*if (ENV == 'live') {
     echo "Şuan live için açık değil.";
     exit(0);

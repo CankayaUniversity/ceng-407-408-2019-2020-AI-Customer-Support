@@ -106,7 +106,7 @@ if  (
     $qMetaTitle = $qTitle;
     $qMetaTitle .= " | Atakde.Site"; 
     $qMetaDesc = htmlspecialchars(strip_tags(($qDescription)));
-    $slug = helperDev::SEOFriendlyURL($qTitle);
+    $slug = SEOHelper::SEOFriendlyURL($qTitle);
     $qMetaKey = $qTags;
     
     $prepareData = $conn->prepare("INSERT INTO questions(q_title,q_description,q_tags,title_meta,description_meta, keywords_meta, slug, q_author,category) VALUES (?,?,?,?,?,?,?,?,?);");
