@@ -1,5 +1,5 @@
 <?php
-include 'header.php';
+include_once 'header.php';
 $AllQuestions = $conne->selectAll("questions");
 ?>
 <body>
@@ -26,8 +26,9 @@ $AllQuestions = $conne->selectAll("questions");
                     $statement = $key['q_author'];
                     $q_id = $key["q_id"];
                     $q_author = $conne->selectWhere("users","user_id","=",$statement,"int"); 
-                    $query = $conne->selectFreeRun("SELECT c_description FROM comments WHERE c_author = $AutoReplyID AND c_post_id =$q_id");
-                    $AutoReplyComment = isset($query[0]['c_description']) ? $query[0]['c_description'] : "null";
+                    $query = $conne->selectFreeRun("SELECT * FROM comments WHERE c_author = $AutoReplyID AND c_post_id =$q_id");
+                    $AutoReplyComment = isset($query[0]['c_description']) ? $query[0]['c_description']  : "null";
+                    $AutoReplyCommentID = isset($query[0]['c_id']) ? $query[0]['c_id'] : "noreply";
                     ?>
                     <tr>
                         <td><?php echo $q_author[0]['firstname'].' '.$q_author[0]['surname'] ?></td>
@@ -45,12 +46,34 @@ $AllQuestions = $conne->selectAll("questions");
                             ?>
                         </td>
                         <td>
-                            <button type="button" class="btn btn-info">Reply</button>
+                            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#<?php echo $q_id ?>">Reply</button>
+                            <div class="modal fade" id="<?php echo $q_id ?>" role="dialog">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            <h4 class="modal-title">Expert Reply</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <u>Question</u><br>
+                                            <?php echo $key["q_description"] ?><br><br>
+                                            <u>Given Reply</u><br>
+                                            <?php echo $AutoReplyComment ?>
+                                        </div>
+                                        <div class="modal-body">
+                                            <textarea id="new_reply_<?php echo $q_id ?>" rows="4" cols="50"></textarea>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-info" onclick="ExpertReply('new_reply_<?php echo $q_id ?>','<?php echo $AutoReplyCommentID ?>','<?php echo $q_id ?>')" >Reply</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </td>
+                    </tr>
                 <?php } ?>
             </tbody>
         </table>
-        <button type="button" class="btn btn-danger" id="reply_question">Reply</button>
     </div>
 </body>
 <script>
@@ -71,5 +94,18 @@ $AllQuestions = $conne->selectAll("questions");
                 }
             }
         }
+    }
+
+    function ExpertReply(textarea_id,c_id,q_id){
+        var answer = $('#' + textarea_id).val();
+        var action = "expertReply";
+        $.ajax({
+            url:"/action.php",
+            method:"POST",
+            data: {action:action,answer:answer,c_id:c_id,q_id:q_id},
+            success:function(response){
+                console.log(response);
+            }
+        });
     }
 </script>
