@@ -112,9 +112,12 @@
                             ?>
                             <?php if($c_author == $AutoReplyID) : ?>
                                 <?php $botflag = 1;?>
-                                <h3><u class="u-reply">Reply</u></h3>
                                 <div class="card bg-light post single-reserve">
                                 <div class="post-heading">
+                                <div class="alert alert-success">
+                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                    <center><span><strong>Notice: </strong> This message was answered by AI.</span></center>
+                                </div>
                                     <div class="float-left image">
                                         <img src="../<?php echo $user['image_link']?>" height="60" weight="60" class="img-circle avatar" alt="user profile image">
                                     </div>
@@ -161,7 +164,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <hr class="single-or">
                             <?php endif; ?>
                             <?php 
                             if($botflag == 1){
