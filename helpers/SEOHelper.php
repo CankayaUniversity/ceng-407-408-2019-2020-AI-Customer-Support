@@ -1,13 +1,13 @@
 <?php
 /**
- * Class helperMeta
+ * Class SEOHelper
  * @author Atakan Demircioğlu
  * @blog https://www.atakann.com
  * @mail mehata1997@hotmail.com
  * @date 17.11.2019
  * @update 05.02.2020
  */
-class helperMeta
+class SEOHelper
 {
 
     /*

@@ -5,7 +5,7 @@ session_start();
 ini_set('display_errors', 1);
 error_reporting(-1);
 
-include 'helpers/helperMeta.php';
+include 'helpers/SEOHelper.php';
 include 'helpers/Functions.php';
 include 'helpers/helperDev.php';
 
@@ -81,13 +81,13 @@ if (isset($_SESSION["user_isAdmin"])) {
   }
     ?>
     <meta name="keywords" content="<?php echo $keywords_meta ?>" />
-    <meta name="robots" content="<?php echo helperMeta::getDescriptions('robots') ?>" />
+    <meta name="robots" content="<?php echo SEOHelper::getDescriptions('robots') ?>" />
     <meta name="description" content="<?php echo $description_meta ?>" />
     <title><?php echo $title_meta ?></title>
     <?php } else { ?>
-    <meta name="keywords" content="<?php echo helperMeta::getDescriptions('keywords') ?>" />
-    <meta name="robots" content="<?php echo helperMeta::getDescriptions('robots') ?>" />
-    <meta name="description" content="<?php echo helperMeta::getDescriptions('description') ?>" />
+    <meta name="keywords" content="<?php echo SEOHelper::getDescriptions('keywords') ?>" />
+    <meta name="robots" content="<?php echo SEOHelper::getDescriptions('robots') ?>" />
+    <meta name="description" content="<?php echo SEOHelper::getDescriptions('description') ?>" />
     <title>AI Customer Support</title>
     <?php } ?>
     <meta charset="UTF-8" />
