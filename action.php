@@ -249,10 +249,12 @@ if ($action == "loadmore") {
 
 if($action == "expertReply"){
     if($c_id == "noreply"){
-        $query = $conne->selectFreeRun("SELECT user_id FROM users WHERE username = 'AutoReply'");
+        $query = $conne->selectFreeRun("SELECT `user_id` FROM `users` WHERE `username` = 'AutoReply'");
         $AutoReplyID = $query[0]['user_id'];
-        $conne->freeRun("INSERT INTO comments (c_description,c_author,c_post_id) VALUES ('$answer', $AutoReplyID, $q_id);");
+        $conne->freeRun("INSERT INTO `comments` (`c_description`,`c_author`,`c_post_id`) VALUES ('$answer', $AutoReplyID, $q_id);");
+        echo "Replied!";
     }else{
-        $conne->freeRun("UPDATE comments SET c_description='$answer' WHERE c_id = '$c_id'");
+        $conne->freeRun("UPDATE `comments` SET `c_description` = '$answer' WHERE `c_id` = '$c_id'");
+        echo "Updated!";
     }
 }

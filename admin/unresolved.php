@@ -19,14 +19,14 @@ $AllQuestions = $conne->selectAll("questions");
             <tbody>
                 <?php 
                 $query = $conne->selectFreeRun("SELECT user_id FROM users WHERE username = 'AutoReply'");
-                $AutoReplyID = $query[0]['user_id'];
+                $AutoReplyID = isset($query[0]['user_id']) ? $query[0]['user_id'] : null;
                 foreach ($AllQuestions as $key) { 
                     if($key["is_solved"] == 1)
                         continue;
                     $statement = $key['q_author'];
                     $q_id = $key["q_id"];
                     $q_author = $conne->selectWhere("users","user_id","=",$statement,"int"); 
-                    $query = $conne->selectFreeRun("SELECT * FROM comments WHERE c_author = $AutoReplyID AND c_post_id =$q_id");
+                    $query = $conne->selectFreeRun("SELECT * FROM `comments` WHERE `c_author` = '$AutoReplyID' AND `c_post_id` ='$q_id'");
                     $AutoReplyComment = isset($query[0]['c_description']) ? $query[0]['c_description']  : "null";
                     $AutoReplyCommentID = isset($query[0]['c_id']) ? $query[0]['c_id'] : "noreply";
                     ?>
@@ -105,6 +105,7 @@ $AllQuestions = $conne->selectAll("questions");
             data: {action:action,answer:answer,c_id:c_id,q_id:q_id},
             success:function(response){
                 console.log(response);
+                location.reload();
             }
         });
     }
