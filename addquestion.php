@@ -109,8 +109,8 @@ if  (
     $slug = helperDev::SEOFriendlyURL($qTitle);
     $qMetaKey = $qTags;
     
-    $prepareData = $conn->prepare("INSERT INTO questions(q_title,q_description,q_tags,title_meta,description_meta, keywords_meta, slug, q_author,category) VALUES ('$qTitle','$qDescription','$qTags','$qMetaTitle','$qMetaDesc','$qMetaKey','$slug','$qAuthor', '$qCategory');");
-    $prepareData->execute();
+    $prepareData = $conn->prepare("INSERT INTO questions(q_title,q_description,q_tags,title_meta,description_meta, keywords_meta, slug, q_author,category) VALUES (?,?,?,?,?,?,?,?,?);");
+    $prepareData->execute(array($qTitle, $qDescription, $qTags, $qMetaTitle, $qMetaDesc, $qMetaKey, $slug, $qAuthor, $qCategory));
     $lastInsertedID = $conn->lastInsertId();
     
     $query = "SELECT user_id FROM users WHERE is_admin=1 LIMIT 1";
@@ -183,6 +183,4 @@ if  (
     
     ?>
     <script>window.location.replace("index.php");</script>
-    <?php   
-}
-?>
+    <?php } ?>
