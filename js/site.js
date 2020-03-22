@@ -252,3 +252,38 @@ function submitAnswer(user_id, q_id) {
     }
   });
 }
+
+/* Profile edit button */
+
+let className = "";
+let iconName = "";
+
+
+// Start loading on specified button
+function iniciaButtonLoading(botao) {
+    //Get the components of the specified button
+    className = "." + botao.name;
+    iconName = botao.firstElementChild.className;
+
+    //Through the captured components adds the icon loading and removes the default icon + disables the button    
+    $(className + " i").removeClass(iconName).addClass("fa fa-circle-o-notch fa-spin");
+    $(className).prop("disabled", true);
+}
+
+//End loading on specified button
+function finalizaButtonLoading(botao) {
+
+
+    //Using the components captured in the previous function removes the icon loading and adds the default icon + enables the button   
+    $(className + " i").removeClass("fa fa-circle-o-notch fa-spin").addClass(iconName);
+    $(className).prop("disabled", false);
+}
+
+
+function buttonLoading(button){
+    iniciaButtonLoading(button);
+    setTimeout(function(){
+        finalizaButtonLoading(button)
+        },500
+    );
+}

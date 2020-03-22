@@ -179,22 +179,28 @@ if (isset($_POST["submit"])) {
                                                 <h4><p><strong>First name </strong></p></h4>
                                             </label>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-5">
                                             <p><?php echo $_SESSION["user_Firstname"]; ?></p>
                                         </div>
-                                        <div class="col-md-1">
-                                            <button class="btn btn-outline-warning" id="slideEditFirstName" type="button"> Edit</button>
+                                        <div class="col-md-2">
+                                            <button type="button" class="btnAdd btn btn-default btn-xs" name="btnAdd" id="slideEditFirstName" onclick="buttonLoading(this)" style="border-color:#e2793f">
+                                                <i class="fa fa-pencil-square-o" aria-hidden="true" style="color:#e2793f"></i>
+                                                <span style="color:#e2793f"> Edit</span>
+                                            </button>
                                         </div>
                                         <div class="col-md-3">
                                             <label for="first_name">
                                                 <p id="NewFirstName"><strong> New First Name </strong></p>
                                             </label>
                                         </div>
-                                        <div class="col-md-8">
+                                        <div class="col-md-7">
                                             <input type="text" class="form-control" name="first_name" id="first_name"  title="enter your first name if any.">
                                         </div>
-                                        <div class="col-md-1">
-                                            <button class="btn btn-xs btn-warning pull-right" id="slideSaveFirstName" name ="slideSaveFirstName" type="submit">Save</button>
+                                        <div class="col-md-2">
+                                            <button class="btnEdit btn btn-default btn-xs" id="slideSaveFirstName" name ="slideSaveFirstName" type="submit" onclick="buttonLoading(this)" style="border-color:#43A047">
+                                                <i class="fa fa-plus-circle" aria-hidden="true" style="color:#43A047"></i>
+                                                <span style="color:#43A047">Save</span>
+                                            </button>
                                         </div>                        
                                     </div><hr> 
                                 </div>                       
@@ -205,22 +211,28 @@ if (isset($_POST["submit"])) {
                                                 <h4><p><strong>Last name </strong></p></h4>
                                             </label>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-5">
                                             <?php echo $_SESSION["user_Surname"]; ?>
                                         </div>
-                                        <div class="col-md-1">
-                                            <button class="btn btn-outline-warning" id="slideEditLastName" type="button"> Edit</button>
+                                        <div class="col-md-2">
+                                            <button type="button" class="btnAdd1 btn btn-default btn-xs" id="slideEditLastName" name="btnAdd1" onclick="buttonLoading(this)" style="border-color:#e2793f">
+                                                <i class="fa fa-pencil-square-o" aria-hidden="true" style="color:#e2793f"></i>
+                                                <span style="color:#e2793f"> Edit</span>
+                                            </button>
                                         </div>
                                         <div class="col-md-3">
                                             <label for="first_name">
                                                 <p id="NewLastName"><strong> New Last Name </strong></p>
                                             </label>
                                         </div>
-                                        <div class="col-md-8">
+                                        <div class="col-md-7">
                                             <input type="text" class="form-control" name="last_name" id="last_name"  title="enter your last name if any.">
                                         </div>
-                                        <div class="col-md-1">
-                                            <button class="btn btn-xs btn-warning pull-right" id="slideSaveLastName" name ="slideSaveLastName" type="submit">Save</button>
+                                        <div class="col-md-2">
+                                            <button class="btnEdit btn btn-default btn-xs" id="slideSaveLastName" name ="slideSaveLastName" type="submit" onclick="buttonLoading(this)" style="border-color:#43A047">
+                                                <i class="fa fa-plus-circle" aria-hidden="true" style="color:#43A047"></i>
+                                                <span style="color:#43A047">Save</span>
+                                            </button>
                                         </div>
                                     </div><hr>
                                 </div>
@@ -231,22 +243,28 @@ if (isset($_POST["submit"])) {
                                                 <h4><p><strong>Email </strong></p></h4>
                                             </label>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-5">
                                             <?php echo $_SESSION["user_Email"]; ?>
                                         </div>
-                                        <div class="col-md-1">
-                                            <button class="btn btn-outline-warning" id="slideEditEmail" type="button">Edit</button>
+                                        <div class="col-md-2">
+                                            <button type="button" id="slideEditEmail" class="btnAdd2 btn btn-default btn-xs" name="btnAdd2" onclick="buttonLoading(this)" style="border-color:#e2793f">
+                                                <i class="fa fa-pencil-square-o" aria-hidden="true" style="color:#e2793f"></i>
+                                                <span style="color:#e2793f"> Edit</span>
+                                            </button>
                                         </div>  
                                         <div class="col-md-3">
                                             <label for="email">
                                                 <p id="NewEmail"><strong> New Email </strong></p>
                                             </label>
                                         </div>  
-                                        <div class="col-md-8">
+                                        <div class="col-md-7">
                                             <input type="email" class="form-control" name="email" id="email"  title="enter your email.">  
                                         </div> 
-                                        <div class="col-md-1">
-                                            <button class="btn btn-xs btn-warning pull-right" id="slideSaveEmail" name ="slideSaveEmail" type="submit">Save</button>
+                                        <div class="col-md-2">
+                                            <button class="btnEdit btn btn-default btn-xs"  id="slideSaveEmail" name ="slideSaveEmail" type="submit" onclick="buttonLoading(this)" style="border-color:#43A047">
+                                                <i class="fa fa-plus-circle" aria-hidden="true" style="color:#43A047"></i>
+                                                <span style="color:#43A047">Save</span>
+                                            </button>
                                         </div>
                                     </div><hr>
                                 </div>
@@ -257,22 +275,28 @@ if (isset($_POST["submit"])) {
                                                 <h4><p><strong>Username </strong></p></h4>
                                             </label>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-5">
                                             <?php echo $_SESSION["user_Username"]; ?>
                                         </div>
-                                        <div class="col-md-1">
-                                            <button class="btn btn-outline-warning" id="slideEditUsername" type="button">Edit</button>
+                                        <div class="col-md-2">
+                                        <button type="button" id="slideEditUsername" class="btnAdd3 btn btn-default btn-xs"  name="btnAdd3" onclick="buttonLoading(this)" style="border-color:#e2793f">
+                                                <i class="fa fa-pencil-square-o" aria-hidden="true" style="color:#e2793f"></i>
+                                                <span style="color:#e2793f"> Edit</span>
+                                            </button>
                                         </div> 
                                         <div class="col-md-3">
                                             <label for="Username">
                                                 <p id ="NewUserName"><strong> New Username </strong></p>
                                             </label>
                                         </div> 
-                                        <div class="col-md-8">
+                                        <div class="col-md-7">
                                             <input type="text" class="form-control" name="Username_" id="Username_" title="enter your username.">
                                         </div>
-                                        <div class="col-md-1">
-                                            <button class="btn btn-xs btn-warning pull-right" id="slideSaveUsername" name ="slideSaveUsername" type="submit">Save</button>
+                                        <div class="col-md-2">
+                                        <button class="btnEdit btn btn-default btn-xs" id="slideSaveUsername" type="submit" name ="slideSaveUsername" onclick="buttonLoading(this)" style="border-color:#43A047">
+                                            <i class="fa fa-plus-circle" aria-hidden="true" style="color:#43A047"></i>
+                                            <span style="color:#43A047"> Save</span>
+                                        </button>
                                         </div>
                                     </div><hr>
                                 </div>
@@ -283,18 +307,21 @@ if (isset($_POST["submit"])) {
                                                 <h4><p><strong>Password</strong></p></h4>
                                             </label>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-5">
                                             *****
                                         </div>
-                                        <div class="col-md-1">
-                                            <button class="btn btn-outline-warning" id="slideEditPassword" type="button"> Edit</button>
+                                        <div class="col-md-2">
+                                            <button type="button" id="slideEditPassword" class="btnAdd4 btn btn-default btn-xs"  name="btnAdd4" onclick="buttonLoading(this)" style="border-color:#e2793f">
+                                                <i class="fa fa-pencil-square-o" aria-hidden="true" style="color:#e2793f"></i>
+                                                <span style="color:#e2793f"> Edit</span>
+                                            </button>
                                         </div> 
                                         <div class="col-md-3">
                                             <label for="Password">
                                                 <p id="CurrentPass"><strong> Current Password</strong></p>
                                             </label>
                                         </div> 
-                                        <div class = "col-md-8">
+                                        <div class = "col-md-7">
                                             <input type="text" class="form-control" name="Password_" id="Password_" title="enter your password.">
                                         </div>
                                         <div class="col-md-3">
@@ -302,7 +329,7 @@ if (isset($_POST["submit"])) {
                                                 <p id="Newpass"><strong> New Password </strong></p>
                                             </label>
                                         </div> 
-                                        <div class = "col-md-8">
+                                        <div class = "col-md-7">
                                             <input type="text" class="form-control" name="Password_1" id="Password_1" title="enter your password.">
                                         </div>
                                         <div class="col-md-3">
@@ -310,11 +337,14 @@ if (isset($_POST["submit"])) {
                                                 <p id="Verifypass"><strong> Verify Password </strong></p>
                                             </label>
                                         </div> 
-                                        <div class = "col-md-8">
+                                        <div class = "col-md-7">
                                             <input type="text" class="form-control" name="Password_2" id="Password_2" title="enter your password.">
                                         </div>
-                                        <div class="col-md-1">
-                                            <button class="btn btn-xs btn-warning pull-right" id="slideSavePassword" name ="slideSavePassword" type="submit">Save</button>
+                                        <div class="col-md-2">
+                                            <button class="btnEdit btn btn-default btn-xs"  id="slideSavePassword" name ="slideSavePassword" type="submit" onclick="buttonLoading(this)" style="border-color:#43A047">
+                                                <i class="fa fa-plus-circle" aria-hidden="true" style="color:#43A047"></i>
+                                                <span style="color:#43A047">Save</span>
+                                            </button>
                                         </div>
                                     </div><hr>
                                 </div>
