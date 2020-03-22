@@ -1,6 +1,6 @@
 <?php
 /**
- * Class HomeController
+ * Class Mysql
  * @author Atakan Demircioğlu, Arınç Alp Eren
  * @blog https://www.atakann.com
  * @mail mehata1997@hotmail.com

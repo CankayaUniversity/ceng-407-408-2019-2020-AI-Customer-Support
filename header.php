@@ -6,7 +6,7 @@ ini_set('display_errors', 1);
 error_reporting(-1);
 
 include 'helpers/helperMeta.php';
-include 'helpers/homeController.php';
+include 'helpers/Functions.php';
 include 'helpers/helperDev.php';
 
 $conne = new Mysql();
@@ -15,7 +15,7 @@ $conn = $conne->dbConnect();
 if (isset($_SESSION['user_Username'])) {
     $sUsername = $_SESSION['user_Username'];
     $userid = $_SESSION['user_UserID'];
-    HomeController::getNCount($userid);
+    Functions::getNCount($userid);
 } else {
     $sUsername = null;
 }
@@ -205,7 +205,7 @@ if (isset($_SESSION["user_isAdmin"])) {
 </script>
 <?php
 if (isset($userid)) {
-    HomeController::getNotifications($userid);
+    Functions::getNotifications($userid);
 }
 ?>
 

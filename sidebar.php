@@ -17,7 +17,7 @@
       <h3>Popular Articles</h3>
       <ul class="list-group list-group-flush">
         <?php
-          $popularArticles = homeController::popularArticles();
+          $popularArticles = Functions::popularArticles();
           foreach ($popularArticles as $key) { 
           $popular_slug = $key['slug']; 
         ?>

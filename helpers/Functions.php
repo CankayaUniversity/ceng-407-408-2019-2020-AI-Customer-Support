@@ -1,6 +1,6 @@
 <?php
 /**
- * Class HomeController
+ * Class Functions
  * @author Atakan Demircioğlu, Arınç Alp Eren
  * @blog https://www.atakann.com
  * @mail mehata1997@hotmail.com
@@ -8,7 +8,7 @@
  * @update 05.02.2020
  */
 include 'inc/Conn.php';
-class HomeController
+class Functions
 {
     public static function getNCount($userid) {
         $conne = new Mysql();

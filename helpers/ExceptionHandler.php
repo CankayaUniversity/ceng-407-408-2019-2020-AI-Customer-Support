@@ -1,7 +1,7 @@
 <?php 
 
 /**
- * Class HomeController
+ * Class ExceptionHandler
  * @author Arınç Alp Eren
  * @mail arinc.alp.98@gmail.com
  * @date 21.02.2020

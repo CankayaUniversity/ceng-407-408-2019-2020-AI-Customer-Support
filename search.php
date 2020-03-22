@@ -1,5 +1,5 @@
 <?php
-include 'helpers/homeController.php';
+include 'helpers/Functions.php';
     if ($_REQUEST['term']) { 
         $conne = new Mysql();
         $conn = $conne->dbConnect();
