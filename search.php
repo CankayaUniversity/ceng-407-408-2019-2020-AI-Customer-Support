@@ -3,7 +3,7 @@ include 'helpers/Functions.php';
     if ($_REQUEST['term']) { 
         $conne = new Mysql();
         $conn = $conne->dbConnect();
-        $term = $_REQUEST['term']; 
+        $term = mysql_escape_string($_REQUEST['term']); 
         $query = $conn->query("SELECT * FROM questions WHERE q_title LIKE '%".$term."%' LIMIT 4;",PDO::FETCH_ASSOC);
         $rowCount = $conne->selectRowCount("SELECT * FROM questions WHERE q_title LIKE '%".$term."%';");
         $result=$query->fetchAll();
