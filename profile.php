@@ -13,24 +13,40 @@ if (isset($_POST['Username_']) && $_POST['Username_'] != '') {
     $username = $_POST['Username_'];
     $query = $conn->query("UPDATE users SET username='$username' WHERE user_id=$id", PDO::FETCH_ASSOC);
     $query->setFetchMode(PDO::FETCH_ASSOC);
+    echo'<div class="alert alert-success">';
+    echo'<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>';
+    echo'<center><span><strong>Notice: </strong> Username has been changed to '.$_POST['Username_'].'.</span></center>';
+    echo'</div>';
 }
 
 if (isset($_POST['last_name']) && $_POST['last_name'] != '') {
     $lastname = $_POST['last_name'];
     $query = $conn->query("UPDATE users SET surname='$lastname' WHERE user_id=$id", PDO::FETCH_ASSOC);
     $query->setFetchMode(PDO::FETCH_ASSOC);
+    echo'<div class="alert alert-success">';
+    echo'<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>';
+    echo'<center><span><strong>Notice: </strong> Last name has been changed to '.$_POST['last_name'].'.</span></center>';
+    echo'</div>';
 }
 
 if (isset($_POST['first_name']) && $_POST['first_name'] != '') {
     $firstname = $_POST['first_name'];
     $query = $conn->query("UPDATE users SET firstname='$firstname' WHERE user_id=$id", PDO::FETCH_ASSOC);
     $query->setFetchMode(PDO::FETCH_ASSOC);
+    echo'<div class="alert alert-success">';
+    echo'<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>';
+    echo'<center><span><strong>Notice: </strong> First name has been changed to '.$_POST['first_name'].'.</span></center>';
+    echo'</div>';
 }
 
 if (isset($_POST['email']) && $_POST['email'] != '') {
     $email = $_POST['email'];
     $query = $conn->query("UPDATE users SET email='$email' WHERE user_id=$id", PDO::FETCH_ASSOC);
     $query->setFetchMode(PDO::FETCH_ASSOC);
+    echo'<div class="alert alert-success">';
+    echo'<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>';
+    echo'<center><span><strong>Notice: </strong> E-mail name has been changed to '.$_POST['email'].'.</span></center>';
+    echo'</div>';
 }
 
 if (isset($_POST['Password_']) && $_POST['Password_'] != '') {
@@ -45,6 +61,10 @@ if (isset($_POST['Password_']) && $_POST['Password_'] != '') {
         $hashPasswordnew = password_hash($Password_1, PASSWORD_BCRYPT, $options);
         $query = $conn->query("UPDATE users SET password_='$hashPasswordnew' WHERE user_id=$id", PDO::FETCH_ASSOC);
         $query->setFetchMode(PDO::FETCH_ASSOC);
+        echo'<div class="alert alert-success">';
+        echo'<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>';
+        echo'<center><span><strong>Notice: </strong> Password has been successfully changed.</span></center>';
+        echo'</div>';
     } else if ($Password_1 != $Password_2) {
         ?><script>alert("Your new passwords do not match");</script><?php
 } else if (password_verify($userpass, $Password_) == false) {
@@ -201,7 +221,7 @@ if (isset($_POST["submit"])) {
                                                 <i class="fa fa-plus-circle" aria-hidden="true" style="color:#43A047"></i>
                                                 <span style="color:#43A047">Save</span>
                                             </button>
-                                        </div>                        
+                                        </div>                      
                                     </div><hr> 
                                 </div>                       
                                 <div class="form-group">
