@@ -11,8 +11,11 @@ if ($_SESSION["user_Username"] == null) {
 
 if (isset($_POST['Username_']) && $_POST['Username_'] != '') {
     $username = $_POST['Username_'];
-    $query = $conn->query("UPDATE users SET username='$username' WHERE user_id=$id", PDO::FETCH_ASSOC);
-    $query->setFetchMode(PDO::FETCH_ASSOC);
+    $query = $conn->prepare("UPDATE users SET username=:username WHERE user_id=:id");
+    $query->execute([
+        ':username' =>  $username,
+        ':id' =>  $id
+    ]);
     echo'<div class="alert alert-success">';
     echo'<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>';
     echo'<center><span><strong>Notice: </strong> Username has been changed to '.$_POST['Username_'].'.</span></center>';
@@ -21,8 +24,11 @@ if (isset($_POST['Username_']) && $_POST['Username_'] != '') {
 
 if (isset($_POST['last_name']) && $_POST['last_name'] != '') {
     $lastname = $_POST['last_name'];
-    $query = $conn->query("UPDATE users SET surname='$lastname' WHERE user_id=$id", PDO::FETCH_ASSOC);
-    $query->setFetchMode(PDO::FETCH_ASSOC);
+    $query = $conn->prepare("UPDATE users SET surname=:lastname WHERE user_id=:id");
+    $query->execute([
+        ':lastname' =>  $lastname,
+        ':id' =>  $id
+    ]);
     echo'<div class="alert alert-success">';
     echo'<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>';
     echo'<center><span><strong>Notice: </strong> Last name has been changed to '.$_POST['last_name'].'.</span></center>';
@@ -31,8 +37,11 @@ if (isset($_POST['last_name']) && $_POST['last_name'] != '') {
 
 if (isset($_POST['first_name']) && $_POST['first_name'] != '') {
     $firstname = $_POST['first_name'];
-    $query = $conn->query("UPDATE users SET firstname='$firstname' WHERE user_id=$id", PDO::FETCH_ASSOC);
-    $query->setFetchMode(PDO::FETCH_ASSOC);
+    $query = $conn->prepare("UPDATE users SET firstname=:firstname WHERE user_id=:id");
+    $query->execute([
+        ':firstname' =>  $firstname,
+        ':id' =>  $id
+    ]);
     echo'<div class="alert alert-success">';
     echo'<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>';
     echo'<center><span><strong>Notice: </strong> First name has been changed to '.$_POST['first_name'].'.</span></center>';
@@ -41,8 +50,11 @@ if (isset($_POST['first_name']) && $_POST['first_name'] != '') {
 
 if (isset($_POST['email']) && $_POST['email'] != '') {
     $email = $_POST['email'];
-    $query = $conn->query("UPDATE users SET email='$email' WHERE user_id=$id", PDO::FETCH_ASSOC);
-    $query->setFetchMode(PDO::FETCH_ASSOC);
+    $query = $conn->prepare("UPDATE users SET email=:email WHERE user_id=:id");
+    $query->execute([
+        ':email' =>  $email,
+        ':id' =>  $id
+    ]);
     echo'<div class="alert alert-success">';
     echo'<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>';
     echo'<center><span><strong>Notice: </strong> E-mail name has been changed to '.$_POST['email'].'.</span></center>';
