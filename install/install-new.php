@@ -8,21 +8,52 @@
 <div class="container">
     <div class="stepwizard">
         <div class="stepwizard-row setup-panel">
-            <div class="stepwizard-step col-xs-3"> 
+            <div class="stepwizard-step col-xs-6"> 
                 <a href="#step-1" type="button" class="btn btn-success btn-circle">1</a>
                 <p><small>Server Settings</small></p>
             </div>
-            <div class="stepwizard-step col-xs-3"> 
+            <div class="stepwizard-step col-xs-6"> 
                 <a href="#step-2" type="button" class="btn btn-default btn-circle" disabled="disabled">2</a>
                 <p><small>General Settings</small></p>
             </div>
+            <!--
             <div class="stepwizard-step col-xs-3"> 
                 <a href="#step-3" type="button" class="btn btn-default btn-circle" disabled="disabled">3</a>
                 <p><small>Admin Settings</small></p>
-            </div>
+            </div> 
+            -->
         </div>
     </div>
     <form role="form">
+
+        <div class="panel panel-primary setup-content" id="step-1">
+            <div class="panel-heading">
+                <h3 class="panel-title">Server Settings</h3>
+            </div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <label class="control-label">Servername</label>
+                    <input maxlength="200" type="text" required="required" id="Servername" class="form-control" placeholder="Enter Servername" />
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Username</label>
+                    <input maxlength="200" type="text" required="required" id="Username" class="form-control" placeholder="Enter Username" />
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Password</label>
+                    <input maxlength="200" type="password" required="required" id="Password" class="form-control" placeholder="Enter Password" />
+                </div>
+                <div class="form-group">
+                    <label class="control-label">DB Name</label>
+                    <input maxlength="200" type="text" required="required" id="DB_Name" class="form-control" placeholder="Enter DB Name" />
+                </div>
+                <input type="checkbox" name="ResetDB"/> Reset Database
+                <br>
+                <input type="checkbox" name="IgnoreINS"/> Ignore Insertions
+                <button class="btn btn-primary nextBtn pull-right" id ="saveservedbutton" onclick="saveServerSettings('none')" type="button">Next</button>
+            </div>
+        </div>
+
         <div class="panel panel-primary setup-content" id="step-2">
             <div class="panel-heading">
                 <h3 class="panel-title">General Settings</h3>
@@ -48,39 +79,11 @@
                     <label class="control-label">E-mail address</label>
                     <input maxlength="100" type="text" required="required" class="form-control" id="siteEmail" placeholder="Enter E-mail" />
                 </div>
-                <button class="btn btn-primary nextBtn pull-right" type="button" onclick="saveGeneralSettings()">Next</button>
+                <button class="btn btn-primary pull-right" type="submit" onclick="saveGeneralSettings()">Next</button>
             </div>
         </div>
         
-        <div class="panel panel-primary setup-content" id="step-1">
-            <div class="panel-heading">
-                <h3 class="panel-title">Server Settings</h3>
-            </div>
-            <div class="panel-body">
-                <div class="form-group">
-                    <label class="control-label">Servername</label>
-                    <input maxlength="200" type="text" required="required" id="Servername" class="form-control" placeholder="Enter Servername" />
-                </div>
-                <div class="form-group">
-                    <label class="control-label">Username</label>
-                    <input maxlength="200" type="text" required="required" id="Username" class="form-control" placeholder="Enter Username" />
-                </div>
-                <div class="form-group">
-                    <label class="control-label">Password</label>
-                    <input maxlength="200" type="password" required="required" id="Password" class="form-control" placeholder="Enter Password" />
-                </div>
-                <div class="form-group">
-                    <label class="control-label">DB Name</label>
-                    <input maxlength="200" type="text" required="required" id="DB_Name" class="form-control" placeholder="Enter DB Name" />
-                </div>
-                <input type="checkbox" name="ResetDB"/> Reset Database
-                <br>
-                <input type="checkbox" name="IgnoreINS"/> Ignore Insertions
-                <button class="btn btn-primary nextBtn pull-right" id ="saveservedbutton" onclick="saveServerSettings(checkbox)" type="button">Next</button>
-                
-            </div>
-        </div>
-        
+        <!-- 
         <div class="panel panel-primary setup-content" id="step-3">
             <div class="panel-heading">
                 <h3 class="panel-title">Admin Settings</h3>
@@ -108,7 +111,8 @@
                 </div>
                 <button class="btn btn-success pull-right" onclick="saveAdminSettings()" type="submit">Finish</button>
             </div>
-        </div>
+        </div> 
+        -->
     </form>
     <a href="../admin/index.php">Go back to admin panel</a>
 </div>
@@ -137,7 +141,6 @@
         var Password = $("#Password").val();
         var DB_Name = $("#DB_Name").val();
         var action = "ServerSettings";
-        console.log(checkbox);
         $.ajax({
             url: "/install/insActions.php",
             method: "POST",

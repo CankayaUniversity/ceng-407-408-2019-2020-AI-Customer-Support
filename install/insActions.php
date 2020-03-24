@@ -143,19 +143,27 @@ if (isset($getAction)) {
 
         $Connect->freeRun($sql);
 
-        if($checkbox == "ignore"){
-            $sql = "INSERT INTO users(firstname,surname,email,username,password_,is_verified,is_admin,image_link)
-            VALUES ('a','a','a@a.com','a','$2y$04$39Qbmj9YV04JXKBzWloixu4FIU37OwD3w7EAwICxNr6EZLMK6Wdky',1,1,'images/avatar.png')";
-            $Connect->freeRun($sql);
-        } else {
+        $sql = "CREATE TABLE site_settings (
+            id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+            slogan varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+            system_address varchar(1000) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+            site_address varchar(1000) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+            mail_address varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+            site_title varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL
+            );";
+
+        $Connect->freeRun($sql);
+
+        if($checkbox != "ignore"){
             $sql = "INSERT INTO users(firstname,surname,email,username,password_,is_verified,is_admin,image_link)
             VALUES ('Arınç Alp','Eren','arinc@arinc.com','arinc','$2y$04$39Qbmj9YV04JXKBzWloixu4FIU37OwD3w7EAwICxNr6EZLMK6Wdky',0,0,'images/avatar.png'),
             ('Atakan','Demircioğlu','atakan@atakan.com','atakan','$2y$04$39Qbmj9YV04JXKBzWloixu4FIU37OwD3w7EAwICxNr6EZLMK6Wdky',0,0,'images/avatar.png'),
             ('Alperen','Sarınay','alperen@alperen.com','alperen','$2y$04$39Qbmj9YV04JXKBzWloixu4FIU37OwD3w7EAwICxNr6EZLMK6Wdky',0,0,'images/avatar.png'),
-            ('Cavid','Aydın','cavid@cavid.com','cavid','cavid',0,0,'images/avatar.png'),
+            ('Cavid','Aydın','cavid@cavid.com','cavid','$2y$04$39Qbmj9YV04JXKBzWloixu4FIU37OwD3w7EAwICxNr6EZLMK6Wdky',0,0,'images/avatar.png'),
             ('a','a','a@a.com','a','$2y$04$39Qbmj9YV04JXKBzWloixu4FIU37OwD3w7EAwICxNr6EZLMK6Wdky',0,0,'images/avatar.png'),
             ('b','b','b@b.com','b','$2y$04$39Qbmj9YV04JXKBzWloixu4FIU37OwD3w7EAwICxNr6EZLMK6Wdky',1,0,'images/avatar.png'),
-            ('c','c','c@c.com','c','$2y$04$39Qbmj9YV04JXKBzWloixu4FIU37OwD3w7EAwICxNr6EZLMK6Wdky',0,1,'images/avatar.png');";
+            ('c','c','c@c.com','c','$2y$04$39Qbmj9YV04JXKBzWloixu4FIU37OwD3w7EAwICxNr6EZLMK6Wdky',0,1,'images/avatar.png'),
+            ('AutoReply','AutoReply','AutoReply@AutoReply.com','AutoReply','$2y$04$39Qbmj9YV04JXKBzWloixu4FIU37OwD3w7EAwICxNr6EZLMK6Wdky',1,1,'images/avatar.png');";
             $Connect->freeRun($sql);
     
             $sql = "INSERT INTO questions(q_title, q_description, q_tags, q_author, title_meta, description_meta, keywords_meta, slug) VALUES
@@ -202,43 +210,34 @@ if (isset($getAction)) {
         $sql = "use $DB_Name";
         $Connect->freeRun($sql);
 
-        $sql = "CREATE TABLE IF NOT EXISTS site_settings (
-            id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-            slogan varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-            system_address varchar(1000) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-            site_address varchar(1000) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-            mail_address varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL
-            );";
-        $Connect->freeRun($sql);
-
-        $sql = "INSERT INTO site_settings(slogan, system_address, site_address, mail_address) VALUES
-        ('$siteSlogan','$systemAddress','$siteAddress','$siteEmail')";
+        $sql = "INSERT INTO site_settings(slogan, system_address, site_address, mail_address, site_title) VALUES
+        ('$siteSlogan','$systemAddress','$siteAddress','$siteEmail','$siteTitle')";
         $Connect->freeRun($sql);
 
         echo "Site settings created and registered successfully.</br> ";
     }
-    if ($getAction == 'AdminSettings') {
-        $Servername = $_POST["Servername"];
-        $Username = $_POST["Username"];
-        $Password = $_POST["Password"];
-        $DB_Name = $_POST["DB_Name"];
-        $AdminUsername = $_POST["AdminUsername"];
-        $AdminPassword = $_POST["AdminPassword"];
-        $AdminFirstName = $_POST["AdminFirstName"];
-        $AdminSurname = $_POST["AdminSurname"];
-        $AdminEmail = $_POST["AdminEmail"];
-        $options = array("cost" => 4);
-        $hashPassword = password_hash($AdminPassword, PASSWORD_BCRYPT, $options);
+    // if ($getAction == 'AdminSettings') {
+    //     $Servername = $_POST["Servername"];
+    //     $Username = $_POST["Username"];
+    //     $Password = $_POST["Password"];
+    //     $DB_Name = $_POST["DB_Name"];
+    //     $AdminUsername = $_POST["AdminUsername"];
+    //     $AdminPassword = $_POST["AdminPassword"];
+    //     $AdminFirstName = $_POST["AdminFirstName"];
+    //     $AdminSurname = $_POST["AdminSurname"];
+    //     $AdminEmail = $_POST["AdminEmail"];
+    //     $options = array("cost" => 4);
+    //     $hashPassword = password_hash($AdminPassword, PASSWORD_BCRYPT, $options);
 
-        $Connection = $Connect->dbConnectExternal($Servername, $Username, $Password);
+    //     $Connection = $Connect->dbConnectExternal($Servername, $Username, $Password);
 
-        $sql = "use $DB_Name";
-        $Connect->freeRun($sql);
+    //     $sql = "use $DB_Name";
+    //     $Connect->freeRun($sql);
 
-        $sql = "INSERT INTO users(firstname,surname,email,username,password_,is_verified,is_admin)
-        VALUES ('$AdminFirstName','$AdminSurname','$AdminEmail','$AdminUsername','$hashPassword',1,1)";
-        $Connect->freeRun($sql);
-    }
+    //     $sql = "INSERT INTO users(firstname,surname,email,username,password_,is_verified,is_admin,image_link)
+    //     VALUES ('$AdminFirstName','$AdminSurname','$AdminEmail','$AdminUsername','$hashPassword',1,1,'images/avatar.png')";
+    //     $Connect->freeRun($sql);
+    // }
 } else {
     echo "No action!";
 }

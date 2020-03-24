@@ -81,39 +81,39 @@ function saveGeneralSettings() {
   });
 }
 
-function saveAdminSettings() {
-  var AdminUsername = $("#AdminUsername").val();
-  var AdminPassword = $("#AdminPassword").val();
-  var AdminFirstName = $("#AdminFirstName").val();
-  var AdminSurname = $("#AdminSurname").val();
-  var AdminEmail = $("#AdminEmail").val();
-  var Servername = $("#Servername").val();
-  var Username = $("#Username").val();
-  var Password = $("#Password").val();
-  var DB_Name = $("#DB_Name").val();
-  var action = "AdminSettings";
+// function saveAdminSettings() {
+//   var AdminUsername = $("#AdminUsername").val();
+//   var AdminPassword = $("#AdminPassword").val();
+//   var AdminFirstName = $("#AdminFirstName").val();
+//   var AdminSurname = $("#AdminSurname").val();
+//   var AdminEmail = $("#AdminEmail").val();
+//   var Servername = $("#Servername").val();
+//   var Username = $("#Username").val();
+//   var Password = $("#Password").val();
+//   var DB_Name = $("#DB_Name").val();
+//   var action = "AdminSettings";
 
-  $.ajax({
-    url: "/install/insActions.php",
-    method: "POST",
-    dataType: "JSON",
-    data: {
-      action: action,
-      AdminUsername: AdminUsername,
-      AdminPassword: AdminPassword,
-      AdminFirstName: AdminFirstName,
-      AdminSurname: AdminSurname,
-      AdminEmail: AdminEmail,
-      Servername: Servername,
-      Username: Username,
-      Password: Password,
-      DB_Name: DB_Name
-    },
-    success: function(response) {
-      if (response) {
-      } else {
-        alert("olmadı!");
-      }
-    }
-  });
-}
+//   $.ajax({
+//     url: "/install/insActions.php",
+//     method: "POST",
+//     dataType: "JSON",
+//     data: {
+//       action: action,
+//       AdminUsername: AdminUsername,
+//       AdminPassword: AdminPassword,
+//       AdminFirstName: AdminFirstName,
+//       AdminSurname: AdminSurname,
+//       AdminEmail: AdminEmail,
+//       Servername: Servername,
+//       Username: Username,
+//       Password: Password,
+//       DB_Name: DB_Name
+//     },
+//     success: function(response) {
+//       if (response) {
+//       } else {
+//         alert("olmadı!");
+//       }
+//     }
+//   });
+// }
