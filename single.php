@@ -81,9 +81,9 @@
                                                 </div>
                                                 <h6 class="time-ago">Asked on, <?php echo $q_date; ?></h6>
                                             </div>
-                                            <button type="button" class="btn btn-success btn-circle btn-lg" id="btnLike"><i class="fa fa-check"></i></button>
-                                            <button type="button" class="btn btn-danger btn-circle btn-lg" id="btnDislike"><i class="fa fa-times"></i></button>
-                                            <button type="button" class="btn btn-dark btn-circle btn-lg" id="score"></i><span id="questionScore" class="totalScore" data-value="<?php echo $q_score; ?>"><?php echo $q_score; ?></span></button>
+                                                <button type="button" class="btn btn-success btn-lg btn3d" id="btnLike"><span><i class="fa fa-check"></i></span></button>
+                                                <button type="button" class="btn btn-danger btn-lg btn3d" id="btnDislike"><span><i class="fa fa-times"></i></span></button>
+                                                <button type="button" class="btn btn-secondary btn-circle btn-lg" id="score"><i class="fa fa-star"></i><span id="questionScore" class="totalScore" data-value="<?php echo $q_score; ?>"><?php echo $q_score; ?></span></button>
                                         </div>
                                         <br>
                                         <hr>  
@@ -133,21 +133,21 @@
                                         $user_id = $_SESSION['user_UserID'];
                                         $commentStatus = $conne->selectRowCount("SELECT * FROM c_like_data WHERE c_id ='$c_id' AND user_id = '$user_id'");
                                         if($c_author == $AutoReplyID && $user_id==$q_author_id && $is_solved == -1){
-                                            echo '<button type="button" class="btn btn-success btn-circle btn-xl" onclick="helpful(this)" name="'.$c_id.'">Helpful</button>';
+                                            echo '<button type="button" class="btn btn-success btn-lg btn3d-Reply" onclick="helpful(this)" name="'.$c_id.'"><span>Helpful</span></button>';
                                             echo ' ';
-                                            echo '<button type="button" class="btn btn-danger btn-circle btn-xl" onclick="not_helpful(this)" name="'.$c_id.'">Not Helpful</button>';
+                                            echo '<button type="button" class="btn btn-danger btn-lg btn3d-Reply"onclick="not_helpful(this)" name="'.$c_id.'"><span> Not Helpful</span></button>';
                                         }else if($commentStatus > 0){
-                                            echo '<button type="button" class="btn btn-success btn-circle btn-lg" disabled="disabled"><i class="fa fa-check"></i></button>';
+                                            echo '<button type="button" class="btn btn-success btn-lg btn3d" id="btnLike" disabled="disabled"><span><i class="fa fa-check"></i></span></button>';
                                             echo ' ';
-                                            echo '<button type="button" class="btn btn-danger btn-circle btn-lg" disabled="disabled"><i class="fa fa-times"></i></button>';
+                                            echo '<button type="button" class="btn btn-danger btn-lg btn3d" id="btnDislike" disabled="disabled"><span><i class="fa fa-times"></i></span></button>';
                                             echo ' ';
-                                            echo '<button type="button" class="btn btn-dark btn-circle btn-lg" id="score"><i class="fa fa-star"></i></i><span id="c_score_'.$c_id.'" class="totalScore" data-value="'.$c_score.'">'.$c_score.'</span></button>';
+                                            echo '<button type="button" class="btn btn-secondary btn-circle btn-lg" id="score"><i class="fa fa-star"></i></i><span id="c_score_'.$c_id.'" class="totalScore" data-value="'.$c_score.'">'.$c_score.'</span></button>';
                                         }else {
-                                            echo '<button type="button"class="btn btn-success btn-circle btn-lg" onclick="likeComment(this)" name="'.$c_id.'" id="c_btnLike_'.$c_id.'"><i class="fa fa-check"></i></button>';
+                                            echo '<button type="button" class="btn btn-success btn-lg btn3d" onclick="likeComment(this)" name="'.$c_id.'" id="c_btnLike_'.$c_id.'"><span><i class="fa fa-check"></i></span></button>';
                                             echo ' ';
-                                            echo '<button type="button" class="btn btn-danger btn-circle btn-lg" onclick="dislikeComment(this)" name="'.$c_id.'" id="c_btndislike_'.$c_id.'"><i class="fa fa-times"></i></button>';
+                                            echo '<button type="button" class="btn btn-danger btn-lg btn3d" onclick="dislikeComment(this)" name="'.$c_id.'" id="c_btndislike_'.$c_id.'"><span><i class="fa fa-times"></i></span></button>';
                                             echo ' ';
-                                            echo '<button type="button" class="btn btn-dark btn-circle btn-lg" id="c_score" ><i class="fa fa-star"></i><span id="c_score_'.$c_id.'" class="totalScore" data-value="'.$c_score.'">'.$c_score.'</span></button>';
+                                            echo '<button type="button" class="btn btn-secondary btn-circle btn-lg" id="c_score" ><i class="fa fa-star"></i><span id="c_score_'.$c_id.'" class="totalScore" data-value="'.$c_score.'">'.$c_score.'</span></button>';
                                         }
                                     }else{
                                         $commentStatus = 1;
@@ -164,6 +164,7 @@
                                     </div>
                                 </div>
                             </div>
+                            <br>
                             <?php endif; ?>
                             <?php 
                             if($botflag == 1){
@@ -188,15 +189,15 @@
                                             $user_id = $_SESSION['user_UserID'];
                                             $commentStatus = $conne->selectRowCount("SELECT * FROM c_like_data WHERE c_id ='$c_id' AND user_id = '$user_id'");
                                             if($commentStatus > 0){
-                                                echo '<button type="button" class="btn btn-success btn-circle btn-lg" disabled="disabled"><i class="fa fa-check"></i></button>';
+                                                echo '<button type="button" class="btn btn-success btn-lg btn3d" disabled="disabled"><span><i class="fa fa-check"></i></span></button>';
                                                 echo ' ';
-                                                echo '<button type="button" class="btn btn-danger btn-circle btn-lg" disabled="disabled"><i class="fa fa-times"></i></button>';
+                                                echo '<button type="button" class="btn btn-danger btn-lg btn3d"  disabled="disabled"><span><i class="fa fa-times"></i></span></button>';
                                                 echo ' ';
-                                                echo '<button type="button" class="btn btn-dark btn-circle btn-lg" id="score"><i class="fa fa-star"></i></i><span id="c_score_'.$c_id.'" class="totalScore" data-value="'.$c_score.'">'.$c_score.'</span></button>';
+                                                echo '<button type="button" class="btn btn-secondary btn-circle btn-lg" id="score"><i class="fa fa-star"></i></i><span id="c_score_'.$c_id.'" class="totalScore" data-value="'.$c_score.'">'.$c_score.'</span></button>';
                                             }else{
-                                                echo '<button type="button"class="btn btn-success btn-circle btn-lg" onclick="likeComment(this)" name="'.$c_id.'" id="c_btnLike_'.$c_id.'"><i class="fa fa-check"></i></button>';
+                                                echo '<button type="button" class="btn btn-success btn-lg btn3d" onclick="likeComment(this)" name="'.$c_id.'" id="c_btnLike_'.$c_id.'"><span><i class="fa fa-check"></i></span></button>';
                                                 echo ' ';
-                                                echo '<button type="button" class="btn btn-danger btn-circle btn-lg" onclick="dislikeComment(this)" name="'.$c_id.'" id="c_btndislike_'.$c_id.'"><i class="fa fa-times"></i></button>';
+                                                echo '<button type="button" class="btn btn-danger btn-lg btn3d" onclick="dislikeComment(this)" name="'.$c_id.'" id="c_btndislike_'.$c_id.'"><span><i class="fa fa-times"></i></span></button>';
                                                 echo ' ';
                                                 echo '<button type="button" class="btn btn-dark btn-circle btn-lg" id="c_score" ><i class="fa fa-star"></i><span id="c_score_'.$c_id.'" class="totalScore" data-value="'.$c_score.'">'.$c_score.'</span></button>';
                                             }

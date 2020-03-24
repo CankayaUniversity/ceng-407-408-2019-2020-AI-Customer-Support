@@ -177,7 +177,11 @@ if (isset($_POST["submit"])) {
                                             <label for="fileToUpload" style=" margin-top: 7px; ">Choose Photo</label>
                                         </button>
                                         <div class="or"></div>
-                                        <input type="submit" value="Upload Photo" class="btn btn-success" name="submit">
+                                        <button type="button" class="btn btn-success">
+                                            <input style="display:none;" type="submit" class="btn btn-success" id="fileToUpload2" name="submit">
+                                            <label for="fileToUpload2" style=" margin-top: 7px; ">Upload Photo</label>
+                                        </button>
+                                        
                                     </div>  
                                 </div>    
                             </div>    

@@ -2072,8 +2072,8 @@ a.forum-item-title:hover {
 .btn-group-or .or {
   position: relative;
   width: 0.3rem;
-  height: 2.5rem;
-  z-index: 3;
+  height: 3.9rem;
+  z-index: 5;
 }
 
 .btn-group-or .or:before {
@@ -2084,11 +2084,11 @@ a.forum-item-title:hover {
   top: 50%;
   left: 50%;
   background-color: #fff;
-  margin-top: -1rem;
-  margin-left: -1rem;
-  width: 2rem;
-  height: 2rem;
-  line-height: 1.8rem;
+  margin-top: -1.2rem;
+  margin-left: -1.2rem;
+  width: 2.3rem;
+  height: 2.3rem;
+  line-height: 2.3rem;
   color: #868e96;
 }
 
@@ -2154,12 +2154,12 @@ a.forum-item-title:hover {
 
 .btn-circle.btn-xl {
   width: 90px !important;
-  height: 50px !important;
+  height: 40px !important;
   text-align: center !important;
   padding: 10px 0 !important;
   font-size: 15px !important;
   line-height: 1.428571429 !important;
-  border-radius: 35px !important;
+  border-radius: 5px !important;
 }
 
 /* single page - solved button */
@@ -2431,4 +2431,140 @@ a.forum-item-title:hover {
   border-radius:50%;
   -webkit-animation: spin .8s linear infinite;
   animation: spin .8s linear infinite;
+}
+
+/* butoon vote*/
+
+.btn3d {
+  position: relative !important;
+  top: -1px !important;
+  border:0 !important;
+  transition: all 40ms linear !important;
+  margin-top:10px !important;
+  margin-bottom:10px !important;
+  margin-left:2px !important;
+  margin-right:2px !important;
+  border-radius:50% !important;
+  width:50px !important;
+  height:40px !important;
+}
+.btn3d:active:focus,
+.btn3d:focus:hover,
+.btn3d:focus {
+  -moz-outline-style:none !important;
+  outline:medium none !important;
+}
+.btn3d:active, .btn3d.active {
+  top:2px !important;
+}
+.btn3d.btn-white {
+  color: #666666 !important;
+  box-shadow:0 0 0 1px #ebebeb inset, 0 0 0 2px rgba(255,255,255,0.10) inset, 0 8px 0 0 #f5f5f5, 0 8px 8px 1px rgba(0,0,0,.2) !important;
+  background-color:#fff !important;
+}
+.btn3d.btn-white:active, .btn3d.btn-white.active {
+  color: #666666 !important;
+  box-shadow:0 0 0 1px #ebebeb inset, 0 0 0 1px rgba(255,255,255,0.15) inset, 0 1px 3px 1px rgba(0,0,0,.1) !important;
+  background-color:#fff !important;
+}
+.btn3d.btn-default {
+  color: #666666 !important;
+  box-shadow:0 0 0 1px #ebebeb inset, 0 0 0 2px rgba(255,255,255,0.10) inset, 0 8px 0 0 #BEBEBE, 0 8px 8px 1px rgba(0,0,0,.2) !important;
+  background-color:#f9f9f9 !important;
+}
+.btn3d.btn-default:active, .btn3d.btn-default.active {
+  color: #666666 !important;
+  box-shadow:0 0 0 1px #ebebeb inset, 0 0 0 1px rgba(255,255,255,0.15) inset, 0 1px 3px 1px rgba(0,0,0,.1) !important;
+  background-color:#f9f9f9 !important;
+}
+.btn3d.btn-primary {
+  box-shadow:0 0 0 1px #417fbd inset, 0 0 0 2px rgba(255,255,255,0.15) inset, 0 8px 0 0 #4D5BBE, 0 8px 8px 1px rgba(0,0,0,0.5) !important;
+  background-color:#4274D7 !important;
+}
+.btn3d.btn-primary:active, .btn3d.btn-primary.active {
+  box-shadow:0 0 0 1px #417fbd inset, 0 0 0 1px rgba(255,255,255,0.15) inset, 0 1px 3px 1px rgba(0,0,0,0.3) !important;
+  background-color:#4274D7 !important;
+}
+.btn3d.btn-success {
+  box-shadow:0 0 0 1px #28a745 inset, 0 0 0 2px rgba(255,255,255,0.15) inset, 0 8px 0 0 #266434, 0 8px 8px 1px rgba(0,0,0,0.5) !important;
+  background-color:#28a745 !important;
+}
+.btn3d.btn-success:active, .btn3d.btn-success.active {
+  box-shadow:0 0 0 1px #28a745 inset, 0 0 0 1px rgba(255,255,255,0.15) inset, 0 1px 3px 1px rgba(0,0,0,0.3) !important;
+  background-color: #28a745 !important;
+}
+.btn3d.btn-info {
+  box-shadow:0 0 0 1px #00a5c3 inset, 0 0 0 2px rgba(255,255,255,0.15) inset, 0 8px 0 0 #348FD2, 0 8px 8px 1px rgba(0,0,0,0.5);
+  background-color:#39B3D7;
+}
+.btn3d.btn-info:active, .btn3d.btn-info.active {
+  box-shadow:0 0 0 1px #00a5c3 inset, 0 0 0 1px rgba(255,255,255,0.15) inset, 0 1px 3px 1px rgba(0,0,0,0.3);
+  background-color: #39B3D7;
+}
+.btn3d.btn-warning {
+  box-shadow:0 0 0 1px #d79a47 inset, 0 0 0 2px rgba(255,255,255,0.15) inset, 0 8px 0 0 #D79A34, 0 8px 8px 1px rgba(0,0,0,0.5);
+  background-color:#FEAF20;
+}
+.btn3d.btn-warning:active, .btn3d.btn-warning.active {
+  box-shadow:0 0 0 1px #d79a47 inset, 0 0 0 1px rgba(255,255,255,0.15) inset, 0 1px 3px 1px rgba(0,0,0,0.3);
+  background-color: #FEAF20;
+}
+.btn3d.btn-danger {
+  box-shadow:0 0 0 1px #dc3545 inset, 0 0 0 2px rgba(255,255,255,0.15) inset, 0 8px 0 0 #AA0000, 0 8px 8px 1px rgba(0,0,0,0.5) !important;
+  background-color:#dc3545 !important;
+}
+.btn3d.btn-danger:active, .btn3d.btn-danger.active {
+  box-shadow:0 0 0 1px #dc3545 inset, 0 0 0 1px rgba(255,255,255,0.15) inset, 0 1px 3px 1px rgba(0,0,0,0.3) !important;
+  background-color: #dc3545 !important;
+}
+.btn3d.btn-magick {
+  color: #fff;
+  box-shadow:0 0 0 1px #9a00cd inset, 0 0 0 2px rgba(255,255,255,0.15) inset, 0 8px 0 0 #9823d5, 0 8px 8px 1px rgba(0,0,0,0.5);
+  background-color:#bb39d7;
+}
+.btn3d.btn-magick:active, .btn3d.btn-magick.active {
+  box-shadow:0 0 0 1px #9a00cd inset, 0 0 0 1px rgba(255,255,255,0.15) inset, 0 1px 3px 1px rgba(0,0,0,0.3);
+  background-color: #bb39d7;
+}
+
+/* button helpful & not helpful*/
+
+.btn3d-reply{
+  position: relative !important;
+  top: -1px !important;
+  border:0 !important;
+  transition: all 40ms linear !important;
+  margin-top:10px !important;
+  margin-bottom:10px !important;
+  margin-left:2px !important;
+  margin-right:2px !important;
+  border-radius:5% !important;
+  width:97px !important;
+  height:40px !important;
+  font-size: 13px !important;
+}
+.btn3d-reply-help:active:focus,
+.btn3d-reply:focus:hover,
+.btn3d-reply:focus {
+  -moz-outline-style:none !important;
+  outline:medium none !important;
+}
+.btn3d-reply:active, .btn3d-reply.active {
+  top:2px !important;
+}
+.btn3d-reply.btn-success {
+  box-shadow:0 0 0 1px #28a745 inset, 0 0 0 2px rgba(255,255,255,0.15) inset, 0 8px 0 0 #266434, 0 8px 8px 1px rgba(0,0,0,0.5) !important;
+  background-color:#28a745 !important;
+}
+.btn3d-reply.btn-success:active, .btn3d-reply.btn-success.active {
+  box-shadow:0 0 0 1px #28a745 inset, 0 0 0 1px rgba(255,255,255,0.15) inset, 0 1px 3px 1px rgba(0,0,0,0.3) !important;
+  background-color: #28a745 !important;
+}
+.btn3d-reply.btn-danger {
+  box-shadow:0 0 0 1px #dc3545 inset, 0 0 0 2px rgba(255,255,255,0.15) inset, 0 8px 0 0 #AA0000, 0 8px 8px 1px rgba(0,0,0,0.5) !important;
+  background-color:#dc3545 !important;
+}
+.btn3d-reply.btn-danger:active, .btn3d-reply.btn-danger.active {
+  box-shadow:0 0 0 1px #dc3545 inset, 0 0 0 1px rgba(255,255,255,0.15) inset, 0 1px 3px 1px rgba(0,0,0,0.3) !important;
+  background-color: #dc3545 !important;
 }
