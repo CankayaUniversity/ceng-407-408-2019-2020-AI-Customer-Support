@@ -73,7 +73,11 @@
                     <label class="control-label">DB Name</label>
                     <input maxlength="200" type="text" required="required" id="DB_Name" class="form-control" placeholder="Enter DB Name" />
                 </div>
-                <button class="btn btn-primary nextBtn pull-right" onclick="saveServerSettings()" type="button">Next</button>
+                <input type="checkbox" name="ResetDB"/> Reset Database
+                <br>
+                <input type="checkbox" name="IgnoreINS"/> Ignore Insertions
+                <button class="btn btn-primary nextBtn pull-right" id ="saveservedbutton" onclick="saveServerSettings(checkbox)" type="button">Next</button>
+                
             </div>
         </div>
         
@@ -103,9 +107,59 @@
                     <input maxlength="200" type="text" required="required" id="AdminEmail" class="form-control" placeholder="Enter Email" />
                 </div>
                 <button class="btn btn-success pull-right" onclick="saveAdminSettings()" type="submit">Finish</button>
-                <!-- <button onclick="saveAdminSettings()" type="submit">Finish</button> -->
             </div>
         </div>
     </form>
     <a href="../admin/index.php">Go back to admin panel</a>
 </div>
+
+<script>
+    $("input[name=ResetDB]").click(function(){
+        if($("input[name=ResetDB]").is(":checked")){
+            $("#saveservedbutton").attr("onclick","saveServerSettings('reset')");
+            $("input[name=IgnoreINS]").prop("checked",false);
+        }else{
+            $("#saveservedbutton").attr("onclick","saveServerSettings('none')");
+        }
+    });
+    $("input[name=IgnoreINS]").click(function(){
+        if($("input[name=IgnoreINS]").is(":checked")){
+            $("#saveservedbutton").attr("onclick","saveServerSettings('ignore')");
+            $("input[name=ResetDB]").prop("checked",false);
+        }else{
+            $("#saveservedbutton").attr("onclick","saveServerSettings('none')");
+        }
+    });
+
+    function saveServerSettings(checkbox) {
+        var Servername = $("#Servername").val();
+        var Username = $("#Username").val();
+        var Password = $("#Password").val();
+        var DB_Name = $("#DB_Name").val();
+        var action = "ServerSettings";
+        console.log(checkbox);
+        $.ajax({
+            url: "/install/insActions.php",
+            method: "POST",
+            dataType: "JSON",
+            data: {
+            action: action,
+            Servername: Servername,
+            Username: Username,
+            Password: Password,
+            DB_Name: DB_Name,
+            checkbox: checkbox
+            },
+            success: function(response) {
+                alert(response);
+                if (response.ErrorCode == "ServerError") {
+                    alert(response.ErrorMessage);
+                    window.location.reload();
+                } else if (response.ErrorCode == "DBError") {
+                    alert(response.ErrorMessage);
+                    window.location.reload();
+                }
+            }
+        });
+    }
+</script>

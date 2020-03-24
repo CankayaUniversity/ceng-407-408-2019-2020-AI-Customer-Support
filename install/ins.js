@@ -81,42 +81,6 @@ function saveGeneralSettings() {
   });
 }
 
-function saveServerSettings() {
-  var Servername = $("#Servername").val();
-  var Username = $("#Username").val();
-  var Password = $("#Password").val();
-  var DB_Name = $("#DB_Name").val();
-  var action = "ServerSettings";
-  var checkbox = "none";
-
-  if ($("#ResetDB").is(":checked")) {
-    checkbox = "reset";
-  }
-
-  $.ajax({
-    url: "/install/insActions.php",
-    method: "POST",
-    dataType: "JSON",
-    data: {
-      action: action,
-      Servername: Servername,
-      Username: Username,
-      Password: Password,
-      DB_Name: DB_Name,
-      checkbox: checkbox
-    },
-    success: function(response) {
-      if (response.ErrorCode == "ServerError") {
-        alert(response.ErrorMessage);
-        window.location.reload();
-      } else if (response.ErrorCode == "DBError") {
-        alert(response.ErrorMessage);
-        window.location.reload();
-      }
-    }
-  });
-}
-
 function saveAdminSettings() {
   var AdminUsername = $("#AdminUsername").val();
   var AdminPassword = $("#AdminPassword").val();

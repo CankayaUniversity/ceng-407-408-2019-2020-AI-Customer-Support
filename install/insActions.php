@@ -143,43 +143,48 @@ if (isset($getAction)) {
 
         $Connect->freeRun($sql);
 
-        $sql = "INSERT INTO users(firstname,surname,email,username,password_,is_verified,is_admin,image_link)
-        VALUES ('Arınç Alp','Eren','arinc@arinc.com','arinc','$2y$04$39Qbmj9YV04JXKBzWloixu4FIU37OwD3w7EAwICxNr6EZLMK6Wdky',0,0,'images/avatar.png'),
-        ('Atakan','Demircioğlu','atakan@atakan.com','atakan','$2y$04$39Qbmj9YV04JXKBzWloixu4FIU37OwD3w7EAwICxNr6EZLMK6Wdky',0,0,'images/avatar.png'),
-        ('Alperen','Sarınay','alperen@alperen.com','alperen','$2y$04$39Qbmj9YV04JXKBzWloixu4FIU37OwD3w7EAwICxNr6EZLMK6Wdky',0,0,'images/avatar.png'),
-        ('Cavid','Aydın','cavid@cavid.com','cavid','cavid',0,0,'images/avatar.png'),
-        ('a','a','a@a.com','a','$2y$04$39Qbmj9YV04JXKBzWloixu4FIU37OwD3w7EAwICxNr6EZLMK6Wdky',0,0,'images/avatar.png'),
-        ('b','b','b@b.com','b','$2y$04$39Qbmj9YV04JXKBzWloixu4FIU37OwD3w7EAwICxNr6EZLMK6Wdky',1,0,'images/avatar.png'),
-        ('c','c','c@c.com','c','$2y$04$39Qbmj9YV04JXKBzWloixu4FIU37OwD3w7EAwICxNr6EZLMK6Wdky',0,1,'images/avatar.png');";
-        $Connect->freeRun($sql);
-
-        $sql = "INSERT INTO questions(q_title, q_description, q_tags, q_author, title_meta, description_meta, keywords_meta, slug) VALUES
-        ('Sample Question Title 1 ', 'Sample Question Description 1 ', 'help', 1, 'Sample Question Title 1', 'Sample Question Description 1', 'sample,question,description,1', 'sample-question-1'),
-        ('Sample Question Title 2 ', 'Sample Question Description 2 ', 'help', 2, 'Sample Question Title 2', 'Sample Question Description 2', 'sample,question,description,2', 'sample-question-2'),
-        ('Sample Question Title 3 ', 'Sample Question Description 3 ', 'help', 3, 'Sample Question Title 3', 'Sample Question Description 3', 'sample,question,description,3', 'sample-question-3');";
-        $Connect->freeRun($sql);
-
-        $sql = "INSERT INTO comments (c_description,c_author,c_post_id) VALUES
-        ('Sample Comment Description 1 ', 1, 1),
-        ('Sample Comment Description 2 ', 2, 1),
-        ('Sample Comment Description 3 ', 3, 2),
-        ('Sample Comment Description 4 ', 4, 2);";
-        $Connect->freeRun($sql);
-
-        $sql = "INSERT INTO notifications (n_description,n_author,n_post_id,n_notified_id) VALUES
-        ('Sample Notification Description 1 ', 1, 1, 2),
-        ('Sample Notification Description 2 ', 2, 1, 2),
-        ('Sample Notification Description 3 ', 3, 2, 1),
-        ('Sample Notification Description 4 ', 4, 2, 1);";
-        $Connect->freeRun($sql);
-
-        $sql = "INSERT INTO categories (cat_name,cat_description,cat_keywords,cat_slug) VALUES
-        ('Commerce', 'Support for your products', 'Commerce','commerce'),
-        ('Profile', 'Profile Support', 'Profile','profile'),
-        ('Technical Issues', 'Technical Support', 'Technical,Issues','technical-issues'),
-        ('Account', 'Private Informations', 'Account','account');";
-        $Connect->freeRun($sql);
-
+        if($checkbox == "ignore"){
+            $sql = "INSERT INTO users(firstname,surname,email,username,password_,is_verified,is_admin,image_link)
+            VALUES ('a','a','a@a.com','a','$2y$04$39Qbmj9YV04JXKBzWloixu4FIU37OwD3w7EAwICxNr6EZLMK6Wdky',1,1,'images/avatar.png')";
+            $Connect->freeRun($sql);
+        } else {
+            $sql = "INSERT INTO users(firstname,surname,email,username,password_,is_verified,is_admin,image_link)
+            VALUES ('Arınç Alp','Eren','arinc@arinc.com','arinc','$2y$04$39Qbmj9YV04JXKBzWloixu4FIU37OwD3w7EAwICxNr6EZLMK6Wdky',0,0,'images/avatar.png'),
+            ('Atakan','Demircioğlu','atakan@atakan.com','atakan','$2y$04$39Qbmj9YV04JXKBzWloixu4FIU37OwD3w7EAwICxNr6EZLMK6Wdky',0,0,'images/avatar.png'),
+            ('Alperen','Sarınay','alperen@alperen.com','alperen','$2y$04$39Qbmj9YV04JXKBzWloixu4FIU37OwD3w7EAwICxNr6EZLMK6Wdky',0,0,'images/avatar.png'),
+            ('Cavid','Aydın','cavid@cavid.com','cavid','cavid',0,0,'images/avatar.png'),
+            ('a','a','a@a.com','a','$2y$04$39Qbmj9YV04JXKBzWloixu4FIU37OwD3w7EAwICxNr6EZLMK6Wdky',0,0,'images/avatar.png'),
+            ('b','b','b@b.com','b','$2y$04$39Qbmj9YV04JXKBzWloixu4FIU37OwD3w7EAwICxNr6EZLMK6Wdky',1,0,'images/avatar.png'),
+            ('c','c','c@c.com','c','$2y$04$39Qbmj9YV04JXKBzWloixu4FIU37OwD3w7EAwICxNr6EZLMK6Wdky',0,1,'images/avatar.png');";
+            $Connect->freeRun($sql);
+    
+            $sql = "INSERT INTO questions(q_title, q_description, q_tags, q_author, title_meta, description_meta, keywords_meta, slug) VALUES
+            ('Sample Question Title 1 ', 'Sample Question Description 1 ', 'help', 1, 'Sample Question Title 1', 'Sample Question Description 1', 'sample,question,description,1', 'sample-question-1'),
+            ('Sample Question Title 2 ', 'Sample Question Description 2 ', 'help', 2, 'Sample Question Title 2', 'Sample Question Description 2', 'sample,question,description,2', 'sample-question-2'),
+            ('Sample Question Title 3 ', 'Sample Question Description 3 ', 'help', 3, 'Sample Question Title 3', 'Sample Question Description 3', 'sample,question,description,3', 'sample-question-3');";
+            $Connect->freeRun($sql);
+    
+            $sql = "INSERT INTO comments (c_description,c_author,c_post_id) VALUES
+            ('Sample Comment Description 1 ', 1, 1),
+            ('Sample Comment Description 2 ', 2, 1),
+            ('Sample Comment Description 3 ', 3, 2),
+            ('Sample Comment Description 4 ', 4, 2);";
+            $Connect->freeRun($sql);
+    
+            $sql = "INSERT INTO notifications (n_description,n_author,n_post_id,n_notified_id) VALUES
+            ('Sample Notification Description 1 ', 1, 1, 2),
+            ('Sample Notification Description 2 ', 2, 1, 2),
+            ('Sample Notification Description 3 ', 3, 2, 1),
+            ('Sample Notification Description 4 ', 4, 2, 1);";
+            $Connect->freeRun($sql);
+    
+            $sql = "INSERT INTO categories (cat_name,cat_description,cat_keywords,cat_slug) VALUES
+            ('Commerce', 'Support for your products', 'Commerce','commerce'),
+            ('Profile', 'Profile Support', 'Profile','profile'),
+            ('Technical Issues', 'Technical Support', 'Technical,Issues','technical-issues'),
+            ('Account', 'Private Informations', 'Account','account');";
+            $Connect->freeRun($sql);
+        }
     }
     if ($getAction == 'GeneralSettings') {
         $siteTitle = $_POST["siteTitle"];
