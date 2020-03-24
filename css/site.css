@@ -2557,7 +2557,7 @@ a.forum-item-title:hover {
   background-color:#28a745 !important;
 }
 .btn3d-reply.btn-success:active, .btn3d-reply.btn-success.active {
-  box-shadow:0 0 0 1px #28a745 inset, 0 0 0 1px rgba(255,255,255,0.15) inset, 0 1px 3px 1px rgba(0,0,0,0.3) !important;
+  box-shadow:0 0 0 1px #28a745(204, 83%, 45%) inset, 0 0 0 1px rgba(255,255,255,0.15) inset, 0 1px 3px 1px rgba(0,0,0,0.3) !important;
   background-color: #28a745 !important;
 }
 .btn3d-reply.btn-danger {
@@ -2567,4 +2567,30 @@ a.forum-item-title:hover {
 .btn3d-reply.btn-danger:active, .btn3d-reply.btn-danger.active {
   box-shadow:0 0 0 1px #dc3545 inset, 0 0 0 1px rgba(255,255,255,0.15) inset, 0 1px 3px 1px rgba(0,0,0,0.3) !important;
   background-color: #dc3545 !important;
+}
+
+
+
+/* Profile page chosee photo and upload modal */
+
+
+.modal {
+  text-align: center !important;
+}
+
+@media screen and (min-width: 768px) { 
+  .modal:before {
+    display: inline-block !important;
+    vertical-align: middle !important;
+    content: " " !important;
+    height: 100% !important;
+    
+  }
+}
+
+.modal-dialog {
+  display: inline-block !important;
+  text-align: left !important;
+  vertical-align: middle !important;
+  
 }

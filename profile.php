@@ -170,19 +170,36 @@ if (isset($_POST["submit"])) {
                         <div class="container">
                             <div class="row">
                                 <div class="col text-center">
-                                    <div class="btn-group btn-group-or" role="group">
-                                        <button type="button" class="btn btn-secondary">
-                                            <i class="fa fa-camera"></i>
-                                            <input style="display:none;" type="file" name="fileToUpload" id="fileToUpload"/>
-                                            <label for="fileToUpload" style=" margin-top: 7px; ">Choose Photo</label>
-                                        </button>
-                                        <div class="or"></div>
-                                        <button type="button" class="btn btn-success">
-                                            <input style="display:none;" type="submit" class="btn btn-success" id="fileToUpload2" name="submit">
-                                            <label for="fileToUpload2" style=" margin-top: 7px; ">Upload Photo</label>
-                                        </button>
-                                        
-                                    </div>  
+                                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#ChooseModal">Change your profile photo</button>
+                                    <div class="modal fade" id="ChooseModal" role="dialog">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                <h4 class="modal-title"><strong>Change your profile photo</strong></h4>
+                                                </div>
+                                                <button type="button" class="btn btn-outline-light">
+                                                    <div class="modal-body">
+                                                        <i style="color:#3897f0;"class="fa fa-camera"></i>
+                                                        <input style="display:none; color:#3897f0;" type="file" name="fileToUpload" id="fileToUpload"/>
+                                                        <label for="fileToUpload" style=" margin-top: 7px; color:#3897f0;">Choose Photo</label>
+                                                    </div>
+                                                </button>
+                                                <button type="button" class="btn btn-outline-light">
+                                                <div class="modal-body">
+                                                    <i style="color:#ed4956;" class="fa fa-cloud-upload" aria-hidden="true"></i>
+                                                    <input style="display:none;" type="submit" class="btn btn-success" id="fileToUpload2" name="submit">
+                                                    <label for="fileToUpload2" style=" margin-top: 7px; color:#ed4956;">Upload Photo</label>
+                                                    </div>
+                                                </button>
+                                                <button type="button" class="close" data-dismiss="modal">
+                                                <div class="modal-body">
+                                                    <h6>close</h6>
+                                                </div>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 </div>    
                             </div>    
                         </div> 
