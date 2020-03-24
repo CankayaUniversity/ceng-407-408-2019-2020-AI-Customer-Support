@@ -87,6 +87,11 @@ function saveServerSettings() {
   var Password = $("#Password").val();
   var DB_Name = $("#DB_Name").val();
   var action = "ServerSettings";
+  var checkbox = "none";
+
+  if ($("#ResetDB").is(":checked")) {
+    checkbox = "reset";
+  }
 
   $.ajax({
     url: "/install/insActions.php",
@@ -97,7 +102,8 @@ function saveServerSettings() {
       Servername: Servername,
       Username: Username,
       Password: Password,
-      DB_Name: DB_Name
+      DB_Name: DB_Name,
+      checkbox: checkbox
     },
     success: function(response) {
       if (response.ErrorCode == "ServerError") {
@@ -121,7 +127,6 @@ function saveAdminSettings() {
   var Username = $("#Username").val();
   var Password = $("#Password").val();
   var DB_Name = $("#DB_Name").val();
-
   var action = "AdminSettings";
 
   $.ajax({

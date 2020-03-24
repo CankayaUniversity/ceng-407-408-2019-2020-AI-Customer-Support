@@ -14,6 +14,7 @@ if (isset($getAction)) {
         $Username = $_POST["Username"];
         $Password = $_POST["Password"];
         $DB_Name = $_POST["DB_Name"];
+        $checkbox = $_POST["checkbox"];
 
         try {
             $Connection = $Connect->dbConnectExternal($Servername, $Username, $Password);
@@ -22,8 +23,10 @@ if (isset($getAction)) {
             return;
         }
 
-        $sql = "DROP DATABASE IF EXISTS $DB_Name";
-        $Connect->freeRun($sql);
+        if($checkbox == "reset"){
+            $sql = "DROP DATABASE IF EXISTS $DB_Name";
+            $Connect->freeRun($sql);
+        }
 
         $sql = "CREATE DATABASE IF NOT EXISTS $DB_Name";
         $Connect->freeRun($sql);
