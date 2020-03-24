@@ -248,13 +248,19 @@ if ($action == "loadmore") {
 }
 
 if($action == "expertReply"){
+    $query = $conne->selectFreeRun("SELECT `user_id` FROM `users` WHERE `username` = 'AutoReply'");
+    $AutoReplyID = $query[0]['user_id'];
+    $query = $conne->selectFreeRun("SELECT `q_author` FROM `questions` WHERE `q_id` = '$q_id'");
+    $qAuthor = $query[0]['q_author'];
+    echo $c_id;
     if($c_id == "noreply"){
-        $query = $conne->selectFreeRun("SELECT `user_id` FROM `users` WHERE `username` = 'AutoReply'");
-        $AutoReplyID = $query[0]['user_id'];
         $conne->freeRun("INSERT INTO `comments` (`c_description`,`c_author`,`c_post_id`) VALUES ('$answer', $AutoReplyID, $q_id);");
-        echo "Replied";
+        $conne->freeRun("INSERT INTO `notifications` (`n_description`,`n_author`,`n_post_id`, `n_notified_id`, `n_image`) VALUES ('Your question is answered by experts.','$AutoReplyID', '$q_id', '$qAuthor','/images/noti_icons/comment.png')");
+        //echo "Replied";
     }else{
         $conne->freeRun("UPDATE `comments` SET `c_description` = '$answer' WHERE `c_id` = '$c_id'");
-        echo "Updated!";
+        $conne->freeRun("INSERT INTO `notifications` (`n_description`,`n_author`,`n_post_id`, `n_notified_id`, `n_image`) VALUES ('Your question answer is updated by experts.','$AutoReplyID', '$q_id', '$qAuthor','/images/noti_icons/comment.png')");
+        //echo "Updated!";
     }
+    $conne->freeRun("UPDATE `questions` SET `is_solved` = -1 WHERE `q_id` = $q_id");
 }

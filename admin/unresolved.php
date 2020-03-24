@@ -104,7 +104,6 @@ $AllQuestions = $conne->selectAll("questions");
             method:"POST",
             data: {action:action,answer:answer,c_id:c_id,q_id:q_id},
             success:function(response){
-                console.log(response);
                 location.reload();
             }
         });
