@@ -163,4 +163,12 @@ class Functions
             }
         }
     }
+
+    public function isAdmin($session){
+        if($_SESSION["user_isAdmin"]) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

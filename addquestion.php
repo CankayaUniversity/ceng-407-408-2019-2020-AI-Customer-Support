@@ -88,8 +88,8 @@ var count = 0;
 <?php
 
 $qAuthor = $_SESSION["user_UserID"];
-$isAdmin = $_SESSION["user_isAdmin"];
-if(!$isAdmin) {
+
+if(!Functions::isAdmin()) {
     echo'<script>window.location.replace("index.php");</script>';
     die();
 }
