@@ -76,11 +76,9 @@
 </style>
 
 <script type="text/javascript">
-var loader = "<div id= 'load-screen'><div id='loading'></div></div>";
-$(function() {
-    $("body").prepend(loader);
-    $("#load-screen").delay(300).fadeOut(500, function(){
-        $(this).remove();
-    });
-});
+var loader = "<div id='cover-spin'></div>";
+  $("body").prepend(loader);
+  $("#cover-spin").delay(200).fadeOut(200, function(){
+      $(this).remove();
+  });
 </script>
