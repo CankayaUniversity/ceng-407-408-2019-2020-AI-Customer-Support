@@ -164,8 +164,8 @@ class Functions
         }
     }
 
-    public function isAdmin($session){
-        if($_SESSION["user_isAdmin"]) {
+    public function isAdmin(){
+        if(isset($_SESSION["user_isAdmin"]) && $_SESSION["user_isAdmin"]) {
             return true;
         } else {
             return false;
