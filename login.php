@@ -2,7 +2,6 @@
 include "header.php";
 if ($sUsername != null){
     echo "<script>window.location.replace('index.php');</script>";
- 
 }
 ?>
 <div class="container h-100">
@@ -45,21 +44,20 @@ if ($sUsername != null){
                             <label class="custom-control-label" for="customControlInline">Remember me</label>
                         </div>
                     </div>
-
-            
-                        <div id = "error" class="alert alert-danger"  style="display:none"> Username or password is invalid!
+                    <div id = "error" class="alert alert-danger"  style="display:none"> 
+                        Username or password is invalid!
                     </div>
-                   
-
-
-                        <div class="d-flex justify-content-center mt-3 login_container">
-                            <button name="LoginSystem" type="submit" class="btn login_btn">Login</button>
-                        </div>
+                    <div class="d-flex justify-content-center mt-3 login_container">
+                        <button name="LoginSystem" type="submit" class="btn login_btn">Login</button>
+                    </div>
                 </form>
             </div>
             <div class="mt-4">
                 <div class="d-flex justify-content-center links">
-                    Don't have an account? <a href="register.php" class="ml-2">Sign Up</a>
+                    Don't have an account? 
+                    <a href="register.php" class="ml-2">
+                        Sign Up
+                    </a>
                 </div>
                 <div class="d-flex justify-content-center links">
                     <a href="#">Forgot your password?</a>
@@ -91,7 +89,6 @@ if(isset($_POST['LoginSystem']) && isset($_POST['email_label']) && $_POST['email
         } else {
             $error = true ;
             echo "<script>$('#error').show().delay(5000).fadeOut();</script>";
-         
         }
     }
 }
