@@ -171,4 +171,31 @@ class Functions
             return false;
         }
     }
+
+    public static function homePagePagination($limit) {
+        $conne = new Mysql();
+        $conn = $conne->dbConnect();
+        $starting_limit = (self::currentPage()-1)*$limit;
+        $query = $conn->prepare("SELECT * FROM `questions` INNER JOIN `users` ON questions.q_author = users.user_id ORDER BY questions.q_id DESC LIMIT $starting_limit, $limit");
+        $query->execute();
+        $result = $query->fetchAll();
+        return $result;
+    }
+
+    public static function currentPage () {
+        if (!isset($_GET['page'])) {
+            $page = 1;
+            } else{
+            $page = $_GET['page'];
+        }
+        return $page;
+    }
+
+    public static function totalPages ($limit) {
+        $conne = new Mysql();
+        $conn = $conne->dbConnect();
+        $total_results = $conne->selectRowCount("SELECT * FROM questions");
+        $total_pages = ceil($total_results/$limit);
+        return $total_pages;
+    }
 }

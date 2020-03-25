@@ -29,56 +29,36 @@
                                     <?php $totalQuestions = Functions::getQuestionNumber(); ?>
                                     <h3>Featured Articles <small>Total Questions : <?php echo $totalQuestions ?></small></h3>
                                     <?php
-                                        $limit = 5;
-                                        $query = "SELECT * FROM questions";
-                                        $s = $conn->prepare($query);
-                                        $s->execute();
-                                        $total_results = $s->rowCount();
-                                        $total_pages = ceil($total_results/$limit);
-                                        if (!isset($_GET['page'])) {
-                                            $page = 1;
-                                        } else{
-                                            $page = $_GET['page'];
-                                        }
-                                        $starting_limit = ($page-1)*$limit;
-                                        $show = "SELECT * FROM questions ORDER BY q_id DESC LIMIT $starting_limit, $limit";
-                                        $r = $conn->prepare($show);
-                                        $r->execute();
-                                        while($res = $r->fetch(PDO::FETCH_ASSOC)) :
-                                            $q_author = $res['q_author'];
-                                            $q_title = $res['q_title'];
-                                            $q_id = $res['q_id'];
-                                            $q_slug = $res['slug'];
-                                            $origin_q_date = $res['q_date'];
-                                            $q_score = $res['q_like'] - $res['q_dislike'];
-                                            $newDate = date("d m Y", strtotime($origin_q_date));
-                                            $user = $conn->query("SELECT user_id, username, q_author FROM users,questions WHERE user_id='$q_author'",PDO::FETCH_ASSOC)->fetch();
-                                            $user_id = $user['user_id'];
-                                            $username = $user['username'];
+                                        $result = Functions::homePagePagination(5);
+                                        foreach ($result as $key => $value) {
+                                            $q_id = $value["q_id"];
                                             $commentCount = $conne->selectRowCount("SELECT * FROM comments WHERE c_post_id = $q_id");
                                     ?>
                                     <div class="forum-item">
                                         <div class="row">
                                             <div class="col-md-9">
-                                                <div class="forum-icon"> <i class="fa fa-bolt"></i></div> <a href="<?php echo "post/$q_slug"; ?>" class="forum-item-title"><?php echo $q_title; ?></a>
-                                                <div class="forum-sub-title"><a href="<?php echo "/author/$username"; ?>"><?php echo $username; ?></a> posted a post.</div>
+                                                <div class="forum-icon"> <i class="fa fa-bolt"></i></div> <a href="<?php echo "post/".$value['slug'].""; ?>" class="forum-item-title"><?php echo $value['q_title']; ?></a>
+                                                <div class="forum-sub-title"><a href="<?php echo "/author/".$value['username'].""; ?>"><?php echo $username; ?></a> posted a post.</div>
                                             </div>
                                             <div class="col-md-1 forum-info"> <span class="views-number"> <?php echo $commentCount ?> </span>
                                                 <div> <small>Replies</small></div>
                                             </div>
-                                            <div class="col-md-1 forum-info"> <span class="views-number"> <?php echo $res['q_view'] ?> </span>
+                                            <div class="col-md-1 forum-info"> <span class="views-number"> <?php echo $value['q_view'] ?> </span>
                                                 <div> <small>Views</small></div>
                                             </div>
-                                            <div class="col-md-1 forum-info"> <span class="views-number"> <?php echo $res['q_like'] - $res['q_dislike'] ?> </span>
+                                            <div class="col-md-1 forum-info"> <span class="views-number"> <?php echo $value['q_like'] - $value['q_dislike'] ?> </span>
                                                 <div> <small>Score</small></div>
                                             </div>
                                         </div>
                                     </div>
-                                <?php endwhile; ?>
+                                <?php } ?>
                                 </section>
                             </div>
                             <div class="index-paging">
-                            <?php  for ($i=1; $i <= $total_pages ; $i++):?>
+                            <?php  
+                            $total_pages = Functions::totalPages(5);
+                            $page = Functions::currentPage();
+                            for ($i=1; $i <= $total_pages ; $i++):?>
                             <?php if($page == $i ){ ?>
                             <a href='<?php echo "?page=$i"; ?>' class="active"><?php echo $i; ?></a>
                             <?php } else { ?>
