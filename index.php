@@ -5,7 +5,7 @@
             <p class="search-tag-line">If you have any question you can search for a related article below or simply enter what you are looking for!</p>
             <form id="search-form" class="search-form clearfix" method="get" action="#" autocomplete="off">
                 <div class="input-group">
-                    <input type="text" class="form-control" autocomplete="off" placeholder="Search this blog" 
+                    <input type="search" class="form-control" autocomplete="off" placeholder="Search this blog" 
                     style="border-radius: 5px !important; height: 50px !important;">
                     <div class="input-group-append">
                         <button class="btn btn-secondary" type="button">

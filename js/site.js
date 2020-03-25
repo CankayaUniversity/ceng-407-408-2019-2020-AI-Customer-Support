@@ -35,7 +35,7 @@ var loader = "<div id='cover-spin'></div>";
   });
 
   /* Search */
-  $('.input-group input[type="text"]').change("keyup input", function(){
+  $('.input-group input[type="search"]').change("keyup input", function(){
     var input = $(this).val();
     var action = "search";
     var resultDropdown = $(".input-group").siblings(".liveresult");
@@ -49,7 +49,7 @@ var loader = "<div id='cover-spin'></div>";
 });
 
   $(document).on("click", ".liveresult li", function(){
-      $(this).parents(".search-box").find('input[type="text"]').val($(this).text());
+      $(this).parents(".search-box").find('input[type="search"]').val($(this).text());
       $(this).parent(".liveresult").empty();
   });
 
