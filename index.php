@@ -38,7 +38,7 @@
                                         <div class="row">
                                             <div class="col-md-9">
                                                 <div class="forum-icon"> <i class="fa fa-bolt"></i></div> <a href="<?php echo "post/".$value['slug'].""; ?>" class="forum-item-title"><?php echo $value['q_title']; ?></a>
-                                                <div class="forum-sub-title"><a href="<?php echo "/author/".$value['username'].""; ?>"><?php echo $username; ?></a> posted a post.</div>
+                                                <div class="forum-sub-title"><a href="<?php echo "/author/".$value['username'].""; ?>"><?php echo $value['username']; ?></a> posted a post.</div>
                                             </div>
                                             <div class="col-md-1 forum-info"> <span class="views-number"> <?php echo $commentCount ?> </span>
                                                 <div> <small>Replies</small></div>
