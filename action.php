@@ -264,3 +264,19 @@ if($action == "expertReply"){
     }
     $conne->freeRun("UPDATE `questions` SET `is_solved` = -1 WHERE `q_id` = $q_id");
 }
+
+if ($action == "search" && !empty($_POST['searchTerm'])) { 
+    $term = addslashes($_POST['searchTerm']); 
+    $query = $conn->prepare("SELECT * FROM questions WHERE q_title LIKE CONCAT('%', :term, '%') LIMIT 5");
+    $query->execute([':term' => $term]);
+    $result=$query->fetchAll();
+
+    if(!empty($result) && $result) {
+        foreach ($result as $key => $value) {
+            echo '<a href="/post/'.$value["slug"].'"><li class="list-group-item">'.$value["q_title"].'</li></a>';
+        }
+
+    } else {
+        echo '<li class="list-group-item">No matching records were found.</li>';
+    }
+}

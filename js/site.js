@@ -33,6 +33,26 @@ var loader = "<div id='cover-spin'></div>";
     e.preventDefault();
     alert($("#editorCopy").val());
   });
+
+  /* Search */
+  $('.input-group input[type="text"]').change("keyup input", function(){
+    var input = $(this).val();
+    var action = "search";
+    var resultDropdown = $(".input-group").siblings(".liveresult");
+    if(input.length){
+        $.post('action.php', {searchTerm: input, action: action}).done(function(data){
+            resultDropdown.html(data);
+        });
+    }else{
+        resultDropdown.empty();
+    }
+});
+
+  $(document).on("click", ".liveresult li", function(){
+      $(this).parents(".search-box").find('input[type="text"]').val($(this).text());
+      $(this).parent(".liveresult").empty();
+  });
+
 });
 
 // Notification

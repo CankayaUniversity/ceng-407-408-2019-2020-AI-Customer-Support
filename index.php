@@ -97,23 +97,6 @@
 
     <script type="text/javascript">
     $(document).ready(function(){
-        $('.input-group input[type="text"]').on("keyup input", function(){
-            var input = $(this).val();
-            var resultDropdown = $(".input-group").siblings(".liveresult");
-            if(input.length){
-                $.post('search.php', {term: input}).done(function(data){
-                    resultDropdown.html(data);
-                });
-            }else{
-                resultDropdown.empty();
-            }
-        });
-
-        $(document).on("click", ".liveresult li", function(){
-            $(this).parents(".search-box").find('input[type="text"]').val($(this).text());
-            $(this).parent(".liveresult").empty();
-        });
-
         $(".forum-item").hover(
             function(){ $(this).addClass("active");},
             function(){ $(this).removeClass("active");}       
