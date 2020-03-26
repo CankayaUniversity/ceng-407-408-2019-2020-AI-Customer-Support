@@ -44,7 +44,7 @@ if($sUsername == null){
                                         <input type="text" class="form-control" id="QuestionTitle" name="QuestionTitle" maxlength="75" placeholder="What is your question about?">
                                     </div>
                                 </div>
-                                 <textarea name="editor"></textarea>
+                                <textarea name="editor"></textarea>
                                     <br>
                                     <div class="form-group">
                                         <label for="QuestionTags">Question Tags</label>
@@ -61,6 +61,12 @@ if($sUsername == null){
                                     </div>
                                     <input type="file" name="files[]" multiple >
                                     <br>
+                                    <br>
+                                    <div class="checkbox checkbox-slider--b-flat checkbox-slider-md">
+                                        <label>
+                                            <input type="checkbox" name="MLcheckbox" id="MLcheckbox"><span>&nbsp I don't want {{Machine_Learning_Program}} to answer my question.</span>
+                                        </label>
+                                    </div>
                                     <button type="submit" class="btn btn-primary" name="QuestionSubmit" id="QuestionSubmit">Submit</button>                                    
                             </div>
                         </section>
@@ -101,7 +107,8 @@ if  (
     $_POST['editor'] != '' &&
     isset($_POST['editor'])
     ) 
-{ 
+{
+    $checkbox = $_POST["MLcheckbox"];
     $qTitle = htmlspecialchars(addslashes($_POST['QuestionTitle']));
     $qDescription = addslashes($_POST['editor']);
     $qAuthor = $_SESSION["user_UserID"];
@@ -171,21 +178,20 @@ if  (
     } 
 
     /* Running python script*/
-
-    $questionToAnalyse = urlencode($_POST['QuestionTitle']);
-
-    if($_SERVER['HTTP_HOST'] == 'localhost'){
-        //$url = "http://localhost:80/python/index.php?question=".$questionToAnalyse."&questionID=".$lastInsertedID."";
-    } else {
-        $ch = curl_init();
-        $url = "http://atakde.site:80/python/index.php?question=".$questionToAnalyse."&questionID=".$lastInsertedID."";
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, false);
-        curl_setopt($ch, CURLOPT_TIMEOUT, 1);
-        curl_exec($ch);
-        curl_close($ch);
+    if(!$checkbox){
+        $questionToAnalyse = urlencode($_POST['QuestionTitle']);
+        if($_SERVER['HTTP_HOST'] == 'localhost'){
+            //$url = "http://localhost:80/python/index.php?question=".$questionToAnalyse."&questionID=".$lastInsertedID."";
+        } else {
+            $ch = curl_init();
+            $url = "http://atakde.site:80/python/index.php?question=".$questionToAnalyse."&questionID=".$lastInsertedID."";
+            curl_setopt($ch, CURLOPT_URL, $url);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, false);
+            curl_setopt($ch, CURLOPT_TIMEOUT, 1);
+            curl_exec($ch);
+            curl_close($ch);
+        }
     }
-    
     ?>
     <script>window.location.replace("index.php");</script>
     <?php } ?>
