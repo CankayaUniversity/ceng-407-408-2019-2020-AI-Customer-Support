@@ -59,13 +59,14 @@ if($sUsername == null){
                                     <?php } ?>
                                     </select>
                                     </div>
-                                    <input type="file" name="files[]" multiple >
                                     <br>
-                                    <br>
-                                    <div class="checkbox checkbox-slider--b-flat checkbox-slider-md">
-                                        <label>
-                                            <input type="checkbox" name="MLcheckbox" id="MLcheckbox"><span>&nbsp I don't want {{Machine_Learning_Program}} to answer my question.</span>
+                                    <div>
+                                        <label class="switch switch-left-right">
+                                            <input class="switch-input" type="checkbox" name="MLcheckbox" id="MLcheckbox">
+                                            <span class="switch-label" data-on="On" data-off="Off"></span><span class="switch-handle"></span>
                                         </label>
+                                        
+                                        <span>&nbsp I don't want {{Machine_Learning_Program}} to answer my question.</span>
                                     </div>
                                     <button type="submit" class="btn btn-primary" name="QuestionSubmit" id="QuestionSubmit">Submit</button>                                    
                             </div>
@@ -83,12 +84,7 @@ if($sUsername == null){
 $( document ).ready(function() {
     CKEDITOR.replace('editor'); 
 });
-var count = 0;
 
-/*$("#addimage").click(function() {
-    $("#editor").text($("#editor").text() + "<br><img src='imghere_" + count + "'>");
-    count++;
-});*/
 </script>
 
 <?php
@@ -132,50 +128,6 @@ if  (
     $notificationsQuery = $notificationsQuery->execute();
     
     $conne->freeRun("UPDATE categories SET cat_totalquestion=cat_totalquestion+1 WHERE cat_id = '$qCategory'");
-
-    /* Upload Photo */
-
-    $q_id = $conne->selectFreeRun("SELECT q_id FROM questions WHERE slug='$slug'");
-    $q_id = $q_id[0]["q_id"];
-
-    $targetDir = "images/q_images/"; 
-    $allowTypes = array('jpg','png','jpeg','gif'); 
-    
-    $statusMsg = $errorMsg = $insertValuesSQL = $errorUpload = $errorUploadType = ''; 
-    $fileNames = array_filter($_FILES['files']['name']); 
-
-    if(!empty($fileNames)){ 
-        foreach($_FILES['files']['name'] as $key=>$val){ 
-            $fileName = basename($_FILES['files']['name'][$key]); 
-            $targetFilePath = $targetDir . $fileName; 
-            
-            $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
-            if(in_array($fileType, $allowTypes)){ 
-                if(move_uploaded_file($_FILES["files"]["tmp_name"][$key], $targetFilePath)){ 
-                    $insertValuesSQL .= "(".$q_id.",'".$fileName."'),"; 
-                }else{ 
-                    $errorUpload .= $_FILES['files']['name'][$key].' | '; 
-                } 
-            }else{ 
-                $errorUploadType .= $_FILES['files']['name'][$key].' | '; 
-            } 
-        } 
-
-        if(!empty($insertValuesSQL)){ 
-            $insertValuesSQL = trim($insertValuesSQL, ','); 
-            $conne->freeRun("INSERT INTO q_images (q_id, image_link) VALUES $insertValuesSQL"); 
-            if($insert){ 
-                $errorUpload = !empty($errorUpload)?'Upload Error: '.trim($errorUpload, ' | '):''; 
-                $errorUploadType = !empty($errorUploadType)?'File Type Error: '.trim($errorUploadType, ' | '):''; 
-                $errorMsg = !empty($errorUpload)?'<br/>'.$errorUpload.'<br/>'.$errorUploadType:'<br/>'.$errorUploadType; 
-                $statusMsg = "Files are uploaded successfully.".$errorMsg; 
-            }else{ 
-                $statusMsg = "Sorry, there was an error uploading your file."; 
-            } 
-        } 
-    }else{ 
-        $statusMsg = 'Please select a file to upload.'; 
-    } 
 
     /* Running python script*/
     if(!$checkbox){
