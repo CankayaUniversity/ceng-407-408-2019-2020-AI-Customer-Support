@@ -4,7 +4,7 @@ import pandas as pd
 import nltk
 from nltk.corpus import stopwords 
 
-data = pd.read_csv("python/data.csv")
+data = pd.read_csv("data.csv")
 
 nltk.download('punkt')
 
@@ -28,7 +28,7 @@ def cosine_sim(text1, text2):
     tfidf = vectorizer.fit_transform([text1, text2])
     return ((tfidf * tfidf.T).A)[0,1]
 
-text = 'which is better norton or differetn antivirus'
+text = ''
 for word in sys.argv[1:]:
     text += word + ' '
 
@@ -41,10 +41,10 @@ similarities = []
 
 index = -1
 for i in data.question.values:
-  index += 1
-  sim = cosine_sim(i ,text )
-  indexes.append(index)
-  similarities.append(sim)
+    index += 1
+    sim = cosine_sim(i ,text )
+    indexes.append(index)
+    similarities.append(sim)
 
 update_df['index'] = indexes
 update_df['similarity'] = similarities
