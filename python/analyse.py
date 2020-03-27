@@ -4,7 +4,7 @@ import pandas as pd
 import nltk
 from nltk.corpus import stopwords 
 
-data = pd.read_csv("data.csv")
+data = pd.read_csv("python/data.csv")
 
 nltk.download('punkt')
 
@@ -28,7 +28,7 @@ def cosine_sim(text1, text2):
     tfidf = vectorizer.fit_transform([text1, text2])
     return ((tfidf * tfidf.T).A)[0,1]
 
-text = ''
+text = 'which is better norton or differetn antivirus'
 for word in sys.argv[1:]:
     text += word + ' '
 
@@ -55,3 +55,4 @@ if update_df.iloc[0,2] < 0.3:
     print("We will be dealing with your problem as soon as possible. Thank you for your patience.")
 else:
     print(update_df.iloc[0,3])
+
