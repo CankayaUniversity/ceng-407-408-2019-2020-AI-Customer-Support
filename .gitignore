@@ -5,3 +5,4 @@ python/qa_Electronics.json
 python/qa_Software.json.gz
 uploads/*
 images/q_images/*
+helpers/classes/*
