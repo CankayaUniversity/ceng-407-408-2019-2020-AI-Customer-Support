@@ -28,6 +28,8 @@ $mail->Password = mailConfig::SMTP_PASSWORD;
 $mail->setFrom('from@example.com', 'First Last');
 $mail->addReplyTo('replyto@example.com', 'First Last');
 $mail->addAddress('cpukarsilastir@gmail.com', 'John Doe');
+$mail->addAddress('arinc.alp.98@gmail.com', 'Arinç Alp Eren');
+
 $mail->Subject = 'PHPMailer TESTTEST';
 $mail->Body = 'Hello, this is my message.';
 
