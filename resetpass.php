@@ -54,7 +54,7 @@ if ($sUsername != null){
 <?php include "footer.php"; ?>
 <?php
 if(isset($_POST['ResetPass']) && isset($_POST['email_label']) && $_POST['email_label'] != '') {
-    require '/vendor/autoload.php';
+    require './vendor/autoload.php';
     $Email = $_POST['email_label'];
     $mail = new PHPMailer\PHPMailer\PHPMailer;
     $mail->isSMTP();
