@@ -3022,3 +3022,45 @@ span.switch-label:after {
     border-radius: 6px !important;
     box-shadow: inset 0 1px rgba(0, 0, 0, 0.02);
 }
+.lock_card {
+  height: 600px;
+  width: 600px;
+  margin-top: 80px;
+  margin-bottom: -80px;
+  background: #dce2e2;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+    0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+    0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 50px;
+}
+
+.lock_logo_container {
+  position: absolute;
+  height: 180px;
+  width: 180px;
+  top: -55px;
+  padding-left: 30px !important;
+  border-radius: 50% !important;
+  background: white;
+  padding: 30px;
+  text-align: center;
+  border: 1px solid black;
+}
+.lock_logo {
+  height: 100px;
+  width: 100px;
+}
+.lock_card-header {
+  margin-top: 40px;
+  margin-bottom: -60px;
+  padding-left: 80px !important;
+  padding-right: 80px !important;
+}
+
