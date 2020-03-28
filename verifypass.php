@@ -7,14 +7,18 @@ if ($conne->selectRowCount("SELECT * FROM users WHERE resetPassAuth = '$authkey'
 ?>
 <div class="container h-100">
     <div class="d-flex justify-content-center h-100">
-        <div class="user_card">
+        <div class="lock_card">
             <div class="d-flex justify-content-center">
-                <div class="brand_logo_container">
-                    <img src="../images/mascot.png" class="brand_logo" alt="Logo_login">
+                <div class="lock_logo_container">
+                <img src="https://img.icons8.com/ios/100/000000/lock.png"/ class="lock_logo">
+                <img src="../images/mascot.png" class="verify_logo" alt="Logo_login">
                 </div>
             </div>
-            <div class="user_card-header">
-                <h4 class="card-title mt-3 text-center">Reset Password</h4>
+            <div class="lock_card-header">
+                <br><br><br>
+                <center><h3 class="card-title mt-3 text-center">Reset Password</h3>
+                <h5>Please create a new password.<h5>
+                </center>
             </div>
             <div class="d-flex justify-content-center form_container">
                 <form method="post">
@@ -34,8 +38,7 @@ if ($conne->selectRowCount("SELECT * FROM users WHERE resetPassAuth = '$authkey'
                         <button name="ResetPass" type="submit" class="btn login_btn">Reset Password</button>
                     </div>
                 </form>
-            </div>
-            
+            </div>  
         </div>
     </div>
 </div>

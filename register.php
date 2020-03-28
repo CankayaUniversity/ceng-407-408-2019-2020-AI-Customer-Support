@@ -44,10 +44,10 @@ include "header.php";
                     </div>
                     <div class="input-group mb-2">
                         <div class="input-group-append">
-                            <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                            <span class="input-group-text"> <i class="fas fa-lock"></i> </span>
                         </div>
                         <input name="ConfirmPassword" class="form-control input_user" placeholder="Repeat password" type="password">
-                    </div>
+                    </div>  
                     <div class="d-flex justify-content-center mt-3 login_container">
                         <button type="submit" name="RegisterSystem" class="btn login_btn"> Create Account  </button>
                     </div>

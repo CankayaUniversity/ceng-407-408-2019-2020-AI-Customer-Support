@@ -2283,13 +2283,13 @@ a.forum-item-title:hover {
   position: absolute;
   height: 190px;
   width: 190px;
-  top: -75px;
-  padding-left: 30px !important;
+  top: -65px;
+  padding-left: 35px !important;
   border-radius: 50% !important;
   background: white;
-  padding: 10px;
+  padding: 20px;
   text-align: center;
-  border: 2px solid white;
+  border: 1px solid white;
 }
 .brand_logo {
   height: 150px;
@@ -3022,6 +3022,9 @@ span.switch-label:after {
     border-radius: 6px !important;
     box-shadow: inset 0 1px rgba(0, 0, 0, 0.02);
 }
+
+/* resetpass & verifypass page design*/
+
 .lock_card {
   height: 600px;
   width: 600px;
@@ -3063,4 +3066,13 @@ span.switch-label:after {
   padding-left: 80px !important;
   padding-right: 80px !important;
 }
+.verify_logo {
+  height: 120px;
+  width: 120px;
+  margin-top: 0;
+  margin-bottom: -70px !important;
+  padding: 10px;
+  margin-left: 15px !important;
+}
+
 
