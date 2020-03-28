@@ -13,9 +13,9 @@ if ($sUsername != null){
                 </div>
             </div>
             <div class="lock_card-header">
+            <br><br><br>
                 <center>
                     <h4>Trouble Logging In?</h4>
-                    <br>
                     <h6>Enter your email address and we'll send you a link so you can re-enter your account.</h6>
                 </center>
             </div>

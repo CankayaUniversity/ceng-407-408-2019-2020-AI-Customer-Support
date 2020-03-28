@@ -2277,7 +2277,7 @@ a.forum-item-title:hover {
     0 6px 20px 0 rgba(0, 0, 0, 0.19);
   -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
     0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  border-radius: 50px;
+  border-radius: 50px !important;
 }
 .brand_logo_container {
   position: absolute;
@@ -3026,52 +3026,52 @@ span.switch-label:after {
 /* resetpass & verifypass page design*/
 
 .lock_card {
-  height: 600px;
-  width: 600px;
-  margin-top: 80px;
-  margin-bottom: -80px;
-  background: #dce2e2;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  padding: 10px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  height: 600px !important;
+  width: 600px !important;
+  margin-top: 80px !important;
+  margin-bottom: -80px !important;
+  background: #dce2e2 !important;
+  position: relative !important;
+  display: flex !important;
+  justify-content: center !important;
+  flex-direction: column !important;
+  padding: 10px !important;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important;
   -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
     0 6px 20px 0 rgba(0, 0, 0, 0.19);
   -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
     0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  border-radius: 50px;
+  border-radius: 50px !important;
 }
 
 .lock_logo_container {
-  position: absolute;
-  height: 180px;
-  width: 180px;
-  top: -55px;
+  position: absolute !important;
+  height: 180px !important;
+  width: 180px !important;
+  top: -55px !important;
   padding-left: 30px !important;
   border-radius: 50% !important;
-  background: white;
-  padding: 30px;
-  text-align: center;
-  border: 1px solid black;
+  background: white !important;
+  padding: 30px !important;
+  text-align: center !important;
+  border: 1px solid black !important;
 }
 .lock_logo {
-  height: 100px;
-  width: 100px;
+  height: 100px !important;
+  width: 100px !important;
 }
 .lock_card-header {
-  margin-top: 40px;
-  margin-bottom: -60px;
-  padding-left: 80px !important;
-  padding-right: 80px !important;
+  margin-top: 30px !important;
+  margin-bottom: -70px !important;
+  padding-left: 60px !important;
+  padding-right: 60px !important;
 }
 .verify_logo {
-  height: 120px;
-  width: 120px;
-  margin-top: 0;
+  height: 120px !important;
+  width: 120px !important;
+  margin-top: 0 !important;
   margin-bottom: -70px !important;
-  padding: 10px;
+  padding: 10px !important;
   margin-left: 15px !important;
 }
 
