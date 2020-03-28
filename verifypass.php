@@ -1,0 +1,55 @@
+<?php 
+include "header.php";
+$authkey = $_GET["key"];
+if ($conne->selectRowCount("SELECT * FROM users WHERE resetPassAuth = '$authkey'") == 0)
+    echo "<script>window.location.replace('index.php');</script>";
+
+?>
+<div class="container h-100">
+    <div class="d-flex justify-content-center h-100">
+        <div class="user_card">
+            <div class="d-flex justify-content-center">
+                <div class="brand_logo_container">
+                    <img src="../images/mascot.png" class="brand_logo" alt="Logo_login">
+                </div>
+            </div>
+            <div class="user_card-header">
+                <h4 class="card-title mt-3 text-center">Reset Password</h4>
+            </div>
+            <div class="d-flex justify-content-center form_container">
+                <form method="post">
+                <div class="input-group mb-2">
+                        <div class="input-group-append">
+                            <span class="input-group-text"> <i class="fas fa-key"></i> </span>
+                        </div>
+                        <input name="password_label" class="form-control input_pass" placeholder="Password" type="password">
+                    </div>
+                    <div class="input-group mb-2">
+                        <div class="input-group-append">
+                            <span class="input-group-text"> <i class="fas fa-key"></i> </span>
+                        </div>
+                        <input name="verify_password_label" class="form-control input_pass" placeholder="Verify Password" type="password">
+                    </div>
+                    <div class="d-flex justify-content-center mt-3 login_container">
+                        <button name="ResetPass" type="submit" class="btn login_btn">Reset Password</button>
+                    </div>
+                </form>
+            </div>
+            
+        </div>
+    </div>
+</div>
+<?php include "footer.php"; ?>
+<?php
+if(isset($_POST['ResetPass']) && isset($_POST['password_label']) && $_POST['password_label'] != '' && isset($_POST['verify_password_label']) && $_POST['verify_password_label'] != '') {
+    $Password = $_POST['password_label'];
+    $verifyPassword = $_POST['verify_password_label'];
+    if($Password == $verifyPassword){
+        $options = array("cost" => 4);
+        $hashPassword = password_hash($Password, PASSWORD_BCRYPT, $options);
+        $conne->freeRun("UPDATE users SET password_ = '$hashPassword' WHERE resetPassAuth = '$authkey'");
+        $conne->freeRun("UPDATE users SET resetPassAuth = '' WHERE resetPassAuth = '$authkey'");
+    }
+    echo "<script>window.location.replace('index.php');</script>";
+}
+?>

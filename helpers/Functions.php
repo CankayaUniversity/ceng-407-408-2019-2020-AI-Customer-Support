@@ -198,4 +198,9 @@ class Functions
         $total_pages = ceil($total_results/$limit);
         return $total_pages;
     }
+
+    public static function RandomString(){
+        $string = substr(str_shuffle(MD5(microtime())), 0, 40);
+        return $string;
+    }
 }
