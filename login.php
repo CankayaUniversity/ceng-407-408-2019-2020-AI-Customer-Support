@@ -60,7 +60,7 @@ if ($sUsername != null){
                     </a>
                 </div>
                 <div class="d-flex justify-content-center links">
-                    <a href="#">Forgot your password?</a>
+                    <a href="resetpass.php">Forgot your password?</a>
                 </div>
             </div>
         </div>
@@ -93,3 +93,4 @@ if(isset($_POST['LoginSystem']) && isset($_POST['email_label']) && $_POST['email
     }
 }
 ?>
+""
