@@ -42,10 +42,10 @@ if ($conne->selectRowCount("SELECT * FROM users WHERE resetPassAuth = '$authkey'
         $_SESSION["user_isAdmin"] = $query['is_admin'];
         $_SESSION["user_isVerified"] = $query['is_verified'];
         $_SESSION["user_Email"] = $Email;
-        $conne->freeRun("UPDATE users SET is_verified = 1 WHERE resetPassAuth = '$authkey'");
-        $conne->freeRun("UPDATE users SET resetPassAuth = '' WHERE resetPassAuth = '$authkey'");
     }
     if (isset($_POST['VerifyAcc'])) {
+        $conne->freeRun("UPDATE users SET is_verified = 1 WHERE resetPassAuth = '$authkey'");
+        $conne->freeRun("UPDATE users SET resetPassAuth = '' WHERE resetPassAuth = '$authkey'");
         echo "<script>window.location.replace('index.php');</script>";
         die();
     }

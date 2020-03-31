@@ -186,6 +186,17 @@ if (isset($_SESSION["user_isAdmin"])) {
     </div>
   </div>
 </nav>
+<?php
+if(isset($_SESSION["user_isVerified"])){
+    if($_SESSION["user_isVerified"] == 0){
+    echo'<div class="alert alert-warning" style="margin-bottom:0px">';
+    echo'<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>';
+    echo'<center><span><strong>Notice: </strong> Your account is not verified. Please go to your email and verify your account</span></center>';
+    echo'</div>';
+  }
+}
+
+?>
 <script type="text/javascript" src="/js/site.js"></script>
 <script id="notificationTemplate" type="text/html">
     <!-- NOTIFICATION -->
