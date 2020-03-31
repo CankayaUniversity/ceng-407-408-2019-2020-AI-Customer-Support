@@ -54,31 +54,8 @@ if ($sUsername != null){
 <?php include "footer.php"; ?>
 <?php
 if(isset($_POST['ResetPass']) && isset($_POST['email_label']) && $_POST['email_label'] != '') {
-    require './vendor/autoload.php';
     $Email = $_POST['email_label'];
-    $mail = new PHPMailer\PHPMailer\PHPMailer;
-    $mail->isSMTP();
-    $mail->isHTML(true);
-    $mail->Host = mailConfig::SMTP_HOST;
-
-    $mail->SMTPOptions = array(
-        'ssl' => array(
-        'verify_peer' => false,
-        'verify_peer_name' => false,
-        'allow_self_signed' => true
-        )
-    );
-
-    $mail->Port = mailConfig::SMTP_PORT;
-    $mail->SMTPSecure = PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_STARTTLS;
-    $mail->SMTPAuth = true;
-    $mail->Username = mailConfig::SMTP_USER;
-    $mail->Password = mailConfig::SMTP_PASSWORD;
     
-    $mail->setFrom('aics@support.com', 'AICS');
-    $mail->addReplyTo('noreply@example.com','AICS');
-    $mail->addAddress($Email);
-
     if($conne->selectRowCount("SELECT * FROM users WHERE email = '$Email'") != 0){
         $cryptokey = Functions::RandomString();
         $conne->freeRun("UPDATE users SET resetPassAuth = '$cryptokey' WHERE email = '$Email'");
@@ -91,14 +68,7 @@ if(isset($_POST['ResetPass']) && isset($_POST['email_label']) && $_POST['email_l
     $emailTemplate = str_replace("{action_link}", "http://www.atakde.site/verifypass.php?key=".$cryptokey, $emailTemplate);
     $emailTemplate = str_replace("{type_of_action}", "reset password", $emailTemplate);
     
-    $mail->Subject = 'Reset Password';
-    $mail->Body = $emailTemplate;
-    
-    if (!$mail->send()) {
-        echo 'Mailer Error: '. $mail->ErrorInfo;
-    } else {
-        echo '<script>alert("Mail has been sent to your email address.");</script>';
-    }
+    $mail = Functions::mailObject("aics@support.com","AICS",$Email,"Reset Password",$emailTemplate);
 
 }
 ?>

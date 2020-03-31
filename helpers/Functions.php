@@ -203,4 +203,39 @@ class Functions
         $string = substr(str_shuffle(MD5(microtime())), 0, 40);
         return $string;
     }
+
+    public static function mailObject($setEmail,$setName,$sendEmail,$Subject,$Body){
+        require './vendor/autoload.php';
+        $mail = new PHPMailer\PHPMailer\PHPMailer;
+        $mail->isSMTP();
+        $mail->isHTML(true);
+        $mail->Host = mailConfig::SMTP_HOST;
+
+        $mail->SMTPOptions = array(
+            'ssl' => array(
+            'verify_peer' => false,
+            'verify_peer_name' => false,
+            'allow_self_signed' => true
+            )
+        );
+
+        $mail->Port = mailConfig::SMTP_PORT;
+        $mail->SMTPSecure = PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_STARTTLS;
+        $mail->SMTPAuth = true;
+        $mail->Username = mailConfig::SMTP_USER;
+        $mail->Password = mailConfig::SMTP_PASSWORD;
+
+        $mail->setFrom($setEmail, $setName);
+        $mail->addReplyTo('noreply@example.com','AICS');
+        $mail->addAddress($sendEmail);
+        $mail->Subject = $Subject;
+        $mail->Body = $Body;
+
+        if (!$mail->send()) {
+            echo 'Mailer Error: '. $mail->ErrorInfo;
+        } else {
+            echo '<script>alert("Mail has been sent to your email address.");</script>';
+        }
+    
+    }
 }
