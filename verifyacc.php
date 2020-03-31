@@ -2,14 +2,15 @@
 include "header.php";
 $authkey = $_GET["key"];
 if ($conne->selectRowCount("SELECT * FROM users WHERE AccVerifyAuth = '$authkey'") == 0)
-    echo "<script>window.location.replace('index.php');</script>";
+    //echo "<script>window.location.replace('index.php');</script>";
 ?>
 <div class="container h-100">
     <div class="d-flex justify-content-center h-100">
         <div class="lock_card">
             <div class="d-flex justify-content-center">
                 <div class="lock_logo_container">
-                    <img src="../images/mascot.png" class="verify_logo" alt="Logo_login">
+                <img src="https://img.icons8.com/color/144/000000/checkmark.png" class="verifyacc_logo" alt="Logo_login">
+                <img src="../images/mascot.png" class="verifyaccMascot_logo" alt="Logo_login">
                 </div>
             </div>
             <div class="lock_card-header">
@@ -20,9 +21,7 @@ if ($conne->selectRowCount("SELECT * FROM users WHERE AccVerifyAuth = '$authkey'
             </div>
             <div class="d-flex justify-content-center form_container">
                 <form method="post">
-                    <div class="input-group mb-2">
-                        Continue AICS and ask your first question or search your solution!
-                    </div>
+                <center><h6>Continue AICS and ask your first question or search your solution!</h6></center>
                     <div class="d-flex justify-content-center mt-3 login_container">
                         <button name="VerifyAcc" class="btn login_btn">Continue to AICS</button>
                     </div>

@@ -3122,3 +3122,19 @@ span.switch-label:after {
   border-radius: 5% !important;
 }
 
+.verifyacc_logo {
+  height: 120px !important;
+  width: 120px !important;
+  margin-top: -10px !important;
+  padding: 0 !important;
+  margin-left: 5px !important;
+}
+.verifyaccMascot_logo {
+  height: 120px !important;
+  width: 120px !important;
+  margin-top: -10px !important;
+  margin-bottom: -50px !important;
+  padding: 10px !important;
+  margin-left: 15px !important;
+}
+
