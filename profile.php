@@ -175,17 +175,19 @@ if (isset($_POST["submit"])) {
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                <h4 class="modal-title"><strong>Change your profile photo</strong></h4>
+                                                    <br>
+                                                    <h4 class="modal-title"style="font-size: 25px;"><strong>Change your profile photo</strong></h4>
+                                                    <br>
                                                 </div>
                                                 <button type="button" class="btn btn-outline-light">
-                                                    <div class="modal-body">
+                                                    <div class="modal-body" style="font-size: 20px;">
                                                         <i style="color:#3897f0;"class="fa fa-camera"></i>
                                                         <input style="display:none; color:#3897f0;" type="file" name="fileToUpload" id="fileToUpload"/>
                                                         <label for="fileToUpload" style=" margin-top: 7px; color:#3897f0;">Choose Photo</label>
                                                     </div>
                                                 </button>
                                                 <button type="button" class="btn btn-outline-light">
-                                                <div class="modal-body">
+                                                <div class="modal-body" style="font-size: 20px;">
                                                     <i style="color:#ed4956;" class="fa fa-cloud-upload" aria-hidden="true"></i>
                                                     <input style="display:none;" type="submit" class="btn btn-success" id="fileToUpload2" name="submit">
                                                     <label for="fileToUpload2" style=" margin-top: 7px; color:#ed4956;">Upload Photo</label>
@@ -193,13 +195,12 @@ if (isset($_POST["submit"])) {
                                                 </button>
                                                 <button type="button" class="close" data-dismiss="modal">
                                                 <div class="modal-body">
-                                                    <h6>close</h6>
+                                                    <h6 class="modal-title"style="font-size: 20px;">close</h6>
                                                 </div>
                                                 </button>
                                             </div>
                                         </div>
                                     </div>
-
                                 </div>    
                             </div>    
                         </div> 

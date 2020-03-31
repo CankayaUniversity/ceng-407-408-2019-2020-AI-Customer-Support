@@ -3115,4 +3115,10 @@ span.switch-label:after {
   background-color: #f9f9f9 !important;
 }
 
+/* modal */
+.modal-content{
+  height: 330px;
+  width: 330px;
+  border-radius: 5% !important;
+}
 
