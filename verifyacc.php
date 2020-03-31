@@ -1,7 +1,7 @@
 <?php 
 include "header.php";
 $authkey = $_GET["key"];
-if ($conne->selectRowCount("SELECT * FROM users WHERE resetPassAuth = '$authkey'") == 0)
+if ($conne->selectRowCount("SELECT * FROM users WHERE AccVerifyAuth = '$authkey'") == 0)
     echo "<script>window.location.replace('index.php');</script>";
 ?>
 <div class="container h-100">
@@ -33,7 +33,7 @@ if ($conne->selectRowCount("SELECT * FROM users WHERE resetPassAuth = '$authkey'
 </div>
 <?php include "footer.php"; ?>
 <?php
-    $query = $conn->query("SELECT * FROM users WHERE resetPassAuth = '$authkey'", PDO::FETCH_ASSOC)->fetch();
+    $query = $conn->query("SELECT * FROM users WHERE AccVerifyAuth = '$authkey'", PDO::FETCH_ASSOC)->fetch();
     if (isset($query)) {
         $_SESSION["user_UserID"] = $query['user_id'];
         $_SESSION["user_Username"] = $query['username'];
@@ -44,8 +44,8 @@ if ($conne->selectRowCount("SELECT * FROM users WHERE resetPassAuth = '$authkey'
         $_SESSION["user_Email"] = $Email;
     }
     if (isset($_POST['VerifyAcc'])) {
-        $conne->freeRun("UPDATE users SET is_verified = 1 WHERE resetPassAuth = '$authkey'");
-        $conne->freeRun("UPDATE users SET resetPassAuth = '' WHERE resetPassAuth = '$authkey'");
+        $conne->freeRun("UPDATE users SET is_verified = 1 WHERE AccVerifyAuth = '$authkey'");
+        $conne->freeRun("UPDATE users SET AccVerifyAuth = '' WHERE AccVerifyAuth = '$authkey'");
         echo "<script>window.location.replace('index.php');</script>";
         die();
     }

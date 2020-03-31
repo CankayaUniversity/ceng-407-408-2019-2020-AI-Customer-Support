@@ -89,7 +89,7 @@ if (isset($_POST['RegisterSystem']) && isset($_POST['Username']) && $_POST['User
     }
     else if ($ConfirmPassword == $Password) {
         $cryptokey = Functions::RandomString();
-        $sqlAddUser = "INSERT IGNORE INTO users(firstname,surname,email,username,password_,ip_address,is_verified,is_admin,image_link,resetPassAuth)
+        $sqlAddUser = "INSERT IGNORE INTO users(firstname,surname,email,username,password_,ip_address,is_verified,is_admin,image_link,AccVerifyAuth)
         VALUES ('$Firstname','$Lastname','$Email','$Username','$hashPassword','$UserIp',0,0,'images/avatar.png','$cryptokey');";
         $conn->exec($sqlAddUser);
         $emailTemplate = file_get_contents("emails/reset-password.html");

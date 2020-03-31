@@ -47,7 +47,8 @@ if (isset($getAction)) {
             is_verified int NOT NULL,
             is_admin int NOT NULL,
             image_link varchar(1000) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-            resetPassAuth varchar(1000) CHARACTER SET utf8 COLLATE utf8_general_ci
+            resetPassAuth varchar(1000) CHARACTER SET utf8 COLLATE utf8_general_ci,
+            AccVerifyAuth varchar(1000) CHARACTER SET utf8 COLLATE utf8_general_ci
             );";
 
         $Connect->freeRun($sql);
