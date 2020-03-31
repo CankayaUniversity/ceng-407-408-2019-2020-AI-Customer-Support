@@ -79,7 +79,15 @@ if (isset($_POST['RegisterSystem']) && isset($_POST['Username']) && $_POST['User
         header('Location: index.php');
     }
 
-    if ($ConfirmPassword == $Password) {
+    $emailCount = $conne->selectRowCount("SELECT * FROM users WHERE email = '$Email'");
+    $usernameCount = $conne->selectRowCount("SELECT * FROM users WHERE username = '$Username'");
+
+    if($emailCount > 0 ){
+        echo "<script>alert('This email already exists.');</script>";
+    }else if($usernameCount > 0){
+        echo "<script>alert('This username already exists.');</script>";
+    }
+    else if ($ConfirmPassword == $Password) {
         $cryptokey = Functions::RandomString();
         $sqlAddUser = "INSERT IGNORE INTO users(firstname,surname,email,username,password_,ip_address,is_verified,is_admin,image_link,resetPassAuth)
         VALUES ('$Firstname','$Lastname','$Email','$Username','$hashPassword','$UserIp',0,0,'images/avatar.png','$cryptokey');";
