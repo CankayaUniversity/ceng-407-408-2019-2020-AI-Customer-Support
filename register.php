@@ -80,9 +80,15 @@ if (isset($_POST['RegisterSystem']) && isset($_POST['Username']) && $_POST['User
     }
 
     if ($ConfirmPassword == $Password) {
-        $sqlAddUser = "INSERT IGNORE INTO users(firstname,surname,email,username,password_,ip_address,is_verified,is_admin,image_link)
-        VALUES ('$Firstname','$Lastname','$Email','$Username','$hashPassword','$UserIp',0,0,'images/avatar.png');";
+        $cryptokey = Functions::RandomString();
+        $sqlAddUser = "INSERT IGNORE INTO users(firstname,surname,email,username,password_,ip_address,is_verified,is_admin,image_link,resetPassAuth)
+        VALUES ('$Firstname','$Lastname','$Email','$Username','$hashPassword','$UserIp',0,0,'images/avatar.png','$cryptokey');";
         $conn->exec($sqlAddUser);
+        $emailTemplate = file_get_contents("emails/reset-password.html");
+        $emailTemplate = str_replace("{action_link}", "http://www.atakde.site/verifyacc.php?key=".$cryptokey, $emailTemplate);
+        $emailTemplate = str_replace("{type_of_action}", "Verify Account", $emailTemplate);
+        
+        Functions::sendMail("aics@support.com","AICS",$Email,"Reset Password",$emailTemplate);
         $query = $conn->query("SELECT * FROM users WHERE email='$Email'", PDO::FETCH_ASSOC)->fetch();
         if (isset($query)) {
             if (password_verify($Password, $query['password_'])) {

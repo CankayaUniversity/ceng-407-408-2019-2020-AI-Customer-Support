@@ -204,7 +204,7 @@ class Functions
         return $string;
     }
 
-    public static function mailObject($setEmail,$setName,$sendEmail,$Subject,$Body){
+    public static function sendMail($setEmail,$setName,$sendEmail,$Subject,$Body){
         require './vendor/autoload.php';
         $mail = new PHPMailer\PHPMailer\PHPMailer;
         $mail->isSMTP();

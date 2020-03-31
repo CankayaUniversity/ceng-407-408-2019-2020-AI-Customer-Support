@@ -68,7 +68,7 @@ if(isset($_POST['ResetPass']) && isset($_POST['email_label']) && $_POST['email_l
     $emailTemplate = str_replace("{action_link}", "http://www.atakde.site/verifypass.php?key=".$cryptokey, $emailTemplate);
     $emailTemplate = str_replace("{type_of_action}", "reset password", $emailTemplate);
     
-    $mail = Functions::mailObject("aics@support.com","AICS",$Email,"Reset Password",$emailTemplate);
+    Functions::sendMail("aics@support.com","AICS",$Email,"Reset Password",$emailTemplate);
 
 }
 ?>
