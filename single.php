@@ -81,9 +81,9 @@
                                                 </div>
                                                 <h6 class="time-ago">Asked on, <?php echo $q_date; ?></h6>
                                             </div>
-                                                <button type="button" class="btn btn-success btn-lg btn3d" id="btnLike"><span><i class="fa fa-check"></i></span></button>
-                                                <button type="button" class="btn btn-danger btn-lg btn3d" id="btnDislike"><span><i class="fa fa-times"></i></span></button>
-                                                <button type="button" class="btn btn-secondary btn-circle btn-lg" id="score"><i class="fa fa-star"></i><span id="questionScore" class="totalScore" data-value="<?php echo $q_score; ?>"><?php echo $q_score; ?></span></button>
+                                                <button type="button" class="btn btn-success btn-lg btn3d" id="btnLike"><i class="fa fa-check"></i></button>
+                                                <button type="button" class="btn btn-default btn-lg score" id="score" disabled="disabled"><i class="fa fa-star"></i><br><span id="questionScore" class="totalScore" data-value="<?php echo $q_score; ?>"><?php echo $q_score; ?></span></button>
+                                                <button type="button" class="btn btn-danger btn-lg btn3d" id="btnDislike"><i class="fa fa-times"></i></button>                           
                                         </div>
                                         <br>
                                         <hr>  
@@ -139,15 +139,15 @@
                                         }else if($commentStatus > 0){
                                             echo '<button type="button" class="btn btn-success btn-lg btn3d" id="btnLike" disabled="disabled"><span><i class="fa fa-check"></i></span></button>';
                                             echo ' ';
-                                            echo '<button type="button" class="btn btn-danger btn-lg btn3d" id="btnDislike" disabled="disabled"><span><i class="fa fa-times"></i></span></button>';
+                                            echo '<button type="button" class="btn btn-default btn-lg score" id="score"><i class="fa fa-star"></i><br><span id="c_score_'.$c_id.'" class="totalScore" data-value="'.$c_score.'">'.$c_score.'</span></button>';
                                             echo ' ';
-                                            echo '<button type="button" class="btn btn-secondary btn-circle btn-lg" id="score"><i class="fa fa-star"></i></i><span id="c_score_'.$c_id.'" class="totalScore" data-value="'.$c_score.'">'.$c_score.'</span></button>';
+                                            echo '<button type="button" class="btn btn-danger btn-lg btn3d" id="btnDislike" disabled="disabled"><span><i class="fa fa-times"></i></span></button>';
                                         }else {
                                             echo '<button type="button" class="btn btn-success btn-lg btn3d" onclick="likeComment(this)" name="'.$c_id.'" id="c_btnLike_'.$c_id.'"><span><i class="fa fa-check"></i></span></button>';
                                             echo ' ';
-                                            echo '<button type="button" class="btn btn-danger btn-lg btn3d" onclick="dislikeComment(this)" name="'.$c_id.'" id="c_btndislike_'.$c_id.'"><span><i class="fa fa-times"></i></span></button>';
+                                            echo '<button type="button" class="btn btn-default btn-lg score" id="c_score" ><i class="fa fa-star"></i><br><span id="c_score_'.$c_id.'" class="totalScore" data-value="'.$c_score.'">'.$c_score.'</span></button>';
                                             echo ' ';
-                                            echo '<button type="button" class="btn btn-secondary btn-circle btn-lg" id="c_score" ><i class="fa fa-star"></i><span id="c_score_'.$c_id.'" class="totalScore" data-value="'.$c_score.'">'.$c_score.'</span></button>';
+                                            echo '<button type="button" class="btn btn-danger btn-lg btn3d" onclick="dislikeComment(this)" name="'.$c_id.'" id="c_btndislike_'.$c_id.'"><span><i class="fa fa-times"></i></span></button>';
                                         }
                                     }else{
                                         $commentStatus = 1;
@@ -197,9 +197,9 @@
                                             }else{
                                                 echo '<button type="button" class="btn btn-success btn-lg btn3d" onclick="likeComment(this)" name="'.$c_id.'" id="c_btnLike_'.$c_id.'"><span><i class="fa fa-check"></i></span></button>';
                                                 echo ' ';
-                                                echo '<button type="button" class="btn btn-danger btn-lg btn3d" onclick="dislikeComment(this)" name="'.$c_id.'" id="c_btndislike_'.$c_id.'"><span><i class="fa fa-times"></i></span></button>';
+                                                echo '<button type="button" class="btn btn-default btn-lg score" id="c_score" ><i class="fa fa-star"></i><br><span id="c_score_'.$c_id.'" class="totalScore" data-value="'.$c_score.'">'.$c_score.'</span></button>';
                                                 echo ' ';
-                                                echo '<button type="button" class="btn btn-dark btn-circle btn-lg" id="c_score" ><i class="fa fa-star"></i><span id="c_score_'.$c_id.'" class="totalScore" data-value="'.$c_score.'">'.$c_score.'</span></button>';
+                                                echo '<button type="button" class="btn btn-danger btn-lg btn3d" onclick="dislikeComment(this)" name="'.$c_id.'" id="c_btndislike_'.$c_id.'"><span><i class="fa fa-times"></i></span></button>';
                                             }
                                         }else{
                                             $commentStatus = 1;
@@ -230,6 +230,7 @@
                                 </div>
                                 <div class="card-body">
                                     <textarea name="editor"></textarea>
+                                    <br>
                                     <button type="submit" class="btn btn-postAnswer" id="answerSubmit" onclick="submitAnswer(<?php echo $user_id?>,<?php echo $q_id?>)">
                                         Post Answer
                                     </button>

@@ -2449,7 +2449,7 @@ a.forum-item-title:hover {
 
 .btn3d {
   position: relative !important;
-  top: -1px !important;
+  top: -7px !important;
   border: 0 !important;
   transition: all 40ms linear !important;
   margin-top: 10px !important;
@@ -2457,8 +2457,9 @@ a.forum-item-title:hover {
   margin-left: 2px !important;
   margin-right: 2px !important;
   border-radius: 50% !important;
-  width: 50px !important;
-  height: 40px !important;
+  width: 45px !important;
+  height: 35px !important;
+  font-size: 17px !important;
 }
 .btn3d:active:focus,
 .btn3d:focus:hover,
@@ -2972,7 +2973,6 @@ span.switch-label:after {
     left: -100px!important;
     opacity: 1;
     width: 100%!important;
- 
 }
 .switch-left-right .switch-label:before, .switch-left-right .switch-label:after {
     width: 30px;
@@ -3073,6 +3073,46 @@ span.switch-label:after {
   margin-bottom: -70px !important;
   padding: 10px !important;
   margin-left: 15px !important;
+}
+
+
+/* single score button*/
+.score {
+  position: relative !important;
+  top: -5px !important;
+  border: 0 !important;
+  transition: all 40ms linear !important;
+  margin-top: 5px !important;
+  margin-bottom: 10px !important;
+  margin-left: 2px !important;
+  margin-right: 2px !important;
+  border-radius: 20% !important;
+  width: 65px !important;
+  height: 55px !important;
+  font-size: 16px !important;
+}
+.score:active:focus,
+.score:focus:hover,
+.score:focus {
+  -moz-outline-style: none !important;
+  outline: medium none !important;
+}
+.score:active,
+.score.active {
+  top: 2px !important;
+}
+.score.btn-default {
+  color: #666666 !important;
+  box-shadow: 0 0 0 1px #ebebeb inset, 0 0 0 2px rgba(255, 255, 255, 0.1) inset,
+    0 8px 0 0 #bebebe, 0 8px 8px 1px rgba(0, 0, 0, 0.2) !important;
+  background-color: #f9f9f9 !important;
+}
+.score.btn-default:active,
+.score.btn-default.active {
+  color: #666666 !important;
+  box-shadow: 0 0 0 1px #ebebeb inset, 0 0 0 1px rgba(255, 255, 255, 0.15) inset,
+    0 1px 3px 1px rgba(0, 0, 0, 0.1) !important;
+  background-color: #f9f9f9 !important;
 }
 
 
