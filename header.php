@@ -189,10 +189,12 @@ if (isset($_SESSION["user_isAdmin"])) {
 <?php
 if(isset($_SESSION["user_isVerified"])){
     if($_SESSION["user_isVerified"] == 0){
-    echo'<div class="alert alert-warning" style="margin-bottom:0px">';
+    echo'<div class="alert alert-warning" id="verify" style="margin-bottom:0px">';
     echo'<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>';
     echo'<center><span><strong>Notice: </strong> Your account is not verified. Please go to your email and verify your account</span></center>';
     echo'</div>';
+  }else{
+    echo'<script>$("#verify").remove()</script>';
   }
 }
 
