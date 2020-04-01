@@ -239,7 +239,7 @@ class Functions
     
     }
     /*
-    @function: setLasLogin
+    @function: setLastLogin
     return type : void
     */
     public static function setLastLogin() {
