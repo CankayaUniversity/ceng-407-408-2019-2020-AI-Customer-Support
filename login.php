@@ -84,6 +84,7 @@ if(isset($_POST['LoginSystem']) && isset($_POST['email_label']) && $_POST['email
             $_SESSION["user_isAdmin"] = $query['is_admin'];
             $_SESSION["user_isVerified"] = $query['is_verified'];
             $_SESSION["user_Email"] = $Email;
+            Functions::setLastLogin();
             echo "<script>window.location.replace('index.php');</script>";
             die();
         } else {

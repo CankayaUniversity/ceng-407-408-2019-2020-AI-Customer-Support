@@ -238,4 +238,18 @@ class Functions
         }
     
     }
+    /*
+    @function: setLasLogin
+    return type : void
+    */
+    public static function setLastLogin() {
+        $id = $_SESSION["user_UserID"];
+        $conne = new Mysql();
+        $conn = $conne->dbConnect();
+
+        $query = $conn->prepare("UPDATE users SET last_login=CURRENT_TIMESTAMP WHERE user_id=:id");
+        $query->execute([
+            ':id' =>  $id
+        ]);
+    }
 }
