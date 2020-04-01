@@ -1,5 +1,4 @@
 <?php 
-include 'helpers/SEOHelper.php';
 include 'helpers/Functions.php';
 
 session_start();
