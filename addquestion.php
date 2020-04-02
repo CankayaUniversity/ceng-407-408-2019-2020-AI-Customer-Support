@@ -38,16 +38,16 @@ if($sUsername == null){
                         <section class="span8 articles-list">
                             <div class="my-3 p-3 rounded box-shadow">
                                 <div class="title">
-                                    <h3>Add a new question!</h3>
+                                    <label style ="font-size : 30px; font-weight: 650">Add a new Question</label>
                                     <div class="form-group">
-                                        <label for="QuestionTitle">Question Title</label>
+                                        <label for="QuestionTitle" style ="font-size : 22px;">Question Title</label>
                                         <input type="text" class="form-control" id="QuestionTitle" name="QuestionTitle" maxlength="75" placeholder="What is your question about?">
                                     </div>
                                 </div>
                                 <textarea name="editor"></textarea>
                                     <br>
                                     <div class="form-group">
-                                        <label for="QuestionTags">Question Tags</label>
+                                        <label for="QuestionTags" style ="font-size : 22px;">Question Tags</label>
                                         <input type="text" class="form-control" id="QuestionTags" name="QuestionTags" placeholder="Please enter tags">
                                     </div>
                                     <div class="form-group">
@@ -60,15 +60,24 @@ if($sUsername == null){
                                     </select>
                                     </div>
                                     <br>
+                                    <label for="QuestionTags" style ="font-size : 22px;">Machine Learning</label>
                                     <div>
                                         <label class="switch switch-left-right">
                                             <input class="switch-input" type="checkbox" name="MLcheckbox" id="MLcheckbox">
                                             <span class="switch-label" data-on="On" data-off="Off"></span><span class="switch-handle"></span>
                                         </label>
-                                        
-                                        <span>&nbsp I don't want {{Machine_Learning_Program}} to answer my question.</span>
+                                        <span id="text" style ="font-size : 17px; display: none;">&nbsp I don't want {{Machine_Learning_Program}} to answer my question.</span>
                                     </div>
-                                    <button type="submit" class="btn btn-primary" name="QuestionSubmit" id="QuestionSubmit">Submit</button>                                    
+                                    <script>
+                                        $("#MLcheckbox").click(function(){
+                                        $("#text").fadeToggle(1000);
+                                        });
+                                    </script>
+                                    <hr>
+                                    <br>
+                                    <div class="float-right">
+                                        <button type="submit" class="btn btn-postAnswer" name="QuestionSubmit" id="QuestionSubmit">Post Question</button>        
+                                    </div>                            
                             </div>
                         </section>
                     </div>
