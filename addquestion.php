@@ -59,20 +59,24 @@ if($sUsername == null){
                                     <?php } ?>
                                     </select>
                                     </div>
-                                    <br>
-                                    <label for="QuestionTags" style ="font-size : 22px;">Machine Learning</label>
-                                    <div>
-                                        <label class="switch switch-left-right">
-                                            <input class="switch-input" type="checkbox" name="MLcheckbox" id="MLcheckbox">
-                                            <span class="switch-label" data-on="On" data-off="Off"></span><span class="switch-handle"></span>
-                                        </label>
-                                        <span id="text" style ="font-size : 17px; display: none;">&nbsp I don't want {{Machine_Learning_Program}} to answer my question.</span>
+                                    <div class="notice notice-sm">
+                                        <label for="QuestionTags" style ="font-size : 15px;">Machine Learning</label>
+                                        <div class="float-right">
+                                            <label class="switch switch-left-right">
+                                                <input class="switch-input" type="checkbox" name="MLcheckbox" id="MLcheckbox">
+                                                <span class="switch-label"></span><span class="switch-handle"></span>
+                                            </label>
+                                        </div>
+                                        <div class="alert alert-danger" id="text" style="display: none; margin-top:10px;">
+                                            <center><span style="font-size : 15px;">Notice : I don't want Machine Learning Program to answer my question.</span></center>
+                                        </div>
                                     </div>
                                     <script>
                                         $("#MLcheckbox").click(function(){
                                         $("#text").fadeToggle(1000);
                                         });
                                     </script>
+                                    <br>
                                     <hr>
                                     <br>
                                     <div class="float-right">

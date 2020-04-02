@@ -2685,7 +2685,7 @@ Slider B-flat
   content: "";
   height: 20px;
   width: 40px;
-  background: rgba(100, 100, 100, 0.2);
+  background: #5cb85c;
   box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.8);
   transition: background 0.2s ease-out;
 }
@@ -2693,27 +2693,27 @@ Slider B-flat
   width: 20px;
   height: 20px;
   position: absolute;
-  left: 0px;
+  left: 30px !important;
   top: 0;
   display: block;
-  background: #ffffff;
+  background: #5cb85c;
   transition: margin-left 0.1s ease-in-out;
   text-align: center;
   font-weight: bold;
   content: "";
 }
 .checkbox-slider--b-flat input:checked + span:after {
-  margin-left: 20px;
+  margin-left: -30px !important;
   content: "";
 }
 .checkbox-slider--b-flat input:checked + span:before {
   transition: background 0.2s ease-in;
 }
 .checkbox-slider--b-flat input + span {
-  padding-left: 40px;
+  padding-right: 20px;
 }
 .checkbox-slider--b-flat input + span:before {
-  border-radius: 20px;
+  border-radius: 20px !important;
   width: 40px;
 }
 .checkbox-slider--b-flat input + span:after {
@@ -2730,14 +2730,14 @@ Slider B-flat
 }
 .checkbox-slider--b-flat input:checked + span:after {
   content: "";
-  margin-left: 20px;
+  margin-left: 50px;
   border: solid transparent 2px;
   background-clip: padding-box;
   -webkit-animation: popIn ease-in 0.3s normal;
   animation: popIn ease-in 0.3s normal;
 }
 .checkbox-slider--b-flat input:checked + span:before {
-  background: #5cb85c;
+  background: #8a8a8a;
 }
 .checkbox-slider--b-flat.checkbox-slider-md input + span:before {
   border-radius: 30px;
@@ -2912,14 +2912,14 @@ input[type=checkbox], input[type=radio] {
 }
 .switch-left-right .switch-input:checked ~ .switch-label:before {
     opacity: 1;
-    left: 100px;
+    left: -100px !important;
 }
 .switch-input:checked ~ .switch-label:before {
     opacity: 0;
 }
 .switch-left-right .switch-label:before {
-    background: #eceeef;
-    text-align: left;
+    background:#28a745!important;
+    text-align: right;
     padding-left: 80px!important;
 }
 .switch-left-right .switch-label:before, .switch-left-right .switch-label:after {
@@ -2975,10 +2975,10 @@ span.switch-label:after {
 
 
 .switch-left-right .switch-label:after {
-    text-align: left;
+    text-align: right;
     text-indent: 9px;
-    background:#28a745!important;
-    left: -100px!important;
+    background:#aaaaaa !important;
+    left: 100px!important;
     opacity: 1;
     width: 100%!important;
 }
@@ -2995,7 +2995,7 @@ span.switch-label:after {
     box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.2), inset 0 0 3px rgba(0, 0, 0, 0.1);
 }
 .switch-input:checked ~ .switch-handle {
-    left: 44px;
+    left: 4px;
     box-shadow: -1px 1px 5px rgba(0, 0, 0, 0.2);
 }
 .switch-label, .switch-handle {
@@ -3008,7 +3008,7 @@ span.switch-label:after {
 .switch-handle {
     position: absolute;
     top: 4px;
-    left: 4px;
+    left: 44px;
     width: 28px;
     height: 28px;
     background: linear-gradient(to bottom, #FFFFFF 40%, #f0f0f0);
@@ -3146,3 +3146,30 @@ span.switch-label:after {
   margin-left: 15px !important;
 }
 
+
+
+/* sad asdasdasdasdasd */
+
+.notice {
+  padding: 15px;
+  background-color: #fafafa;
+  border-left: 6px solid #7f7f84;
+  margin-bottom: 10px;
+  -webkit-box-shadow: 0 5px 8px -6px rgba(0,0,0,.2);
+  -moz-box-shadow: 0 5px 8px -6px rgba(0,0,0,.2);
+  box-shadow: 0 5px 8px -6px rgba(0,0,0,.2);
+}
+.notice-sm {
+  padding: 10px;
+  font-size: 80%;
+}
+.notice-lg {
+  padding: 35px;
+  font-size: large;
+}
+.notice-success {
+  border-color: #80D651;
+}
+.notice-success>strong {
+  color: #80D651;
+}
