@@ -30,7 +30,7 @@
                                     <h3>Featured Articles <small>Total Questions : <?php echo $totalQuestions ?></small></h3>
                                     <?php
                                         $result = Functions::homePagePagination(5);
-                                        foreach ($result as $key => $value){
+                                        foreach ($result as $key => $value) {
                                             $q_id = $value["q_id"];
                                             $commentCount = $conne->selectRowCount("SELECT * FROM comments WHERE c_post_id = $q_id");
                                     ?>
