@@ -2126,9 +2126,12 @@ a.forum-item-title:hover {
 /* Post Button*/
 
 .btn-postAnswer {
-  color: #212529 !important;
+  width: 160px !important;
+  height: 35px;
+  color: #ffffff !important;
   background-color: #e2793f !important;
   border-color: #e2793f !important;
+  border-radius: 35px !important;
 }
 
 /* voting buttons */
@@ -2298,10 +2301,14 @@ a.forum-item-title:hover {
 .form_container {
   margin-top: 100px;
 }
+/*background: #17c711 !important;*/
 .login_btn {
   width: 100%;
+  background:rgb(255,255,255);
   background: #17c711 !important;
   color: white !important;
+  border-radius: 5px !important;
+  font-weight: 600 !important;
 }
 .login_btn:focus {
   box-shadow: none !important;
@@ -2333,6 +2340,7 @@ a.forum-item-title:hover {
   width: 20%;
   font-size: 250%;
   padding: 0;
+  border-radius: 5px !important;
 }
 
 .social-login-more {

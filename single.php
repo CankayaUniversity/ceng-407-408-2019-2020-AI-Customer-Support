@@ -231,9 +231,11 @@
                                 <div class="card-body">
                                     <textarea name="editor"></textarea>
                                     <br>
-                                    <button type="submit" class="btn btn-postAnswer" id="answerSubmit" onclick="submitAnswer(<?php echo $user_id?>,<?php echo $q_id?>)">
-                                        Post Answer
-                                    </button>
+                                    <div class="float-right">
+                                        <button type="submit" class="btn btn-postAnswer" id="answerSubmit" onclick="submitAnswer(<?php echo $user_id?>,<?php echo $q_id?>)">
+                                            Post Answer
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         <?php endif; ?>
