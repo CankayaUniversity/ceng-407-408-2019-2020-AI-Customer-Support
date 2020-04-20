@@ -1,4 +1,4 @@
-question = ''
+old_reply = ''
 new_answer = ''
 flag = 1
 for word in sys.argv[1:]:
@@ -6,10 +6,10 @@ for word in sys.argv[1:]:
         flag=0
         continue
     if(flag == 1):
-        new_answer += word + ' '
+        old_reply += word + ' '
     elif(flag == 0):
         question += word + ' '
 
 data = pd.read_csv("data.csv")
 
-data[data.question == question].answer = new_answer
+data[data.answer == old_reply].answer = old_reply

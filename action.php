@@ -13,6 +13,7 @@ $c_id = isset($_POST['c_id']) ? $_POST['c_id'] : null;
 $user_id = isset($_SESSION['user_UserID']) ? $_SESSION['user_UserID'] : null;
 $answer = isset($_POST['answer']) ? $_POST['answer'] : null;
 $q_author = isset($_POST['q_author']) ? $_POST['q_author'] : null;
+$old_reply = isset($_POST['old_reply']) ? $_POST['old_reply'] : null;
 
 if ($q_id !== null && $user_id !== null && ($action == "like" || $action == "dislike")) {
     $sql = "SELECT * FROM like_data WHERE user_id = '$user_id' AND q_id ='$q_id'";
@@ -267,7 +268,7 @@ if($action == "expertReply"){
 
     // Update question answer //
 
-    $question = $query[0]['q_title'] . " / " . $answer;
+    $question = $old_reply . " / " . $answer;
     $question = htmlspecialchars_decode($question);
     $question = urldecode($question);
 

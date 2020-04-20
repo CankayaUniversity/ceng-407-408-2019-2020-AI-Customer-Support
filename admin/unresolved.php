@@ -64,7 +64,7 @@ $AllQuestions = $conne->selectAll("questions");
                                             <textarea id="new_reply_<?php echo $q_id ?>" rows="4" cols="50"></textarea>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-info" onclick="ExpertReply('new_reply_<?php echo $q_id ?>','<?php echo $AutoReplyCommentID ?>','<?php echo $q_id ?>')" >Reply</button>
+                                            <button type="button" class="btn btn-info" onclick="ExpertReply('new_reply_<?php echo $q_id ?>','<?php echo $AutoReplyCommentID ?>','<?php echo $q_id ?>','<?php echo $AutoReplyComment ?>')" >Reply</button>
                                         </div>
                                     </div>
                                 </div>
@@ -96,13 +96,13 @@ $AllQuestions = $conne->selectAll("questions");
         }
     }
 
-    function ExpertReply(textarea_id,c_id,q_id){
+    function ExpertReply(textarea_id,c_id,q_id,old_reply){
         var answer = $('#' + textarea_id).val();
         var action = "expertReply";
         $.ajax({
             url:"/action.php",
             method:"POST",
-            data: {action:action,answer:answer,c_id:c_id,q_id:q_id},
+            data: {action:action,answer:answer,c_id:c_id,q_id:q_id,old_reply:old_reply},
             success:function(response){
                 location.reload();
             }
