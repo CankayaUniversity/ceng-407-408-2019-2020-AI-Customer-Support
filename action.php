@@ -250,7 +250,7 @@ if ($action == "loadmore") {
 if($action == "expertReply"){
     $query = $conne->selectFreeRun("SELECT `user_id` FROM `users` WHERE `username` = 'AutoReply'");
     $AutoReplyID = $query[0]['user_id'];
-    $query = $conne->selectFreeRun("SELECT `q_author` FROM `questions` WHERE `q_id` = '$q_id'");
+    $query = $conne->selectFreeRun("SELECT `q_author`, `q_title` FROM `questions` WHERE `q_id` = '$q_id'");
     $qAuthor = $query[0]['q_author'];
     echo $c_id;
     if($c_id == "noreply"){
@@ -262,6 +262,17 @@ if($action == "expertReply"){
         $conne->freeRun("INSERT INTO `notifications` (`n_description`,`n_author`,`n_post_id`, `n_notified_id`, `n_image`) VALUES ('Your question answer is updated by experts.','$AutoReplyID', '$q_id', '$qAuthor','/images/noti_icons/comment.png')");
         //echo "Updated!";
     }
+    
+    /*
+
+    // Update question answer //
+
+    $question = htmlspecialchars_decode($query[0]['q_title']);
+    $question = urldecode($query[0]['q_title']);
+    $runPython = exec('python3 /var/www/html/python/update.py ' . $question .'/'. $answer . " 2>&1");
+
+    */
+
     $conne->freeRun("UPDATE `questions` SET `is_solved` = -1 WHERE `q_id` = $q_id");
 }
 
