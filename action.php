@@ -267,9 +267,11 @@ if($action == "expertReply"){
 
     // Update question answer //
 
-    $question = htmlspecialchars_decode($query[0]['q_title']);
-    $question = urldecode($query[0]['q_title']);
-    $runPython = exec('python3 /var/www/html/python/update.py ' . $question .'/'. $answer . " 2>&1");
+    $question = $query[0]['q_title'] . " / " . $answer;
+    $question = htmlspecialchars_decode($question);
+    $question = urldecode($question);
+
+    $runPython = exec('python3 /var/www/html/python/new_answer.py ' . $question . " 2>&1");
 
     */
 
