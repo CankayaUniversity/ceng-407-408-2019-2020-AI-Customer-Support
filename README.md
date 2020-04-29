@@ -59,4 +59,32 @@ Major frameworks we use in our project:
 * [Google Charts](https://developers.google.com/chart)
 * [Font Awesome](https://fontawesome.com/)
 
+<!-- GETTING STARTED -->
+
+## Getting Started
+
+Okey guys, now is the time to install this system. 
+If you don't have the technical knowledge, don't worry, because we'll show you the right way.
+
+Please follow the steps below carefully!
+
+First of all, since we are a PHP based system, you need a linux based system. I continue assuming you have provided them and have installed the ngnix or apache server.
+
+You don't have to worry about PHP version. Because both php5 and php7 are working properly. But of course PHP 7 will also perform better.
+
+* To check your php version:
+```sh
+php -v
+```
+## Installation
+
+1. Clone the repo
+```sh
+git clone https://github.com/your_username_/Project-Name.git
+```
+2. Go to the install page
+```sh
+www.your-domain.com/install/install-new.php
+```
+
 
