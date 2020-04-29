@@ -7,17 +7,48 @@
  * @date 17.11.2019
  * @update 05.02.2020
  */
+include_once 'inc/Conn.php';
 class SEOHelper
 {
 
     /*
-    Meta Descriptions
+    Try to get site settings
+     */
+    public static function getSiteSettings(){
+        $conne = new Mysql();
+        $conn = $conne->dbConnect();
+        $siteSettings = $conne->selectAll("site_settings");
+        if(is_array($siteSettings) && !empty($siteSettings)){
+            return $siteSettings;
+        } else {
+            return false;
+        }
+    }
+
+    /*
+    Credentials
      */
     public static function getDescriptions($returnDescriptions) {
-        $Descriptions = array(
-            "description" => "This is my page description",
-            "keywords" => "This is my page keywords",
-            "robots" => "no index, no follow");
+        $getSiteSettings = self::getSiteSettings();
+
+        if($getSiteSettings !== false){
+            $Descriptions = array(
+                "title" => $getSiteSettings[0]['site_title'],
+                "email" => $getSiteSettings[0]['mail_address'],
+                "slogan" => $getSiteSettings[0]['slogan'],
+                "description" => "Best ai customer support system",
+                "keywords" => "This is my page keywords",
+                "robots" => "no index, no follow");
+        } else {
+            $Descriptions = array(
+                "title" => "AI Customer Support",
+                "email" => "mehata1997@hotmail.com",
+                "slogan" => "Best ai customer support system",
+                "description" => "This is my page description",
+                "keywords" => "This is my page keywords",
+                "robots" => "no index, no follow");
+        }
+
         return $Descriptions[$returnDescriptions];
     }
 

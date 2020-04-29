@@ -87,7 +87,7 @@ if (isset($_SESSION["user_isAdmin"])) {
     <meta name="keywords" content="<?php echo SEOHelper::getDescriptions('keywords') ?>" />
     <meta name="robots" content="<?php echo SEOHelper::getDescriptions('robots') ?>" />
     <meta name="description" content="<?php echo SEOHelper::getDescriptions('description') ?>" />
-    <title>AI Customer Support</title>
+    <title><?php echo SEOHelper::getDescriptions('title') ?></title>
     <?php } ?>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
