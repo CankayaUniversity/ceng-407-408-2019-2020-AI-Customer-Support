@@ -3,7 +3,7 @@ include 'header.php';
 $AllCategories = $conne->selectAll("categories");
 ?>
 <body>
-    <div class="container">
+    <div class="container-fluid">
         <form>
             <input type="text" id="cat_name" placeholder="Category Name">
             <input type="text" id="cat_description" placeholder="Category Description">

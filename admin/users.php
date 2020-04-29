@@ -3,14 +3,14 @@ include 'header.php';
 $AllUsers = $conne->selectAll("users");
 ?>
 <body>
-    <div class="container">
+    <div class="container-fluid">
         <form>
             <input type="text" id="name" placeholder="Name">
             <input type="text" id="email" placeholder="Email Address">
             <input type="button" class="btn btn-info" value="Add" id="add-row">
         </form>
         <input type="text" id="searchInput" class="inputStyle" onkeyup="search()" placeholder="Search for names.." title="Type in a name">
-        <table class="table table-bordered" id="myTable">
+        <table class="table" id="myTable">
             <thead>
                 <tr>
                     <th scope="col">Select</th>
