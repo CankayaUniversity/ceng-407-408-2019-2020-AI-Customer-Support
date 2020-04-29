@@ -22,7 +22,7 @@
 <br />
 <p align="center">
   <a href="#">
-    <img src="https://github.com/CankayaUniversity/ceng-407-408-2019-2020-AI-Customer-Support/raw/master/images/mascot.png?raw=true" alt="Logo" width="80" height="80">
+    <img src="https://github.com/CankayaUniversity/ceng-407-408-2019-2020-AI-Customer-Support/raw/master/images/mascot.png?raw=true" alt="Logo" width="120" height="120">
   </a>
 
   <h3 align="center">AI Customer Support</h3>
