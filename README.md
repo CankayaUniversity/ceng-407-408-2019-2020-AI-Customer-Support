@@ -6,7 +6,7 @@
 [forks-url]: https://github.com/CankayaUniversity/ceng-407-408-2019-2020-AI-Customer-Support/network/members
 [stars-shield]: https://img.shields.io/github/stars/CankayaUniversity/ceng-407-408-2019-2020-AI-Customer-Support.svg?style=flat-square
 [stars-url]: https://github.com/CankayaUniversity/ceng-407-408-2019-2020-AI-Customer-Support/stargazers
-[issues-shield]: https://img.shields.io/github/issues/CankayaUniversity/ceng-407-408-2019-2020-AI-Customer-Support/.svg?style=flat-square
+[issues-shield]: https://img.shields.io/github/issues/CankayaUniversity/ceng-407-408-2019-2020-AI-Customer-Support.svg?style=flat-square
 [issues-url]: https://github.com/CankayaUniversity/ceng-407-408-2019-2020-AI-Customer-Support/issues
 
 
