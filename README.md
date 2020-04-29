@@ -21,8 +21,8 @@
 <!-- Logo -->
 <br />
 <p align="center">
-  <a href="https://github.com/CankayaUniversity/ceng-407-408-2019-2020-AI-Customer-Support/raw/master/images/mascot.png?raw=true">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+  <a href="#">
+    <img src="https://github.com/CankayaUniversity/ceng-407-408-2019-2020-AI-Customer-Support/raw/master/images/mascot.png?raw=true" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">AI Customer Support</h3>
