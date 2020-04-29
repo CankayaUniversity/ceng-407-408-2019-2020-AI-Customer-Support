@@ -41,3 +41,22 @@
   </p>
 </p>
 
+<!-- ABOUT -->
+
+We are aiming to create a web system that can be installed on any website. In our system, we will be creating a customer support system which is machine learning based program that can train itself according to the questions asked and also answers given by the non-machine (human) supporters. For every website, our program will have its’ own dataset on the computer it is installed. For every solved issue which means question and its’ true answers at the end (does not matter how many questions asked and true or false answers given between these two), machine learning program will create a model and after a while it will start answering questions instead of non-machine supporters.
+
+Here's why:
+* Responding quicker to customer's questions
+* Creating a specific response quality
+* Fewer staff needs 
+* Easy to manage and easy to install
+
+
+Major frameworks we use in our project:
+
+* [Bootstrap](https://getbootstrap.com)
+* [JQuery](https://jquery.com)
+* [Google Charts](https://developers.google.com/chart)
+* [Font Awesome](https://fontawesome.com/)
+
+
