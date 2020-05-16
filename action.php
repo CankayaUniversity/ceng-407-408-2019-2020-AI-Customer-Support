@@ -204,18 +204,18 @@ if ($action == "loadmore") {
             ."</div>";
         }else if($commentStatus > 0){
             $commentButtons = 
-            '<button type="button" class="btn btn-success btn-circle btn-lg" disabled="disabled"><i class="fa fa-check"></i></button>'
+            '<button type="button" class="btn btn-success btn-lg btn3d" disabled="disabled"><i class="fa fa-check"></i></button>'
             .' '
-            .'<button type="button" class="btn btn-danger btn-circle btn-lg" disabled="disabled"><i class="fa fa-times"></i></button>'
+            .'<button type="button" class="btn btn-default btn-lg score" id="score"><i class="fa fa-star"></i></i><span id="c_score_'.$c_id.'" class="totalScore" data-value="'.$c_score.'">'.$c_score.'</span></button>'
             .' '
-            .'<button type="button" class="btn btn-dark btn-circle btn-lg" id="score"><i class="fa fa-star"></i></i><span id="c_score_'.$c_id.'" class="totalScore" data-value="'.$c_score.'">'.$c_score.'</span></button>';
+            .'<button type="button" class="btn btn-danger btn-lg btn3d" disabled="disabled"><i class="fa fa-times"></i></button>';
         }else{
             $commentButtons = 
-            '<button type="button"class="btn btn-success btn-circle btn-lg" onclick="likeComment(this)" name="'.$c_id.'" id="c_btnLike_'.$c_id.'"><i class="fa fa-check"></i></button>'
+            '<button type="button"class="btn btn-success btn-lg btn3d" onclick="likeComment(this)" name="'.$c_id.'" id="c_btnLike_'.$c_id.'"><i class="fa fa-check"></i></button>'
             .' '
-            .'<button type="button" class="btn btn-danger btn-circle btn-lg" onclick="dislikeComment(this)" name="'.$c_id.'" id="c_btndislike_'.$c_id.'"><i class="fa fa-times"></i></button>'
+            .'<button type="button" class="btn btn-default btn-lg score" id="c_score" ><i class="fa fa-star"></i><span id="c_score_'.$c_id.'" class="totalScore" data-value="'.$c_score.'">'.$c_score.'</span></button>'
             .' '
-            .'<button type="button" class="btn btn-dark btn-circle btn-lg" id="c_score" ><i class="fa fa-star"></i><span id="c_score_'.$c_id.'" class="totalScore" data-value="'.$c_score.'">'.$c_score.'</span></button>';
+            .'<button type="button" class="btn btn-danger btn-lg btn3d" onclick="dislikeComment(this)" name="'.$c_id.'" id="c_btndislike_'.$c_id.'"><i class="fa fa-times"></i></button>';
         }
         $query2 = "SELECT * FROM users WHERE user_id = $c_author ";
         $newU = $conne->selectFreeRun($query2);
