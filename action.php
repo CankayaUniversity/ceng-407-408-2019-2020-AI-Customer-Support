@@ -11,6 +11,7 @@ $action = $_POST["action"];
 $q_id = isset($_POST['q_id']) ? $_POST['q_id'] : null;
 $c_id = isset($_POST['c_id']) ? $_POST['c_id'] : null;
 $user_id = isset($_SESSION['user_UserID']) ? $_SESSION['user_UserID'] : null;
+$admin_session = isset($_SESSION['user_isAdmin']) ? $_SESSION['user_isAdmin'] : null;
 $answer = isset($_POST['answer']) ? $_POST['answer'] : null;
 $q_author = isset($_POST['q_author']) ? $_POST['q_author'] : null;
 $old_reply = isset($_POST['old_reply']) ? $_POST['old_reply'] : null;
@@ -293,4 +294,29 @@ if ($action == "search" && !empty($_POST['searchTerm'])) {
     } else {
         echo '<li class="list-group-item">No matching records were found.</li>';
     }
+}
+
+if ($action == "editQuestion" && $admin_session == 1) {
+
+    $newTitle = isset($_POST['newTitle']) ? trim($_POST['newTitle']) : null;
+    $newDescription = isset($_POST['newDescription']) ? trim($_POST['newDescription']) : null;
+
+    $update = "";
+    
+    if(!empty($newDescription)){
+        $update .= "q_description='".$newDescription."'";
+    } 
+
+    if(!empty($newTitle)){
+        $update .= ", q_title='".$newTitle."'";
+    }
+    
+    $sql = "UPDATE questions SET ".$update." WHERE q_id='$q_id'";
+    $gonder = $conn->prepare($sql);
+    $gonder->execute();
+
+    echo "Updated!";
+
+    die();
+
 }
