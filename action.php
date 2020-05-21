@@ -301,6 +301,11 @@ if ($action == "editQuestion" && $admin_session == 1) {
     $newTitle = isset($_POST['newTitle']) ? trim($_POST['newTitle']) : null;
     $newDescription = isset($_POST['newDescription']) ? trim($_POST['newDescription']) : null;
 
+    if($newTitle === null && $newDescription === null){
+        echo "Can not updated!";
+        exit();
+    }
+
     $update = "";
     
     if(!empty($newDescription)){
