@@ -7,7 +7,21 @@
         die();
     }
 
-    if (isset($_GET['edit'])) {
+    if (isset($_GET['delete'])) {
+        $getSlug = !empty($_GET['delete']) ? $_GET['delete'] : null;
+        if($getSlug === null){
+            echo "Operation can not completed!";
+        } else {
+            $query = $conn->prepare("DELETE FROM questions WHERE slug=:slug");   
+            $query->execute([
+                ':slug' =>  $getSlug
+            ]);
+            echo "Question deleted!";
+        }
+        exit(0);
+    }
+
+    else if (isset($_GET['edit'])) {
         $slug = $_GET['edit'];
         $getQuestion = $conne->selectWhere("questions","slug","=",$slug,"char");
         $q_title = $getQuestion[0]["q_title"];
@@ -49,5 +63,6 @@
                 }
             });
     });  
+
 
     </script>

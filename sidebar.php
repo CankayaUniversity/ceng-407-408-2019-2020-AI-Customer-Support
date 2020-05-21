@@ -10,7 +10,8 @@
   <section class="widget">
     <div class="support-widget">
       <h3>Admin</h3>
-      <p class="intro"><a href="/edit_question.php?edit=<?php echo $slug ?>">Edit  </a></p>
+      <p class="intro"><a href="/edit_question.php?edit=<?php echo $slug ?>">Edit</a> 
+      <a href="/edit_question.php?delete=<?php echo $slug ?>">Delete</a></p>
     </div>
   </section>
   <?php endif; ?>
