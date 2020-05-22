@@ -28,17 +28,29 @@
         $q_description = $getQuestion[0]["q_description"];
         $q_id = $getQuestion[0]["q_id"];
     }
-
 ?>
-
-    <div class="page-container">
-        <textarea id="title" style="width:500px;height:40px;"><?php echo $q_title ?></textarea>
-        <textarea name="editor"><?php echo $q_description ?></textarea>
-        <div class="float-right">
-             <button type="submit" class="btn btn-postAnswer" id="QuestionSubmit">Post Question</button>        
-         </div>    
-    </div>
-    
+<div class="page-container">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                    <textarea id="title" style="width:100%"><?php echo $q_title ?></textarea>
+                    </div>
+                    <div class="card-body">
+                        <textarea name="editor"><?php echo $q_description ?></textarea>
+                        <br>
+                        <div class="float-right">
+                            <button type="submit" class="btn btn-postAnswer" id="QuestionSubmit" onclick="submitAnswer(<?php echo $user_id?>,<?php echo $q_id?>)">
+                                Post Question
+                            </button>
+                        </div>
+                    </div>
+                </div>   
+            </div>       
+        </div>
+    </div>    
+</div>    
 <?php include "footer.php";?>
 
 
@@ -66,3 +78,4 @@
 
 
     </script>
+    
