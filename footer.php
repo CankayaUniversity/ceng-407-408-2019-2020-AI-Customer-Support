@@ -13,28 +13,36 @@
                                 <h5 class="widget-title2">Quick Links<span></span></h5>
                                 <ul class="thumbnail-widget">
                                     <li>
-                                        <div class="thumb-content"><a href="#.">FAQ</a></div>	
+                                        <div class="thumb-content"><a href="addquestion.php">Add Question</a></div>	
                                     </li>
                                     <li>
-                                        <div class="thumb-content"><a href="#.">Profile</a></div>	
+                                        <div class="thumb-content"><a href="login.php">Login</a></div> 
                                     </li>
                                     <li>
-                                        <div class="thumb-content"><a href="#.">About Us</a></div>	
+                                        <div class="thumb-content"><a href="register.php">Register</a></div> 
                                     </li>
                                 </ul>
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-6 col-md-3">
                             <div class="widget2 no-box">
-                                <h5 class="widget-title2">Get Started<span></span></h5>
-                                <p>Install the database in your system and get started!</p>
-                                <a class="btn btn-secondary" href="#">Install Now</a>
+                                <h5 class="widget-title2">Popular Articles<span></span></h5>
+                                  <ul>
+                                    <?php
+                                      $popularArticles = Functions::popularArticles();
+                                      foreach ($popularArticles as $key) { 
+                                      $popular_slug = $key['slug']; 
+                                    ?>
+                                    <li><a href='<?php echo "/post/$popular_slug";?>'><?php echo $key["q_title"]?></a></li>
+                                    <?php } ?>
+                                  </ul>
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-6 col-md-3">
                             <div class="widget2 no-box">
                                 <h5 class="widget-title2">Contact Us<span></span></h5>
-                                <p><a href="mailto:info@domain.com" title="glorythemes">customersupport@ai.com</a></p>
+                                <p>If you need more help, please feel free to contact us!</p>
+                                <p><a href="mailto:info@domain.com" title="glorythemes">example@example.com</a></p>
                             </div>
                         </div>
                     </div>
