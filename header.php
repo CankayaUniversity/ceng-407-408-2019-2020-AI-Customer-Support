@@ -2,8 +2,8 @@
 
 session_start();
 
-ini_set('display_errors', 1);
-error_reporting(-1);
+/*ini_set('display_errors', 1);
+error_reporting(-1);*/
 
 include 'helpers/SEOHelper.php';
 include 'helpers/Functions.php';
@@ -69,6 +69,12 @@ if (isset($_SESSION["user_isAdmin"])) {
         }
     }
     else if(preg_match('/profile/', $_SERVER['REQUEST_URI'])) {
+      if ($_SESSION["user_Username"] == null) {
+          echo "<script>
+          window.location.replace('index.php')
+          </script>";
+          die();
+      }
       $metaUserID = $_SESSION["user_UserID"];
       $result = $conne->selectFreeRun("SELECT * FROM users WHERE user_id='$metaUserID'");
       foreach ($result as $key => $value) {
