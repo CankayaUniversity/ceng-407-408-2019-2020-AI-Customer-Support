@@ -13,13 +13,13 @@
                                 <h5 class="widget-title2">Quick Links<span></span></h5>
                                 <ul class="thumbnail-widget">
                                     <li>
-                                        <div class="thumb-content"><a href="addquestion.php">Add Question</a></div>	
+                                        <div class="thumb-content"><a href="/addquestion.php">Add Question</a></div>	
                                     </li>
                                     <li>
-                                        <div class="thumb-content"><a href="login.php">Login</a></div> 
+                                        <div class="thumb-content"><a href="/login.php">Login</a></div> 
                                     </li>
                                     <li>
-                                        <div class="thumb-content"><a href="register.php">Register</a></div> 
+                                        <div class="thumb-content"><a href="/register.php">Register</a></div> 
                                     </li>
                                 </ul>
                             </div>
